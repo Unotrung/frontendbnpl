@@ -10,24 +10,31 @@ import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
 import {MaterialModule} from "./material/material.module";
 import { StartPaymentComponent } from './pay-mock/start-payment/start-payment.component';
 import {PayMockModule} from "./pay-mock/pay-mock.module";
+import {HttpClientModule} from "@angular/common/http";
+import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
+import {InMemoryDataService} from "./in-memory-data.service";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    PayMockComponent,
-    TopBarComponent,
-    StartPaymentComponent
-  ],
-  imports: [
-    BrowserModule,
-    FlexModule,
-    FlexLayoutModule,
-      PayMockModule,
-    AppRoutingModule,
-    MaterialModule,
-    BrowserAnimationsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        PayMockComponent,
+        TopBarComponent,
+        StartPaymentComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        HttpClientInMemoryWebApiModule.forRoot(
+            InMemoryDataService, {dataEncapsulation: false}
+        ),
+        FlexModule,
+        FlexLayoutModule,
+        PayMockModule,
+        AppRoutingModule,
+        MaterialModule,
+        BrowserAnimationsModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

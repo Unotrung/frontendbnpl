@@ -1,0 +1,48 @@
+.payment-box{
+  display: block;
+  height: 350px;
+  width: 378px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  padding-left: 25px;
+  padding-right: 18px;
+}
+
+.payment-text {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.phone-box {
+  display: block;
+  height: 223px;
+  width: 378px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  padding-left: 25px;
+  padding-right: 18px;
+}
+.margin-top-16 {
+  margin-top: 16px;
+}
+
+.phone-input{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px 0px 10px 8px;
+  width: 310px;
+  height: 40px;
+  /* surface */
+  background: #FFFFFF;
+  /* Ink/ink300 */
+  border: 1px solid rgba(4, 17, 62, 0.5);
+  box-sizing: border-box;
+  border-radius: 8px;
+}

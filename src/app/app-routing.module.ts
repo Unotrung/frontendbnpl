@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {PayMockComponent} from "./pay-mock/pay-mock.component";
 
 const routes: Routes = [
-  {path: '', redirectTo: '/pay-mock', pathMatch: 'full'}
+  // {path: '', redirectTo: '/pay-mock', pathMatch: 'full'}
 ];
 
 @NgModule({
