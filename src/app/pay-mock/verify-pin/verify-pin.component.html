@@ -1,1 +1,32 @@
-<p>verify-pin works!</p>
+<div fxLayout="column" fxLayoutAlign="center center">
+    <img src="assets/images/FE-Credit.png" width="155" height="55">
+    <p class="margin-top-16 payment-text" appMarginTop="5" >Slogan - FEC Content Team to Update</p>
+    <div class="pin-verify-box" fxLayout="column" fxLayoutAlign="start center">
+        <div  appElDimension width="283" height="32" appMarginTop="34">
+            <p class="pin-enter">Nhập mã PIN</p>
+        </div>
+        <div appElDimension width="295" height="48" appMarginTop="16">
+            <p class="enter-pin-announce">Vui lòng nhập mã PIN để xác thực thông tin</p>
+        </div>
+        <div appElDimension width="42" height="16" fxFlexAlign="start" appMarginTop="16">
+            <p class="pin-text-number">Mã pin</p>
+        </div>
+        <div appElDimension width="300" height="26" appMarginTop="23">
+<!--            <input class="pin-input-fill" type="number" maxlength="1">-->
+<!--            <input class="pin-input-fill" type="number" maxlength="1">-->
+<!--            <input class="pin-input-fill" type="number" maxlength="1">-->
+<!--            <input class="pin-input" type="number" name="pin" maxlength="1">-->
+            <code-input [isCodeHidden]="true"
+                        [codeLength]="4"
+                        (codeChanged)="onCodeChanged($event)"
+                        (codeCompleted)="onCodeCompleted($event)">
+            </code-input>
+        </div>
+        <div appElDimension width="214" height="24" appMarginTop="64" fxLayout="row" fxLayoutAlign="space-around center" >
+            <p class="forgot-pin-text">Quên mã pin <span (click)="onForgotPin()">Nhấn vào đây</span></p>
+        </div>
+        <div appMarginTop="32">
+            <button class="payment-button" routerLink="../verify-pin"><span>Tiếp tục</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+        </div>
+    </div>
+</div>

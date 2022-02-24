@@ -6,8 +6,12 @@ import { RegisterComponent } from './register/register.component';
 import { CartInformationComponent } from './cart-information/cart-information.component';
 import {MaterialModule} from "../material/material.module";
 import {FlexLayoutModule, FlexModule} from "@angular/flex-layout";
-import {MarginTopDirective} from "../helper/margin-top.directive";
+import {MarginTopDirective} from "./helper/margin-top.directive";
 import { VerifyPinComponent } from './verify-pin/verify-pin.component';
+import {HighlightDirective} from "./helper/highlight.directive";
+import { ElDimensionDirective } from './helper/el-dimension.directive';
+import {CodeInputModule} from "angular-code-input";
+import { ForgotPinComponent } from './forgot-pin/forgot-pin.component';
 
 
 @NgModule({
@@ -15,17 +19,20 @@ import { VerifyPinComponent } from './verify-pin/verify-pin.component';
     RegisterComponent,
     CartInformationComponent,
       MarginTopDirective,
-      VerifyPinComponent
+      HighlightDirective,
+      VerifyPinComponent,
+      ElDimensionDirective,
+      ForgotPinComponent
   ],
   exports: [
-    CartInformationComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
-    PayMockRoutingModule,
     FlexModule,
-      FlexLayoutModule
+    FlexLayoutModule,
+    CodeInputModule,
+    PayMockRoutingModule
   ]
 })
 export class PayMockModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-verify-pin',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerifyPinComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  // this called every time when user changed the code
+  onCodeChanged(code: string) {
+  }
+
+  // this called only if user entered full code
+  onCodeCompleted(code: string) {
+  }
+
+  onForgotPin(){
+    this.router.navigate(['pay-mock/forgot-pin']).then();
+  }
 }
