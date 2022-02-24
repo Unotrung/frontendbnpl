@@ -1,28 +1,40 @@
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from "./material/material.module";
+import { MessageSuccessComponent } from './message-success/message-success.component';
 import { PayMockComponent } from './pay-mock/pay-mock.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
-import {MaterialModule} from "./material/material.module";
+import { PayMockModule } from "./pay-mock/pay-mock.module";
 import { StartPaymentComponent } from './pay-mock/start-payment/start-payment.component';
-import {PayMockModule} from "./pay-mock/pay-mock.module";
+import { TopBarComponent } from './top-bar/top-bar.component';
+import { MessageFailComponent } from './message-fail/message-fail.component';
+import { ModalComponent } from './modal/modal.component';
+import { TypeNidComponent } from './type-nid/type-nid.component';
+import { TypePinComponent } from './type-pin/type-pin.component';
+import { PhoneDisplayComponent } from './phone-display/phone-display.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     PayMockComponent,
     TopBarComponent,
-    StartPaymentComponent
+    StartPaymentComponent,
+    MessageSuccessComponent,
+    MessageFailComponent,
+    ModalComponent,
+    TypeNidComponent,
+    TypePinComponent,
+    PhoneDisplayComponent,
   ],
   imports: [
     BrowserModule,
     FlexModule,
     FlexLayoutModule,
-      PayMockModule,
+    PayMockModule,
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule

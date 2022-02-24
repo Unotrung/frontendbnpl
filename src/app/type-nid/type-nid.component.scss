@@ -1,0 +1,87 @@
+.type-nid {
+  font-family: "Open Sans";
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.type-nid-logo {
+  display: block;
+  margin: 5px auto 41px;
+  img {
+    max-width: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+}
+
+.type-nid-info {
+  border: 1px solid #c4c4c4;
+  border-radius: 8px;
+  padding: 15px 33px;
+  min-width: 378px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .type-nid-title {
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 15px;
+  }
+  .input-group {
+    align-self: flex-start;
+    .type-nid-label {
+      font-weight: bold;
+      font-size: 12px;
+      color: #04113e;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .type-nid-input {
+      font-weight: normal;
+      font-size: 14px;
+      color: rgba(4, 17, 62, 0.5);
+      outline: none;
+      border: 1px solid rgba(4, 17, 62, 0.5);
+      border-radius: 8px;
+      padding: 10px 8px;
+      width: 310px;
+    }
+  }
+  .type-nid-noted {
+    display: block;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 10px;
+    p {
+      color: red;
+      font-weight: bold;
+      margin-bottom: 0px;
+    }
+    span {
+      color: #333333;
+      font-weight: normal;
+    }
+  }
+  .btn-continue {
+    margin-top: 11px;
+    width: 310px;
+    padding: 11px 70px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    color: #ffffff;
+    background-color: #68e89a;
+    align-self: center;
+  }
+}
