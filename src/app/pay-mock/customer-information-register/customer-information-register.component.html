@@ -1,0 +1,93 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+    <img src="assets/images/FE-Credit.png" width="155" height="55">
+    <img src="assets/images/customer1.png" width="409" height="42" appMarginTop="55">
+    <div class="enter-info-text" appMarginTop="33">
+        Nhập thông tin cá nhân
+    </div>
+    <fieldset class="personal-info">
+        <legend>Thông tin cá nhân</legend>
+        <div class="info-title" appMarginTop="25">
+            Họ và tên
+        </div>
+        <input class="input-info" appMarginTop="8">
+        <div class="info-title" appMarginTop="25">
+            Giới tính
+        </div>
+        <input class="input-info" appMarginTop="8">
+        <div fxLayout="row" appMarginTop="25">
+            <div class="block-info">
+                <div class="info-title">
+                    Số điện thoại
+                </div>
+                <input class="narrow-input-info" appMarginTop="8">
+            </div>
+            <div class="block-info margin-left-12">
+                <div class="info-title">
+                    Ngày sinh
+                </div>
+                <input class="narrow-input-info" appMarginTop="8">
+            </div>
+        </div>
+        <div fxLayout="row" appMarginTop="25">
+            <div class="block-info">
+                <div class="info-title">
+                    Số CMND/CCCD
+                </div>
+                <input class="narrow-input-info" appMarginTop="8">
+            </div>
+            <div class="block-info margin-left-12">
+                <div class="info-title">
+                    Ngày cấp
+                </div>
+                <input class="narrow-input-info" appMarginTop="8">
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset class="address-box">
+        <legend>Địa chỉ</legend>
+        <div class="info-title" appMarginTop="25">
+            Thành phố <span class="red-star">*</span>
+        </div>
+        <input class="input-info" appMarginTop="8">
+        <div fxLayout="row" appMarginTop="25">
+            <div class="block-info">
+                <div class="info-title">
+                    Quận/Huyện <span class="red-star">*</span>
+                </div>
+                <input class="narrow-input-info" appMarginTop="8">
+            </div>
+            <div class="block-info margin-left-12">
+                <div class="info-title">
+                    Phường <span class="red-star">*</span>
+                </div>
+                <input class="narrow-input-info" appMarginTop="8">
+            </div>
+        </div>
+        <div class="info-title" appMarginTop="25">
+            Đường <span class="red-star">*</span>
+        </div>
+        <input class="input-info" appMarginTop="8">
+    </fieldset>
+
+    <fieldset class="reference-box">
+        <legend>Thông tin tham chiếu</legend>
+        <div class="info-title" appMarginTop="25">
+            Danh xưng <span class="red-star">*</span>
+        </div>
+        <input class="input-info" appMarginTop="8">
+        <div class="info-title" appMarginTop="25">
+            Họ và tên <span class="red-star">*</span>
+        </div>
+        <input class="input-info" appMarginTop="8">
+        <div class="info-title" appMarginTop="25">
+            Số điện thoại <span class="red-star">*</span>
+        </div>
+        <input class="input-info" appMarginTop="8">
+    </fieldset>
+    <div class="note-text" fxFlexAlign="start">Lưu ý</div>
+    <div class="note-text-2" fxFlexAlign="start"><span class="red-star">*</span> Thông tin bắt buộc</div>
+    <div>
+        <button class="payment-button" routerLink="../customer-confirm-info"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+    </div>
+</div>
