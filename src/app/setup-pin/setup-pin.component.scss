@@ -1,0 +1,98 @@
+.setup-pin {
+  font-family: "Open Sans";
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+
+  .setup-pin-logo {
+    display: block;
+    margin: 0px auto 124px;
+    img {
+      max-width: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+  }
+
+  .setup-pin-heading {
+    font-weight: bold;
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 40px;
+  }
+
+  .setup-pin-info {
+    border: 1px solid #c4c4c4;
+    border-radius: 8px;
+    padding: 15px 39px;
+    min-width: 378px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      .setup-pin-label {
+        font-weight: bold;
+        font-size: 12px;
+        color: #04113e;
+        margin-bottom: 23px;
+        align-self: flex-start;
+      }
+      .setup-pin-circle {
+        input[type="password"] {
+          width: 30px;
+          height: 30px;
+          text-align: center;
+          border-radius: 50%;
+          background-color: #4ecb71;
+          margin-right: 35px;
+        }
+      }
+    }
+
+    .input-group:nth-child(1) {
+      margin-bottom: 55px;
+    }
+
+    .setup-pin-noted {
+      display: flex;
+      flex-direction: column;
+      font-weight: bold;
+      font-size: 12px;
+      margin-top: 82px;
+      p {
+        color: red;
+        font-weight: bold;
+        margin-bottom: 0px;
+      }
+      span {
+        color: #333333;
+        font-weight: normal;
+      }
+    }
+  }
+
+  .btn-confirm {
+    margin-top: 25px;
+    width: 310px;
+    padding: 11px 70px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    color: #ffffff;
+    background-color: #68e89a;
+  }
+}
