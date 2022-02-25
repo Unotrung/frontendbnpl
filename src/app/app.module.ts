@@ -17,6 +17,10 @@ import { TypePinComponent } from './type-pin/type-pin.component';
 import { PhoneDisplayComponent } from './phone-display/phone-display.component';
 import { SetupPinComponent } from './setup-pin/setup-pin.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { CheckoutDetailBillComponent } from './checkout-detail-bill/checkout-detail-bill.component';
+import { ErrorServerComponent } from './error-server/error-server.component';
+import { ProgressbarFiftyComponent } from './progressbar-fifty/progressbar-fifty.component';
+import { ProgressbarHundredComponent } from './progressbar-hundred/progressbar-hundred.component';
 
 
 @NgModule({
@@ -33,6 +37,10 @@ import { CheckoutComponent } from './checkout/checkout.component';
     PhoneDisplayComponent,
     SetupPinComponent,
     CheckoutComponent,
+    CheckoutDetailBillComponent,
+    ErrorServerComponent,
+    ProgressbarFiftyComponent,
+    ProgressbarHundredComponent,
   ],
   imports: [
     BrowserModule,

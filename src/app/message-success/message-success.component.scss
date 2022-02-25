@@ -1,6 +1,11 @@
 .message-success {
   font-family: "Open Sans";
   font-style: normal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
 
   .message-success-logo {
     display: block;
@@ -14,18 +19,19 @@
 
   .message-success-notification {
     min-width: 325px;
-    height: auto;
     padding: 15px 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     img {
       width: 48px;
       height: 48px;
       object-fit: cover;
       flex-shrink: 0;
     }
+
     .message-success-title {
       margin: 16px 0px 46px;
       padding: 5px;
@@ -34,6 +40,7 @@
       text-align: center;
       color: #000000;
     }
+
     .btn-continue {
       width: 310px;
       padding: 11px 70px;

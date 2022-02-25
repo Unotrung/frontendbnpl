@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  background-color: #ffffff;
 }
 
 .phone-display-logo {
@@ -27,12 +27,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   .phone-display-title {
     font-weight: bold;
     font-size: 20px;
     color: rgba(0, 0, 0, 0.8);
     margin-bottom: 26px;
   }
+
   .phone-display-input {
     font-weight: normal;
     font-size: 14px;
@@ -44,8 +46,8 @@
     width: 100%;
     margin-bottom: 40px;
   }
+
   .btn-continue {
-    margin-top: 11px;
     width: 100%;
     padding: 11px 70px;
     font-weight: bold;
@@ -58,6 +60,6 @@
     border-radius: 30px;
     color: #ffffff;
     background-color: #68e89a;
-    align-self: center;
+    margin: 0 auto;
   }
 }

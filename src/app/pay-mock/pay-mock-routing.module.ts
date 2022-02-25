@@ -10,6 +10,10 @@ import { TypePinComponent } from '../type-pin/type-pin.component';
 import { PhoneDisplayComponent } from '../phone-display/phone-display.component';
 import { SetupPinComponent } from '../setup-pin/setup-pin.component';
 import { CheckoutComponent } from '../checkout/checkout.component';
+import { CheckoutDetailBillComponent } from '../checkout-detail-bill/checkout-detail-bill.component';
+import { ErrorServerComponent } from '../error-server/error-server.component';
+import { ProgressbarFiftyComponent } from '../progressbar-fifty/progressbar-fifty.component';
+import { ProgressbarHundredComponent } from '../progressbar-hundred/progressbar-hundred.component';
 
 const routes: Routes = [
     {
@@ -38,10 +42,28 @@ const routes: Routes = [
                 path: 'type-pin', component: TypePinComponent
             },
             {
+                path: 'setup-pin', component: SetupPinComponent
+            },
+            {
                 path: 'phone-display', component: PhoneDisplayComponent
             },
             {
                 path: 'checkout', component: CheckoutComponent
+            },
+            {
+                path: 'checkout-detail', component: CheckoutDetailBillComponent
+            },
+            {
+                path: 'checkout-detail', component: CheckoutDetailBillComponent
+            },
+            {
+                path: 'error-server', component: ErrorServerComponent
+            },
+            {
+                path: 'progressbar-fifty', component: ProgressbarFiftyComponent
+            },
+            {
+                path: 'progressbar-hundred', component: ProgressbarHundredComponent
             },
         ]
     },

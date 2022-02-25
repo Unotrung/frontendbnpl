@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  background-color: #ffffff;
 }
 
 .type-nid-logo {
@@ -26,14 +26,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   .type-nid-title {
     font-weight: bold;
     font-size: 20px;
     color: rgba(0, 0, 0, 0.8);
     margin-bottom: 15px;
   }
+
   .input-group {
-    align-self: flex-start;
     .type-nid-label {
       font-weight: bold;
       font-size: 12px;
@@ -41,6 +42,7 @@
       display: block;
       margin-bottom: 8px;
     }
+
     .type-nid-input {
       font-weight: normal;
       font-size: 14px;
@@ -49,7 +51,7 @@
       border: 1px solid rgba(4, 17, 62, 0.5);
       border-radius: 8px;
       padding: 10px 8px;
-      width: 310px;
+      width: 100%;
     }
   }
   .type-nid-noted {
@@ -58,18 +60,20 @@
     font-weight: bold;
     font-size: 12px;
     margin-top: 10px;
+
     p {
       color: red;
       font-weight: bold;
       margin-bottom: 0px;
     }
+
     span {
       color: #333333;
       font-weight: normal;
     }
   }
+
   .btn-continue {
-    margin-top: 11px;
     width: 310px;
     padding: 11px 70px;
     font-weight: bold;
@@ -82,6 +86,6 @@
     border-radius: 30px;
     color: #ffffff;
     background-color: #68e89a;
-    align-self: center;
+    margin: 11px auto;
   }
 }
