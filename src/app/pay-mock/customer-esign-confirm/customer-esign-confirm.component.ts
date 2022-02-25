@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerEsignConfirmComponent implements OnInit {
 
+  agreeContract = true;
+  sendOtpToPhone = false;
   constructor() { }
 
   ngOnInit(): void {

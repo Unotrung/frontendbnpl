@@ -7,3 +7,45 @@
   letter-spacing: 0em;
   text-align: center;
 }
+.contract-box {
+  width: 378px;
+  height: 494px;
+  border: 1px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding-left: 36px;
+}
+
+.contract-content-title {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 32px;
+}
+
+:host::ng-deep.mat-checkbox-layout{
+  white-space: normal !important;
+}
+
+:host::ng-deep.mat-checkbox-inner-container{
+  margin-top: 4px;
+}
+:host::ng-deep.mat-checkbox-label {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.payment-button {
+  margin-bottom: 24px;
+}
+
+.payment-button:disabled,
+.payment-button[disabled]{
+  border: 1px solid #999999;
+  background: #cccccc;
+  color: #666666;
+}

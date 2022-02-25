@@ -5,14 +5,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from "./material/material.module";
-import { MessageSuccessComponent } from './message-success/message-success.component';
 import { PayMockComponent } from './pay-mock/pay-mock.component';
 import { PayMockModule } from "./pay-mock/pay-mock.module";
 import { StartPaymentComponent } from './pay-mock/start-payment/start-payment.component';
-import {PayMockModule} from "./pay-mock/pay-mock.module";
 import {HttpClientModule} from "@angular/common/http";
 import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
+import {TopBarComponent} from "./top-bar/top-bar.component";
 
 @NgModule({
     declarations: [

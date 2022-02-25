@@ -13,13 +13,16 @@ import { ElDimensionDirective } from './helper/el-dimension.directive';
 import {CodeInputModule} from "angular-code-input";
 import { ForgotPinComponent } from './forgot-pin/forgot-pin.component';
 import { ImageOnTopComponent } from './image-on-top/image-on-top.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CustomerPinInstallComponent } from './customer-pin-install/customer-pin-install.component';
 import { CustomerEsignConfirmComponent } from './customer-esign-confirm/customer-esign-confirm.component';
 import { CustomerInformationProcessComponent } from './customer-information-process/customer-information-process.component';
 import { CustomerInformationFinishComponent } from './customer-information-finish/customer-information-finish.component';
 import { CustomerInformationRegisterComponent } from './customer-information-register/customer-information-register.component';
-import { CustomerConfirmInfoComponent } from './customer-confirm-info/customer-confirm-info.component';
+import {
+  CustomerConfirmDialogComponent,
+  CustomerConfirmInfoComponent
+} from './customer-confirm-info/customer-confirm-info.component';
 
 
 @NgModule({
@@ -37,7 +40,8 @@ import { CustomerConfirmInfoComponent } from './customer-confirm-info/customer-c
       CustomerInformationProcessComponent,
       CustomerInformationFinishComponent,
       CustomerInformationRegisterComponent,
-      CustomerConfirmInfoComponent
+      CustomerConfirmInfoComponent,
+      CustomerConfirmDialogComponent
   ],
   exports: [
   ],
@@ -48,7 +52,8 @@ import { CustomerConfirmInfoComponent } from './customer-confirm-info/customer-c
     FlexLayoutModule,
     CodeInputModule,
     PayMockRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class PayMockModule { }
