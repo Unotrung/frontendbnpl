@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from "./material/material.module";
+import { MessageSuccessComponent } from './message-success/message-success.component';
 import { PayMockComponent } from './pay-mock/pay-mock.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
-import {MaterialModule} from "./material/material.module";
+import { PayMockModule } from "./pay-mock/pay-mock.module";
 import { StartPaymentComponent } from './pay-mock/start-payment/start-payment.component';
 import {PayMockModule} from "./pay-mock/pay-mock.module";
 import {HttpClientModule} from "@angular/common/http";
