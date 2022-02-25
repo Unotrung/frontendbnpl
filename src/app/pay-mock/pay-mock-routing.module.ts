@@ -15,6 +15,9 @@ import {
 } from "./customer-information-register/customer-information-register.component";
 import {CustomerEsignConfirmComponent} from "./customer-esign-confirm/customer-esign-confirm.component";
 import {CustomerPinInstallComponent} from "./customer-pin-install/customer-pin-install.component";
+import {CheckoutComponent} from "./checkout/checkout.component";
+import {CheckoutDetailBillComponent} from "./checkout-detail-bill/checkout-detail-bill.component";
+import {ElectronicContractComponent} from "../electronic-contract/electronic-contract.component";
 
 const routes: Routes = [
     {path: '', redirectTo: 'pay-mock', pathMatch: 'full'},
@@ -57,6 +60,15 @@ const routes: Routes = [
             },
             {
                 path: 'customer-pin-install', component: CustomerPinInstallComponent
+            },
+            {
+                path: 'checkout', component: CheckoutComponent
+            },
+            {
+                path: 'checkout-detail-bill',component: CheckoutDetailBillComponent
+            },
+            {
+                path: 'electronic-contract', component: ElectronicContractComponent
             }
         ]
     },
