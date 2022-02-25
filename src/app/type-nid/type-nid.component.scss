@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
+  min-height: 100vh;
 }
 
 .type-nid-logo {
@@ -83,9 +84,10 @@
     cursor: pointer;
     outline: none;
     border: none;
-    border-radius: 30px;
     color: #ffffff;
-    background-color: #68e89a;
+    background: linear-gradient(260.54deg, #68e89a 0%, #39d074 62.86%);
+    box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
     margin: 11px auto;
   }
 }
