@@ -14,6 +14,7 @@ import { CheckoutDetailBillComponent } from '../checkout-detail-bill/checkout-de
 import { ErrorServerComponent } from '../error-server/error-server.component';
 import { ProgressbarFiftyComponent } from '../progressbar-fifty/progressbar-fifty.component';
 import { ProgressbarHundredComponent } from '../progressbar-hundred/progressbar-hundred.component';
+import { ElectronicContractComponent } from '../electronic-contract/electronic-contract.component';
 
 const routes: Routes = [
     {
@@ -64,6 +65,9 @@ const routes: Routes = [
             },
             {
                 path: 'progressbar-hundred', component: ProgressbarHundredComponent
+            },
+            {
+                path: 'electronic-contract', component: ElectronicContractComponent
             },
         ]
     },

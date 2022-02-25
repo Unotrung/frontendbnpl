@@ -21,6 +21,7 @@ import { CheckoutDetailBillComponent } from './checkout-detail-bill/checkout-det
 import { ErrorServerComponent } from './error-server/error-server.component';
 import { ProgressbarFiftyComponent } from './progressbar-fifty/progressbar-fifty.component';
 import { ProgressbarHundredComponent } from './progressbar-hundred/progressbar-hundred.component';
+import { ElectronicContractComponent } from './electronic-contract/electronic-contract.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { ProgressbarHundredComponent } from './progressbar-hundred/progressbar-h
     ErrorServerComponent,
     ProgressbarFiftyComponent,
     ProgressbarHundredComponent,
+    ElectronicContractComponent,
   ],
   imports: [
     BrowserModule,
