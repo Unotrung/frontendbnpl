@@ -14,6 +14,7 @@ import {
     CustomerInformationRegisterComponent
 } from "./customer-information-register/customer-information-register.component";
 import {CustomerEsignConfirmComponent} from "./customer-esign-confirm/customer-esign-confirm.component";
+import {CustomerPinInstallComponent} from "./customer-pin-install/customer-pin-install.component";
 
 const routes: Routes = [
     {path: '', redirectTo: 'pay-mock', pathMatch: 'full'},
@@ -53,6 +54,9 @@ const routes: Routes = [
             },
             {
                 path: 'customer-esign-confirm', component: CustomerEsignConfirmComponent
+            },
+            {
+                path: 'customer-pin-install', component: CustomerPinInstallComponent
             }
         ]
     },
