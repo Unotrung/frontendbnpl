@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <button class="payment-button" routerLink="../customer-information-process" [disabled]="!(agreeContract && sendOtpToPhone)">
+    <button class="payment-button" (click)="onAgreeContract()" [disabled]="!(agreeContract && sendOtpToPhone)">
         <span>KÝ NGAY</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
 
 </div>

@@ -1,5 +1,5 @@
 .error-server {
-  font-family: "Open Sans";
+  font-family: Mulish;
   font-style: normal;
   display: flex;
   flex-direction: column;
@@ -17,21 +17,31 @@
     }
   }
 
-  .round-circle {
-    background-image: linear-gradient(
+  .outer_circle {
+    width: 180px;
+    height: 180px;
+    position: relative;
+  }
+
+  .outer_circle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    padding: 10px;
+    background: linear-gradient(
       138.26deg,
       #197dee 0%,
       #ce53ad 57.94%,
       #f18f61 113.51%
     );
-    border-radius: 50%;
-
-    .round-circle-child {
-      width: 180px;
-      height: 180px;
-      background-color: transparent;
-      border-radius: inherit;
-    }
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
   }
 
   .error-server-desc {

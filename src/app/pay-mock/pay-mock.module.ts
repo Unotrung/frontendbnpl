@@ -15,7 +15,10 @@ import { ForgotPinComponent } from './forgot-pin/forgot-pin.component';
 import { ImageOnTopComponent } from './image-on-top/image-on-top.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CustomerPinInstallComponent } from './customer-pin-install/customer-pin-install.component';
-import { CustomerEsignConfirmComponent } from './customer-esign-confirm/customer-esign-confirm.component';
+import {
+  CustomerEsignConfirmComponent,
+  EnterOtpComponent
+} from './customer-esign-confirm/customer-esign-confirm.component';
 import { CustomerInformationProcessComponent } from './customer-information-process/customer-information-process.component';
 import { CustomerInformationFinishComponent } from './customer-information-finish/customer-information-finish.component';
 import { CustomerInformationRegisterComponent } from './customer-information-register/customer-information-register.component';
@@ -23,6 +26,9 @@ import {
   CustomerConfirmDialogComponent,
   CustomerConfirmInfoComponent
 } from './customer-confirm-info/customer-confirm-info.component';
+import {PictureSelfieComponent} from "./picture-selfie/picture-selfie.component";
+import {ErrorServerComponent} from "./error-server/error-server.component";
+import {CountdownModule} from "ngx-countdown";
 
 
 @NgModule({
@@ -41,19 +47,23 @@ import {
       CustomerInformationFinishComponent,
       CustomerInformationRegisterComponent,
       CustomerConfirmInfoComponent,
-      CustomerConfirmDialogComponent
+      CustomerConfirmDialogComponent,
+      PictureSelfieComponent,
+      ErrorServerComponent,
+      EnterOtpComponent
   ],
   exports: [
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    FlexModule,
-    FlexLayoutModule,
-    CodeInputModule,
-    PayMockRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        MaterialModule,
+        FlexModule,
+        FlexLayoutModule,
+        CodeInputModule,
+        PayMockRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        CountdownModule
+    ]
 })
 export class PayMockModule { }

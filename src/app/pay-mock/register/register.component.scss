@@ -46,3 +46,19 @@
   box-sizing: border-box;
   border-radius: 8px;
 }
+
+.error {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: red;
+}
+
+.payment-button:disabled,
+.payment-button[disabled]{
+  border: 1px solid #999999;
+  background: #cccccc;
+  color: #666666;
+}

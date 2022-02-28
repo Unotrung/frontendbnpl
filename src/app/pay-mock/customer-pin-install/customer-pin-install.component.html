@@ -1,29 +1,32 @@
 <div fxLayout="column" fxLayoutAlign="center center">
-    <img src="assets/images/FE-Credit.png" width="155" height="55">
-    <img src="assets/images/customer2.png" width="409" height="42" appMarginTop="55">
-    <div class="enter-info-text" appMarginTop="33">
+    <img height="55" src="assets/images/FE-Credit.png" width="155">
+    <img appMarginTop="55" height="42" src="assets/images/customer2.png" width="409">
+    <div appMarginTop="33" class="enter-info-text">
         Cài đặt mã pin của bạn
     </div>
-    <div class="pin-box" appMarginTop="39" fxLayout="column" fxLayoutAlign="top center">
-        <div appElDimension width="42" height="16" fxFlexAlign="start" appMarginTop="46">
+    <div appMarginTop="39" class="pin-box" fxLayout="column" fxLayoutAlign="top center">
+        <div appElDimension appMarginTop="46" fxFlexAlign="start" height="16" width="42">
             <p class="pin-text-number">Mã PIN</p>
         </div>
-        <div appElDimension width="250" height="26" appMarginTop="16">
-            <code-input [isCodeHidden]="true"
+        <div appElDimension appMarginTop="16" height="26" width="250">
+            <code-input (codeChanged)="onPinCodeChanged($event)"
+                        (codeCompleted)="onPinCodeCompleted($event)"
                         [codeLength]="4"
-                        (codeChanged)="onCodeChanged($event)"
-                        (codeCompleted)="onCodeCompleted($event)">
+                        [isCodeHidden]="true">
             </code-input>
         </div>
-        <div appElDimension width="142" height="16" fxFlexAlign="start" appMarginTop="76">
+        <div appElDimension appMarginTop="76" fxFlexAlign="start" height="16" width="142">
             <p class="pin-text-number">Nhập lại mã PIN</p>
         </div>
-        <div appElDimension width="250" height="26" appMarginTop="16">
-            <code-input [isCodeHidden]="true"
+        <div appElDimension appMarginTop="16" height="26" width="250">
+            <code-input (codeChanged)="onVerifyPinCodeChange($event)"
+                        (codeCompleted)="onVerifyPinCodeComplete($event)"
                         [codeLength]="4"
-                        (codeChanged)="onCodeChanged($event)"
-                        (codeCompleted)="onCodeCompleted($event)">
+                        [isCodeHidden]="true">
             </code-input>
+        </div>
+        <div *ngIf="pinCode !== verifyPinCode" appElDimension appMarginTop="48" fxFlexAlign="start" height="16">
+            <p class="pin-text-number red-star">* Mã pin và mã pin nhập lại phải trùng nhau</p>
         </div>
         <div class="note-text" fxFlexAlign="start">Lưu ý</div>
         <div class="note-text-2" fxFlexAlign="start">
@@ -32,10 +35,12 @@
         <div class="note-text-2" fxFlexAlign="start">
             <span class="red-star">*</span>
             Mã pin này sẽ được sử dụng cho tất cả các thanh toán tại website voolo.com.vn</div>
-
-        <div>
-            <button class="payment-button" routerLink="../customer-esign-confirm"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
-        </div>
+    </div>
+    <div>
+        <button class="payment-button"
+                [disabled]="pinCode.length < 4 || verifyPinCode.length < 4 || pinCode !== verifyPinCode"
+                routerLink="../customer-esign-confirm"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
+        </button>
     </div>
 
 </div>

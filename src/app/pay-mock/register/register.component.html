@@ -5,9 +5,22 @@
     <p class="margin-top-16 payment-text" >Intro - FEC Content Team to Update</p>
     <div class="phone-box" fxLayout="column" fxLayoutAlign="top center">
         <p class="margin-top-16 payment-text">Vui lòng nhập điện thoại để tiếp tục</p>
-        <input class="phone-input">
+        <form [formGroup]="registerForm">
+        <input (keypress)="keyPress($event)" required type="text" class="phone-input"
+               formControlName="phonenumber"
+               placeholder="Enter Your phone Number"
+               [ngClass]="{ 'is-invalid': submitted && f['phonenumber'].errors }">
+            <div *ngIf="submitted && f['phonenumber'].errors" class="invalid-feedback"></div>
+            <div *ngIf="f['phonenumber'].errors && f['phonenumber'].errors['required']">
+                <span class="error">Phone number is required</span>
+            </div>
+            <div *ngIf="f['phonenumber'].errors && (f['phonenumber'].errors['pattern']
+            || f['phonenumber'].errors!['maxlength']
+            || f['phonenumber'].errors!['minlength'])">
+                <span class="error">Phone number must be 10 numbers</span></div>
+        </form>
         <div>
-            <button class="payment-button" routerLink="../verify-pin"><span>Tiếp tục</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+            <button class="payment-button" routerLink="../verify-pin" [disabled]="f['phonenumber'].errors"><span>Tiếp tục</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
         </div>
     </div>
     <app-cart-information appMarginTop="32"></app-cart-information>

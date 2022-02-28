@@ -18,6 +18,8 @@ import {CustomerPinInstallComponent} from "./customer-pin-install/customer-pin-i
 import {CheckoutComponent} from "./checkout/checkout.component";
 import {CheckoutDetailBillComponent} from "./checkout-detail-bill/checkout-detail-bill.component";
 import {ElectronicContractComponent} from "../electronic-contract/electronic-contract.component";
+import {PictureSelfieComponent} from "./picture-selfie/picture-selfie.component";
+import {ErrorServerComponent} from "./error-server/error-server.component";
 
 const routes: Routes = [
     {path: '', redirectTo: 'pay-mock', pathMatch: 'full'},
@@ -69,6 +71,12 @@ const routes: Routes = [
             },
             {
                 path: 'electronic-contract', component: ElectronicContractComponent
+            },
+            {
+                path: 'picture-selfie', component: PictureSelfieComponent
+            },
+            {
+                path: 'error-server', component: ErrorServerComponent
             }
         ]
     },
