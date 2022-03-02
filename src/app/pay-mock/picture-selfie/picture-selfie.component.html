@@ -1,6 +1,6 @@
 <div class="picture-selfie">
     <div class="picture-selfie-logo">
-        <img src="assets/images/LogoFeCredit.png" alt="FE Credit"/>
+        <img alt="FE Credit" src="assets/images/LogoFeCredit.png"/>
     </div>
 
     <h3 class="picture-selfie-slogan">
@@ -9,33 +9,46 @@
 
     <div class="picture-selfie-wrapper">
         <h3 class="picture-selfie-title">Vui lòng nhập CMND/CCCD</h3>
-        <input type="text">
-
-        <span class="picture-selfie-head">Chụp ảnh chân dung</span>
-        <div class="background-gray">
-            <div class="background-green">
-                <div class="circle-red"></div>
-            </div>
+            <input type="text" class="input-info" [formControl]="citizenId">
+        <div class="error" fxFlexAlign="start" *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.invalid">
+            CMND hoặc CCCD có 9 hoặc 12 chữ số
         </div>
+
+        <span class="picture-selfie-head" appMarginTop="16">Chụp ảnh chân dung</span>
+        <div class="background-gray">
+            <div *ngIf="!pictureService.webcamImage" class="background-green">
+                                <div class="circle-red">
+                                </div>
+            </div>
+            <div>
+                <img *ngIf="pictureService.webcamImage" [src]="pictureService.webcamImage?.imageAsDataUrl"
+                     class="image-blurred-edge"
+                     height="235"
+                     width="305">
+            </div>
+
+        </div>
+        <!--        <div class="background-gray" *ngIf="webcamImage">-->
+        <!--            <img width="300" height="200" [src]="webcamImage.imageAsDataUrl">-->
+        <!--        </div>-->
 
         <div class="picture-selfie-camera">
-            <div class="picture-selfie-overlay">
-                <img src="assets/images/camera.png" alt="">
+            <div (click)="startCaptureImage()" class="picture-selfie-overlay">
+                <img alt="" src="assets/images/camera.png">
             </div>
-            <span class="picture-selfie-text">Chân dung</span>
+            <!--        <div class="picture-selfie-warning">-->
+            <!--&lt;!&ndash;            <img src="assets/images/Warning.png" alt="">&ndash;&ảnh
+                    </div>-->
+
+            <div class="picture-selfie-notifications" appMarginTop="16">
+                <p class="picture-selfie-notice">Hướng dẫn chụp ảnh chân dung :</p>
+                <p class="picture-selfie-step">. Hướng dẫn cách chụp ảnh chân dung </p>
+            </div>
+
         </div>
 
-        <div class="picture-selfie-warning">
-            <img src="assets/images/Warning.png" alt="">
-            <span>Chưa chụp ảnh</span>
-        </div>
-
-        <div class="picture-selfie-notifications">
-            <p class="picture-selfie-notice">Hướng dẫn chụp ảnh chân dung :</p>
-            <p class="picture-selfie-step">. Hướng dẫn cách chụp ảnh chân dung </p>
-        </div>
-
+        <button class="payment-button" [disabled]="!pictureService.webcamImage || citizenId.invalid" routerLink="../customer-information-register">
+            <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
+        </button>
     </div>
-
-    <button class="btn btn-continue">Tiếp tục</button>
 </div>

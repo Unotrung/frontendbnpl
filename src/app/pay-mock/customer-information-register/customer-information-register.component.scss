@@ -20,7 +20,7 @@
 }
 
 .address-box {
-  height: 343px;
+  //height: 343px;
   width: 378px;
   border: 1px solid #C4C4C4;
   box-sizing: border-box;
@@ -28,10 +28,11 @@
   margin-top: 28px;
   padding-left: 36px;
   padding-right: 34px;
+  padding-bottom: 25px;
 }
 
 .reference-box {
-  height: 307px;
+  //height: 307px;
   width: 378px;
   border: 1px solid #C4C4C4;
   box-sizing: border-box;
@@ -39,6 +40,7 @@
   margin-top: 28px;
   padding-left: 36px;
   padding-right: 34px;
+  padding-bottom: 25px;
 }
 
 .info-title {
@@ -71,8 +73,11 @@
   background: #FFFFFF;
   border: 1px solid #4ECB71;
   box-sizing: border-box;
-}
 
+}
+.is-invalid {
+  border: 1px solid red !important;
+}
 .margin-left-12 {
   margin-left: 12px;
 }

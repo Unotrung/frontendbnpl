@@ -29,6 +29,8 @@ import {
 import {PictureSelfieComponent} from "./picture-selfie/picture-selfie.component";
 import {ErrorServerComponent} from "./error-server/error-server.component";
 import {CountdownModule} from "ngx-countdown";
+import {WebcamModule} from "ngx-webcam";
+import { CameraModalComponent } from './camera-modal/camera-modal.component';
 
 
 @NgModule({
@@ -50,7 +52,8 @@ import {CountdownModule} from "ngx-countdown";
       CustomerConfirmDialogComponent,
       PictureSelfieComponent,
       ErrorServerComponent,
-      EnterOtpComponent
+      EnterOtpComponent,
+      CameraModalComponent
   ],
   exports: [
   ],
@@ -59,6 +62,7 @@ import {CountdownModule} from "ngx-countdown";
         MaterialModule,
         FlexModule,
         FlexLayoutModule,
+        WebcamModule,
         CodeInputModule,
         PayMockRoutingModule,
         ReactiveFormsModule,
