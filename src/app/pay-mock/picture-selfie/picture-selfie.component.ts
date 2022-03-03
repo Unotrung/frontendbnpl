@@ -32,27 +32,27 @@ export class PictureSelfieComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // HyperSnapSDK.init(environment.hyperVergeToken, HyperSnapParams.Region.AsiaPacific);
-    // console.log(HyperSnapParams);
-    // HyperSnapSDK.startUserSession();
-    // const hvFaceConfig = new HVFaceConfig();
-    // hvFaceConfig.setShouldShowInstructionPage(true);
-    //
-    // const callback = (HVError: any, HVResponse: any) => {
-    //   if(HVError) {
-    //     var errorCode = HVError.getErrorCode();
-    //     var errorMessage = HVError.getErrorMessage();
-    //   }
-    //   if(HVResponse) {
-    //     this.apiResults = HVResponse.getApiResult();
-    //     var apiHeaders = HVResponse.getApiHeaders();
-    //     var imageBase64 = HVResponse.getImageBase64();
-    //     var attemptsCount = HVResponse.getAttemptsCount();
-    //     console.log(this.apiResults)
-    //   }
-    // };
-    //
-    // HVFaceModule.start(hvFaceConfig, callback);
+    HyperSnapSDK.init(environment.hyperVergeToken, HyperSnapParams.Region.AsiaPacific);
+    console.log(HyperSnapParams);
+    HyperSnapSDK.startUserSession();
+    const hvFaceConfig = new HVFaceConfig();
+    hvFaceConfig.setShouldShowInstructionPage(true);
+
+    const callback = (HVError: any, HVResponse: any) => {
+      if(HVError) {
+        var errorCode = HVError.getErrorCode();
+        var errorMessage = HVError.getErrorMessage();
+      }
+      if(HVResponse) {
+        this.apiResults = HVResponse.getApiResult();
+        var apiHeaders = HVResponse.getApiHeaders();
+        var imageBase64 = HVResponse.getImageBase64();
+        var attemptsCount = HVResponse.getAttemptsCount();
+        console.log(this.apiResults)
+      }
+    };
+
+    HVFaceModule.start(hvFaceConfig, callback);
 
     this.citizenId = new FormControl('', [Validators.pattern(/\b\d{9}\b|\b\d{12}\b/g), Validators.required])
     this.formGroup = new FormGroup({

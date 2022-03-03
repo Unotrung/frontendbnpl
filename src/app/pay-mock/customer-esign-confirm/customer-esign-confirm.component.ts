@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
 })
 export class CustomerEsignConfirmComponent implements OnInit {
 
-  agreeContract = true;
+  agreeContract = false;
   sendOtpToPhone = false;
   constructor(private dialog: MatDialog) { }
 

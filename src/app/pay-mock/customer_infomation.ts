@@ -1,4 +1,4 @@
-interface CustomerInformation {
+export interface CustomerInformation {
         name?: string;
         sex?: string;
         phone?: string;

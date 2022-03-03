@@ -12,7 +12,7 @@
                     Họ và tên:
                 </div>
                 <div class="info-content" appMarginTop="5">
-                    Nguyễn Văn A
+                    {{customerInformationService.customerInfo.name}}
                 </div>
             </div>
             <div class="block-info" fxFlex="50">
@@ -20,7 +20,7 @@
                     Giới tính
                 </div>
                 <div class="info-content" appMarginTop="5">
-                    Nam
+                    {{customerInformationService.customerInfo.sex}}
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
                     Ngày sinh:
                 </div>
                 <div class="info-content" appMarginTop="5">
-                    15/03/1994
+                    {{customerInformationService.customerInfo.birthday | date: 'dd/MM/yyyy'}}
                 </div>
             </div>
             <div class="block-info" fxFlex="50">
@@ -38,7 +38,7 @@
                     Số điện thoại
                 </div>
                 <div class="info-content" appMarginTop="5">
-                    +84 909451905
+                    {{customerInformationService.customerInfo.phone}}
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
                     Số CMND/CCCD:
                 </div>
                 <div class="info-content" appMarginTop="5">
-                    245456524
+                    {{customerInformationService.customerInfo.citizenId}}
                 </div>
             </div>
             <div class="block-info" fxFlex="50">
@@ -56,7 +56,7 @@
                     Ngày cấp
                 </div>
                 <div class="info-content" appMarginTop="5">
-                    20/05/2011
+                    {{customerInformationService.customerInfo.issueDate | date: 'dd/MM/yyyy'}}
                 </div>
             </div>
         </div>
@@ -65,7 +65,7 @@
                 Địa chỉ
             </div>
             <div class="info-content" appMarginTop="5">
-                110 Lê Duẩn, phường Bến Nghé, quận 1, Tp. HCM
+                {{address}}
             </div>
         </div>
     </fieldset>
@@ -73,22 +73,22 @@
         <legend> Thông tin tham chiếu</legend>
         <div fxLayout="column">
             <div class="info-text-title" appMarginTop="15">
-                <p>Danh xưng: <span class="info-content">Bà</span></p>
+                <p>Danh xưng: <span class="info-content">{{customerInformationService.customerInfo.personal_title}} </span></p>
             </div>
         </div>
         <div fxLayout="column">
             <div class="info-text-title" appMarginTop="12">
-                <p>Họ và tên: <span class="info-content">Hoàng Thị Mai</span></p>
+                <p>Họ và tên: <span class="info-content">{{customerInformationService.customerInfo.name_ref}}</span></p>
             </div>
         </div>
         <div fxLayout="column">
             <div class="info-text-title" appMarginTop="12">
-                <p>Số điện thoại: <span class="info-content">+84 93145445</span></p>
+                <p>Số điện thoại: <span class="info-content">{{customerInformationService.customerInfo.phone_ref}}</span></p>
             </div>
         </div>
         <div>
 <!--            <button class="payment-button" routerLink="../customer-pin-install"><span>Tiếp tục</span><span>&nbsp;&nbsp;&nbsp;></span> </button>-->
-            <button class="payment-button" (click)="onSendConfirm()"><span>Tiếp tục</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+            <button class="payment-button" (click)="onSendConfirm()"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
         </div>
     </fieldset>
 </div>

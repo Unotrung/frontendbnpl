@@ -3,6 +3,8 @@ import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/form
 import {LocationAddressService} from "../location-address.service";
 import {BehaviorSubject, map, Observable, startWith} from "rxjs";
 import {City, District, Ward} from "../vietnamLocation";
+import {Router} from "@angular/router";
+import {CustomerInformationService} from "../customer-information.service";
 
 @Component({
   selector: 'app-customer-information-register',
@@ -31,7 +33,9 @@ export class CustomerInformationRegisterComponent implements OnInit {
   selectedStreet!: BehaviorSubject<any>;
 
   constructor(
-      private locationAddressService: LocationAddressService
+      private locationAddressService: LocationAddressService,
+      private customerInformationService: CustomerInformationService,
+      private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -156,5 +160,28 @@ export class CustomerInformationRegisterComponent implements OnInit {
         this.f['ward'].setValue('');
       }
     })
+  }
+
+  onContinue() {
+
+    this.customerInformationService.customerInfo = {
+    // @ts-ignore
+      name: this.f['name'].value,
+      sex: this.f['sex'].value,
+      phone: this.f['phone'].value,
+      birthday: this.f['birthday'].value,
+      citizenId: this.f['citizenId'].value,
+      issueDate: this.f['issueDate'].value,
+
+      city: this.f['city'].value,
+      district: this.f['district'].value,
+      ward: this.f['ward'].value,
+      street: this.f['street'].value,
+
+      personal_title: this.f['personal_title'].value,
+      name_ref: this.f['name_ref'].value,
+      phone_ref: this.f['phone_ref'].value
+    }
+    this.router.navigate(['/pay-mock/customer-confirm-info']).then();
   }
 }

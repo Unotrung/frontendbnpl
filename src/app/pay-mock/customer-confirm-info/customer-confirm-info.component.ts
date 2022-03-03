@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
+import {CustomerInformationService} from "../customer-information.service";
 
 @Component({
   selector: 'app-customer-confirm-info',
@@ -8,12 +9,17 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrls: ['./customer-confirm-info.component.scss']
 })
 export class CustomerConfirmInfoComponent implements OnInit {
-
+  address = '';
   constructor(
       public dialog: MatDialog,
-    private router: Router) { }
+      public customerInformationService: CustomerInformationService,
+      private router: Router) { }
 
   ngOnInit(): void {
+    this.address = `${this.customerInformationService.customerInfo.street}, 
+    ${this.customerInformationService.customerInfo.ward}, 
+    ${this.customerInformationService.customerInfo.district}, 
+    ${this.customerInformationService.customerInfo.city}`
   }
 
   onSendConfirm(){
@@ -35,10 +41,11 @@ export class CustomerConfirmInfoComponent implements OnInit {
   templateUrl: './customer-confirm-dialog.component.html',
 })
 export class CustomerConfirmDialogComponent implements OnInit {
-  constructor(private router:Router) { }
+  address: string = '';
+  constructor(
+      private router:Router
+  ) { }
 
   ngOnInit(): void {
-
-
   }
 }
