@@ -129,9 +129,21 @@
         <div class="info-title" appMarginTop="25">
             Danh xưng <span class="red-star">*</span>
         </div>
-        <input class="input-info"
+<!--        <input class="input-info"-->
+<!--               [ngClass]="{'is-invalid': (f['personal_title'].touched || f['personal_title'].dirty) && f['personal_title'].errors}"-->
+<!--               appMarginTop="8" formControlName="personal_title">-->
+        <input class="input-info" type="text"
                [ngClass]="{'is-invalid': (f['personal_title'].touched || f['personal_title'].dirty) && f['personal_title'].errors}"
-               appMarginTop="8" formControlName="personal_title">
+               appMarginTop="8"
+               matInput
+               formControlName="personal_title"
+               onClick="this.setSelectionRange(0, this.value.length)"
+               [matAutocomplete]="autoPersonalTitle">
+        <mat-autocomplete autoActiveFirstOption #autoPersonalTitle="matAutocomplete">
+            <mat-option *ngFor="let option of personalTitleFilterOptions | async" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
         <div class="error" *ngIf="(f['personal_title'].touched || f['personal_title'].dirty) && f['personal_title'].errors">
             <span>Vui lòng điền danh xưng</span>
         </div>

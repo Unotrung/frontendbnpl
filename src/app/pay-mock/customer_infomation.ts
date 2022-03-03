@@ -1,8 +1,7 @@
 interface CustomerInformation {
-    personal_information: {
         name?: string;
         sex?: string;
-        phone?: number;
+        phone?: string;
         birthday?: Date;
         citizenId?: number;
         issueDate?: Date;
@@ -11,11 +10,9 @@ interface CustomerInformation {
         district: string;
         ward: string;
         street: string;
-}
-    reference_information: {
+
         personal_title: string;
-        name: string;
-        phone: number;
-    }
+        name_ref: string;
+        phone_ref: string;
 
 }

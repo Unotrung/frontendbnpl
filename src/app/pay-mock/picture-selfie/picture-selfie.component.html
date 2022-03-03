@@ -13,11 +13,15 @@
         <div class="error" fxFlexAlign="start" *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.invalid">
             CMND hoặc CCCD có 9 hoặc 12 chữ số
         </div>
+        <div [formGroup]="formGroup">
+            <input type="file" class="input-info" formControlName="citizenImage" (change)="onFileSelect($event)">
+        </div>
+
 
         <span class="picture-selfie-head" appMarginTop="16">Chụp ảnh chân dung</span>
         <div class="background-gray">
             <div *ngIf="!pictureService.webcamImage" class="background-green">
-                                <div class="circle-red">
+                                <div class="circle-red" (click)="startCaptureImage()">
                                 </div>
             </div>
             <div>
@@ -33,8 +37,12 @@
         <!--        </div>-->
 
         <div class="picture-selfie-camera">
-            <div (click)="startCaptureImage()" class="picture-selfie-overlay">
-                <img alt="" src="assets/images/camera.png">
+            <div class="picture-selfie-overlay" fxLayout="column" fxLayoutAlign="center center" *ngIf="!pictureService.webcamImage">
+                <img fxFlexAlign="center" width="24" height="24" alt="" src="assets/images/camera.png">
+            </div>
+            <div class="picture-selfie-overlay" fxLayout="column" fxLayoutAlign="top center" *ngIf="pictureService.webcamImage">
+                <img appMarginTop="8" width="60" height="40" alt="" [src]="pictureService.webcamImage?.imageAsDataUrl">
+                <mat-icon appMarginTop="8" (click)="onDeleteImage()">delete</mat-icon>
             </div>
             <!--        <div class="picture-selfie-warning">-->
             <!--&lt;!&ndash;            <img src="assets/images/Warning.png" alt="">&ndash;&ảnh

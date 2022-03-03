@@ -31,6 +31,7 @@ import {ErrorServerComponent} from "./error-server/error-server.component";
 import {CountdownModule} from "ngx-countdown";
 import {WebcamModule} from "ngx-webcam";
 import { CameraModalComponent } from './camera-modal/camera-modal.component';
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { CameraModalComponent } from './camera-modal/camera-modal.component';
     imports: [
         CommonModule,
         MaterialModule,
+        HttpClientModule,
         FlexModule,
         FlexLayoutModule,
         WebcamModule,

@@ -16,10 +16,12 @@ export class CustomerInformationRegisterComponent implements OnInit {
   cityFilteredOptions!: Observable<string[]>;
   districtFilteredOptions!: Observable<string[]>;
   wardFilteredOptions!: Observable<string[]>;
+  personalTitleFilterOptions!: Observable<string[]>;
 
   cityOptions : City[] = []
   districtOptions : District[] = []
   wardOptions: Ward[] = []
+  personalTitleOptions!: string[]
 
 
   vietnamLocationData: any;
@@ -33,6 +35,9 @@ export class CustomerInformationRegisterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.personalTitleOptions = ['Ông', 'Bà', 'Vợ', 'Chồng', 'Con']
+
     this.registerForm = new FormGroup({
       name: new FormControl(''),
       sex: new FormControl(''),
@@ -57,21 +62,16 @@ export class CustomerInformationRegisterComponent implements OnInit {
 
       // @ts-ignore
       this.selectedDistrict = new BehaviorSubject<District>(this.cityOptions[0]['districts'][0]);
-      // @ts-ignore
-      this.selectedDistrictId = this.cityOptions[0]['districts'][0]['id'];
 
       // @ts-ignore
       this.selectedWard = new BehaviorSubject<Ward>(this.cityOptions[0]['districts'][0]['wards'][0]);
-      // @ts-ignore
-      this.selectedWardId = this.cityOptions[0]['districts'][0]['wards'][0]['id'];
 
       this.selectedCity.subscribe(city => {
         // @ts-ignore
         Object.entries(city['districts']).forEach(([subKey, district]) => {
           this.districtOptions[+subKey] = <District>district;
         })
-
-        console.log(this.districtOptions)
+        // console.log(this.districtOptions)
       })
       this.selectedDistrict.subscribe(district => {
         // @ts-ignore
@@ -92,6 +92,10 @@ export class CustomerInformationRegisterComponent implements OnInit {
         startWith(''),
         map(value => this._filter(value, 'ward'))
     )
+    this.personalTitleFilterOptions = this.f['personal_title'].valueChanges.pipe(
+        startWith(''),
+        map(value => this._filter(value, 'personal_title'))
+    )
   }
 
   private _filter(value: string, zone: string): string[] {
@@ -107,6 +111,9 @@ export class CustomerInformationRegisterComponent implements OnInit {
     if (zone === 'ward') {
       const options = this.wardOptions.map(value => value.name)
       return options.filter(option => option.toLowerCase().includes(filterValue))
+    }
+    if (zone === 'personal_title') {
+      return this.personalTitleOptions.filter(option => option.toLowerCase().includes(filterValue))
     }
     return []
   }
