@@ -1,0 +1,78 @@
+.citizen-box {
+  width: 378px;
+  border: 1px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 8px;
+  .title-box {
+    width: 303px;
+    height: 32px;
+
+    font-family: Mulish;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 30px;
+    /* or 214% */
+    text-align: center;
+    color: #000000;
+  }
+  .outer-frame-box {
+    width: 305px;
+    height: 305px;
+
+    background: #C4C4C4;
+    .inner-frame-box {
+      width: 258px;
+      height: 256px;
+
+      border: 1px solid #0BFBA6;
+      box-sizing: border-box;
+      display: block;
+      position: relative;
+    }
+  }
+
+}
+.circle-red {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 5px solid #ffffff;
+  background-color: #fa1818;
+  position: absolute;
+  bottom: -21px;
+  //left: 30%;
+  //transform: translateX(50%);
+  //bottom: -20px;
+  left: 109px;
+}
+
+.circle-red:hover {
+  cursor: pointer;
+}
+
+.mat-icon:hover {
+  cursor: pointer;
+}
+.citizen-frame-list {
+  width: 250px;
+}
+
+.card-box {
+  width: 100px;
+  height: 100px;
+
+  background: #FFFFFF;
+  box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+.citizen-image-text {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+}
+.payment-button {
+  margin-bottom: 32px;
+}

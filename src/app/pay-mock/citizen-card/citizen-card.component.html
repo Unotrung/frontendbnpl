@@ -1,0 +1,48 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+    <img src="assets/images/FE-Credit.png" width="155" height="55">
+    <img src="assets/images/customer1.png" width="409" height="42" appMarginTop="55">
+    <div class="citizen-box" fxLayout="column" fxLayoutAlign="top center" appMarginTop="20">
+        <div class='title-box' appMarginTop="16">
+            <p class="title-text">Chụp ảnh CMND/CCCD 2 mặt</p>
+        </div>
+        <div class="outer-frame-box" fxLayout="column" fxLayoutAlign="center center" appMarginTop="8" >
+            <div class="inner-frame-box">
+                <div>
+                    <img [src]="pictureService.currentShotImage"
+                         height="200"
+                         width="250" alt="">
+                </div>
+                <div class="circle-red" (click)="onCaptureCitizenCard()"></div>
+            </div>
+        </div>
+        <div class="citizen-frame-list" fxLayout="row" fxLayoutAlign="space-around center" appMarginTop="34">
+            <div class="card-box" fxLayout="column" fxLayoutAlign="space-around center">
+                <img *ngIf="!pictureService.citizenFrontImageComplete" fxFlexAlign="center" width="24" height="24" alt="" src="assets/images/camera.png">
+                <ng-container *ngIf="pictureService.citizenFrontImageComplete">
+                    <img appMarginTop="8" width="60" height="40" alt="" [src]="pictureService.citizenFrontImage">
+                    <mat-icon appMarginTop="8" (click)="onDeleteImage('front')">delete</mat-icon>
+                </ng-container>
+
+            </div>
+            <div class="card-box" fxLayout="column" fxLayoutAlign="space-around center">
+                <img *ngIf="!(pictureService.citizenBackImageComplete$ | async)" fxFlexAlign="center" width="24" height="24" alt="" src="assets/images/camera.png">
+                <ng-container *ngIf="pictureService.citizenBackImageComplete$ | async">
+                    <img appMarginTop="8" width="60" height="40" alt="" [src]="pictureService.citizenBackImage">
+                    <mat-icon appMarginTop="8" (click)="onDeleteImage('back')">delete</mat-icon>
+                </ng-container>
+            </div>
+        </div>
+        <div class="citizen-frame-list" fxLayout="row" fxLayoutAlign="space-around center" appMarginTop="16">
+            <p class="citizen-image-text">CMND mặt trước</p>
+            <p class="citizen-image-text">CMND mặt sau</p>
+        </div>
+        <div class="guide-text-box" appMarginTop="19">
+            <p class="guide-text"></p>
+        </div>
+    </div>
+
+    <button class="payment-button" routerLink="../customer-information-register" [disabled]="!(pictureService.kycCustomerComplete$ | async)">
+        <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
+    </button>
+
+</div>

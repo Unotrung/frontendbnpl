@@ -9,7 +9,7 @@
     </code-input>
     <div class="note-text" appMarginTop="8">
         <p>Không nhận được OTP ?</p>
-        <button [ngClass]="{'disabled': !countdownComplete}">Gởi lại OTP </button>
+        <button [ngClass]="{'disabled': !countdownComplete}" (click)="onSendOtp()">Gởi lại OTP </button>
         <span>(</span><countdown [config]="{leftTime: 60, format: 's'}" (event)="onCountdown($event)" ></countdown><span>s)</span>
     </div>
 

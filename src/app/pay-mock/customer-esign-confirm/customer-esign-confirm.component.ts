@@ -54,4 +54,8 @@ export class EnterOtpComponent implements OnInit {
       this.countdownComplete = true;
     }
   }
+
+  onSendOtp(){
+
+  }
 }

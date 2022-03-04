@@ -32,6 +32,7 @@ import {CountdownModule} from "ngx-countdown";
 import {WebcamModule} from "ngx-webcam";
 import { CameraModalComponent } from './camera-modal/camera-modal.component';
 import {HttpClientModule} from "@angular/common/http";
+import { CitizenCardComponent } from './citizen-card/citizen-card.component';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import {HttpClientModule} from "@angular/common/http";
       PictureSelfieComponent,
       ErrorServerComponent,
       EnterOtpComponent,
-      CameraModalComponent
+      CameraModalComponent,
+      CitizenCardComponent
   ],
   exports: [
   ],

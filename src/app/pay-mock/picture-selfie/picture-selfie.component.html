@@ -13,19 +13,19 @@
         <div class="error" fxFlexAlign="start" *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.invalid">
             CMND hoặc CCCD có 9 hoặc 12 chữ số
         </div>
-        <div [formGroup]="formGroup">
-            <input type="file" class="input-info" formControlName="citizenImage" (change)="onFileSelect($event)">
-        </div>
+<!--        <div [formGroup]="formGroup">-->
+<!--            <input type="file" class="input-info" formControlName="citizenImage" (change)="onFileSelect($event)">-->
+<!--        </div>-->
 
 
         <span class="picture-selfie-head" appMarginTop="16">Chụp ảnh chân dung</span>
         <div class="background-gray">
-            <div *ngIf="!pictureService.webcamImage" class="background-green">
+            <div *ngIf="!(pictureService.selfieImageComplete$ | async)" class="background-green">
                                 <div class="circle-red" (click)="startCaptureImage()">
                                 </div>
             </div>
             <div>
-                <img *ngIf="pictureService.webcamImage" [src]="pictureService.webcamImage?.imageAsDataUrl"
+                <img *ngIf="pictureService.selfieImageComplete$ | async" [src]="pictureService.selfieImage"
                      class="image-blurred-edge"
                      height="235"
                      width="305">
@@ -37,11 +37,11 @@
         <!--        </div>-->
 
         <div class="picture-selfie-camera">
-            <div class="picture-selfie-overlay" fxLayout="column" fxLayoutAlign="center center" *ngIf="!pictureService.webcamImage">
+            <div class="picture-selfie-overlay" fxLayout="column" fxLayoutAlign="center center" *ngIf="!(pictureService.selfieImageComplete$ | async)">
                 <img fxFlexAlign="center" width="24" height="24" alt="" src="assets/images/camera.png">
             </div>
-            <div class="picture-selfie-overlay" fxLayout="column" fxLayoutAlign="top center" *ngIf="pictureService.webcamImage">
-                <img appMarginTop="8" width="60" height="40" alt="" [src]="pictureService.webcamImage?.imageAsDataUrl">
+            <div class="picture-selfie-overlay" fxLayout="column" fxLayoutAlign="top center" *ngIf="pictureService.selfieImageComplete$ | async">
+                <img appMarginTop="8" width="60" height="40" alt="" [src]="pictureService.selfieImage">
                 <mat-icon appMarginTop="8" (click)="onDeleteImage()">delete</mat-icon>
             </div>
             <!--        <div class="picture-selfie-warning">-->
@@ -55,7 +55,7 @@
 
         </div>
 
-        <button class="payment-button" [disabled]="!pictureService.webcamImage || citizenId.invalid" routerLink="../customer-information-register">
+        <button class="payment-button" [disabled]="!(pictureService.selfieImageComplete$ | async) || citizenId.invalid" routerLink="../citizen-card">
             <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
         </button>
     </div>

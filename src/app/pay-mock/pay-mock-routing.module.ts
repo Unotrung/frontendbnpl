@@ -20,6 +20,7 @@ import {CheckoutDetailBillComponent} from "./checkout-detail-bill/checkout-detai
 import {ElectronicContractComponent} from "../electronic-contract/electronic-contract.component";
 import {PictureSelfieComponent} from "./picture-selfie/picture-selfie.component";
 import {ErrorServerComponent} from "./error-server/error-server.component";
+import {CitizenCardComponent} from "./citizen-card/citizen-card.component";
 
 const routes: Routes = [
     {path: '', redirectTo: 'pay-mock', pathMatch: 'full'},
@@ -77,6 +78,9 @@ const routes: Routes = [
             },
             {
                 path: 'error-server', component: ErrorServerComponent
+            },
+            {
+                path: 'citizen-card', component: CitizenCardComponent
             }
         ]
     },
