@@ -23,9 +23,9 @@ import {TopBarComponent} from "./top-bar/top-bar.component";
     imports: [
         BrowserModule,
         HttpClientModule,
-        HttpClientInMemoryWebApiModule.forRoot(
-            InMemoryDataService, {dataEncapsulation: false}
-        ),
+        // HttpClientInMemoryWebApiModule.forRoot(
+        //     InMemoryDataService, {dataEncapsulation: false}
+        // ),
         FlexModule,
         FlexLayoutModule,
         PayMockModule,

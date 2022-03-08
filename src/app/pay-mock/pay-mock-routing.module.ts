@@ -21,6 +21,8 @@ import {ElectronicContractComponent} from "../electronic-contract/electronic-con
 import {PictureSelfieComponent} from "./picture-selfie/picture-selfie.component";
 import {ErrorServerComponent} from "./error-server/error-server.component";
 import {CitizenCardComponent} from "./citizen-card/citizen-card.component";
+import {AuthGuard} from "./auth.guard";
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 const routes: Routes = [
     {path: '', redirectTo: 'pay-mock', pathMatch: 'full'},
@@ -32,58 +34,61 @@ const routes: Routes = [
                 path: '', redirectTo: 'start-payment', pathMatch: 'full'
             },
             {
-                path: 'start-payment', component: StartPaymentComponent
+                path: 'start-payment', component: StartPaymentComponent, canActivate: [AuthGuard]
             },
             {
                 path: 'register', component: RegisterComponent
             },
             {
-                path: 'verify-pin', component: VerifyPinComponent
+                path: 'verify-pin', component: VerifyPinComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'forgot-pin', component: ForgotPinComponent
+                path: 'forgot-pin', component: ForgotPinComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'customer-confirm-info', component: CustomerConfirmInfoComponent
+                path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'customer-information-process', component: CustomerInformationProcessComponent
+                path: 'customer-information-process', component: CustomerInformationProcessComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'customer-information-finish', component: CustomerInformationFinishComponent
+                path: 'customer-information-finish', component: CustomerInformationFinishComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'customer-information-register', component: CustomerInformationRegisterComponent
+                path: 'customer-information-register', component: CustomerInformationRegisterComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'customer-confirm-info', component: CustomerConfirmInfoComponent
+                path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'customer-esign-confirm', component: CustomerEsignConfirmComponent
+                path: 'customer-esign-confirm', component: CustomerEsignConfirmComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'customer-pin-install', component: CustomerPinInstallComponent
+                path: 'customer-pin-install', component: CustomerPinInstallComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'checkout', component: CheckoutComponent
+                path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'checkout-detail-bill',component: CheckoutDetailBillComponent
+                path: 'checkout-detail-bill',component: CheckoutDetailBillComponent, canActivate: [AuthGuard]
             },
+            // {
+            //     path: 'electronic-contract', component: ElectronicContractComponent
+            // },
             {
-                path: 'electronic-contract', component: ElectronicContractComponent
-            },
-            {
-                path: 'picture-selfie', component: PictureSelfieComponent
+                path: 'picture-selfie', component: PictureSelfieComponent, canActivate: [AuthGuard]
             },
             {
                 path: 'error-server', component: ErrorServerComponent
             },
             {
-                path: 'citizen-card', component: CitizenCardComponent
+                path: 'citizen-card', component: CitizenCardComponent, canActivate: [AuthGuard]
             }
         ]
     },
+    {
+        path: '**', component: PageNotFoundComponent
+    }
 ];
 
 @NgModule({

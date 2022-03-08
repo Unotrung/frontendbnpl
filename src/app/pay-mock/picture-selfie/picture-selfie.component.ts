@@ -5,6 +5,8 @@ import {CameraModalComponent} from "../camera-modal/camera-modal.component";
 import {PictureService} from "../picture.service";
 import {FormControl, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
+import {AuthService} from "../auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-picture-selfie',
@@ -23,7 +25,9 @@ export class PictureSelfieComponent implements OnInit {
   constructor(
       private dialog: MatDialog,
       public pictureService: PictureService,
-      private http: HttpClient
+      private http: HttpClient,
+      private authService: AuthService,
+      private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -59,6 +63,12 @@ export class PictureSelfieComponent implements OnInit {
     // })
   }
 
+  onSelfieContinue() {
+    //to do: check if user exist lazada ... (need api here), then route
+
+    this.authService.registerStep$.next(2);
+    this.router.navigate(['pay-mock/citizen-card']).then();
+  }
   // onFileSelect(event: any) {
   //   if (event.target.files.length > 0) {
   //     this.formGroup.patchValue({

@@ -41,7 +41,9 @@
         </div>
     </div>
 
-    <button class="payment-button" routerLink="../customer-information-register" [disabled]="!(pictureService.kycCustomerComplete$ | async)">
+    <button class="payment-button"
+            (click)="onCitizenCardContinue()"
+            [disabled]="!(pictureService.kycCustomerComplete$ | async)">
         <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
     </button>
 

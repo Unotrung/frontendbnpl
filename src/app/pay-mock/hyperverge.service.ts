@@ -9,7 +9,8 @@ declare var HVDocsModule: any;
 declare var HVNetworkHelper: any;
 import {Injectable, OnInit} from '@angular/core';
 import {environment} from "../../environments/environment";
-import {Observable} from "rxjs";
+import {map, Observable, tap} from "rxjs";
+import axios from "axios";
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,7 @@ export class HypervergeService implements OnInit{
   HVDocsModule: any;
   HVNetworkHelper: any;
   hvToken: string | null = null;
+  serverAPI =''
   constructor(private http: HttpClient) {
     this.HyperSnapSDK = HyperSnapSDK;
     this.HyperSnapParams = HyperSnapParams;
@@ -32,22 +34,31 @@ export class HypervergeService implements OnInit{
     this.HVFaceModule = HVFaceModule;
     this.HVDocsModule = HVDocsModule;
     this.HVNetworkHelper = HVNetworkHelper;
+    this.serverAPI = environment.appServerAPI
   }
 
   ngOnInit(): void {
 
   }
-  onGetHVToken(): Observable<string> {
-    const headers = new HttpHeaders()
-    headers.append('Content-Type', 'application/json' );
-
-    const params = {
-      'appId': environment.appId,
-      'appKey': environment.appKey,
-      'expiry': 900
-        }
-    return this.http.post<any>('https://auth.hyperverge.co/login', params, {
-      headers
-    })
+  onGetHVToken(): Observable<any> {
+    // try {
+    //   const { data } = await axios({
+    //     url: 'https://auth.hyperverge.co/login',
+    //     method: 'post',
+    //     data: {
+    //       "appId": "abe84d",
+    //       "appKey": "7d2c0d7e1690c216458c",
+    //       "expiry": 900
+    //     },
+    //     headers : {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   })
+    //   console.log(data)
+    // } catch (error) {
+    //   console.error(error)
+    // }
+    const uri = `${this.serverAPI}hvtoken`
+    return this.http.get(encodeURI(uri));
   }
 }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {PriceService} from "../../price.service";
 import {Price} from "../../price";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -13,7 +15,11 @@ export class RegisterComponent implements OnInit {
     registerForm!: FormGroup;
     phoneControl!: FormControl;
     submitted = false;
-    constructor(private formBuilder: FormBuilder) { }
+    constructor(
+        private formBuilder: FormBuilder,
+        private authService: AuthService,
+        private router: Router
+    ) { }
 
     //only number will be add
     keyPress(event: any) {
@@ -36,13 +42,9 @@ export class RegisterComponent implements OnInit {
         [key: string]: AbstractControl;
     } { return this.registerForm.controls; }
 
-    onSubmit() {
-        this.submitted = true;
-        // stop here if form is invalid
-        if (this.registerForm.invalid) {
-            return;
-        }
-
+    onRegisterContinue() {
+        //todo: check the phone number, need api here, so we can redirect to the next step
+        this.authService.registerStep$.next(1);
+        this.router.navigate(['/pay-mock/picture-selfie']).then();
     }
-
 }

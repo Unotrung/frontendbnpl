@@ -55,7 +55,10 @@
 
         </div>
 
-        <button class="payment-button" [disabled]="!(pictureService.selfieImageComplete$ | async) || citizenId.invalid" routerLink="../citizen-card">
+        <button class="payment-button"
+                [disabled]="!(pictureService.selfieImageComplete$ | async) || citizenId.invalid"
+                (click)="onSelfieContinue()"
+        >
             <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
         </button>
     </div>

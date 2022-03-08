@@ -15,10 +15,7 @@ import { ForgotPinComponent } from './forgot-pin/forgot-pin.component';
 import { ImageOnTopComponent } from './image-on-top/image-on-top.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CustomerPinInstallComponent } from './customer-pin-install/customer-pin-install.component';
-import {
-  CustomerEsignConfirmComponent,
-  EnterOtpComponent
-} from './customer-esign-confirm/customer-esign-confirm.component';
+import { CustomerEsignConfirmComponent } from './customer-esign-confirm/customer-esign-confirm.component';
 import { CustomerInformationProcessComponent } from './customer-information-process/customer-information-process.component';
 import { CustomerInformationFinishComponent } from './customer-information-finish/customer-information-finish.component';
 import { CustomerInformationRegisterComponent } from './customer-information-register/customer-information-register.component';
@@ -33,6 +30,7 @@ import {WebcamModule} from "ngx-webcam";
 import { CameraModalComponent } from './camera-modal/camera-modal.component';
 import {HttpClientModule} from "@angular/common/http";
 import { CitizenCardComponent } from './citizen-card/citizen-card.component';
+import {EnterOtpComponent} from "./customer-esign-confirm/enter-opt.component";
 
 
 @NgModule({

@@ -34,15 +34,24 @@ export class PictureService {
       }
       else return;
     })
-    this.hv.HyperSnapSDK.init(environment.hyperVergeToken, this.hv.HyperSnapParams.Region.AsiaPacific);
-    this.hv.HyperSnapSDK.startUserSession();
+    this.hv.onGetHVToken().subscribe(data => {
+      if (data && data.status === 'success') {
+        console.log(data)
+        const token = data['result']['token']
+        this.hv.HyperSnapSDK.init(token, this.hv.HyperSnapParams.Region.AsiaPacific);
+        this.hv.HyperSnapSDK.startUserSession();
+      }
+      else {
+        this.hv.HyperSnapSDK.init(environment.hyperVergeToken, this.hv.HyperSnapParams.Region.AsiaPacific);
+        this.hv.HyperSnapSDK.startUserSession();
+      }
+    })
+
 
   }
 
   selfieScreenShot() {
-    // this.hv.onGetHVToken().subscribe((data) => {
-    //   console.log(data)
-    // })
+
     // this.hv.HyperSnapSDK.init(environment.hyperVergeToken, this.hv.HyperSnapParams.Region.AsiaPacific);
     // this.hv.HyperSnapSDK.startUserSession();
 
@@ -107,6 +116,7 @@ export class PictureService {
       }
       if(HVResponse) {
         const apiResults = HVResponse.getApiResult();
+        console.log(apiResults);
         const apiHeaders = HVResponse.getApiHeaders();
         const imageBase64 = HVResponse.getImageBase64();
         const attemptsCount = HVResponse.getAttemptsCount();
@@ -127,6 +137,9 @@ export class PictureService {
     } else if (side === 'back') {
       this.citizenBackImage = image;
       this.citizenBackImageComplete$.next(complete);
+    }
+    if (!complete) {
+      this.kycCustomerComplete$.next(false);
     }
   }
 

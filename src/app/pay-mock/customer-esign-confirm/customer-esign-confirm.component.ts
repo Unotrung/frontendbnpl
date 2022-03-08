@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
+import {AuthService} from "../auth.service";
+import {EnterOtpComponent} from "./enter-opt.component";
 
 @Component({
   selector: 'app-customer-esign-confirm',
@@ -22,40 +24,3 @@ export class CustomerEsignConfirmComponent implements OnInit {
   }
 }
 
-@Component({
-  selector: 'app-enter-otp',
-  templateUrl: './enter-otp.component.html',
-  styleUrls: ['./enter-otp.component.scss']
-})
-export class EnterOtpComponent implements OnInit {
-  countdownComplete = false
-
-  constructor(
-      private dialogRef: MatDialogRef<EnterOtpComponent>,
-      private router: Router
-      ) {
-  }
-
-  ngOnInit(): void {
-  }
-  // this called every time when user changed the code
-  onCodeChanged(code: string) {
-  }
-
-  // this called only if user entered full code
-  onCodeCompleted(code: string) {
-    this.router.navigate(['pay-mock/customer-information-process']).then(
-        () => this.dialogRef.close()
-    )
-  }
-
-  onCountdown(event: any){
-    if (event.action === 'done') {
-      this.countdownComplete = true;
-    }
-  }
-
-  onSendOtp(){
-
-  }
-}

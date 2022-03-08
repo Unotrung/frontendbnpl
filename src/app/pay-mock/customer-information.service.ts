@@ -27,4 +27,8 @@ export class CustomerInformationService {
       phone_ref: ''
     }
   }
+
+  updateCustomerInfo(customer: CustomerInformation){
+
+  }
 }

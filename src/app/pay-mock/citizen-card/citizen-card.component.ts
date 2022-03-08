@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {PictureService} from "../picture.service";
+import {AuthService} from "../auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-citizen-card',
@@ -10,7 +12,9 @@ export class CitizenCardComponent implements OnInit {
 
   side = 'front'
   constructor(
-      public pictureService: PictureService
+      public pictureService: PictureService,
+      private authService: AuthService,
+      private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +31,11 @@ export class CitizenCardComponent implements OnInit {
 
   onDeleteImage(side: string){
       this.pictureService.onCitizenCardComplete(false, side, '');
+  }
+
+  onCitizenCardContinue() {
+      this.authService.registerStep$.next(3)
+      this.router.navigate(['pay-mock/customer-information-register']).then()
   }
 
 }

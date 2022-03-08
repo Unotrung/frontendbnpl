@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {CustomerInformationService} from "../customer-information.service";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-customer-confirm-info',
@@ -13,7 +14,9 @@ export class CustomerConfirmInfoComponent implements OnInit {
   constructor(
       public dialog: MatDialog,
       public customerInformationService: CustomerInformationService,
-      private router: Router) { }
+      private router: Router,
+      private authService: AuthService
+      ) { }
 
   ngOnInit(): void {
     this.address = `${this.customerInformationService.customerInfo.street}, 
@@ -26,6 +29,7 @@ export class CustomerConfirmInfoComponent implements OnInit {
     const dialogRef = this.dialog.open(CustomerConfirmDialogComponent);
     setTimeout(()=>{
       this.dialog.closeAll();
+      this.authService.registerStep$.next(5);
       this.router.navigate(['pay-mock/customer-pin-install']).then()
     }, 3000)
 

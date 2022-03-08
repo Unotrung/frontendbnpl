@@ -20,7 +20,7 @@
                 <span class="error">Phone number must be 10 numbers</span></div>
         </form>
         <div>
-            <button class="payment-button" routerLink="../picture-selfie" [disabled]="f['phonenumber'].errors"><span>Tiếp tục</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+            <button class="payment-button" (click)="onRegisterContinue()" [disabled]="f['phonenumber'].errors"><span>Tiếp tục</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
         </div>
     </div>
     <app-cart-information appMarginTop="32"></app-cart-information>

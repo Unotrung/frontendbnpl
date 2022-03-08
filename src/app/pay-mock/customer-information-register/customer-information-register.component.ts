@@ -5,6 +5,7 @@ import {BehaviorSubject, map, Observable, startWith} from "rxjs";
 import {City, District, Ward} from "../vietnamLocation";
 import {Router} from "@angular/router";
 import {CustomerInformationService} from "../customer-information.service";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-customer-information-register',
@@ -35,6 +36,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
   constructor(
       private locationAddressService: LocationAddressService,
       private customerInformationService: CustomerInformationService,
+      private authService: AuthService,
       private router: Router
   ) { }
 
@@ -163,7 +165,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
   }
 
   onContinue() {
-
+    this.authService.registerStep$.next(4)
     this.customerInformationService.customerInfo = {
     // @ts-ignore
       name: this.f['name'].value,
