@@ -39,7 +39,7 @@
     <div>
         <button class="payment-button"
                 [disabled]="pinCode.length < 4 || verifyPinCode.length < 4 || pinCode !== verifyPinCode"
-                routerLink="../customer-esign-confirm"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
+                (click)="onFinishPinInstall()"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
         </button>
     </div>
 

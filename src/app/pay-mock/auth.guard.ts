@@ -12,6 +12,7 @@ import {
 } from '@angular/router';
 import {max, Observable} from 'rxjs';
 import {AuthService} from "./auth.service";
+import {Step} from "./step";
 
 @Injectable({
     providedIn: 'root'
@@ -25,16 +26,16 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         const url = state.url;
-        console.log(url)
+        // console.log(url)
         let stepCheck = false;
-        const maxStep = 7;
+        const maxStep = 9;
         for (let i = 0; i <= maxStep; i++) {
             if (url.indexOf(this.getUrlStep(i)) > -1) {
+                console.log(this.getUrlStep(i))
                 stepCheck = true;
             }
         }
-        console.log(stepCheck)
-
+        // console.log(stepCheck)
         return this.checkLogin(url, stepCheck);
     }
 
@@ -60,21 +61,21 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
 
     checkLogin(url: string, stepCheck: boolean): boolean | UrlTree {
         if (stepCheck) {
-            if ((url.indexOf('picture-selfie') > -1) && (this.authService.registerStep$.getValue() >= 1)) {
+            if ((url.indexOf('picture-selfie') > -1) && (this.authService.registerStep$.getValue() >= Step.pictureSelfie)) {
                 return true;
-            } else if ((url.indexOf('citizen-card') > -1) && (this.authService.registerStep$.getValue() >= 2)) {
+            } else if ((url.indexOf('citizen-card') > -1) && (this.authService.registerStep$.getValue() >= Step.citizenCard)) {
                 return true;
-            } else if ((url.indexOf('customer-information-register') > -1) && (this.authService.registerStep$.getValue() >= 3)) {
+            } else if ((url.indexOf('customer-information-register') > -1) && (this.authService.registerStep$.getValue() >= Step.customerInformationRegister)) {
                 return true;
-            } else if ((url.indexOf('customer-confirm-info') > -1) && (this.authService.registerStep$.getValue() >= 4)) {
+            } else if ((url.indexOf('customer-confirm-info') > -1) && (this.authService.registerStep$.getValue() >= Step.customerConfirmInfo)) {
                 return true;
-            } else if ((url.indexOf('customer-pin-install') > -1) && (this.authService.registerStep$.getValue() >= 5)) {
+            } else if ((url.indexOf('customer-pin-install') > -1) && (this.authService.registerStep$.getValue() >= Step.customerPinInstall)) {
                 return true;
-            } else if ((url.indexOf('customer-esign-confirm') > -1) && (this.authService.registerStep$.getValue() >= 6)) {
+            } else if ((url.indexOf('customer-esign-confirm') > -1) && (this.authService.registerStep$.getValue() >= Step.customerEsignConfirm)) {
                 return true;
-            } else if ((url.indexOf('customer-information-process') > -1) && (this.authService.registerStep$.getValue() >= 7)) {
+            } else if ((url.indexOf('customer-information-process') > -1) && (this.authService.registerStep$.getValue() >= Step.customerInformationProcess)) {
                 return true;
-            } else if ((url.indexOf('customer-information-finish') > -1) && (this.authService.registerStep$.getValue() >= 8)) {
+            } else if ((url.indexOf('customer-information-finish') > -1) && (this.authService.registerStep$.getValue() >= Step.customerInformationFinish)) {
                 return true;
             } else {
                 this.authService.redirectUrl = url;
@@ -91,7 +92,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
         }
     }
 
-    getUrlStep(step: number): string {
+    private getUrlStep(step: number): string {
         let urlStep: string;
         switch (step) {
             case 0: {
@@ -131,7 +132,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
                 break;
             }
             default : {
-                urlStep = ''
+                urlStep = 'register'
                 break;
             }
         }

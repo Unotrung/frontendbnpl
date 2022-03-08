@@ -7,6 +7,8 @@ import {FormControl, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
+import {Step} from "../step";
+import {CustomerInformationService} from "../customer-information.service";
 
 @Component({
   selector: 'app-picture-selfie',
@@ -27,7 +29,8 @@ export class PictureSelfieComponent implements OnInit {
       public pictureService: PictureService,
       private http: HttpClient,
       private authService: AuthService,
-      private router: Router
+      private router: Router,
+      private customerInformationService: CustomerInformationService
   ) { }
 
   ngOnInit(): void {
@@ -65,8 +68,9 @@ export class PictureSelfieComponent implements OnInit {
 
   onSelfieContinue() {
     //to do: check if user exist lazada ... (need api here), then route
-
-    this.authService.registerStep$.next(2);
+    console.log(this.citizenId.value)
+    this.authService.user$.next({...this.authService.user$.getValue(),citizenId: this.citizenId.value})
+    this.authService.registerStep$.next(Step.citizenCard);
     this.router.navigate(['pay-mock/citizen-card']).then();
   }
   // onFileSelect(event: any) {

@@ -31,6 +31,9 @@ import { CameraModalComponent } from './camera-modal/camera-modal.component';
 import {HttpClientModule} from "@angular/common/http";
 import { CitizenCardComponent } from './citizen-card/citizen-card.component';
 import {EnterOtpComponent} from "./customer-esign-confirm/enter-opt.component";
+import {CheckoutDetailBillComponent} from "./checkout-detail-bill/checkout-detail-bill.component";
+import {CheckoutComponent} from "./checkout/checkout.component";
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -54,10 +57,14 @@ import {EnterOtpComponent} from "./customer-esign-confirm/enter-opt.component";
       ErrorServerComponent,
       EnterOtpComponent,
       CameraModalComponent,
-      CitizenCardComponent
+      CitizenCardComponent,
+      CheckoutDetailBillComponent,
+      CheckoutComponent,
+      LoadingComponent
   ],
-  exports: [
-  ],
+    exports: [
+        LoadingComponent
+    ],
     imports: [
         CommonModule,
         MaterialModule,

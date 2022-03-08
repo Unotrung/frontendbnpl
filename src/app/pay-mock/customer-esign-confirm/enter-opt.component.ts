@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
+import {Step} from "../step";
 
 @Component({
     selector: 'app-enter-otp',
@@ -28,7 +29,7 @@ export class EnterOtpComponent implements OnInit {
     onCodeCompleted(code: string) {
         //todo Check if otp code is correct, then
 
-        this.authService.registerStep$.next(6);
+        this.authService.registerStep$.next(Step.customerInformationProcess);
         this.router.navigate(['pay-mock/customer-information-process']).then(
             () => this.dialogRef.close()
         )

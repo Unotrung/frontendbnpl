@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
+import {Step} from "../step";
 
 @Component({
   selector: 'app-customer-information-process',
@@ -17,7 +18,7 @@ export class CustomerInformationProcessComponent implements OnInit {
   ngOnInit(): void {
     //todo: make api call check all information
     setTimeout(()=>{
-      this.authService.registerStep$.next(7);
+      this.authService.registerStep$.next(Step.customerInformationFinish);
       this.router.navigate(['/pay-mock/customer-information-finish']).then()
     }, 5000)
   }

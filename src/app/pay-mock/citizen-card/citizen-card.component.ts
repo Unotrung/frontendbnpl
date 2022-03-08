@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {PictureService} from "../picture.service";
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
+import {Step} from "../step";
 
 @Component({
   selector: 'app-citizen-card',
@@ -34,7 +35,7 @@ export class CitizenCardComponent implements OnInit {
   }
 
   onCitizenCardContinue() {
-      this.authService.registerStep$.next(3)
+      this.authService.registerStep$.next(Step.customerInformationRegister)
       this.router.navigate(['pay-mock/customer-information-register']).then()
   }
 

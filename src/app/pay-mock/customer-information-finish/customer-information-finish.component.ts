@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
+import {Step} from "../step";
 
 @Component({
   selector: 'app-customer-information-finish',
@@ -18,7 +19,7 @@ export class CustomerInformationFinishComponent implements OnInit {
   }
 
   onInfoFinish(){
-    this.authService.registerStep$.next(8);
+    this.authService.registerStep$.next(Step.checkout);
     this.router.navigate(['pay-mock/checkout']).then();
   }
 

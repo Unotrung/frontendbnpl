@@ -14,16 +14,23 @@ export class PictureService {
   selfieImageComplete$: BehaviorSubject<boolean>
   citizenFrontImage = '';
   citizenFrontImageComplete = false
+  citizenFrontData$: BehaviorSubject<any>
+
   citizenBackImage = '';
+  citizenBackData$: BehaviorSubject<any>
+
   currentShotImage = '';
   citizenBackImageComplete$ : BehaviorSubject<boolean>
   kycCustomerComplete$: BehaviorSubject<boolean>
 
+
   constructor(
       private http: HttpClient,
-      private hv: HypervergeService
+      private hv: HypervergeService,
   ) {
     this.selfieImageComplete$ = new BehaviorSubject<boolean>(false);
+    this.citizenFrontData$ = new BehaviorSubject<any>(null);
+    this.citizenBackData$ = new BehaviorSubject<any>(null);
     this.citizenBackImageComplete$ = new BehaviorSubject<boolean>(false);
     this.kycCustomerComplete$ = new BehaviorSubject<boolean>(false);
     this.citizenBackImageComplete$.subscribe(completed => {
@@ -36,7 +43,6 @@ export class PictureService {
     })
     this.hv.onGetHVToken().subscribe(data => {
       if (data && data.status === 'success') {
-        console.log(data)
         const token = data['result']['token']
         this.hv.HyperSnapSDK.init(token, this.hv.HyperSnapParams.Region.AsiaPacific);
         this.hv.HyperSnapSDK.startUserSession();
@@ -116,8 +122,14 @@ export class PictureService {
       }
       if(HVResponse) {
         const apiResults = HVResponse.getApiResult();
-        console.log(apiResults);
         const apiHeaders = HVResponse.getApiHeaders();
+        if (side === 'front') {
+          this.citizenFrontData$.next(<Array<any>>apiResults['result']['details'][0]['fieldsExtracted'])
+        }
+        if (side === 'back') {
+          this.citizenBackData$.next(<Array<any>>apiResults['result']['details'][0]['fieldsExtracted'])
+        }
+
         const imageBase64 = HVResponse.getImageBase64();
         const attemptsCount = HVResponse.getAttemptsCount();
         if (apiResults && apiResults['status'] === 'success') {

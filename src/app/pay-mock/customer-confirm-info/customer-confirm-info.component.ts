@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {CustomerInformationService} from "../customer-information.service";
 import {AuthService} from "../auth.service";
+import {Step} from "../step";
 
 @Component({
   selector: 'app-customer-confirm-info',
@@ -29,7 +30,7 @@ export class CustomerConfirmInfoComponent implements OnInit {
     const dialogRef = this.dialog.open(CustomerConfirmDialogComponent);
     setTimeout(()=>{
       this.dialog.closeAll();
-      this.authService.registerStep$.next(5);
+      this.authService.registerStep$.next(Step.customerPinInstall);
       this.router.navigate(['pay-mock/customer-pin-install']).then()
     }, 3000)
 

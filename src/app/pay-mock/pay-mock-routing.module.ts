@@ -34,7 +34,7 @@ const routes: Routes = [
                 path: '', redirectTo: 'start-payment', pathMatch: 'full'
             },
             {
-                path: 'start-payment', component: StartPaymentComponent, canActivate: [AuthGuard]
+                path: 'start-payment', component: StartPaymentComponent
             },
             {
                 path: 'register', component: RegisterComponent
@@ -52,7 +52,7 @@ const routes: Routes = [
                 path: 'customer-information-process', component: CustomerInformationProcessComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'customer-information-finish', component: CustomerInformationFinishComponent, canActivate: [AuthGuard]
+                path: 'customer-information-finish', component: CustomerInformationFinishComponent
             },
             {
                 path: 'customer-information-register', component: CustomerInformationRegisterComponent, canActivate: [AuthGuard]
@@ -64,7 +64,7 @@ const routes: Routes = [
                 path: 'customer-esign-confirm', component: CustomerEsignConfirmComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'customer-pin-install', component: CustomerPinInstallComponent, canActivate: [AuthGuard]
+                path: 'customer-pin-install', component: CustomerPinInstallComponent
             },
             {
                 path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]

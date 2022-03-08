@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {LoadingService} from "./loading.service";
 
 @Component({
   selector: 'app-pay-mock',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PayMockComponent implements OnInit {
 
-  constructor() { }
+  constructor(public loadingService: LoadingService) { }
 
   ngOnInit(): void {
   }

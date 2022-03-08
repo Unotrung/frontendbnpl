@@ -6,6 +6,8 @@ import {City, District, Ward} from "../vietnamLocation";
 import {Router} from "@angular/router";
 import {CustomerInformationService} from "../customer-information.service";
 import {AuthService} from "../auth.service";
+import {Step} from "../step";
+import {PictureService} from "../picture.service";
 
 @Component({
   selector: 'app-customer-information-register',
@@ -37,10 +39,14 @@ export class CustomerInformationRegisterComponent implements OnInit {
       private locationAddressService: LocationAddressService,
       private customerInformationService: CustomerInformationService,
       private authService: AuthService,
-      private router: Router
+      private router: Router,
+      private pictureService: PictureService
   ) { }
 
   ngOnInit(): void {
+
+    console.log(this.pictureService.citizenFrontData$.getValue())
+    console.log(this.pictureService.citizenBackData$.getValue())
 
     this.personalTitleOptions = ['Ông', 'Bà', 'Vợ', 'Chồng', 'Con']
 
@@ -102,6 +108,8 @@ export class CustomerInformationRegisterComponent implements OnInit {
         startWith(''),
         map(value => this._filter(value, 'personal_title'))
     )
+    this.f['phone'].setValue(this.authService.user$.getValue().phone);
+    this.f['citizenId'].setValue(this.authService.user$.getValue().citizenId);
   }
 
   private _filter(value: string, zone: string): string[] {
@@ -165,7 +173,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
   }
 
   onContinue() {
-    this.authService.registerStep$.next(4)
+    this.authService.registerStep$.next(Step.customerConfirmInfo)
     this.customerInformationService.customerInfo = {
     // @ts-ignore
       name: this.f['name'].value,
@@ -184,6 +192,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
       name_ref: this.f['name_ref'].value,
       phone_ref: this.f['phone_ref'].value
     }
+
     this.router.navigate(['/pay-mock/customer-confirm-info']).then();
   }
 }

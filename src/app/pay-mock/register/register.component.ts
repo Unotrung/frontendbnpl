@@ -4,6 +4,8 @@ import {Price} from "../../price";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
+import {Step} from "../step";
+import {LoadingService} from "../loading.service";
 
 @Component({
   selector: 'app-register',
@@ -18,7 +20,8 @@ export class RegisterComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private authService: AuthService,
-        private router: Router
+        private router: Router,
+        private loadingService: LoadingService
     ) { }
 
     //only number will be add
@@ -44,7 +47,8 @@ export class RegisterComponent implements OnInit {
 
     onRegisterContinue() {
         //todo: check the phone number, need api here, so we can redirect to the next step
-        this.authService.registerStep$.next(1);
+        this.authService.user$.next({...this.authService.user$.getValue(), phone: this.f['phonenumber'].value})
+        this.authService.registerStep$.next(Step.pictureSelfie);
         this.router.navigate(['/pay-mock/picture-selfie']).then();
     }
 }
