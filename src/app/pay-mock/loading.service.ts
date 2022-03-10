@@ -6,7 +6,9 @@ import {BehaviorSubject} from "rxjs";
 })
 export class LoadingService {
   loading$: BehaviorSubject<boolean>
+  loadingText$: BehaviorSubject<string>
   constructor() {
     this.loading$ = new BehaviorSubject<boolean>(false);
+    this.loadingText$ = new BehaviorSubject<string>('');
   }
 }

@@ -55,7 +55,7 @@ const routes: Routes = [
                 path: 'customer-information-finish', component: CustomerInformationFinishComponent
             },
             {
-                path: 'customer-information-register', component: CustomerInformationRegisterComponent, canActivate: [AuthGuard]
+                path: 'customer-information-register', component: CustomerInformationRegisterComponent
             },
             {
                 path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthGuard]

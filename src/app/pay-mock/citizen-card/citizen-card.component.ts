@@ -23,7 +23,7 @@ export class CitizenCardComponent implements OnInit {
   }
 
   onCaptureCitizenCard() {
-      if (!this.pictureService.citizenFrontImageComplete) {
+      if (!this.pictureService.citizenFrontImageComplete$.getValue()) {
         this.pictureService.citizenCardShot('front');
       } else {
         this.pictureService.citizenCardShot('back');

@@ -9,7 +9,7 @@ export const environment = {
   appId: 'abe84d',
   appKey: '7d2c0d7e1690c216458c',
   appMaterKey: 'CccJSvVUq8UbzAdhMaeRNCjJa0tXY1QO',
-  appServerAPI: 'https://192.168.31.213:3000/',
+  appServerAPI: 'https://angular-chat-socket.herokuapp.com/',
   localAPIServer: 'https://api-wolfconsulting.herokuapp.com/'
 };
 

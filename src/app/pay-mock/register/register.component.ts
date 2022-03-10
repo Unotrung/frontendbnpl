@@ -38,7 +38,6 @@ export class RegisterComponent implements OnInit {
                 Validators.pattern("^[0-9]*$"),
                 Validators.minLength(10), Validators.maxLength(10)]]
         });
-
     }
 // convenience getter for easy access to form fields
     get f(): {

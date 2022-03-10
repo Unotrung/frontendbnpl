@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {BehaviorSubject, Observable} from "rxjs";
 import {HypervergeService} from "./hyperverge.service";
+import {LoadingService} from "./loading.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class PictureService {
   selfieImage = '';
   selfieImageComplete$: BehaviorSubject<boolean>
   citizenFrontImage = '';
-  citizenFrontImageComplete = false
+  citizenFrontImageComplete$: BehaviorSubject<boolean>
   citizenFrontData$: BehaviorSubject<any>
 
   citizenBackImage = '';
@@ -27,10 +28,12 @@ export class PictureService {
   constructor(
       private http: HttpClient,
       private hv: HypervergeService,
+      private loadingService: LoadingService
   ) {
     this.selfieImageComplete$ = new BehaviorSubject<boolean>(false);
     this.citizenFrontData$ = new BehaviorSubject<any>(null);
     this.citizenBackData$ = new BehaviorSubject<any>(null);
+    this.citizenFrontImageComplete$ = new BehaviorSubject<boolean>(false);
     this.citizenBackImageComplete$ = new BehaviorSubject<boolean>(false);
     this.kycCustomerComplete$ = new BehaviorSubject<boolean>(false);
     this.citizenBackImageComplete$.subscribe(completed => {
@@ -41,7 +44,8 @@ export class PictureService {
       }
       else return;
     })
-    this.hv.onGetHVToken().subscribe(data => {
+    this.loadingService.loading$.next(true)
+    this.hv.onGetHVToken().subscribe({next: data => {
       if (data && data.status === 'success') {
         const token = data['result']['token']
         this.hv.HyperSnapSDK.init(token, this.hv.HyperSnapParams.Region.AsiaPacific);
@@ -51,7 +55,7 @@ export class PictureService {
         this.hv.HyperSnapSDK.init(environment.hyperVergeToken, this.hv.HyperSnapParams.Region.AsiaPacific);
         this.hv.HyperSnapSDK.startUserSession();
       }
-    })
+    }, complete : () => this.loadingService.loading$.next(false)})
 
 
   }
@@ -145,7 +149,7 @@ export class PictureService {
     this.currentShotImage = image;
     if (side === 'front') {
       this.citizenFrontImage = image;
-      this.citizenFrontImageComplete = complete;
+      this.citizenFrontImageComplete$.next(complete);
     } else if (side === 'back') {
       this.citizenBackImage = image;
       this.citizenBackImageComplete$.next(complete);
@@ -157,10 +161,12 @@ export class PictureService {
 
   onVerifyMatchImage(){
     const callback = (HVError: any, HVResponse: any) => {
+      this.loadingService.loading$.next(false)
       if(HVError) {
         const errorCode = HVError.getErrorCode();
         if(errorCode){
           console.log(errorCode);
+
         }
         const errorMessage = HVError.getErrorMessage();
       }
@@ -173,6 +179,7 @@ export class PictureService {
         }
       }
     };
+    this.loadingService.loading$.next(true)
 
     this.hv.HVNetworkHelper.makeFaceMatchCall(this.selfieImage, this.citizenFrontImage, {}, {}, callback);
   }

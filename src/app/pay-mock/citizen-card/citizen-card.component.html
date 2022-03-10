@@ -17,8 +17,8 @@
         </div>
         <div class="citizen-frame-list" fxLayout="row" fxLayoutAlign="space-around center" appMarginTop="34">
             <div class="card-box" fxLayout="column" fxLayoutAlign="space-around center">
-                <img *ngIf="!pictureService.citizenFrontImageComplete" fxFlexAlign="center" width="24" height="24" alt="" src="assets/images/camera.png">
-                <ng-container *ngIf="pictureService.citizenFrontImageComplete">
+                <img *ngIf="!(pictureService.citizenFrontImageComplete$ | async)" fxFlexAlign="center" width="24" height="24" alt="" src="assets/images/camera.png">
+                <ng-container *ngIf="pictureService.citizenFrontImageComplete$ | async">
                     <img appMarginTop="8" width="60" height="40" alt="" [src]="pictureService.citizenFrontImage">
                     <mat-icon appMarginTop="8" (click)="onDeleteImage('front')">delete</mat-icon>
                 </ng-container>

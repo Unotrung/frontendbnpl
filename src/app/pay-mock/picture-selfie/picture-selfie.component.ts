@@ -9,6 +9,7 @@ import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
 import {Step} from "../step";
 import {CustomerInformationService} from "../customer-information.service";
+import {LoadingService} from "../loading.service";
 
 @Component({
   selector: 'app-picture-selfie',
@@ -30,12 +31,14 @@ export class PictureSelfieComponent implements OnInit {
       private http: HttpClient,
       private authService: AuthService,
       private router: Router,
-      private customerInformationService: CustomerInformationService
+      private customerInformationService: CustomerInformationService,
+      private loadingService: LoadingService
   ) { }
 
   ngOnInit(): void {
 
     // this.pictureService.selfieScreenShot()
+    // this.loadingService.loading$.next(true)
 
     this.citizenId = new FormControl('', [Validators.pattern(/\b\d{9}\b|\b\d{12}\b/g), Validators.required])
     // this.formGroup = new FormGroup({
@@ -68,7 +71,6 @@ export class PictureSelfieComponent implements OnInit {
 
   onSelfieContinue() {
     //to do: check if user exist lazada ... (need api here), then route
-    console.log(this.citizenId.value)
     this.authService.user$.next({...this.authService.user$.getValue(),citizenId: this.citizenId.value})
     this.authService.registerStep$.next(Step.citizenCard);
     this.router.navigate(['pay-mock/citizen-card']).then();

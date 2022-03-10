@@ -14,7 +14,12 @@
         <div class="info-title" appMarginTop="25">
             Giới tính
         </div>
-        <input class="input-info" appMarginTop="8" formControlName="sex">
+        <input class="input-info" appMarginTop="8" formControlName="sex" matInput [matAutocomplete]="autoSex">
+        <mat-autocomplete autoActiveFirstOption #autoSex="matAutocomplete">
+            <mat-option *ngFor="let option of sexOptions" [value]="option">
+                {{option}}
+            </mat-option>
+        </mat-autocomplete>
         <div fxLayout="row" appMarginTop="25">
             <div class="block-info">
                 <div class="info-title">
@@ -30,7 +35,7 @@
                 <div class="info-title">
                     Ngày sinh
                 </div>
-                <input class="narrow-input-info" appMarginTop="8" type="date">
+                <input class="narrow-input-info" appMarginTop="8" type="date" formControlName="birthday">
             </div>
         </div>
         <div fxLayout="row" appMarginTop="25">
@@ -38,13 +43,13 @@
                 <div class="info-title">
                     Số CMND/CCCD
                 </div>
-                <input class="narrow-input-info" appMarginTop="8">
+                <input class="narrow-input-info" appMarginTop="8" formControlName="citizenId">
             </div>
             <div class="block-info margin-left-12">
                 <div class="info-title">
                     Ngày cấp
                 </div>
-                <input class="narrow-input-info" appMarginTop="8" type="date">
+                <input class="narrow-input-info" appMarginTop="8" type="date" formControlName="issueDate">
             </div>
         </div>
     </fieldset>
@@ -52,7 +57,7 @@
     <fieldset class="address-box">
         <legend>Địa chỉ</legend>
         <div class="info-title" appMarginTop="25">
-            Thành phố, tỉnh <span class="red-star">*</span>
+            Thành phố/Tỉnh <span class="red-star">*</span>
         </div>
         <input class="input-info" type="text"
                [ngClass]="{'is-invalid': (f['city'].touched || f['city'].dirty) && f['city'].errors}"
@@ -91,7 +96,7 @@
             </div>
             <div class="block-info" appMarginTop="16">
                 <div class="info-title">
-                    Phường, xã <span class="red-star">*</span>
+                    Phường/Xã <span class="red-star">*</span>
                 </div>
 <!--                <input class="narrow-input-info"-->
 <!--                       [ngClass]="{'is-invalid': (f['ward'].touched || f['ward'].dirty) && f['ward'].errors}"-->
@@ -159,7 +164,7 @@
         <div class="info-title" appMarginTop="25">
             Số điện thoại <span class="red-star">*</span>
         </div>
-        <input class="input-info"
+        <input class="input-info" (keypress)="keyPress($event)"
                [ngClass]="{'is-invalid': (f['phone_ref'].touched || f['phone_ref'].dirty) && f['phone_ref'].errors}"
                appMarginTop="8" formControlName="phone_ref">
         <div class="error" *ngIf="(f['phone_ref'].touched || f['phone_ref'].dirty) && f['phone_ref'].errors">

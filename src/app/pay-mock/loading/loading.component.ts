@@ -1,5 +1,6 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoadingService} from "../loading.service";
+
 
 @Component({
   selector: 'app-loading',
@@ -7,20 +8,21 @@ import {LoadingService} from "../loading.service";
   styleUrls: ['./loading.component.scss']
 })
 export class LoadingComponent implements OnInit {
-  @HostBinding('style.display') display = ''
-  constructor(private loadingService: LoadingService) {
+  constructor(
+      public loadingService: LoadingService
+  ) {
 
   }
 
   ngOnInit(): void {
-    this.loadingService.loading$.subscribe(loading => {
-      if (loading) {
-        this.display = 'absolute'
-      }
-      else {
-        this.display = 'none'
-      }
-    })
+    // this.loadingService.loading$.subscribe(loading => {
+    //   if (loading) {
+    //     this.display = 'absolute'
+    //   }
+    //   else {
+    //     this.display = 'none'
+    //   }
+    // })
   }
 
 }

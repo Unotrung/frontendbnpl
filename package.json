@@ -25,6 +25,7 @@
     "angular-code-input": "^1.6.0",
     "angular-in-memory-web-api": "^0.13.0",
     "axios": "^0.26.0",
+    "moment": "^2.29.1",
     "ngx-countdown": "^13.0.0",
     "ngx-webcam": "^0.4.1",
     "rxjs": "~7.5.0",
