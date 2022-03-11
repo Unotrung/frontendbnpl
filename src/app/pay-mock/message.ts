@@ -1,10 +1,14 @@
 export interface MessageData {
     reason: MessageReason,
-    message: string
+    messageTitle: string,
+    message: string,
+    closeMessage: string
 }
 
 export enum MessageReason {
     failSelfieScreenShot,
     failFrontIdScreenShot,
-    failBackIdScreenShot
+    failBackIdScreenShot,
+    failOnCheckCitizenIdAndManualEnterId,
+    failOnCheckSelfieAndImageIdCard
 }

@@ -1,3 +1,11 @@
 <div class="message-box" fxLayout="column" fxLayoutAlign="start center">
-    <p>message</p>
+    <div class="message-title" appMarginTop="16">
+        <p>{{data.messageTitle}}</p>
+    </div>
+    <div class="message" appMarginTop="16">
+        <p>{{data.message}}</p>
+    </div>
+    <div class="message-closed" appMarginTop="28" appMarginBottom="36">
+        <button (click)="onCloseDialog()">{{data.closeMessage}}</button>
+    </div>
 </div>

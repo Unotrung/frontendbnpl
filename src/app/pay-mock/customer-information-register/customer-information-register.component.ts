@@ -8,8 +8,8 @@ import {CustomerInformationService} from "../customer-information.service";
 import {AuthService} from "../auth.service";
 import {Step} from "../step";
 import {PictureService} from "../picture.service";
-import * as Moment from 'moment'
 import {DatePipe} from "@angular/common";
+import {checkInfo} from "../helper/helper";
 
 @Component({
   selector: 'app-customer-information-register',
@@ -38,6 +38,8 @@ export class CustomerInformationRegisterComponent implements OnInit {
   selectedDistrict$!: BehaviorSubject<District>;
   selectedWard$!: BehaviorSubject<Ward>;
   selectedStreet$!: BehaviorSubject<any>;
+
+  checkInfo = checkInfo
 
   constructor(
       private locationAddressService: LocationAddressService,
@@ -215,17 +217,17 @@ export class CustomerInformationRegisterComponent implements OnInit {
     })
   }
 
-  checkInfo(review: any): ({confirm: boolean, value: string }){
-    const value = review ? review['value']: ''
-    const needReview = review ? review['to-be-reviewed'] : 'no'
-    if (!value) return {confirm: false, value: ''}
-    if (needReview === 'no') {
-      return {confirm: true, value}
-    }
-    else {
-      return {confirm: false, value: ''}
-    }
-  }
+  // checkInfo(review: any): ({confirm: boolean, value: string }){
+  //   const value = review ? review['value']: ''
+  //   const needReview = review ? review['to-be-reviewed'] : 'no'
+  //   if (!value) return {confirm: false, value: ''}
+  //   if (needReview === 'no') {
+  //     return {confirm: true, value}
+  //   }
+  //   else {
+  //     return {confirm: false, value: ''}
+  //   }
+  // }
 
   // this function convert string date dd-mm-yyyy to yyyy-mm-dd
   convertDateString(dateString: string): string {

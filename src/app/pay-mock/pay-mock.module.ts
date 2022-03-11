@@ -66,7 +66,7 @@ import { MessageComponent } from './message/message.component';
       ForgotPinPhoneComponent,
       ForgotPinCardIdComponent,
       MarginBottomDirective,
-      MessageComponent
+      MessageComponent,
   ],
     exports: [
         LoadingComponent

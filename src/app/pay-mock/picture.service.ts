@@ -1,10 +1,15 @@
 import {Injectable} from '@angular/core';
 import {WebcamImage} from "ngx-webcam";
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {BehaviorSubject, Observable} from "rxjs";
 import {HypervergeService} from "./hyperverge.service";
 import {LoadingService} from "./loading.service";
+import {MessageService} from "./message.service";
+import {MessageReason} from "./message";
+import {checkInfo} from "./helper/helper";
+import {AuthService} from "./auth.service";
+import {Step} from "./step";
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +33,9 @@ export class PictureService {
   constructor(
       private http: HttpClient,
       private hv: HypervergeService,
-      private loadingService: LoadingService
+      private loadingService: LoadingService,
+      private messageService: MessageService,
+      private authService: AuthService
   ) {
     this.selfieImageComplete$ = new BehaviorSubject<boolean>(false);
     this.citizenFrontData$ = new BehaviorSubject<any>(null);
@@ -57,7 +64,6 @@ export class PictureService {
       }
     }, complete : () => this.loadingService.loading$.next(false)})
 
-
   }
 
   selfieScreenShot() {
@@ -72,7 +78,14 @@ export class PictureService {
       if(HVError) {
         const errorCode = HVError.getErrorCode();
         const errorMessage = HVError.getErrorMessage();
-        console.log(HVError);
+        console.log('hverror',HVError);
+        this.messageService.messageData$.next({
+          reason: MessageReason.failSelfieScreenShot,
+          message: 'Hình chụp selfie không rõ, đề nghị chụp lại',
+          messageTitle: 'Thông báo',
+          closeMessage: 'CHỤP LẠI HÌNH'
+        })
+        this.messageService.onOpenDialog()
         if (errorCode === 401) {
           if (errorMessage === 'Token Expired') {
             //todo Check the token generator
@@ -148,6 +161,22 @@ export class PictureService {
   onCitizenCardComplete(complete: boolean, side: string, image: any) {
     this.currentShotImage = image;
     if (side === 'front') {
+      // @ts-ignore
+      console.log(checkInfo(this.citizenFrontData$.getValue()['idNumber']).value)
+      console.log(this.authService.user$.getValue().citizenId)
+      // @ts-ignore
+      if (checkInfo(this.citizenFrontData$.getValue()['idNumber']).value !== this.authService.user$.getValue().citizenId ){
+        this.citizenFrontImageComplete$.next(false)
+        this.authService.registerStep$.next(Step.pictureSelfie);
+        this.messageService.messageData$.next({
+          reason: MessageReason.failOnCheckCitizenIdAndManualEnterId,
+          messageTitle: 'Thông báo',
+          message: 'Hồ sơ của bạn không được chấp nhận do số CCCD không trùng với số bạn điền vào',
+          closeMessage: 'Điền lại số CCCD'
+        })
+        this.messageService.onOpenDialog()
+        return
+      }
       this.citizenFrontImage = image;
       this.citizenFrontImageComplete$.next(complete);
     } else if (side === 'back') {
@@ -166,9 +195,18 @@ export class PictureService {
         const errorCode = HVError.getErrorCode();
         if(errorCode){
           console.log(errorCode);
-
         }
         const errorMessage = HVError.getErrorMessage();
+        this.selfieImageComplete$.next(false)
+        this.citizenFrontImageComplete$.next(false)
+        this.messageService.messageData$.next({
+          reason: MessageReason.failOnCheckSelfieAndImageIdCard,
+          messageTitle: 'Thông báo',
+          message: 'Ảnh chân dung và ảnh trên CCCD không khớp, đề nghị chụp lại',
+          closeMessage: 'CHỤP ẢNH LẠI',
+        })
+        this.messageService.onOpenDialog()
+        return;
       }
       if(HVResponse) {
         const apiResults = HVResponse.getApiResult();

@@ -8,7 +8,8 @@
         <div class="outer-frame-box" fxLayout="column" fxLayoutAlign="center center" appMarginTop="8" >
             <div class="inner-frame-box">
                 <div>
-                    <img [src]="pictureService.currentShotImage"
+                    <img [src]="(pictureService.citizenBackImageComplete$ | async) ? pictureService.citizenBackImage :
+                                (pictureService.citizenFrontImageComplete$ | async) ? pictureService.citizenFrontImage : ''"
                          height="200"
                          width="250" alt="">
                 </div>
@@ -40,8 +41,8 @@
             <p class="guide-text"></p>
         </div>
     </div>
-
     <button class="payment-button"
+            appMarginTop="36"
             (click)="onCitizenCardContinue()"
             [disabled]="!(pictureService.kycCustomerComplete$ | async)">
         <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>

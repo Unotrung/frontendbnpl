@@ -10,7 +10,7 @@
     <div class="picture-selfie-wrapper">
         <h3 class="picture-selfie-title">Vui lòng nhập CMND/CCCD</h3>
             <input type="text" class="input-info" [formControl]="citizenId">
-        <div class="error" fxFlexAlign="start" *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.invalid">
+        <div class="error" appMarginTop="8" fxFlexAlign="start" *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.invalid">
             CMND hoặc CCCD có 9 hoặc 12 chữ số
         </div>
 <!--        <div [formGroup]="formGroup">-->
@@ -56,6 +56,7 @@
         </div>
 
         <button class="payment-button"
+                appMarginTop="36"
                 [disabled]="!(pictureService.selfieImageComplete$ | async) || citizenId.invalid"
                 (click)="onSelfieContinue()"
         >
