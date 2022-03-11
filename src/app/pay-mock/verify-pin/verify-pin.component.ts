@@ -22,6 +22,12 @@ export class VerifyPinComponent implements OnInit {
   }
 
   onForgotPin(){
-    this.router.navigate(['pay-mock/forgot-pin']).then();
+    this.router.navigate(['pay-mock/forgot-pin-phone']).then();
+  }
+
+  onVerifyPinContinue() {
+    //todo: check pin code is correct here and navigate to checkout
+
+    this.router.navigate(['pay-mock/checkout']).then()
   }
 }

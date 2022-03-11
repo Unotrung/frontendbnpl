@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import {MatDialog} from "@angular/material/dialog";
 import {EnterOtpComponent} from "./enter-opt.component";
 
 @Component({

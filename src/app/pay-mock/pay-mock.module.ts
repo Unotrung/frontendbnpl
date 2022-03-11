@@ -11,7 +11,6 @@ import { VerifyPinComponent } from './verify-pin/verify-pin.component';
 import {HighlightDirective} from "./helper/highlight.directive";
 import { ElDimensionDirective } from './helper/el-dimension.directive';
 import {CodeInputModule} from "angular-code-input";
-import { ForgotPinComponent } from './forgot-pin/forgot-pin.component';
 import { ImageOnTopComponent } from './image-on-top/image-on-top.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CustomerPinInstallComponent } from './customer-pin-install/customer-pin-install.component';
@@ -34,6 +33,10 @@ import {EnterOtpComponent} from "./customer-esign-confirm/enter-opt.component";
 import {CheckoutDetailBillComponent} from "./checkout-detail-bill/checkout-detail-bill.component";
 import {CheckoutComponent} from "./checkout/checkout.component";
 import { LoadingComponent } from './loading/loading.component';
+import { ForgotPinPhoneComponent } from './forgot-pin-phone/forgot-pin-phone.component';
+import { ForgotPinCardIdComponent } from './forgot-pin-card-id/forgot-pin-card-id.component';
+import { MarginBottomDirective } from './helper/margin-bottom.directive';
+import { MessageComponent } from './message/message.component';
 
 
 @NgModule({
@@ -44,7 +47,6 @@ import { LoadingComponent } from './loading/loading.component';
       HighlightDirective,
       VerifyPinComponent,
       ElDimensionDirective,
-      ForgotPinComponent,
       ImageOnTopComponent,
       CustomerPinInstallComponent,
       CustomerEsignConfirmComponent,
@@ -60,7 +62,11 @@ import { LoadingComponent } from './loading/loading.component';
       CitizenCardComponent,
       CheckoutDetailBillComponent,
       CheckoutComponent,
-      LoadingComponent
+      LoadingComponent,
+      ForgotPinPhoneComponent,
+      ForgotPinCardIdComponent,
+      MarginBottomDirective,
+      MessageComponent
   ],
     exports: [
         LoadingComponent
