@@ -1,175 +1,6 @@
-.picture-selfie {
-  font-family: "Mulish";
-  font-style: normal;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
 
-  .picture-selfie-logo {
-    display: block;
-    margin: 5px auto 16px;
-    img {
-      max-width: 100%;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-  }
-
-  .picture-selfie-slogan {
-    font-weight: normal;
-    font-size: 16px;
-    text-align: center;
-    color: #000000;
-    display: inline-block;
-    margin-bottom: 16px;
-  }
-
-  .picture-selfie-wrapper {
-    border: 1px solid #c4c4c4;
-    border-radius: 8px;
-    min-width: 378px;
-    padding: 53px 34px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    .picture-selfie-title {
-      font-weight: bold;
-      font-size: 16px;
-      color: #2f2f2f;
-    }
-
-    input[type="text"] {
-      width: 310px;
-      background: #ffffff;
-      padding: 10px;
-      border: 1px solid rgba(4, 17, 62, 0.5);
-      border-radius: 8px;
-      outline: none;
-    }
-
-    .picture-selfie-head {
-      font-weight: normal;
-      font-size: 14px;
-      text-align: center;
-      color: #000000;
-      margin-bottom: 10px;
-    }
-
-    .background-gray {
-      width: 305px;
-      //height: 305px;
-      background-color: #e5e5e5;
-      border-radius: 2px;
-      margin-bottom: 34px;
-      .background-green {
-        width: 256px;
-        height: 256px;
-        margin: 25px;
-        border: 1px solid #0bfba6;
-        position: relative;
-        .circle-red {
-          width: 42px;
-          height: 42px;
-          border-radius: 50%;
-          border: 5px solid #ffffff;
-          background-color: #fa1818;
-          position: absolute;
-          //bottom: -20px;
-          //left: 30%;
-          //transform: translateX(50%);
-          bottom: -20px;
-          right: 45%;
-        }
-      }
-    }
-
-    .picture-selfie-camera {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 10px;
-      .picture-selfie-overlay {
-        width: 100px;
-        height: 100px;
-        padding: 10px;
-        //display: flex;
-        //justify-content: center;
-        //align-items: center;
-        background-color: white;
-        box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.15);
-        //img {
-        //  width: 24px;
-        //  height: 24px;
-        //  display: block;
-        //  flex-shrink: 0;
-        //}
-        }
-      //:hover {
-      //  cursor: pointer;
-      //}
-
-      .picture-selfie-text {
-        margin-top: 16px;
-        font-weight: normal;
-        font-size: 12px;
-        color: #000000;
-      }
-    }
-
-    .picture-selfie-warning {
-      margin-right: auto;
-      padding: 0px 34px;
-      display: flex;
-      align-items: center;
-      margin-bottom: 25px;
-      img {
-        margin-right: 6px;
-      }
-    }
-
-    .picture-selfie-notifications {
-      display: flex;
-      flex-direction: column;
-      margin-right: auto;
-      padding: 0px 34px;
-
-      .picture-selfie-notice {
-        font-weight: bold;
-        font-size: 12px;
-        color: #f30c28;
-        margin-bottom: 10px;
-      }
-
-      .picture-selfie-step {
-        font-weight: normal;
-        font-size: 14px;
-        color: rgba(4, 17, 62, 0.5);
-      }
-    }
-  }
-
-  .btn-continue {
-    width: 310px;
-    padding: 11px 70px;
-    font-weight: bold;
-    font-size: 16px;
-    text-align: center;
-    text-transform: uppercase;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    color: #ffffff;
-    background: linear-gradient(260.54deg, #68e89a 0%, #39d074 62.86%);
-    box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.15);
-    border-radius: 20px;
-    margin-top: 18px;
-    margin-bottom: 30px;
-  }
+.global-box {
+  padding : 0 32px 0 32px;
 }
 
 .image-blurred-edge {
@@ -178,7 +9,7 @@
 }
 
 .error {
-  //margin-left: 24px;
+  margin-left: 24px;
 }
 
 .input-info {
@@ -195,4 +26,85 @@
 
 .mat-icon:hover {
   cursor: pointer;
+}
+
+.picture-selfie-slogan {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* or 150% */
+
+  color: #000000;
+}
+
+.image-title {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 30px;
+  /* or 214% */
+  text-align: center;
+
+  color: #000000;
+}
+
+.background-gray {
+  width: 305px;
+  //height: 305px;
+  background-color: #e5e5e5;
+  border-radius: 2px;
+  margin-bottom: 34px;
+
+  .background-green {
+    width: 256px;
+    height: 256px;
+    margin: 25px;
+    border: 1px solid #0bfba6;
+    position: relative;
+
+    .circle-red {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 5px solid #ffffff;
+      background-color: #fa1818;
+      position: absolute;
+      //bottom: -20px;
+      //left: 30%;
+      //transform: translateX(50%);
+      bottom: -20px;
+      right: 42%;
+    }
+  }
+}
+
+.picture-selfie-overlay {
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
+  background-color: white;
+  box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.15);
+}
+
+.picture-selfie-notice {
+  font-weight: bold;
+  font-size: 12px;
+  color: #f30c28;
+  margin-bottom: 10px;
+}
+
+.picture-selfie-step {
+  font-weight: normal;
+  font-size: 14px;
+  color: rgba(4, 17, 62, 0.5);
+}
+
+ul {
+  margin-block-start: 0;
 }

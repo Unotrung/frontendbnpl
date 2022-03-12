@@ -1,66 +1,65 @@
-<div class="picture-selfie">
-    <div class="picture-selfie-logo">
-        <img alt="FE Credit" src="assets/images/LogoFeCredit.png"/>
-    </div>
-
-    <h3 class="picture-selfie-slogan">
+<div fxLayout="column" fxLayoutAlign="start center">
+    <img alt="FE Credit" src="assets/images/LogoFeCredit.png"/>
+    <div class="picture-selfie-slogan" appMarginTop="16">
         Slogan - FEC Content Team to update
-    </h3>
-
-    <div class="picture-selfie-wrapper">
-        <h3 class="picture-selfie-title">Vui lòng nhập CMND/CCCD</h3>
-            <input type="text" class="input-info" [formControl]="citizenId">
-        <div class="error" appMarginTop="8" fxFlexAlign="start" *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.invalid">
-            CMND hoặc CCCD có 9 hoặc 12 chữ số
-        </div>
-<!--        <div [formGroup]="formGroup">-->
-<!--            <input type="file" class="input-info" formControlName="citizenImage" (change)="onFileSelect($event)">-->
-<!--        </div>-->
-
-
-        <span class="picture-selfie-head" appMarginTop="16">Chụp ảnh chân dung</span>
-        <div class="background-gray">
-            <div *ngIf="!(pictureService.selfieImageComplete$ | async)" class="background-green">
-                                <div class="circle-red" (click)="startCaptureImage()">
-                                </div>
-            </div>
-            <div>
-                <img *ngIf="pictureService.selfieImageComplete$ | async" [src]="pictureService.selfieImage"
-                     class="image-blurred-edge"
-                     height="235"
-                     width="305">
-            </div>
-
-        </div>
-        <!--        <div class="background-gray" *ngIf="webcamImage">-->
-        <!--            <img width="300" height="200" [src]="webcamImage.imageAsDataUrl">-->
-        <!--        </div>-->
-
-        <div class="picture-selfie-camera">
-            <div class="picture-selfie-overlay" fxLayout="column" fxLayoutAlign="center center" *ngIf="!(pictureService.selfieImageComplete$ | async)">
-                <img fxFlexAlign="center" width="24" height="24" alt="" src="assets/images/camera.png">
-            </div>
-            <div class="picture-selfie-overlay" fxLayout="column" fxLayoutAlign="top center" *ngIf="pictureService.selfieImageComplete$ | async">
-                <img appMarginTop="8" width="60" height="40" alt="" [src]="pictureService.selfieImage">
-                <mat-icon appMarginTop="8" (click)="onDeleteImage()">delete</mat-icon>
-            </div>
-            <!--        <div class="picture-selfie-warning">-->
-            <!--&lt;!&ndash;            <img src="assets/images/Warning.png" alt="">&ndash;&ảnh
-                    </div>-->
-
-            <div class="picture-selfie-notifications" appMarginTop="16">
-                <p class="picture-selfie-notice">Hướng dẫn chụp ảnh chân dung :</p>
-                <p class="picture-selfie-step">. Hướng dẫn cách chụp ảnh chân dung </p>
-            </div>
-
-        </div>
-
-        <button class="payment-button"
-                appMarginTop="36"
-                [disabled]="!(pictureService.selfieImageComplete$ | async) || citizenId.invalid"
-                (click)="onSelfieContinue()"
-        >
-            <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
-        </button>
     </div>
+
+<div class="global-box" fxLayout="column" fxLayoutAlign="start center">
+    <div class="global-title" appMarginTop="63">
+        <p>Vui lòng nhập CMND/CCCD</p>
+    </div>
+    <input type="text" class="global-input" [formControl]="citizenId" appMarginTop="14">
+    <div class="error" appMarginTop="8" fxFlexAlign="start" *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.invalid">
+            CMND hoặc CCCD có 9 hoặc 12 chữ số
+    </div>
+
+    <div class="image-title" appMarginTop="24">
+        <p>Chụp ảnh chân dung</p>
+    </div>
+    <div class="background-gray">
+        <div *ngIf="!(pictureService.selfieImageComplete$ | async)" class="background-green">
+            <div class="circle-red" (click)="startCaptureImage()">
+            </div>
+        </div>
+        <div>
+            <img *ngIf="pictureService.selfieImageComplete$ | async" [src]="pictureService.selfieImage"
+                 class="image-blurred-edge"
+                 height="235"
+                 width="305">
+        </div>
+    </div>
+
+    <div class="picture-selfie-overlay" fxLayout="column" fxLayoutAlign="center center" *ngIf="!(pictureService.selfieImageComplete$ | async)">
+        <img fxFlexAlign="center" width="24" height="24" alt="" src="assets/images/camera.png">
+    </div>
+    <div class="picture-selfie-overlay" fxLayout="column" fxLayoutAlign="top center" *ngIf="pictureService.selfieImageComplete$ | async">
+        <img appMarginTop="8" width="60" height="40" alt="" [src]="pictureService.selfieImage">
+        <mat-icon appMarginTop="8" (click)="onDeleteImage()">delete</mat-icon>
+    </div>
+    <div class="picture-selfie-notice" appMarginTop="16" fxFlexAlign="start">
+        Lưu ý:
+    </div>
+    <ul>
+        <li class="picture-selfie-step">
+            Số CMND/CCCD phải điền chính xác. Vui lòng nhập 9 số (CMND) hoặc 12 số (CCCD)
+        </li>
+        <li class="picture-selfie-step">
+            Ảnh chụp chân dung phải đủ sáng, không đội mũ, không đeo kính
+        </li>
+    </ul>
+
+<!--    <div fxFlexFill appMarginTop="16" fxLayout="column" fxLayoutAlign="start strech">-->
+<!--        <p class="picture-selfie-notice">Lưu ý:</p>-->
+<!--        <p class="picture-selfie-step">. Số CMND/CCCD phải điền chính xác. Vui lòng nhập 9 số (CMND) hoặc 12 số (CCCD) </p>-->
+<!--        <p class="picture-selfie-step">. Ảnh chụp chân dung phải đủ sáng, không đội mũ, không đeo kính  </p>-->
+<!--    </div>-->
+</div>
+<button class="payment-button"
+        appMarginTop="36"
+        appMarginBottom="32"
+        [disabled]="!(pictureService.selfieImageComplete$ | async) || citizenId.invalid"
+        (click)="onSelfieContinue()"
+>
+    <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
+</button>
 </div>

@@ -37,6 +37,7 @@ import { ForgotPinPhoneComponent } from './forgot-pin-phone/forgot-pin-phone.com
 import { ForgotPinCardIdComponent } from './forgot-pin-card-id/forgot-pin-card-id.component';
 import { MarginBottomDirective } from './helper/margin-bottom.directive';
 import { MessageComponent } from './message/message.component';
+import {NgxIntlTelInputModule} from "ngx-intl-tel-input";
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { MessageComponent } from './message/message.component';
         CommonModule,
         MaterialModule,
         HttpClientModule,
+        NgxIntlTelInputModule,
         FlexModule,
         FlexLayoutModule,
         WebcamModule,

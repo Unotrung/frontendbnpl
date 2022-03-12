@@ -6,6 +6,7 @@ import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
 import {Step} from "../step";
 import {LoadingService} from "../loading.service";
+import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input'
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,13 @@ import {LoadingService} from "../loading.service";
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+    separateDialCode = false;
+    SearchCountryField = SearchCountryField;
+    CountryISO = CountryISO;
+    PhoneNumberFormat = PhoneNumberFormat;
+    preferredCountries: CountryISO[] = [CountryISO.UnitedStates, CountryISO.UnitedKingdom];
 
+    phone: FormControl = new FormControl(undefined, [Validators.required])
     registerForm!: FormGroup;
     phoneControl!: FormControl;
     submitted = false;

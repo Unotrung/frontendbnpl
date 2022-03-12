@@ -73,7 +73,7 @@ const routes: Routes = [
             //     path: 'electronic-contract', component: ElectronicContractComponent
             // },
             {
-                path: 'picture-selfie', component: PictureSelfieComponent, canActivate: [AuthGuard]
+                path: 'picture-selfie', component: PictureSelfieComponent
             },
             {
                 path: 'error-server', component: ErrorServerComponent

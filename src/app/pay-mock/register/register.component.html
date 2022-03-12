@@ -3,7 +3,7 @@
     <p class="margin-top-16 payment-text">Slogan - FEC Content Team to Update</p>
     <img src="assets/images/image-solugan.png" width="383" height="141">
     <p class="margin-top-16 payment-text" >Intro - FEC Content Team to Update</p>
-    <div class="phone-box" fxLayout="column" fxLayoutAlign="top center">
+    <div class="global-box" fxLayout="column" fxLayoutAlign="top center">
         <p class="margin-top-16 payment-text">Vui lòng nhập điện thoại để tiếp tục</p>
         <form [formGroup]="registerForm">
         <input (keypress)="keyPress($event)" required type="text" class="phone-input"
@@ -19,9 +19,29 @@
             || f['phonenumber'].errors!['minlength'])">
                 <span class="error">Phone number must be 10 numbers</span></div>
         </form>
+<!--        <ngx-intl-tel-input-->
+<!--                [cssClass]="'custom'"-->
+<!--                [preferredCountries]="preferredCountries"-->
+<!--                [enableAutoCountrySelect]="true"-->
+<!--                [enablePlaceholder]="true"-->
+<!--                [searchCountryFlag]="true"-->
+<!--                [searchCountryField]="[-->
+<!--          SearchCountryField.Iso2,-->
+<!--          SearchCountryField.Name-->
+<!--        ]"-->
+<!--                [selectFirstCountry]="false"-->
+<!--                [selectedCountryISO]="CountryISO.India"-->
+<!--                [maxLength]="'15'"-->
+<!--                [phoneValidation]="true"-->
+<!--                [separateDialCode]="separateDialCode"-->
+<!--                [numberFormat]="PhoneNumberFormat.National"-->
+<!--                [formControl]="phone"-->
+<!--        >-->
+<!--        </ngx-intl-tel-input>-->
         <div>
             <button class="payment-button"
                     appMarginTop="36"
+                    appMarginBottom="16"
                     (click)="onRegisterContinue()"
                     [disabled]="f['phonenumber'].errors">
                 <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
