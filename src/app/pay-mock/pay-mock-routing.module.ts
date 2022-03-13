@@ -64,10 +64,10 @@ const routes: Routes = [
                 path: 'customer-pin-install', component: CustomerPinInstallComponent
             },
             {
-                path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]
+                path: 'checkout', component: CheckoutComponent
             },
             {
-                path: 'checkout-detail-bill',component: CheckoutDetailBillComponent, canActivate: [AuthGuard]
+                path: 'checkout-detail-bill',component: CheckoutDetailBillComponent
             },
             // {
             //     path: 'electronic-contract', component: ElectronicContractComponent
