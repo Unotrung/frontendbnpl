@@ -1,0 +1,48 @@
+//.item-header {
+//  font-family: 'Mulish';
+//  font-style: normal;
+//  font-weight: 400;
+//  font-size: 16px;
+//  line-height: 24px;
+//  /* identical to box height, or 150% */
+//
+//  color: #666666;
+//}
+:host {
+  width: 100%;
+}
+
+.item-title {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  /* or 171% */
+
+  color: #1B1B1B;
+}
+.item-price {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+  /* or 171% */
+
+  color: #1B1B1B;
+}
+
+.item-des {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 24px;
+  /* or 171% */
+
+  color: grey;
+}
+//.item-wrapper {
+//  width: 100%;
+//}

@@ -36,8 +36,6 @@ export class AuthService {
   register(password: string): Observable<any> {
     const uri = `${environment.localAPIServer}v1/auth/register`;
       const rawData = {
-        username: 'abc1234',
-        email: 'demo123@yahoo.com',
         phone: this.user$.getValue().phone,
         password
       }

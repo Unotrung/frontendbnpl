@@ -1,0 +1,45 @@
+<div class="tenor-wrapper">
+    <img *ngIf="checked" class="tenor-checked" src="../../../assets/images/SuccessFully.png" alt="" width="28" height="28">
+    <div fxFlexFill class="global-box" [ngClass]="{'checked': checked}"
+         fxLayout="row" fxLayoutAlign="space-between center"
+         appMarginTop="12" (click)="onTenorClick()">
+        <div appMarginTop="16" appMarginBottom="16">
+            <div class="tenor-title">
+                TENOR <span>1</span>
+            </div>
+            <div class="tenor-title">
+                Giá sản phẩm: <span>{{tenor.itemPrice | currency:'VND' : ''}} VND</span>
+            </div>
+            <div class="tenor-title">
+                Phí chuyển đổi: <span>{{tenor.convertFee | currency:'VND' : ''}} VND</span>
+            </div>
+            <div class="tenor-title">
+                Thời gian thanh toán: <span>{{tenor.paymentSchedule}} ngày</span>
+            </div>
+        </div>
+        <div class="tenor-price">
+            {{tenor.itemPrice + tenor.convertFee | currency:'VND' : ''}} VND
+        </div>
+    </div>
+
+</div>
+<!--<div class="global-box" fxLayout="row" fxLayoutAlign="space-between center" appMarginTop="12">-->
+<!--    <div appMarginTop="16" appMarginBottom="16">-->
+<!--        <div class="tenor-title">-->
+<!--            TENOR <span>1</span>-->
+<!--        </div>-->
+<!--        <div class="tenor-title">-->
+<!--            Giá sản phẩm: <span>5.030.000</span>-->
+<!--        </div>-->
+<!--        <div class="tenor-title">-->
+<!--            Phí chuyển đổi: <span>1.000.000</span>-->
+<!--        </div>-->
+<!--        <div class="tenor-title">-->
+<!--            Thời gian thanh toán: <span>120 ngày</span>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="tenor-price">-->
+<!--        6.030.000 VND-->
+<!--    </div>-->
+<!--</div>-->
+

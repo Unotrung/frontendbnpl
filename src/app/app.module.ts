@@ -9,8 +9,6 @@ import { PayMockComponent } from './pay-mock/pay-mock.component';
 import { PayMockModule } from "./pay-mock/pay-mock.module";
 import { StartPaymentComponent } from './pay-mock/start-payment/start-payment.component';
 import {HttpClientModule} from "@angular/common/http";
-import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
-import {InMemoryDataService} from "./in-memory-data.service";
 import {TopBarComponent} from "./top-bar/top-bar.component";
 
 @NgModule({

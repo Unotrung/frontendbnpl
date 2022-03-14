@@ -1,0 +1,15 @@
+<div class="item-wrapper" fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="8">
+    <img src="assets/images/begin-yoga-mat-5mm.png" width="60" height="72">
+    <div fxFlex="40" fxLayout="column" fxLayoutAlign="space-between start">
+        <div class="item-title">
+            {{item.name}}
+        </div>
+        <div class="item-des">
+            {{item.description}}
+        </div>
+    </div>
+    <div class="item-price">
+        {{item.price | currency: 'VND': ''}} VND
+    </div>
+
+</div>

@@ -1,47 +1,49 @@
 <div fxLayout="column" fxLayoutAlign="start center">
-    <img src="../../../assets/images/LogoFeCredit.png" alt="FE Credit"/>
-    <div class="checkout-info-header" appMarginTop="80">
-        <img src="../../../assets/images/UserEllipse.png" alt="" class="checkout-image"/>
-        <div class="container-wrapper" fxFlexFill fxLayout="row" fxLayoutAlign="space-between center">
-            <div class="customer-name">
-                Chào: Nguyễn Văn A
-            </div>
-            <div fxLayout="column" fxLayoutAlign="center end">
-                <div class="credit-text">
-                    Hạn mức tín dụng của bạn là:
-                </div>
-                <div class="credit-number">
-                    50.000.000 VND
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="global-box" appMarginTop="16" fxLayout="column" fxLayoutAlign="start center">
-        <div class="item-header" fxFlexAlign="start" appMarginTop="10">
-            Thông tin đơn hàng
-        </div>
-        <div class="item-wrapper" fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="8">
-            <img src="assets/images/begin-yoga-mat-5mm.png" width="60" height="72">
-            <div fxFlex="40" fxLayout="column" fxLayoutAlign="space-between start">
-                <div class="item-title">
-                    Begin Yoga Mat 5MM
-                </div>
-                <div class="item-des">
-                    Steel Grey/One Size
-                </div>
-            </div>
-            <div class="item-price">
-                5.000.000 VND
-            </div>
+<!--    <img src="../../../assets/images/LogoFeCredit.png" alt="FE Credit"/>-->
+<!--    <div class="checkout-info-header" appMarginTop="80">-->
+<!--        <img src="../../../assets/images/UserEllipse.png" alt="" class="checkout-image"/>-->
+<!--        <div class="container-wrapper" fxFlexFill fxLayout="row" fxLayoutAlign="space-between center">-->
+<!--            <div class="customer-name">-->
+<!--                Chào: Nguyễn Văn A-->
+<!--            </div>-->
+<!--            <div fxLayout="column" fxLayoutAlign="center end">-->
+<!--                <div class="credit-text">-->
+<!--                    Hạn mức tín dụng của bạn là:-->
+<!--                </div>-->
+<!--                <div class="credit-number">-->
+<!--                    50.000.000 VND-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <app-checkout-header></app-checkout-header>
+    <app-checkout-items></app-checkout-items>
+<!--    <div class="global-box" appMarginTop="16" fxLayout="column" fxLayoutAlign="start center">-->
+<!--        <div class="item-header" fxFlexAlign="start" appMarginTop="10">-->
+<!--            Thông tin đơn hàng-->
+<!--        </div>-->
+<!--        <div class="item-wrapper" fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="8">-->
+<!--            <img src="assets/images/begin-yoga-mat-5mm.png" width="60" height="72">-->
+<!--            <div fxFlex="40" fxLayout="column" fxLayoutAlign="space-between start">-->
+<!--                <div class="item-title">-->
+<!--                    Begin Yoga Mat 5MM-->
+<!--                </div>-->
+<!--                <div class="item-des">-->
+<!--                    Steel Grey/One Size-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="item-price">-->
+<!--                5.000.000 VND-->
+<!--            </div>-->
 
-        </div>
-        <mat-divider></mat-divider>
+<!--        </div>-->
+<!--        <mat-divider></mat-divider>-->
 
-        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" appMarginBottom="16">
-            <div class="item-price">Tổng cộng</div>
-            <div class="item-price">5.030.000 VND</div>
-        </div>
-    </div>
+<!--        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" appMarginBottom="16">-->
+<!--            <div class="item-price">Tổng cộng</div>-->
+<!--            <div class="item-price">5.030.000 VND</div>-->
+<!--        </div>-->
+<!--    </div>-->
 
     <div class="global-box no-border" fxLayout="column" fxLayoutAlign="start center">
         <img src="../../../assets/images/SuccessFully.png" alt="" width="28" height="28" appMarginTop="26">
@@ -52,68 +54,36 @@
     <div class="global-box no-border tenor-header" appMarginTop="24">
         Vui lòng chọn Tenor
     </div>
-    <div class="global-box" fxLayout="row" fxLayoutAlign="space-between center" appMarginTop="12">
-        <div appMarginTop="16" appMarginBottom="16">
-            <div class="tenor-title">
-                TENOR <span>1</span>
-            </div>
-            <div class="tenor-title">
-                Giá sản phẩm: <span>5.030.000</span>
-            </div>
-            <div class="tenor-title">
-                Phí chuyển đổi: <span>1.000.000</span>
-            </div>
-            <div class="tenor-title">
-                Thời gian thanh toán: <span>120 ngày</span>
-            </div>
-        </div>
-        <div class="tenor-price">
-            6.030.000 VND
-        </div>
-    </div>
+<!--    <div class="global-box" fxLayout="row" fxLayoutAlign="space-between center" appMarginTop="12">-->
+<!--        <div appMarginTop="16" appMarginBottom="16">-->
+<!--            <div class="tenor-title">-->
+<!--                TENOR <span>1</span>-->
+<!--            </div>-->
+<!--            <div class="tenor-title">-->
+<!--                Giá sản phẩm: <span>5.030.000</span>-->
+<!--            </div>-->
+<!--            <div class="tenor-title">-->
+<!--                Phí chuyển đổi: <span>1.000.000</span>-->
+<!--            </div>-->
+<!--            <div class="tenor-title">-->
+<!--                Thời gian thanh toán: <span>120 ngày</span>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="tenor-price">-->
+<!--            6.030.000 VND-->
+<!--        </div>-->
+<!--    </div>-->
+    <ng-container *ngFor="let tenor of tenors">
+        <app-checkout-tenor [tenor]="tenor"
+                            [checked]="chosenTenor ? (chosenTenor.tenorId === tenor.tenorId) : false"
+                            (chosenTenor)="onChoseTenor($event)"
+        ></app-checkout-tenor>
+    </ng-container>
 
-    <div class="global-box" fxLayout="row" fxLayoutAlign="space-between center" appMarginTop="12">
-        <div appMarginTop="16" appMarginBottom="16">
-            <div class="tenor-title">
-                TENOR <span>2</span>
-            </div>
-            <div class="tenor-title">
-                Giá sản phẩm: <span>5.030.000</span>
-            </div>
-            <div class="tenor-title">
-                Phí chuyển đổi: <span>800.000</span>
-            </div>
-            <div class="tenor-title">
-                Thời gian thanh toán: <span>240 ngày</span>
-            </div>
-        </div>
-        <div class="tenor-price">
-            5.830.000 VND
-        </div>
-    </div>
-
-    <div class="global-box" fxLayout="row" fxLayoutAlign="space-between center" appMarginTop="12">
-        <div appMarginTop="16" appMarginBottom="16">
-            <div class="tenor-title">
-                TENOR <span>3</span>
-            </div>
-            <div class="tenor-title">
-                Giá sản phẩm: <span>5.030.000</span>
-            </div>
-            <div class="tenor-title">
-                Phí chuyển đổi: <span>500.000</span>
-            </div>
-            <div class="tenor-title">
-                Thời gian thanh toán: <span>120 ngày</span>
-            </div>
-        </div>
-        <div class="tenor-price">
-            5.530.000 VND
-        </div>
-    </div>
     <button class="payment-button"
             appMarginTop="36"
             appMarginBottom="36"
+            [disabled]="!chosenTenor"
             (click)="onCheckOutContinue()">
         <span>XÁC NHẬN</span><span>&nbsp;&nbsp;&nbsp;></span>
     </button>

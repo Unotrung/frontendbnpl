@@ -1,0 +1,70 @@
+//:host {
+//  display: flex;
+//  flex-direction: column;
+//  align-items: center;
+//}
+:host {
+  width: 378px;
+}
+.global-box {
+  padding: 0 24px 0 24px;
+  &:hover {
+    background: rgba(78, 203, 113, 0.2);
+    cursor: pointer;
+  }
+}
+
+.tenor-header {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  /* identical to box height, or 160% */
+
+  /* Black/black500 */
+  color: rgba(0, 0, 0, 0.8);
+}
+.tenor-title {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  /* or 133% */
+
+  /* Black/black500 */
+  color: rgba(0, 0, 0, 0.8);
+
+  span {
+    font-weight: bold;
+  }
+}
+.tenor-price {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 32px;
+  /* or 160% */
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  /* Brand/branda500 */
+  color: #00B74F;
+}
+
+.tenor-wrapper {
+  display: block;
+  position: relative;
+  //width: 100%;
+}
+.tenor-checked {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+}
+.checked {
+  background: rgba(78, 203, 113, 0.2);
+}

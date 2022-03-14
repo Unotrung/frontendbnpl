@@ -23,6 +23,8 @@ import {AuthGuard} from "./auth.guard";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {ForgotPinPhoneComponent} from "./forgot-pin-phone/forgot-pin-phone.component";
 import {ForgotPinCardIdComponent} from "./forgot-pin-card-id/forgot-pin-card-id.component";
+import {CheckoutSuccessComponent} from "./checkout-success/checkout-success.component";
+import {CheckoutConfirmComponent} from "./checkout-confirm/checkout-confirm.component";
 
 const routes: Routes = [
     {path: '', redirectTo: 'pay-mock', pathMatch: 'full'},
@@ -86,6 +88,12 @@ const routes: Routes = [
             },
             {
                 path: 'forgot-pin-card-id', component: ForgotPinCardIdComponent
+            },
+            {
+                path: 'checkout-success', component: CheckoutSuccessComponent
+            },
+            {
+                path: 'checkout-confirm', component: CheckoutConfirmComponent
             }
         ]
     },

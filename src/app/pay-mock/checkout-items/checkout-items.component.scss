@@ -1,0 +1,64 @@
+.global-box {
+  padding: 0 24px 0 24px;
+}
+
+.item-header {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  color: #666666;
+}
+
+//.item-title {
+//  font-family: 'Mulish';
+//  font-style: normal;
+//  font-weight: 400;
+//  font-size: 14px;
+//  line-height: 24px;
+//  /* or 171% */
+//
+//  color: #1B1B1B;
+//}
+.item-price {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 24px;
+  /* or 171% */
+
+  color: #1B1B1B;
+}
+//
+//.item-des {
+//  font-family: 'Mulish';
+//  font-style: normal;
+//  font-weight: 700;
+//  font-size: 12px;
+//  line-height: 24px;
+//  /* or 171% */
+//
+//  color: grey;
+//}
+//.item-wrapper {
+//
+//}
+
+.mat-divider {
+  width: 100%;
+  margin: 16px 0 0 0;
+}
+.item-message {
+  padding: 0 32px 0 32px;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(4, 17, 62, 0.7);
+  text-align: center;
+}
