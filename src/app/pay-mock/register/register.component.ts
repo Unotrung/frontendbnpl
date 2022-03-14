@@ -54,7 +54,23 @@ export class RegisterComponent implements OnInit {
     onRegisterContinue() {
         //todo: check the phone number, need api here, so we can redirect to the next step
         this.authService.user$.next({...this.authService.user$.getValue(), phone: this.f['phonenumber'].value})
-        this.authService.registerStep$.next(Step.pictureSelfie);
-        this.router.navigate(['/pay-mock/picture-selfie']).then();
+        this.loadingService.loading$.next(true)
+        this.authService.checkPossiblePhone(this.authService.user$.getValue().phone!).subscribe({
+            next: data => {
+                //todo: check the redirect condition
+                this.router.navigate(['pay-mock/verify-pin']).then()
+            },
+            error: ({error}) => {
+                if (error) {
+                    this.authService.registerStep$.next(Step.pictureSelfie);
+                    this.router.navigate(['/pay-mock/picture-selfie']).then();
+                }
+            },
+            complete: () => {
+                this.loadingService.loading$.next(false)
+            }
+        })
+        // this.authService.registerStep$.next(Step.pictureSelfie);
+        // this.router.navigate(['/pay-mock/picture-selfie']).then();
     }
 }

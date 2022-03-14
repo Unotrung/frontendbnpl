@@ -24,11 +24,14 @@ export class AuthService {
   }
 
   login(): Observable<any> {
-    const uri = `${environment.localAPIServer}v1/auth/login`;
-    return this.http.post<any>(encodeURI(uri), this.user$.getValue()).pipe(tap(({phone, accessToken}) => {
+    const uri = `${environment.localAPIServer}v1/user/login`;
+    return this.http.post<any>(encodeURI(uri), {
+      phone: this.user$.getValue().phone,
+      pin: this.user$.getValue().pin
+    }).pipe(tap(({phone, accessToken}) => {
       if (accessToken) {
         localStorage.setItem('accessToken', accessToken);
-        this.user$.next({phone, accessToken})
+        this.user$.next({...this.user$.getValue(), phone, accessToken})
         this.isLoggedIn$.next(true);
       }
     }))
@@ -49,8 +52,8 @@ export class AuthService {
   }
 
   checkPossiblePhone(phone: string) {
-    const uri = `${environment.localAPIServer}`
-    return this.http.post<any>(encodeURI(uri), phone);
+    const uri = `${environment.localAPIServer}v1/user/checkPhoneExists`
+    return this.http.post<any>(encodeURI(uri), {phone});
   }
 
   logout() {

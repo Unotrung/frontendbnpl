@@ -1,0 +1,140 @@
+.pin-verify-box{
+  display: block;
+  height: 340px;
+  width: 378px;
+  border-radius: 8px;
+  background: #FFFFFF;
+  border: 1px solid #C4C4C4;
+  padding-left: 25px;
+  padding-right: 18px;
+}
+
+.pin-enter {
+  font-family: Mulish;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+  letter-spacing: 0em;
+  text-align: center;
+}
+
+.enter-pin-announce {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center
+}
+.pin-text-number {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.pin-input {
+  width: 16px;
+  height: 16px;
+  background: grey;
+  border-radius: 50%;
+  border: none;
+  text-color: #F30C28;
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}
+.pin-input-fill {
+  width: 26px;
+  height: 26px;
+  background: #4ECB71;
+  border-radius: 50%;
+  border: none;
+  color: #F30C28;
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 16px;
+  text-align: center;
+}
+
+input {
+  margin-left: 33px;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.forgot-pin-text {
+  //styleName: Body / SemiBold;
+  font-family: Mulish;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: center;
+
+}
+
+p.forgot-pin-text {
+  span {
+    color: #2F80ED;
+  }
+  span:hover {
+    cursor: pointer;
+  }
+}
+
+.pin-header {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 32px;
+  /* identical to box height, or 160% */
+
+  /* Black/black500 */
+  color: rgba(0, 0, 0, 0.8);
+}
+.global-box {
+  padding: 0 42px 0 42px;
+}
+
+.pin-title {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 150%;
+  /* or 24px */
+  text-align: center;
+
+  /* Primary 900 */
+  color: #00172E;
+}
+
+.pin-text {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  /* identical to box height, or 133% */
+
+  /* Ink/ink500 */
+  color: #04113E;
+}

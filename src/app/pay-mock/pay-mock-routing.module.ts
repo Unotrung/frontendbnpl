@@ -42,7 +42,7 @@ const routes: Routes = [
                 path: 'register', component: RegisterComponent
             },
             {
-                path: 'verify-pin', component: VerifyPinComponent, canActivate: [AuthGuard]
+                path: 'verify-pin', component: VerifyPinComponent
             },
             {
                 path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthGuard]

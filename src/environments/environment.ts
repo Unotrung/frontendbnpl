@@ -10,7 +10,7 @@ export const environment = {
   appKey: '7d2c0d7e1690c216458c',
   appMaterKey: 'CccJSvVUq8UbzAdhMaeRNCjJa0tXY1QO',
   appServerAPI: 'https://angular-chat-socket.herokuapp.com/',
-  localAPIServer: 'https://api-wolfconsulting.herokuapp.com/'
+  localAPIServer: 'https://api-wolfconsulting-bnpl.herokuapp.com/'
 };
 
 /*
