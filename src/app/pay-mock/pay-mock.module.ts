@@ -29,7 +29,7 @@ import {WebcamModule} from "ngx-webcam";
 import { CameraModalComponent } from './camera-modal/camera-modal.component';
 import {HttpClientModule} from "@angular/common/http";
 import { CitizenCardComponent } from './citizen-card/citizen-card.component';
-import {EnterOtpComponent} from "./enter-otp/enter-opt.component";
+import {EnterOtpComponent} from "./enter-otp/enter-otp.component";
 import {CheckoutDetailBillComponent} from "./checkout-detail-bill/checkout-detail-bill.component";
 import {CheckoutComponent} from "./checkout/checkout.component";
 import { LoadingComponent } from './loading/loading.component';

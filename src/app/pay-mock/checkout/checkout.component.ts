@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {Tenor} from "../tenor";
 import {TenorService} from "../tenor.service";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-checkout',
@@ -33,7 +34,8 @@ export class CheckoutComponent implements OnInit {
   chosenTenor: Tenor | null
   constructor(
       private router: Router,
-      private tenorService: TenorService
+      private tenorService: TenorService,
+      private authService: AuthService
   ) {
     this.chosenTenor = null
   }
@@ -47,7 +49,9 @@ export class CheckoutComponent implements OnInit {
   onCheckOutContinue () {
     //todo : api call for check customer enough credit for checkout
     this.tenorService.selectedTenor$.next(this.chosenTenor)
-    this.router.navigate(['/pay-mock/checkout-confirm']).then()
+    this.router.navigate(['/pay-mock/checkout-confirm']).then(() =>{
+      this.authService.user$.next({...this.authService.user$.getValue(), pin: ''})
+    })
   }
 
 }

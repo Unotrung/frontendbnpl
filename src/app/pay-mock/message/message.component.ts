@@ -24,8 +24,11 @@ export class MessageComponent implements OnInit {
         this.data.reason === MessageReason.failOnCheckCitizenIdAndManualEnterId ||
         this.data.reason === MessageReason.failOnCheckSelfieAndImageIdCard
     ) {
-      this.router.navigate(['pay-mock/picture-selfie']).then()
+      this.router.navigate(['/pay-mock/picture-selfie']).then()
     }
+    // if (this.data.reason === MessageReason.failOnSentOTP) {
+    //   this.router.navigate(['/pay-mock/register']).then()
+    // }
     this.dialogRef.close();
   }
 

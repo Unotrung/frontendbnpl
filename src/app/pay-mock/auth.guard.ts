@@ -35,7 +35,8 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
                 stepCheck = true;
             }
         }
-        // console.log(stepCheck)
+         console.log(stepCheck)
+        console.log(url)
         return this.checkLogin(url, stepCheck);
     }
 
@@ -84,7 +85,9 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
             }
         }
 
+        console.log('no step check', this.authService.isLoggedIn$.getValue())
         if (this.authService.isLoggedIn$.getValue()) {
+            console.log('process checkout, ...')
             return true;
         } else {
             this.authService.redirectUrl = url;

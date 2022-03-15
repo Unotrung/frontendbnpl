@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -8,6 +8,7 @@ import {Router} from "@angular/router";
 })
 export class VerifyPinChildComponent implements OnInit {
 
+  @Output() pinCode = new EventEmitter<string>()
   constructor(private router: Router) { }
 
   ngOnInit(): void {
@@ -15,6 +16,7 @@ export class VerifyPinChildComponent implements OnInit {
 
   // this called every time when user changed the code
   onCodeChanged(code: string) {
+    this.pinCode.emit(code)
   }
 
   // this called only if user entered full code

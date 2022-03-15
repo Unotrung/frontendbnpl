@@ -2,10 +2,11 @@
     <app-checkout-header></app-checkout-header>
     <app-checkout-items></app-checkout-items>
     <app-checkout-tenor [tenor]="(tenorService.selectedTenor$ | async)!" [checked]="true"></app-checkout-tenor>
-    <app-verify-pin-child></app-verify-pin-child>
+    <app-verify-pin-child (pinCode)="onPinCodeChange($event)"></app-verify-pin-child>
     <button class="payment-button"
             appMarginTop="36"
             appMarginBottom="36"
+            [disabled]="pinCode.length < 4"
             (click)="onCheckoutConfirm()">
         <span>XÁC NHẬN</span><span>&nbsp;&nbsp;&nbsp;></span>
     </button>
