@@ -28,10 +28,8 @@ export class AuthService {
     return this.http.post<any>(encodeURI(uri), {
       phone: this.user$.getValue().phone,
       pin: this.user$.getValue().pin
-    }).pipe(tap(({phone, accessToken}) => {
-      if (accessToken) {
-        localStorage.setItem('accessToken', accessToken);
-        this.user$.next({...this.user$.getValue(), phone, accessToken})
+    }).pipe(tap((data) => {
+      if (data && data['status']) {
         this.isLoggedIn$.next(true);
       }
     }))
@@ -42,10 +40,8 @@ export class AuthService {
         phone: this.user$.getValue().phone,
         pin: this.user$.getValue().pin
       }
-      return this.http.post<any>(encodeURI(uri), rawData).pipe(tap(({phone, accessToken}) => {
-        if (accessToken) {
-          localStorage.setItem('accessToken', accessToken);
-          this.user$.next({...this.user$.getValue(), phone, accessToken})
+      return this.http.post<any>(encodeURI(uri), rawData).pipe(tap((data) => {
+        if (data && data['status']) {
           this.isLoggedIn$.next(true);
         }
       }))
