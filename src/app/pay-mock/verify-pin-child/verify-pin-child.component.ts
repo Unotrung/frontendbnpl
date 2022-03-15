@@ -27,10 +27,10 @@ export class VerifyPinChildComponent implements OnInit {
     this.router.navigate(['pay-mock/forgot-pin-phone']).then();
   }
 
-  onVerifyPinContinue() {
-    //todo: check pin code is correct here and navigate to checkout
-
-    this.router.navigate(['pay-mock/checkout']).then()
-  }
+  // onVerifyPinContinue() {
+  //   //todo: check pin code is correct here and navigate to checkout
+  //
+  //   this.router.navigate(['pay-mock/checkout']).then()
+  // }
 
 }

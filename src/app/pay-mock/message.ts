@@ -11,5 +11,6 @@ export enum MessageReason {
     failBackIdScreenShot,
     failOnCheckCitizenIdAndManualEnterId,
     failOnCheckSelfieAndImageIdCard,
-    failOnSentOTP
+    failOnSentOTP,
+    failOnLoginUsePinCode
 }

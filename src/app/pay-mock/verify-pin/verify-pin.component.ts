@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
 import {LoadingService} from "../loading.service";
+import {MessageService} from "../message.service";
+import {MessageReason} from "../message";
 
 @Component({
   selector: 'app-verify-pin',
@@ -15,7 +17,8 @@ export class VerifyPinComponent implements OnInit {
   constructor(
       private router: Router,
       private authService: AuthService,
-      private loadingService: LoadingService
+      private loadingService: LoadingService,
+      private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -23,12 +26,13 @@ export class VerifyPinComponent implements OnInit {
 
   // this called every time when user changed the code
   onCodeChanged(code: string) {
+    this.pin = code
   }
 
   // this called only if user entered full code
-  onCodeCompleted(code: string) {
-    this.pin = code
-  }
+  // onCodeCompleted(code: string) {
+  //   this.pin = code
+  // }
 
   onForgotPin(){
     this.router.navigate(['pay-mock/forgot-pin-phone']).then();
@@ -47,6 +51,13 @@ export class VerifyPinComponent implements OnInit {
       error: ({error}) => {
         console.log(error)
         this.loadingService.loading$.next(false)
+        this.messageService.messageData$.next({
+          reason: MessageReason.failOnLoginUsePinCode,
+          messageTitle: 'Thông báo',
+          message: 'Bạn đã điền sai mã pin',
+          closeMessage: 'TRỞ VỀ'
+        })
+        this.messageService.onOpenDialog()
       }
     })
 

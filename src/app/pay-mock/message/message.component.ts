@@ -29,6 +29,10 @@ export class MessageComponent implements OnInit {
     // if (this.data.reason === MessageReason.failOnSentOTP) {
     //   this.router.navigate(['/pay-mock/register']).then()
     // }
+    if (this.data.reason === MessageReason.failOnLoginUsePinCode) {
+      this.router.navigate(['/pay-mock/register']).then()
+    }
+
     this.dialogRef.close();
   }
 
