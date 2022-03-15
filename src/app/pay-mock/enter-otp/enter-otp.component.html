@@ -1,0 +1,18 @@
+<div class="otp-box" fxLayout="column" fxLayoutAlign="start center">
+    <div class="note-text-2" fxFlexAlign="start">
+        <p>Nhập OTP <span class="red-star">*</span></p>
+    </div>
+    <code-input [isCodeHidden]="false"
+                [codeLength]="6"
+                (codeChanged)="onCodeChanged($event)"
+                (codeCompleted)="onCodeCompleted($event)">
+    </code-input>
+    <div class="error" *ngIf="otpFails" fxFlexAlign="start" appMarginTop="8">! Nhập OTP không đúng {{otpFails}}/5</div>
+    <div class="note-text" appMarginTop="8">
+       <p>Không nhận được OTP ?</p>
+        <button class="send-otp" [disabled]="!countdownComplete" (click)="onSendOtp()">Gởi lại OTP
+            <span>(</span><countdown #cd [config]="{leftTime: 60, format: 's'}" (event)="onCountdown($event)" ></countdown><span>s)</span>
+        </button>
+    </div>
+
+</div>

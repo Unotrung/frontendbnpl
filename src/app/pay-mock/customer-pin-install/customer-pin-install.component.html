@@ -38,6 +38,8 @@
     </div>
     <div>
         <button class="payment-button"
+                appMarginTop="32"
+                appMarginBottom="32"
                 [disabled]="pinCode.length < 4 || verifyPinCode.length < 4 || pinCode !== verifyPinCode"
                 (click)="onFinishPinInstall()"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
         </button>

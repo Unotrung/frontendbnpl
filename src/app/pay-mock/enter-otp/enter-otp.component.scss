@@ -1,10 +1,9 @@
 .otp-box {
   width: 378px;
-  height: 194px;
   background: #FFFFFF;
   border: 1px solid #C4C4C4;
   box-sizing: border-box;
-  border-radius: 16px;
+  //border-radius: 16px;
   padding: 34px;
   .note-text-2 {
     font-family: Mulish;
@@ -26,16 +25,27 @@
     line-height: 16px;
     letter-spacing: 0em;
   }
-  div {
-    button.disabled {
-      pointer-events: none;
-      cursor: default;
-    }
-    button:hover {
-      cursor: pointer;
-    }
-  }
 
 }
 
+button:disabled {
+  border: none;
+  color: grey;
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+button:hover {
+  cursor: pointer;
+  border: none;
+}
 
+//.send-otp:hover {
+//  cursor: pointer;
+//}
+//.send-otp {
+//  text-decoration: underline;
+//  span {
+//    text-decoration: none;
+//  }
+//  border: none;
+//}

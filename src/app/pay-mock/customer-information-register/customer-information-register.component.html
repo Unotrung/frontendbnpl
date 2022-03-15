@@ -175,6 +175,10 @@
     <div class="note-text" fxFlexAlign="start">Lưu ý</div>
     <div class="note-text-2" fxFlexAlign="start"><span class="red-star">*</span> Thông tin bắt buộc</div>
     <div>
-        <button class="payment-button" [disabled]="registerForm.invalid" (click)="onContinue()"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+        <button class="payment-button"
+                appMarginTop="36"
+                appMarginBottom="36"
+                [disabled]="registerForm.invalid" (click)="onContinue()">
+            <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
     </div>
 </div>

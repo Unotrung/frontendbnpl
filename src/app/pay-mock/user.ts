@@ -3,5 +3,6 @@ export interface User {
     citizenId?: string,
     accessToken?: string,
     isPhoneExist?: boolean,
-    pin?: string
+    pin?: string,
+    otp?: string
 }

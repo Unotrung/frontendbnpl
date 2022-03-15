@@ -12,7 +12,9 @@
             CMND hoặc CCCD có 9 hoặc 12 chữ số
         </div>
         <div appMarginTop="32" appMarginBottom="33">
-            <button class="payment-button" [disabled]="cardIdForm.invalid" (click)="onForgotCardIdContinue()"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+            <button class="payment-button"
+                    appMarginTop="36"
+                    [disabled]="cardIdForm.invalid" (click)="onForgotCardIdContinue()"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
         </div>
     </div>
 </div>

@@ -36,16 +36,16 @@ export class AuthService {
       }
     }))
   }
-  register(password: string): Observable<any> {
-    const uri = `${environment.localAPIServer}v1/auth/register`;
+  register(): Observable<any> {
+    const uri = `${environment.localAPIServer}v1/user/register`;
       const rawData = {
         phone: this.user$.getValue().phone,
-        password
+        pin: this.user$.getValue().pin
       }
       return this.http.post<any>(encodeURI(uri), rawData).pipe(tap(({phone, accessToken}) => {
         if (accessToken) {
           localStorage.setItem('accessToken', accessToken);
-          this.user$.next({phone, accessToken})
+          this.user$.next({...this.user$.getValue(), phone, accessToken})
           this.isLoggedIn$.next(true);
         }
       }))
@@ -60,5 +60,19 @@ export class AuthService {
     this.user$.next({});
     this.isLoggedIn$.next(false);
     localStorage.removeItem('accessToken');
+  }
+
+  sendOTP(): Observable<any> {
+    const uri = `${environment.localAPIServer}v1/user/sendOtp`
+    return this.http.post<any>(encodeURI(uri), {
+      phone: this.user$.getValue().phone
+    })
+  }
+  verifyOTP(): Observable<any> {
+    const uri = `${environment.localAPIServer}v1/user/verifyOtp`
+    return this.http.post<any>(encodeURI(uri), {
+      phone: this.user$.getValue().phone,
+      otp: this.user$.getValue().otp
+    })
   }
 }

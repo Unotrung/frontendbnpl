@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {EnterOtpComponent} from "./enter-opt.component";
+import {EnterOtpComponent} from "../enter-otp/enter-opt.component";
 
 @Component({
   selector: 'app-customer-esign-confirm',

@@ -42,8 +42,17 @@ export class CustomerPinInstallComponent implements OnInit {
 
   onFinishPinInstall(){
     // this.authService.user$.next({...this.authService.user$.getValue(), password: this.pinCode.toString()})
-    this.authService.register(this.pinCode.toString()).subscribe(data => console.log(data))
-    this.authService.registerStep$.next(Step.customerEsignConfirm)
-    this.router.navigate(['pay-mock/customer-esign-confirm']).then();
+    this.authService.user$.next({...this.authService.user$.getValue(), pin: this.pinCode})
+    this.authService.register().subscribe({
+      next: data => {
+        console.log(data)
+        this.authService.registerStep$.next(Step.customerEsignConfirm)
+        this.router.navigate(['pay-mock/customer-esign-confirm']).then();
+      },
+      error: ({error}) => {
+        console.log(error)
+      }
+    })
+
   }
 }
