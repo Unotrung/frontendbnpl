@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
 import {CustomerInformation} from "./customer_infomation";
+import {Observable, tap} from "rxjs";
+import {environment} from "../../environments/environment";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +12,9 @@ export class CustomerInformationService {
 
   customerInfo: CustomerInformation
 
-  constructor() {
+  constructor(
+      private http: HttpClient
+  ) {
     this.customerInfo = {
       name: undefined,
       sex: undefined,
@@ -28,7 +34,8 @@ export class CustomerInformationService {
     }
   }
 
-  updateCustomerInfo(customer: CustomerInformation){
 
-  }
+  // getCustomerInfo():Observable<any> {
+  //
+  // }
 }

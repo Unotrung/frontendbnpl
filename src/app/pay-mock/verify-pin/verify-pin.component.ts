@@ -45,8 +45,14 @@ export class VerifyPinComponent implements OnInit {
     this.authService.login().subscribe({
       next: data => {
         console.log(data)
-        this.loadingService.loading$.next(false)
-        this.router.navigate(['pay-mock/checkout']).then()
+        this.authService.getCustomerInfo().subscribe({
+          next : data => {
+          console.log(data)
+          this.loadingService.loading$.next(false)
+          this.router.navigate(['pay-mock/checkout']).then()
+        }
+        })
+
       },
       error: ({error}) => {
         console.log(error)

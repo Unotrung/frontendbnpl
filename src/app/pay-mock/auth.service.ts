@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, map, Observable, tap} from "rxjs";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {User} from "./user";
 import {environment} from "../../environments/environment";
 import {Step} from "./step";
+import {CustomerInformationService} from "./customer-information.service";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AuthService {
   redirectUrl: string | null = null;
   httpError: HttpErrorResponse | undefined;
   constructor(
-      private http: HttpClient
+      private http: HttpClient,
+      private customerInfoService: CustomerInformationService
   ) {
     this.isLoggedIn$ = new BehaviorSubject<boolean>(false);
     this.registerStep$ = new BehaviorSubject<number>(Step.register);
@@ -32,7 +34,9 @@ export class AuthService {
       phone: this.user$.getValue().phone,
       pin: this.user$.getValue().pin
     }).pipe(tap((data) => {
+      console.log(data)
       if (data && data['status']) {
+        this.user$.next({...this.user$.getValue(), accessToken: data['token'], id: data['data']['_id']})
         this.isLoggedIn$.next(true);
       }
     }))
@@ -44,7 +48,9 @@ export class AuthService {
         pin: this.user$.getValue().pin
       }
       return this.http.post<any>(encodeURI(uri), rawData).pipe(tap((data) => {
+        console.log(data)
         if (data && data['status']) {
+          this.user$.next({...this.user$.getValue(), accessToken: data['token'], id: data['data']['_id'] })
           this.isLoggedIn$.next(true);
         }
       }))
@@ -76,5 +82,27 @@ export class AuthService {
       phone: this.user$.getValue().phone,
       otp: this.user$.getValue().otp
     })
+  }
+
+  updateCustomerInfo(): Observable<any>{
+    const uri = `${environment.localAPIServer}v1/personal/register`
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.user$.getValue().accessToken}`
+    })
+    return this.http.post<any>(encodeURI(uri), {...this.customerInfoService.customerInfo, user: this.user$.getValue().id }, {headers}).pipe(tap((data) =>{
+      this.user$.next({...this.user$.getValue(), name: this.customerInfoService.customerInfo.name!})
+    }))
+  }
+  getCustomerInfo(): Observable<any> {
+    const uri = `${environment.localAPIServer}v1/personal/${this.user$.getValue().id}`
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.user$.getValue().accessToken}`
+    })
+    // @ts-ignore
+    return this.http.get(encodeURI(uri), {headers}).pipe(tap(({data}) => {
+      this.user$.next({...this.user$.getValue(), name: data['name']})
+    }))
   }
 }

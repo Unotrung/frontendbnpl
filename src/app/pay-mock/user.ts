@@ -1,4 +1,5 @@
 export interface User {
+    id?: string
     phone?: string,
     citizenId?: string,
     accessToken?: string,

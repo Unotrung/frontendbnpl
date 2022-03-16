@@ -260,6 +260,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
   }
 
   private _filter(value: string, zone: string): string[] {
+    console.log('start filter')
     const filterValue = value.toLowerCase();
     if (zone === 'city') {
       const options = this.cityOptions.map(value => value.name)
