@@ -4,5 +4,7 @@ export interface User {
     accessToken?: string,
     isPhoneExist?: boolean,
     pin?: string,
-    otp?: string
+    otp?: string,
+    name: string,
+    creditLimit: number
 }

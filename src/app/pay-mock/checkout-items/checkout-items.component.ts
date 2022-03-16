@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ItemService} from "../item.service";
 
 @Component({
@@ -7,7 +7,7 @@ import {ItemService} from "../item.service";
   styleUrls: ['./checkout-items.component.scss']
 })
 export class CheckoutItemsComponent implements OnInit {
-
+  @Input() discount = false
   constructor(public itemService: ItemService) { }
 
   ngOnInit(): void {

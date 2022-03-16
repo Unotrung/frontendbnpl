@@ -1,0 +1,23 @@
+<div fxLayout="column" fxLayoutAlign="start center">
+    <img src="assets/images/FE-Credit.png" width="155" height="55">
+    <div appMarginBottom="90"></div>
+    <app-checkout-items [discount]="false"></app-checkout-items>
+    <div class="global-box" appMarginTop="32" fxLayout="column" fxLayoutAlign="start center">
+        <ng-container *ngIf="checkoutService.checkoutFinish$ | async">
+            <img src="assets/images/SuccessFully.png" appMarginTop="38" width="48" height="48">
+            <div class="announce-text" appMarginTop="21" appMarginBottom="46">
+                Chúc mừng bạn đã mua hàng thành công.
+                <br>
+                Bấm vào <a>đây</a> để trở lại
+            </div>
+        </ng-container>
+        <ng-container *ngIf="!(checkoutService.checkoutFinish$ | async)">
+            <img src="assets/images/checkout_unsuccess.png" appMarginTop="38" width="48" height="48">
+            <div class="announce-text" appMarginTop="21" appMarginBottom="46">
+                Mua hàng không thành công/ Lỗi không xác định
+                <br>
+                Bấm vào <a (click)="onCheckoutFinish()">đây</a> để trở lại
+            </div>
+        </ng-container>
+    </div>
+</div>

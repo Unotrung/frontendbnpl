@@ -1,17 +1,38 @@
-<img src="../../../assets/images/LogoFeCredit.png" alt="FE Credit" width="130" height="55"/>
+
+<!--large header view-->
+<ng-container *ngIf="!smallView">
 <div class="checkout-info-header" appMarginTop="80">
     <img src="../../../assets/images/UserEllipse.png" alt="" class="checkout-image"/>
     <div class="container-wrapper" fxFlexFill fxLayout="row" fxLayoutAlign="space-between center">
         <div class="customer-name">
-            Chào: Nguyễn Văn A
+            Chào: {{name}}
         </div>
         <div fxLayout="column" fxLayoutAlign="center end">
             <div class="credit-text">
                 Hạn mức tín dụng của bạn là:
             </div>
             <div class="credit-number">
-                50.000.000 VND
+                {{credit | currency: 'VND': ''}} VND
             </div>
         </div>
     </div>
 </div>
+</ng-container>
+
+<!--small header view-->
+<ng-container *ngIf="smallView">
+    <div class="checkout-info-header-small" fxLayout="column">
+        <img src="../../../assets/images/UserEllipse.png" alt="" class="checkout-image"/>
+        <div class="container-wrapper" fxFlexFill fxLayout="column" fxLayoutAlign="start center">
+            <div class="customer-name" appMarginTop="8">
+                Chào: {{name}}
+            </div>
+            <div class="credit-text">
+                Hạn mức tín dụng của bạn là:
+            </div>
+            <div class="credit-number" appMarginBottom="8">
+                {{credit | currency: 'VND': ''}} VND
+            </div>
+        </div>
+    </div>
+</ng-container>

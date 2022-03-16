@@ -3,6 +3,7 @@ import {TenorService} from "../tenor.service";
 import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
 import {LoadingService} from "../loading.service";
+import {CheckoutService} from "../checkout.service";
 
 @Component({
   selector: 'app-checkout-confirm',
@@ -15,7 +16,8 @@ export class CheckoutConfirmComponent implements OnInit {
       public tenorService: TenorService,
       private router: Router,
       private authService: AuthService,
-      private loadingService: LoadingService
+      private loadingService: LoadingService,
+      private checkoutService: CheckoutService
   ) { }
 
   ngOnInit(): void {
@@ -32,12 +34,14 @@ export class CheckoutConfirmComponent implements OnInit {
         console.log(data)
         //todo: api call for payment
         this.loadingService.loading$.next(false)
-        this.router.navigate(['/pay-mock/checkout-success']).then()
+        this.checkoutService.checkoutFinish$.next(true)
+        this.router.navigate(['/pay-mock/checkout-finish']).then()
       },
       error: ({error}) => {
-        console.log()
+        console.log(error)
         this.loadingService.loading$.next(false)
-        this.router.navigate(['/pay-mock/checkout-fail']).then()
+        this.checkoutService.checkoutFinish$.next(false)
+        this.router.navigate(['/pay-mock/checkout-finish']).then()
       }
     })
   }

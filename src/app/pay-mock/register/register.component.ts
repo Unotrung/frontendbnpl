@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {PriceService} from "../../price.service";
-import {Price} from "../../price";
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";

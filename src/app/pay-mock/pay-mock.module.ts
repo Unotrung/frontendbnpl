@@ -38,13 +38,14 @@ import { ForgotPinCardIdComponent } from './forgot-pin-card-id/forgot-pin-card-i
 import { MarginBottomDirective } from './helper/margin-bottom.directive';
 import { MessageComponent } from './message/message.component';
 import {NgxIntlTelInputModule} from "ngx-intl-tel-input";
-import { CheckoutSuccessComponent } from './checkout-success/checkout-success.component';
 import { CheckoutConfirmComponent } from './checkout-confirm/checkout-confirm.component';
 import { CheckoutHeaderComponent } from './checkout-header/checkout-header.component';
 import { CheckoutItemComponent } from './checkout-item/checkout-item.component';
 import { CheckoutTenorComponent } from './checkout-tenor/checkout-tenor.component';
 import { CheckoutItemsComponent } from './checkout-items/checkout-items.component';
 import { VerifyPinChildComponent } from './verify-pin-child/verify-pin-child.component';
+import { CheckoutFinishComponent } from './checkout-finish/checkout-finish.component';
+import { CheckoutNotEnoughCreditComponent } from './checkout-not-enough-credit/checkout-not-enough-credit.component';
 
 
 @NgModule({
@@ -75,16 +76,18 @@ import { VerifyPinChildComponent } from './verify-pin-child/verify-pin-child.com
       ForgotPinCardIdComponent,
       MarginBottomDirective,
       MessageComponent,
-      CheckoutSuccessComponent,
       CheckoutConfirmComponent,
       CheckoutHeaderComponent,
       CheckoutItemComponent,
       CheckoutTenorComponent,
       CheckoutItemsComponent,
       VerifyPinChildComponent,
+      CheckoutFinishComponent,
+      CheckoutNotEnoughCreditComponent,
   ],
     exports: [
-        LoadingComponent
+        LoadingComponent,
+        CheckoutItemsComponent
     ],
     imports: [
         CommonModule,

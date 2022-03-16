@@ -20,7 +20,10 @@ export class AuthService {
   ) {
     this.isLoggedIn$ = new BehaviorSubject<boolean>(false);
     this.registerStep$ = new BehaviorSubject<number>(Step.register);
-    this.user$ = new BehaviorSubject<User>({});
+    this.user$ = new BehaviorSubject<User>({
+      name: 'Nguyen Van Thương',
+      creditLimit: 40000000
+    });
   }
 
   login(): Observable<any> {
@@ -53,7 +56,10 @@ export class AuthService {
   }
 
   logout() {
-    this.user$.next({});
+    this.user$.next({
+      name: '',
+      creditLimit: 0
+    });
     this.isLoggedIn$.next(false);
     localStorage.removeItem('accessToken');
   }

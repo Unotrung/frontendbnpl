@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {AuthService} from "../auth.service";
+import {ItemService} from "../item.service";
 
 @Component({
   selector: 'app-checkout-header',
@@ -6,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkout-header.component.scss']
 })
 export class CheckoutHeaderComponent implements OnInit {
-
-  constructor() { }
+  name: string =''
+  credit: number = 0
+  @Input() smallView: Boolean = false
+  constructor(
+      private authService: AuthService,
+      private itemService: ItemService
+  ) {
+    this.authService.user$.subscribe(({name,creditLimit}) => {
+      this.name = name
+      this.credit = creditLimit
+    })
+  }
 
   ngOnInit(): void {
+
   }
 
 }

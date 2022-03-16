@@ -22,9 +22,24 @@
 
 <!--    </div>-->
     <mat-divider></mat-divider>
+    <ng-container *ngIf="discount">
+        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" >
+            <div class="item-content">Add a discount code or a gift card</div>
+<!--            <div class="item-content"><input></div>-->
+        </div>
+        <mat-divider></mat-divider>
+    </ng-container>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" >
+        <div class="item-content">Thành tiền</div>
+        <div class="item-content">{{itemService.sumPriceItem | currency:'VND':''}} VND</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="12" >
+        <div class="item-content">Phí vận chuyển</div>
+        <div class="item-content">{{itemService.sumShipFee | currency:'VND':''}} VND</div>
+    </div>
 
-    <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" appMarginBottom="16">
+    <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="12" appMarginBottom="16">
         <div class="item-price">Tổng cộng</div>
-        <div class="item-price">5.030.000 VND</div>
+        <div class="item-price">{{itemService.sumPriceItem + itemService.sumShipFee  | currency:'VND':''}} VND</div>
     </div>
 </div>

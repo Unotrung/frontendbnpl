@@ -23,8 +23,9 @@ import {AuthGuard} from "./auth.guard";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {ForgotPinPhoneComponent} from "./forgot-pin-phone/forgot-pin-phone.component";
 import {ForgotPinCardIdComponent} from "./forgot-pin-card-id/forgot-pin-card-id.component";
-import {CheckoutSuccessComponent} from "./checkout-success/checkout-success.component";
 import {CheckoutConfirmComponent} from "./checkout-confirm/checkout-confirm.component";
+import {CheckoutFinishComponent} from "./checkout-finish/checkout-finish.component";
+import {CheckoutNotEnoughCreditComponent} from "./checkout-not-enough-credit/checkout-not-enough-credit.component";
 
 const routes: Routes = [
     {path: '', redirectTo: 'pay-mock', pathMatch: 'full'},
@@ -66,9 +67,6 @@ const routes: Routes = [
                 path: 'customer-pin-install', component: CustomerPinInstallComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]
-            },
-            {
                 path: 'checkout-detail-bill',component: CheckoutDetailBillComponent, canActivate: [AuthGuard]
             },
             // {
@@ -90,10 +88,16 @@ const routes: Routes = [
                 path: 'forgot-pin-card-id', component: ForgotPinCardIdComponent
             },
             {
-                path: 'checkout-success', component: CheckoutSuccessComponent, canActivate: [AuthGuard]
+                path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]
             },
             {
                 path: 'checkout-confirm', component: CheckoutConfirmComponent, canActivate: [AuthGuard]
+            },
+            {
+                path: 'checkout-finish', component: CheckoutFinishComponent, canActivate: [AuthGuard]
+            },
+            {
+                path: 'checkout-not-enough-credit', component: CheckoutNotEnoughCreditComponent, canActivate: [AuthGuard]
             }
         ]
     },

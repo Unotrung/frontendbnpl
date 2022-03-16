@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {WebcamImage} from "ngx-webcam";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject} from "rxjs";
 import {HypervergeService} from "./hyperverge.service";
 import {LoadingService} from "./loading.service";
 import {MessageService} from "./message.service";
@@ -162,8 +162,8 @@ export class PictureService {
     this.currentShotImage = image;
     if (side === 'front') {
       // @ts-ignore
-      console.log(checkInfo(this.citizenFrontData$.getValue()['idNumber']).value)
-      console.log(this.authService.user$.getValue().citizenId)
+      // console.log(checkInfo(this.citizenFrontData$.getValue()['idNumber']).value)
+      // console.log(this.authService.user$.getValue().citizenId)
       // @ts-ignore
       if (checkInfo(this.citizenFrontData$.getValue()['idNumber']).value !== this.authService.user$.getValue().citizenId ){
         this.citizenFrontImageComplete$.next(false)
@@ -244,25 +244,25 @@ export class PictureService {
   }
 
 
-  checkSelfieImage(): Observable<any> {
-    const headers = new HttpHeaders()
-        .set('appId', environment.appId)
-        .set('appKey', environment.appKey)
-        .set('transactionId', 'zzz')
-        .set('content-type', 'multipart/form-data;')
-
-    const formData = new FormData();
-    // @ts-ignore
-    fetch(this.webcamImage?.imageAsDataUrl)
-        .then(res => res.blob())
-        .then(blob => {
-          const fileOfBlob = new File([blob], 'abc.png');
-          formData.append('image', fileOfBlob)
-        })
-    // @ts-ignore
-    // formData.append('image', this.dataURItoBlob(this.webcamImage?.imageAsDataUrl), '@abc.png')
-    return this.http.post<any>('https://vnm-docs.hyperverge.co/v2/nationalID', formData, {
-      headers
-    })
-  }
+  // checkSelfieImage(): Observable<any> {
+    // const headers = new HttpHeaders()
+    //     .set('appId', environment.appId)
+    //     .set('appKey', environment.appKey)
+    //     .set('transactionId', 'zzz')
+    //     .set('content-type', 'multipart/form-data;')
+    //
+    // const formData = new FormData();
+    // // @ts-ignore
+    // fetch(this.webcamImage?.imageAsDataUrl)
+    //     .then(res => res.blob())
+    //     .then(blob => {
+    //       const fileOfBlob = new File([blob], 'abc.png');
+    //       formData.append('image', fileOfBlob)
+    //     })
+    // // @ts-ignore
+    // // formData.append('image', this.dataURItoBlob(this.webcamImage?.imageAsDataUrl), '@abc.png')
+    // return this.http.post<any>('https://vnm-docs.hyperverge.co/v2/nationalID', formData, {
+    //   headers
+    // })
+  // }
 }
