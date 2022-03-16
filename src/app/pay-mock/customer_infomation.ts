@@ -3,7 +3,7 @@ export interface CustomerInformation {
         sex?: string;
         phone?: string;
         birthday?: Date;
-        citizenId?: number;
+        citizenId?: string;
         issueDate?: Date;
 
         city: string;
@@ -11,7 +11,7 @@ export interface CustomerInformation {
         ward: string;
         street: string;
 
-        personal_title: string;
+        personal_title_ref: string;
         name_ref: string;
         phone_ref: string;
 

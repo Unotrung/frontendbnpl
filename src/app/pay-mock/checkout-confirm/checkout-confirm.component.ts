@@ -12,6 +12,7 @@ import {CheckoutService} from "../checkout.service";
 })
 export class CheckoutConfirmComponent implements OnInit {
   pinCode: string = ''
+  saveTenor: Boolean = false
   constructor(
       public tenorService: TenorService,
       private router: Router,
@@ -32,7 +33,7 @@ export class CheckoutConfirmComponent implements OnInit {
     this.authService.login().subscribe({
       next: data => {
         console.log(data)
-        //todo: api call for payment
+        //todo: api call for payment, also check save tenor of not
         this.loadingService.loading$.next(false)
         this.checkoutService.checkoutFinish$.next(true)
         this.router.navigate(['/pay-mock/checkout-finish']).then()

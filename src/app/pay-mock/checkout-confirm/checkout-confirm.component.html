@@ -3,6 +3,9 @@
     <app-checkout-items></app-checkout-items>
     <app-checkout-tenor [tenor]="(tenorService.selectedTenor$ | async)!" [checked]="true"></app-checkout-tenor>
     <app-verify-pin-child (pinCode)="onPinCodeChange($event)"></app-verify-pin-child>
+    <div class="save-tenor">
+        <mat-checkbox [(ngModel)]="saveTenor"> Lưu phương thức thanh toán </mat-checkbox>
+    </div>
     <button class="payment-button"
             appMarginTop="36"
             appMarginBottom="36"

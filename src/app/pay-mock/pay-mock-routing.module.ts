@@ -73,13 +73,13 @@ const routes: Routes = [
             //     path: 'electronic-contract', component: ElectronicContractComponent
             // },
             {
-                path: 'picture-selfie', component: PictureSelfieComponent, canActivate: [AuthGuard]
+                path: 'picture-selfie', component: PictureSelfieComponent
             },
             {
                 path: 'error-server', component: ErrorServerComponent
             },
             {
-                path: 'citizen-card', component: CitizenCardComponent, canActivate: [AuthGuard]
+                path: 'citizen-card', component: CitizenCardComponent
             },
             {
                 path: 'forgot-pin-phone', component: ForgotPinPhoneComponent
@@ -91,7 +91,7 @@ const routes: Routes = [
                 path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'checkout-confirm', component: CheckoutConfirmComponent, canActivate: [AuthGuard]
+                path: 'checkout-confirm', component: CheckoutConfirmComponent
             },
             {
                 path: 'checkout-finish', component: CheckoutFinishComponent, canActivate: [AuthGuard]

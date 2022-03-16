@@ -192,7 +192,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
         district: new FormControl(initDistrict.name, [Validators.required]),
         ward: new FormControl(initWardSuccess ? initWard.name : '', [Validators.required]),
         street: new FormControl(initStreet, [Validators.required]),
-        personal_title: new FormControl('', [Validators.required]),
+        personal_title_ref: new FormControl('', [Validators.required]),
         name_ref: new FormControl('', [Validators.required]),
         phone_ref: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"),
           Validators.minLength(10), Validators.maxLength(10)])
@@ -210,9 +210,9 @@ export class CustomerInformationRegisterComponent implements OnInit {
           startWith(''),
           map(value => this._filter(value, 'ward'))
       )
-      this.personalTitleFilterOptions = this.f['personal_title'].valueChanges.pipe(
+      this.personalTitleFilterOptions = this.f['personal_title_ref'].valueChanges.pipe(
           startWith(''),
-          map(value => this._filter(value, 'personal_title'))
+          map(value => this._filter(value, 'personal_title_ref'))
       )
     })
   }
@@ -273,7 +273,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
       const options = this.wardOptions.map(value => value.name)
       return options.filter(option => option.toLowerCase().includes(filterValue))
     }
-    if (zone === 'personal_title') {
+    if (zone === 'personal_title_ref') {
       return this.personalTitleOptions.filter(option => option.toLowerCase().includes(filterValue))
     }
     return []
@@ -328,7 +328,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
       ward: this.f['ward'].value,
       street: this.f['street'].value,
 
-      personal_title: this.f['personal_title'].value,
+      personal_title_ref: this.f['personal_title_ref'].value,
       name_ref: this.f['name_ref'].value,
       phone_ref: this.f['phone_ref'].value
     }

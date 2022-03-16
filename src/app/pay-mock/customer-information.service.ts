@@ -22,7 +22,7 @@ export class CustomerInformationService {
       ward: '',
       street: '',
 
-      personal_title: '',
+      personal_title_ref: '',
       name_ref: '',
       phone_ref: ''
     }

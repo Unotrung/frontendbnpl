@@ -108,3 +108,9 @@
 ul {
   margin-block-start: 0;
 }
+
+.warning {
+  &:hover{
+    cursor: pointer;
+  }
+}

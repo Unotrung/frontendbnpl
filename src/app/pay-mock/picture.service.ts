@@ -44,9 +44,8 @@ export class PictureService {
     this.citizenBackImageComplete$ = new BehaviorSubject<boolean>(false);
     this.kycCustomerComplete$ = new BehaviorSubject<boolean>(false);
     this.citizenBackImageComplete$.subscribe(completed => {
-      console.log('on verify')
-      if (completed) {
-        console.log('start')
+      if (completed && this.citizenFrontImageComplete$.getValue()) {
+        console.log('start verify match')
         this.onVerifyMatchImage();
       }
       else return;
@@ -159,7 +158,10 @@ export class PictureService {
   }
 
   onCitizenCardComplete(complete: boolean, side: string, image: any) {
-    this.currentShotImage = image;
+    if (complete) {
+      this.currentShotImage = image;
+    }
+
     if (side === 'front') {
       // @ts-ignore
       // console.log(checkInfo(this.citizenFrontData$.getValue()['idNumber']).value)

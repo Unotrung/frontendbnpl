@@ -11,7 +11,9 @@ import {Step} from "../step";
 })
 export class CitizenCardComponent implements OnInit {
 
-  side = 'front'
+    side = 'front'
+    instruction: boolean = false
+
   constructor(
       public pictureService: PictureService,
       private authService: AuthService,

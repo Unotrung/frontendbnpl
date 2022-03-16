@@ -24,6 +24,7 @@ export class PictureSelfieComponent implements OnInit {
   citizenId!: FormControl;
   // formGroup!: FormGroup;
   apiResults: any
+  instruction: boolean = false
 
   constructor(
       private dialog: MatDialog,

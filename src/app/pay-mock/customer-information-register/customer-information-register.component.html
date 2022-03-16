@@ -135,13 +135,13 @@
             Danh xưng <span class="red-star">*</span>
         </div>
 <!--        <input class="input-info"-->
-<!--               [ngClass]="{'is-invalid': (f['personal_title'].touched || f['personal_title'].dirty) && f['personal_title'].errors}"-->
-<!--               appMarginTop="8" formControlName="personal_title">-->
+<!--               [ngClass]="{'is-invalid': (f['personal_title_ref'].touched || f['personal_title_ref'].dirty) && f['personal_title_ref'].errors}"-->
+<!--               appMarginTop="8" formControlName="personal_title_ref">-->
         <input class="input-info" type="text"
-               [ngClass]="{'is-invalid': (f['personal_title'].touched || f['personal_title'].dirty) && f['personal_title'].errors}"
+               [ngClass]="{'is-invalid': (f['personal_title_ref'].touched || f['personal_title_ref'].dirty) && f['personal_title_ref'].errors}"
                appMarginTop="8"
                matInput
-               formControlName="personal_title"
+               formControlName="personal_title_ref"
                onClick="this.setSelectionRange(0, this.value.length)"
                [matAutocomplete]="autoPersonalTitle">
         <mat-autocomplete autoActiveFirstOption #autoPersonalTitle="matAutocomplete">
@@ -149,7 +149,7 @@
                 {{option}}
             </mat-option>
         </mat-autocomplete>
-        <div class="error" *ngIf="(f['personal_title'].touched || f['personal_title'].dirty) && f['personal_title'].errors">
+        <div class="error" *ngIf="(f['personal_title_ref'].touched || f['personal_title_ref'].dirty) && f['personal_title'].errors">
             <span>Vui lòng điền danh xưng</span>
         </div>
         <div class="info-title" appMarginTop="25">

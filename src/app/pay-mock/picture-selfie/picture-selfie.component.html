@@ -36,8 +36,17 @@
         <img appMarginTop="8" width="60" height="40" alt="" [src]="pictureService.selfieImage">
         <mat-icon appMarginTop="8" (click)="onDeleteImage()">delete</mat-icon>
     </div>
+    <div class="image-title" appMarginTop="16">
+        Chân dung
+    </div>
+    <div class="warning" *ngIf="!(pictureService.selfieImageComplete$ | async)"
+         fxFlexAlign="start" fxLayout="row" fxLayoutAlign="start center"
+         appMarginTop="10" (click)="instruction = !instruction">
+        <img src="assets/images/warning.png" width="14" height="14"> <div class="image-title">  Chưa chụp ảnh</div>
+    </div>
+    <ng-container *ngIf="instruction">
     <div class="picture-selfie-notice" appMarginTop="16" fxFlexAlign="start">
-        Hướng dẫn:
+        Hướng dẫn chụp ảnh chân dung:
     </div>
     <ul>
         <li class="picture-selfie-step">
@@ -50,6 +59,7 @@
             Ảnh chụp chân dung phải đủ sáng, không đội mũ, không đeo kính
         </li>
     </ul>
+    </ng-container>
 
 <!--    <div fxFlexFill appMarginTop="16" fxLayout="column" fxLayoutAlign="start strech">-->
 <!--        <p class="picture-selfie-notice">Lưu ý:</p>-->

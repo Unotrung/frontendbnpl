@@ -8,8 +8,7 @@
         <div class="outer-frame-box" fxLayout="column" fxLayoutAlign="center center" appMarginTop="8" >
             <div class="inner-frame-box">
                 <div>
-                    <img [src]="(pictureService.citizenBackImageComplete$ | async) ? pictureService.citizenBackImage :
-                                (pictureService.citizenFrontImageComplete$ | async) ? pictureService.citizenFrontImage : ''"
+                    <img [src]="pictureService.currentShotImage"
                          height="200"
                          width="250" alt="">
                 </div>
@@ -37,7 +36,15 @@
             <p class="citizen-image-text">CMND mặt trước</p>
             <p class="citizen-image-text">CMND mặt sau</p>
         </div>
-        <div class="picture-selfie-notice" appMarginTop="16" fxFlexAlign="start">
+        <div class="warning" *ngIf="!((pictureService.citizenFrontImageComplete$ | async) && (pictureService.citizenBackImageComplete$ | async))"
+             fxFlexAlign="start" fxLayout="row" fxLayoutAlign="start center"
+             appMarginBottom="32"
+             appMarginTop="10" (click)="instruction = !instruction">
+            <img src="assets/images/warning.png" width="14" height="14">
+            <div class="image-title"> Chưa chụp {{!(pictureService.citizenFrontImageComplete$ | async)?'mặt trước/':''}}{{!(pictureService.citizenBackImageComplete$ | async)?'mặt sau':''}} CMND/CCCD </div>
+        </div>
+        <ng-container *ngIf="!((pictureService.citizenFrontImageComplete$ | async) && (pictureService.citizenBackImageComplete$ | async)) && instruction">
+        <div class="picture-selfie-notice" fxFlexAlign="start">
             Hướng dẫn:
         </div>
         <ul>
@@ -45,6 +52,7 @@
                 Nhấn vào nút màu đỏ để lần lượt chụp hình CMND/CCCD mặt trước và sau.
             </li>
         </ul>
+        </ng-container>
     </div>
     <button class="payment-button"
             appMarginTop="36"
