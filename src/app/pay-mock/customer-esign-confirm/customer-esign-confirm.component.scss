@@ -7,13 +7,8 @@
   letter-spacing: 0em;
   text-align: center;
 }
-.contract-box {
-  width: 378px;
-  height: 494px;
-  border: 1px solid #C4C4C4;
-  box-sizing: border-box;
-  border-radius: 8px;
-  padding-left: 36px;
+.global-box {
+  padding: 0 24px 0 24px;
 }
 
 .contract-content-title {
@@ -37,9 +32,36 @@
   font-weight: normal;
   font-size: 12px;
   line-height: 18px;
+  text-align: justify;
 }
 
 .payment-button {
   margin-bottom: 24px;
 }
 
+.contract-content {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  /* or 167% */
+
+  color: #000000;
+  display: block;
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+  .expand-button {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border: none;
+    background: white;
+  }
+}
+
+.expand-content {
+  height: 300px;
+  overflow: scroll;
+}

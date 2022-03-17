@@ -5,6 +5,8 @@ import {AuthService} from "../auth.service";
 import {Step} from "../step";
 import {LoadingService} from "../loading.service";
 import {CountdownComponent} from "ngx-countdown";
+import {CodeInputComponent} from "angular-code-input";
+import {BehaviorSubject} from "rxjs";
 
 @Component({
     selector: 'app-enter-otp',
@@ -13,17 +15,32 @@ import {CountdownComponent} from "ngx-countdown";
 })
 export class EnterOtpComponent implements OnInit {
     countdownComplete = false
-    otpFails = 0
+    otpFails$: BehaviorSubject<number>
     @ViewChild('cd', { static: false }) private countdown!: CountdownComponent;
+    @ViewChild('codeInput') codeInput !: CodeInputComponent;
     constructor(
         private dialogRef: MatDialogRef<EnterOtpComponent>,
         private router: Router,
         private authService: AuthService,
         private loadingService: LoadingService
     ) {
+        this.otpFails$ = new BehaviorSubject<number>(0)
     }
 
     ngOnInit(): void {
+        this.otpFails$.subscribe({
+            next: otpFails => {
+            if (otpFails >= 5) {
+                //todo: API call for register suspend 24 hours
+                setTimeout(()=> {
+                    this.router.navigate(['/pay-mock/start-payment']).then(() => {
+                        //todo: clear all user info here
+                    })
+                }, 10000)
+            }
+            },
+            error : err => {}
+        })
     }
     // this called every time when user changed the code
     onCodeChanged(code: string) {
@@ -43,7 +60,9 @@ export class EnterOtpComponent implements OnInit {
                 }
             },
             error: ({error}) => {
-                this.otpFails ++
+                this.otpFails$.next(this.otpFails$.getValue() + 1)
+                this.codeInput.reset()
+
             },
             complete: () => {
 

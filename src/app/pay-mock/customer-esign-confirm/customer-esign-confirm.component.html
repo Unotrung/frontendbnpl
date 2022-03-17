@@ -4,17 +4,18 @@
     <div class="enter-info-text" appMarginTop="33">
         Xác nhận hợp đồng điện tử
     </div>
-    <div class="contract-box" fxLayout="column" fxLayoutAlign="top start" appMarginTop="36">
+    <div class="global-box" fxLayout="column" fxLayoutAlign="start center" appMarginTop="36">
         <div class="contract-content-title" appMarginTop="24">
             <p>Mẫu hợp đồng</p>
         </div>
-        <div >
-            <img src="assets/images/e_contract.png" width="306" height="285">
+        <div class="contract-content"  [ngClass]="{'expand-content': expand}">
+            <p>{{contract.content}}</p>
+            <button class="expand-button" *ngIf="!expand" (click)="expand = !expand">Xem thêm</button>
         </div>
-        <div appMarginTop="16">
+        <div appMarginTop="16" fxFlexAlign="start">
             <mat-checkbox [(ngModel)]="agreeContract">Tôi đồng ý với các điều khoản hợp đồng</mat-checkbox>
         </div>
-        <div appMarginTop="16">
+        <div appMarginTop="16" fxFlexAlign="start">
             <mat-checkbox [(ngModel)]="sendOtpToPhone">Vui lòng gởi OTP xác nhận về điện thoại đã đăng ký VOOLO của tôi</mat-checkbox>
         </div>
     </div>

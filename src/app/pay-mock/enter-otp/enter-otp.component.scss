@@ -42,6 +42,18 @@ button {
   border: none;
 }
 
+.image-title {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 30px;
+  /* or 214% */
+  text-align: center;
+
+  color: #000000;
+}
+
 //.send-otp:hover {
 //  cursor: pointer;
 //}
@@ -51,4 +63,16 @@ button {
 //    text-decoration: none;
 //  }
 //  border: none;
+//}
+//code-input {
+//  --item-spacing: 10px;
+//  --item-height: 3em;
+//  --item-border: none;
+//  --item-border-bottom: 2px solid #dddddd;
+//  --item-border-has-value: none;
+//  --item-border-bottom-has-value: 2px solid #888888;
+//  --item-border-focused: none;
+//  --item-border-bottom-focused: 2px solid #809070;
+//  --item-shadow-focused: none;
+//  --item-border-radius: 0px;
 //}

@@ -83,7 +83,7 @@ import { CheckoutNotEnoughCreditComponent } from './checkout-not-enough-credit/c
       CheckoutItemsComponent,
       VerifyPinChildComponent,
       CheckoutFinishComponent,
-      CheckoutNotEnoughCreditComponent,
+      CheckoutNotEnoughCreditComponent
   ],
     exports: [
         LoadingComponent,
