@@ -7,3 +7,36 @@
   letter-spacing: 0em;
   text-align: center;
 }
+
+.global-box {
+  padding: 0 32px 0 32px;
+}
+
+.process-header {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+
+  /* Ink/ink500 */
+  color: #04113E;
+}
+.process-text {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(0, 0, 0, 0.8);
+}
+.note {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+.note-red {
+  color: #EB5757;
+}

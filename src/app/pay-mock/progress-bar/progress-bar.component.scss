@@ -1,0 +1,28 @@
+:host {
+  width: 100%;
+}
+.progress-bar-container {
+  background: #FFFFFF;
+  /* Gray 4 */
+  border: 1px solid #BDBDBD;
+  box-sizing: border-box;
+  border-radius: 100px;
+  height: 20px;
+}
+
+.progress-bar-indicator {
+  height: 100%;
+  border-radius: 25px;
+  /* this will do the magic */
+  -webkit-mask:linear-gradient(#fff 0 0);
+  mask:linear-gradient(#fff 0 0);
+}
+.progress-bar-indicator::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-image: linear-gradient(90deg, rgba(18, 194, 233, 0.7) 10.73%, rgba(196, 113, 237, 0.8) 47.81%, rgba(246, 79, 89, 0.8) 93.52%); /* your gradient here */
+}

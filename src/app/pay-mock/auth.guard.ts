@@ -76,8 +76,8 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
                 return true;
             } else if ((url.indexOf('customer-information-process') > -1) && (this.authService.registerStep$.getValue() >= Step.customerInformationProcess)) {
                 return true;
-            } else if ((url.indexOf('customer-information-finish') > -1) && (this.authService.registerStep$.getValue() >= Step.customerInformationFinish)) {
-                return true;
+            // } else if ((url.indexOf('customer-information-finish') > -1) && (this.authService.registerStep$.getValue() >= Step.customerInformationFinish)) {
+            //     return true;
             } else {
                 this.authService.redirectUrl = url;
                 const urlRedirect = `/pay-mock/${this.getUrlStep(this.authService.registerStep$.getValue())}`
@@ -130,10 +130,10 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
                 urlStep = 'customer-information-process';
                 break;
             }
-            case 8: {
-                urlStep = 'customer-information-finish'
-                break;
-            }
+            // case 8: {
+            //     urlStep = 'customer-information-finish'
+            //     break;
+            // }
             default : {
                 urlStep = 'register'
                 break;

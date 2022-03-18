@@ -8,14 +8,13 @@ import {CustomerConfirmInfoComponent} from "./customer-confirm-info/customer-con
 import {
     CustomerInformationProcessComponent
 } from "./customer-information-process/customer-information-process.component";
-import {CustomerInformationFinishComponent} from "./customer-information-finish/customer-information-finish.component";
+// import {CustomerInformationFinishComponent} from "./customer-information-finish/customer-information-finish.component";
 import {
     CustomerInformationRegisterComponent
 } from "./customer-information-register/customer-information-register.component";
 import {CustomerEsignConfirmComponent} from "./customer-esign-confirm/customer-esign-confirm.component";
 import {CustomerPinInstallComponent} from "./customer-pin-install/customer-pin-install.component";
 import {CheckoutComponent} from "./checkout/checkout.component";
-import {CheckoutDetailBillComponent} from "./checkout-detail-bill/checkout-detail-bill.component";
 import {PictureSelfieComponent} from "./picture-selfie/picture-selfie.component";
 import {CitizenCardComponent} from "./citizen-card/citizen-card.component";
 import {AuthGuard} from "./auth.guard";
@@ -52,13 +51,13 @@ const routes: Routes = [
                 path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'customer-information-process', component: CustomerInformationProcessComponent, canActivate: [AuthGuard]
+                path: 'customer-information-process', component: CustomerInformationProcessComponent
             },
+            // {
+            //     path: 'customer-information-finish', component: CustomerInformationFinishComponent
+            // },
             {
-                path: 'customer-information-finish', component: CustomerInformationFinishComponent, canActivate: [AuthGuard]
-            },
-            {
-                path: 'customer-information-register', component: CustomerInformationRegisterComponent
+                path: 'customer-information-register', component: CustomerInformationRegisterComponent, canActivate: [AuthGuard]
             },
             {
                 path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthGuard]
@@ -68,9 +67,6 @@ const routes: Routes = [
             },
             {
                 path: 'customer-pin-install', component: CustomerPinInstallComponent, canActivate: [AuthGuard]
-            },
-            {
-                path: 'checkout-detail-bill',component: CheckoutDetailBillComponent, canActivate: [AuthGuard]
             },
             // {
             //     path: 'electronic-contract', component: ElectronicContractComponent
@@ -112,10 +108,10 @@ const routes: Routes = [
                 path: 'forgot-pin-fail', component: ForgotPinFailComponent
             }
         ]
-    },
-    {
-        path: '**', component: PageNotFoundComponent
     }
+    // {
+    //     path: '**', component: PageNotFoundComponent
+    // }
 ];
 
 @NgModule({

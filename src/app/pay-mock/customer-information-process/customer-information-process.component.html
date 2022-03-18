@@ -4,5 +4,20 @@
     <div class="enter-info-text" appMarginTop="33">
         Xác minh thông tin
     </div>
-    <img src="assets/images/info_confirm_box.png" width="378" height="342" appMarginTop="39">
+    <div class="global-box" fxLayoutAlign="start center" fxLayout="column" appMarginTop="40">
+        <div class="process-header" appMarginTop="100">
+            Đang trong tiến trình xác minh thông tin
+        </div>
+        <div appMarginTop="36"></div>
+        <app-progress-bar [progress]="(progress$ | async)!"></app-progress-bar>
+        <div class="process-text" appMarginTop="24">
+            {{progress$ | async}}% completed
+        </div>
+        <div class="note note-red" fxFlexAlign="start" appMarginTop="32">
+            Lưu ý
+        </div>
+        <div class="note" fxFlexAlign="start" appMarginBottom="40">
+            <span class="note-red">* </span> Tiến trình xác minh hồ sơ sẽ mất 5-15 phút
+        </div>
+    </div>
 </div>

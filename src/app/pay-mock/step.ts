@@ -7,6 +7,6 @@ export enum Step {
     customerPinInstall,
     customerEsignConfirm,
     customerInformationProcess,
-    customerInformationFinish,
+    // customerInformationFinish,
     checkout
 }
