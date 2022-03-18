@@ -135,6 +135,24 @@ export class PictureService {
             return;
           }
         }
+        if (side === 'front') {
+          this.messageService.messageData$.next({
+            reason: MessageReason.failFrontIdScreenShot,
+            messageTitle: 'Thông báo',
+            message: 'Lỗi chụp hình cmnd/cccd mặt trước, đề nghị chụp lại',
+            closeMessage: 'Chụp lại'
+          })
+        }
+        if (side === 'back') {
+          this.messageService.messageData$.next({
+            reason: MessageReason.failFrontIdScreenShot,
+            messageTitle: 'Thông báo',
+            message: 'Lỗi chụp hình cmnd/cccd mặt sau, đề nghị chụp lại',
+            closeMessage: 'Chụp lại'
+          })
+        }
+        this.messageService.onOpenDialog()
+
       }
       if(HVResponse) {
         const apiResults = HVResponse.getApiResult();
