@@ -26,6 +26,10 @@ import {ForgotPinCardIdComponent} from "./forgot-pin-card-id/forgot-pin-card-id.
 import {CheckoutConfirmComponent} from "./checkout-confirm/checkout-confirm.component";
 import {CheckoutFinishComponent} from "./checkout-finish/checkout-finish.component";
 import {CheckoutNotEnoughCreditComponent} from "./checkout-not-enough-credit/checkout-not-enough-credit.component";
+import {ForgotPinOtpComponent} from "./forgot-pin-otp/forgot-pin-otp.component";
+import {ForgotPinPinComponent} from "./forgot-pin-pin/forgot-pin-pin.component";
+import {ForgotPinSuccessComponent} from "./forgot-pin-success/forgot-pin-success.component";
+import {ForgotPinFailComponent} from "./forgot-pin-fail/forgot-pin-fail.component";
 
 const routes: Routes = [
     {path: '', redirectTo: 'pay-mock', pathMatch: 'full'},
@@ -98,6 +102,18 @@ const routes: Routes = [
             },
             {
                 path: 'checkout-not-enough-credit', component: CheckoutNotEnoughCreditComponent, canActivate: [AuthGuard]
+            },
+            {
+                path: 'forgot-pin-otp', component: ForgotPinOtpComponent
+            },
+            {
+                path: 'forgot-pin-pin', component: ForgotPinPinComponent
+            },
+            {
+                path: 'forgot-pin-success', component: ForgotPinSuccessComponent
+            },
+            {
+                path: 'forgot-pin-fail', component: ForgotPinFailComponent
             }
         ]
     },

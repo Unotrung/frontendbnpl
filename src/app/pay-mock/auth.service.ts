@@ -105,4 +105,38 @@ export class AuthService {
       this.user$.next({...this.user$.getValue(), name: data['name']})
     }))
   }
+
+  sendOTPRequestResetPin(): Observable<any> {
+    const uri = `${environment.localAPIServer}v1/user/sendOtpPin`
+    return this.http.post<any>(encodeURI(uri), {
+      "phone": this.user$.getValue().phone,
+      "nid": this.user$.getValue().citizenId
+    })
+  }
+  verifyOTPRequestPin(): Observable<any> {
+    const uri = `${environment.localAPIServer}v1/user/verifyOtpPin`
+    return this.http.post<any>(encodeURI(uri), {
+      "phone": this.user$.getValue().phone,
+      "nid": this.user$.getValue().citizenId,
+      "otp": this.user$.getValue().otp
+    }).pipe(tap(data => {
+      if (data && data['status']) {
+        this.user$.next({...this.user$.getValue(), accessToken: data['token']})
+      }
+    }))
+  }
+
+  changePinCode():Observable<any> {
+    const uri = `${environment.localAPIServer}v1/user/updatepin`
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.user$.getValue().accessToken}`
+    })
+    return this.http.put<any>(encodeURI(uri), {
+      "phone": this.user$.getValue().phone,
+      "pin": this.user$.getValue().pin
+    }, {headers}).pipe(tap(data => {
+
+    }))
+  }
 }

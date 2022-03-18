@@ -46,6 +46,10 @@ import { CheckoutItemsComponent } from './checkout-items/checkout-items.componen
 import { VerifyPinChildComponent } from './verify-pin-child/verify-pin-child.component';
 import { CheckoutFinishComponent } from './checkout-finish/checkout-finish.component';
 import { CheckoutNotEnoughCreditComponent } from './checkout-not-enough-credit/checkout-not-enough-credit.component';
+import { ForgotPinOtpComponent } from './forgot-pin-otp/forgot-pin-otp.component';
+import { ForgotPinPinComponent } from './forgot-pin-pin/forgot-pin-pin.component';
+import { ForgotPinSuccessComponent } from './forgot-pin-success/forgot-pin-success.component';
+import { ForgotPinFailComponent } from './forgot-pin-fail/forgot-pin-fail.component';
 
 
 @NgModule({
@@ -83,7 +87,11 @@ import { CheckoutNotEnoughCreditComponent } from './checkout-not-enough-credit/c
       CheckoutItemsComponent,
       VerifyPinChildComponent,
       CheckoutFinishComponent,
-      CheckoutNotEnoughCreditComponent
+      CheckoutNotEnoughCreditComponent,
+      ForgotPinOtpComponent,
+      ForgotPinPinComponent,
+      ForgotPinSuccessComponent,
+      ForgotPinFailComponent
   ],
     exports: [
         LoadingComponent,
