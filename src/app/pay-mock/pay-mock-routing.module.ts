@@ -17,7 +17,6 @@ import {CustomerPinInstallComponent} from "./customer-pin-install/customer-pin-i
 import {CheckoutComponent} from "./checkout/checkout.component";
 import {CheckoutDetailBillComponent} from "./checkout-detail-bill/checkout-detail-bill.component";
 import {PictureSelfieComponent} from "./picture-selfie/picture-selfie.component";
-import {ErrorServerComponent} from "./error-server/error-server.component";
 import {CitizenCardComponent} from "./citizen-card/citizen-card.component";
 import {AuthGuard} from "./auth.guard";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
@@ -78,9 +77,6 @@ const routes: Routes = [
             // },
             {
                 path: 'picture-selfie', component: PictureSelfieComponent, canActivate: [AuthGuard]
-            },
-            {
-                path: 'error-server', component: ErrorServerComponent
             },
             {
                 path: 'citizen-card', component: CitizenCardComponent

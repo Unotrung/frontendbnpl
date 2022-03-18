@@ -23,7 +23,6 @@ import {
   CustomerConfirmInfoComponent
 } from './customer-confirm-info/customer-confirm-info.component';
 import {PictureSelfieComponent} from "./picture-selfie/picture-selfie.component";
-import {ErrorServerComponent} from "./error-server/error-server.component";
 import {CountdownModule} from "ngx-countdown";
 import {WebcamModule} from "ngx-webcam";
 import { CameraModalComponent } from './camera-modal/camera-modal.component';
@@ -69,7 +68,6 @@ import { ForgotPinFailComponent } from './forgot-pin-fail/forgot-pin-fail.compon
       CustomerConfirmInfoComponent,
       CustomerConfirmDialogComponent,
       PictureSelfieComponent,
-      ErrorServerComponent,
       EnterOtpComponent,
       CameraModalComponent,
       CitizenCardComponent,
