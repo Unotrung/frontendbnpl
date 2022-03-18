@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {Step} from "../step";
 import {LoadingService} from "../loading.service";
 import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input'
+import value from "*.json";
 
 @Component({
   selector: 'app-register',
@@ -31,7 +32,7 @@ export class RegisterComponent implements OnInit {
 
     //only number will be add
     keyPress(event: any) {
-        const pattern = /[0-9\+\-\ ]/;
+        const pattern = /[0-9]/;
         let inputChar = String.fromCharCode(event.charCode);
         if (event.keyCode != 8 && !pattern.test(inputChar)) {
             event.preventDefault();
@@ -43,6 +44,11 @@ export class RegisterComponent implements OnInit {
                 Validators.pattern("^[0-9]*$"),
                 Validators.minLength(10), Validators.maxLength(10)]]
         });
+        this.f['phonenumber'].valueChanges.subscribe(value => {
+            if (value.length > 10) {
+                this.f['phonenumber'].setValue(value.slice(0,10))
+            }
+        })
     }
 // convenience getter for easy access to form fields
     get f(): {

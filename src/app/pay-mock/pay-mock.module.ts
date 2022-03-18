@@ -49,6 +49,7 @@ import { ForgotPinPinComponent } from './forgot-pin-pin/forgot-pin-pin.component
 import { ForgotPinSuccessComponent } from './forgot-pin-success/forgot-pin-success.component';
 import { ForgotPinFailComponent } from './forgot-pin-fail/forgot-pin-fail.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { ProgressStepComponent } from './progress-step/progress-step.component';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
       ForgotPinPinComponent,
       ForgotPinSuccessComponent,
       ForgotPinFailComponent,
-      ProgressBarComponent
+      ProgressBarComponent,
+      ProgressStepComponent
   ],
     exports: [
         LoadingComponent,

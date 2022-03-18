@@ -197,6 +197,11 @@ export class CustomerInformationRegisterComponent implements OnInit {
         phone_ref: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"),
           Validators.minLength(10), Validators.maxLength(10)])
       })
+      this.f['phone_ref'].valueChanges.subscribe(value => {
+        if (value.length > 10) {
+          this.f['phone_ref'].setValue(value.slice(0,10))
+        }
+      })
 
       this.cityFilteredOptions = this.f['city'].valueChanges.pipe(
           startWith(''),
@@ -281,7 +286,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
   }
 
   keyPress(event: any) {
-    const pattern = /[0-9\+\-\ ]/;
+    const pattern = /[0-9]/;
     let inputChar = String.fromCharCode(event.charCode);
     if (event.keyCode != 8 && !pattern.test(inputChar)) {
       event.preventDefault();
