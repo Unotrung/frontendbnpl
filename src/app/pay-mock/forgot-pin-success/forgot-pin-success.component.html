@@ -1,1 +1,14 @@
-<p>forgot-pin-success works!</p>
+<div fxLayout="column" fxLayoutAlign="start center">
+    <img alt="FE Credit" src="assets/images/LogoFeCredit.png"/>
+    <div class="box" fxLayout="column" fxLayoutAlign="start center">
+        <img src="../../../assets/images/SuccessFully.png" alt="" width="28" height="28" appMarginTop="200">
+        <div class="message" appMarginTop="20">
+            Chúc mừng bạn đã thay đổi mã pin thành công
+        </div>
+        <button class="payment-button"
+                appMarginTop="32"
+                appMarginBottom="32"
+                (click)="onPinIChangeSuccessContinue()"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
+        </button>
+    </div>
+</div>

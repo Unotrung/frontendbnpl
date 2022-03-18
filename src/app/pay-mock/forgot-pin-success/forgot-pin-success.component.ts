@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-forgot-pin-success',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPinSuccessComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+      private router: Router,
+      private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  onPinIChangeSuccessContinue() {
+    this.authService.user$.next({...this.authService.user$.getValue(), pin: ''})
+    this.router.navigate(['pay-mock/verify-pin']).then()
   }
 
 }

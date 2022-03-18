@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {MatDialog} from "@angular/material/dialog";
+// import {MatDialog} from "@angular/material/dialog";
 import {CustomerInformationService} from "../customer-information.service";
 import {AuthService} from "../auth.service";
 import {Step} from "../step";
+import {LoadingService} from "../loading.service";
 
 @Component({
   selector: 'app-customer-confirm-info',
@@ -13,10 +14,11 @@ import {Step} from "../step";
 export class CustomerConfirmInfoComponent implements OnInit {
   address = '';
   constructor(
-      public dialog: MatDialog,
+      // public dialog: MatDialog,
       public customerInformationService: CustomerInformationService,
       private router: Router,
-      private authService: AuthService
+      private authService: AuthService,
+      private loadingService: LoadingService
       ) { }
 
   ngOnInit(): void {
@@ -27,15 +29,19 @@ export class CustomerConfirmInfoComponent implements OnInit {
   }
 
   onSendConfirm(){
-    const dialogRef = this.dialog.open(CustomerConfirmDialogComponent);
+    // const dialogRef = this.dialog.open(CustomerConfirmDialogComponent);
+    this.loadingService.loading$.next(true)
+
     setTimeout(()=>{
-      this.dialog.closeAll();
+      // this.dialog.closeAll();
       this.authService.registerStep$.next(Step.customerPinInstall);
-      this.router.navigate(['pay-mock/customer-pin-install']).then()
+      this.router.navigate(['pay-mock/customer-pin-install']).then(()=>{
+        this.loadingService.loading$.next(false)
+      })
     }, 3000)
 
-    dialogRef.afterClosed().subscribe(result => {
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    // });
   }
 
 }
