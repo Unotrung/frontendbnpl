@@ -1,0 +1,42 @@
+:host {
+  position: relative;
+  display: block;
+}
+.bar-step {
+  width: 100%;
+  margin: auto;
+  margin-top: 24px !important;
+  position: relative;
+}
+.text-step {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 9px;
+  line-height: 11px;
+  color: #4ECB71;
+  width: 49px;
+  text-align: center;
+}
+
+.cycle-step {
+  width: 15px;
+  height: 15px;
+  background: #C4C4C4;
+  border-radius: 50%;
+}
+
+.line-step {
+  position: absolute;
+  width: 80%;
+  height: 0;
+  left: 10%;
+  top: 24%;
+  border-top: 1px solid #C4C4C4;
+}
+
+.line-step div {
+  margin-top: -1.5px;
+  width: 52%;
+  border-top: 2px solid #4ECB71;
+}
