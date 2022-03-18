@@ -51,7 +51,7 @@ const routes: Routes = [
                 path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'customer-information-process', component: CustomerInformationProcessComponent
+                path: 'customer-information-process', component: CustomerInformationProcessComponent, canActivate: [AuthGuard]
             },
             // {
             //     path: 'customer-information-finish', component: CustomerInformationFinishComponent
@@ -75,7 +75,7 @@ const routes: Routes = [
                 path: 'picture-selfie', component: PictureSelfieComponent, canActivate: [AuthGuard]
             },
             {
-                path: 'citizen-card', component: CitizenCardComponent
+                path: 'citizen-card', component: CitizenCardComponent, canActivate: [AuthGuard]
             },
             {
                 path: 'forgot-pin-phone', component: ForgotPinPhoneComponent
