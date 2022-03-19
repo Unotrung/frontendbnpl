@@ -1,13 +1,13 @@
 <div class="bar-step">
     <div class="line-step">
-        <div [ngStyle]="{'width.%' : 25}"></div>
+        <div [ngStyle]="{'width.%' : (currentStep-1)*25}"></div>
     </div>
     <mat-grid-list cols="5" rowHeight="2:1">
-        <mat-grid-tile *ngFor="let n of listItem ">
-            <div [style]="n.status ==true? 'background-color:#4ECB71':null" class="cycle-step"></div>
+        <mat-grid-tile *ngFor="let progressStep of progressSteps">
+            <div [style]="progressStep.id <= currentStep? 'background-color:#4ECB71':null" class="cycle-step"></div>
         </mat-grid-tile>
-        <mat-grid-tile *ngFor="let item of listItem ">
-            <p class="text-step">{{item.step}}</p>
+        <mat-grid-tile *ngFor="let progressStep of progressSteps ">
+            <p class="text-step">{{progressStep.title}}</p>
         </mat-grid-tile>
     </mat-grid-list>
 </div>

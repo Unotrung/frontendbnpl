@@ -19,7 +19,6 @@ import { CustomerInformationProcessComponent } from './customer-information-proc
 // import { CustomerInformationFinishComponent } from './customer-information-finish/customer-information-finish.component';
 import { CustomerInformationRegisterComponent } from './customer-information-register/customer-information-register.component';
 import {
-  CustomerConfirmDialogComponent,
   CustomerConfirmInfoComponent
 } from './customer-confirm-info/customer-confirm-info.component';
 import {PictureSelfieComponent} from "./picture-selfie/picture-selfie.component";
@@ -67,7 +66,6 @@ import { ProgressStepComponent } from './progress-step/progress-step.component';
       // CustomerInformationFinishComponent,
       CustomerInformationRegisterComponent,
       CustomerConfirmInfoComponent,
-      CustomerConfirmDialogComponent,
       PictureSelfieComponent,
       EnterOtpComponent,
       CameraModalComponent,

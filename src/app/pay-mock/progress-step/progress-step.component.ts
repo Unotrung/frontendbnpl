@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {ProgressStep} from "../progress-step";
+import {ProgressStepService} from "../progress-step.service";
 
 @Component({
   selector: 'app-progress-step',
@@ -6,14 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./progress-step.component.scss']
 })
 export class ProgressStepComponent implements OnInit {
-  listItem = [{id:1,step:'Thông tin khách hàng',status:true},
-    {id:2,step:'Cài đặt Pin',status:true},
-    {id:3,step:'E-Sign',status:false},
-    {id:4,step:'Xác minh thông tin',status:false},
-    {id:5,step:'Hoàn thành',status:false},
-  ];
 
-  constructor() { }
+  progressSteps: ProgressStep[]
+  currentStep: number
+
+  constructor(
+      private progressStepService: ProgressStepService
+  ) {
+    this.progressSteps = this.progressStepService.progressSteps$.getValue()
+    this.currentStep = this.progressStepService.step$.getValue()
+  }
 
   ngOnInit(): void {
   }

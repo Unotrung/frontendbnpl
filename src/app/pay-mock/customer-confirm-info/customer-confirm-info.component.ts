@@ -47,16 +47,16 @@ export class CustomerConfirmInfoComponent implements OnInit {
 }
 
 
-@Component({
-  selector: 'app-customer-confirm-dialog',
-  templateUrl: './customer-confirm-dialog.component.html',
-})
-export class CustomerConfirmDialogComponent implements OnInit {
-  address: string = '';
-  constructor(
-      private router:Router
-  ) { }
-
-  ngOnInit(): void {
-  }
-}
+// @Component({
+//   selector: 'app-customer-confirm-dialog',
+//   templateUrl: './customer-confirm-dialog.component.html',
+// })
+// export class CustomerConfirmDialogComponent implements OnInit {
+//   address: string = '';
+//   constructor(
+//       private router:Router
+//   ) { }
+//
+//   ngOnInit(): void {
+//   }
+// }

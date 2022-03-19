@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
 import {Step} from "../step";
 import {LoadingService} from "../loading.service";
+import {ProgressStepService} from "../progress-step.service";
 
 @Component({
   selector: 'app-customer-pin-install',
@@ -18,10 +19,12 @@ export class CustomerPinInstallComponent implements OnInit {
       private validatorService: ValidatorService,
       private router: Router,
       private authService: AuthService,
-      private loadingService: LoadingService
+      private loadingService: LoadingService,
+      private progressStepService: ProgressStepService
   ) { }
 
   ngOnInit(): void {
+    this.progressStepService.step$.next(2)
   }
 
   // this called every time when user changed the code

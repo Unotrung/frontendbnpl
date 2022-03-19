@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {AuthService} from "../auth.service";
 import {Step} from "../step";
 import {BehaviorSubject, timer} from "rxjs";
+import {ProgressStepService} from "../progress-step.service";
 
 @Component({
   selector: 'app-customer-information-process',
@@ -13,9 +14,11 @@ export class CustomerInformationProcessComponent implements OnInit {
   progress$: BehaviorSubject<number>
   constructor(
       private router: Router,
-      private authService: AuthService
+      private authService: AuthService,
+      private progressStepService: ProgressStepService
   ) {
     this.progress$ = new BehaviorSubject<number>(0)
+    this.progressStepService.step$.next(4)
   }
 
   ngOnInit(): void {
@@ -27,6 +30,7 @@ export class CustomerInformationProcessComponent implements OnInit {
     this.progress$.subscribe(progress => {
       if (progress === 100) {
         this.authService.registerStep$.next(Step.checkout)
+        this.progressStepService.step$.next(5)
         this.router.navigate(['pay-mock/checkout']).then()
       }
     })

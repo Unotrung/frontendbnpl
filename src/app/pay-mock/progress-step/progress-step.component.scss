@@ -1,12 +1,14 @@
-:host {
-  position: relative;
-  display: block;
-}
+//:host {
+//  position: relative;
+//  display: block;
+//}
 .bar-step {
-  width: 100%;
+  //display: block;
+  width: 380px;
   margin: auto;
   margin-top: 24px !important;
   position: relative;
+  height: 76px;
 }
 .text-step {
   font-family: Mulish;

@@ -7,6 +7,7 @@ import {MessageReason} from "../message";
 import {ContractService} from "../contract.service";
 import {Contract} from "../contract";
 import {LoadingService} from "../loading.service";
+import {ProgressStepService} from "../progress-step.service";
 
 @Component({
   selector: 'app-customer-esign-confirm',
@@ -24,9 +25,11 @@ export class CustomerEsignConfirmComponent implements OnInit {
       private authService: AuthService,
       private messageService: MessageService,
       private contractService: ContractService,
-      private loadingService: LoadingService
+      private loadingService: LoadingService,
+      private progressStepService: ProgressStepService
   ) {
     this.contract = contractService.contract.getValue()
+    this.progressStepService.step$.next(3)
   }
 
   ngOnInit(): void {
