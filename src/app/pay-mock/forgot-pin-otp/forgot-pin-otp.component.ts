@@ -47,6 +47,11 @@ export class ForgotPinOtpComponent implements OnInit {
 
   // this called only if user entered full code
   onCodeCompleted(code: string) {
+    if (this.countdownComplete) {
+      this.otpFails$.next(this.otpFails$.getValue() + 1)
+      this.codeInput.reset()
+      return
+    }
     this.loadingService.loading$.next(true)
     //todo Check if otp code is correct, then
     this.authService.user$.next({...this.authService.user$.getValue(), otp: code})

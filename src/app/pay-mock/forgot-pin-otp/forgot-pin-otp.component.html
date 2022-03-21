@@ -17,6 +17,12 @@
             <img src="assets/images/warning.png" width="14" height="14">
             <div class="image-title"> Mã OTP không hợp lệ {{otpFails$ | async}}/5</div>
         </div>
+        <div class="warning" *ngIf="countdownComplete"
+             fxFlexAlign="start" fxLayout="row" fxLayoutAlign="start center"
+             appMarginTop="8">
+            <img src="assets/images/warning.png" width="14" height="14">
+            <div class="image-title"> Mã OTP hết hạn</div>
+        </div>
         <div class="warning image-title" *ngIf="(otpFails$ | async)! >= 5"
              appElDimension width="240"
              appMarginTop="16">
