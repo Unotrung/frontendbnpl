@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {CameraModalComponent} from "../camera-modal/camera-modal.component";
 import {PictureService} from "../picture.service";
-import {FormControl, Validators} from "@angular/forms";
+import {FormControl, ValidationErrors, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
@@ -42,11 +42,18 @@ export class PictureSelfieComponent implements OnInit {
     // this.loadingService.loading$.next(true)
     const citizenId = this.authService.user$.getValue().citizenId
 
-    this.citizenId = new FormControl(citizenId, {validators: [Validators.pattern(/\b\d{9}\b|\b\d{12}\b/g), Validators.required], updateOn: 'blur'})
+    this.citizenId = new FormControl(citizenId, {validators: [
+        // Validators.pattern(/\b\d{9}\b|\b\d{12}\b/g),
+        Validators.required
+      ], updateOn: 'blur'})
     // this.formGroup = new FormGroup({
     //   citizenImage: new FormControl(''),
     //   image: new FormControl('')
     // })
+    console.log(this.citizenId)
+    this.citizenId.valueChanges.subscribe({
+      next : value => console.log(this.citizenId)
+    })
   }
 
   onFileChanged(event: any) {
@@ -72,10 +79,17 @@ export class PictureSelfieComponent implements OnInit {
   }
 
   onSelfieContinue() {
-    //to do: check if user exist lazada ... (need api here), then route
-    this.authService.user$.next({...this.authService.user$.getValue(),citizenId: this.citizenId.value})
-    this.authService.registerStep$.next(Step.citizenCard);
-    this.router.navigate(['pay-mock/citizen-card']).then();
+    const nid = this.citizenId.value
+    if (/\b\d{9}\b|\b\d{12}\b/g.exec(nid)) {
+      //to do: check if user exist lazada ... (need api here), then route
+      this.authService.user$.next({...this.authService.user$.getValue(),citizenId: this.citizenId.value})
+      this.authService.registerStep$.next(Step.citizenCard);
+      this.router.navigate(['pay-mock/citizen-card']).then();
+    }
+    else {
+      this.citizenId.setErrors(Validators.pattern(/\b\d{9}\b|\b\d{12}\b/g))
+    }
+
   }
   // onFileSelect(event: any) {
   //   if (event.target.files.length > 0) {
