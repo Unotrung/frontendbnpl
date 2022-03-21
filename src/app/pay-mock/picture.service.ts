@@ -50,6 +50,14 @@ export class PictureService {
       }
       else return;
     })
+    // this.citizenFrontImageComplete$.subscribe({
+    //   next : completed => {
+    //     if (completed && this.citizenBackImageComplete$.getValue()) {
+    //       console.log('start verify match')
+    //       this.onVerifyMatchImage();
+    //     }
+    //   }
+    // })
     this.loadingService.loading$.next(true)
     this.hv.onGetHVToken().subscribe({next: data => {
       if (data && data.status === 'success') {
@@ -234,6 +242,19 @@ export class PictureService {
         console.log(apiResults);
         if (apiResults && apiResults['result']['match'] === 'yes') {
           this.kycCustomerComplete$.next(true);
+          return;
+        }
+        if (apiResults && apiResults['result']['match'] === 'no') {
+          this.selfieImageComplete$.next(false)
+          this.citizenFrontImageComplete$.next(false)
+          this.messageService.messageData$.next({
+            reason: MessageReason.failOnCheckSelfieAndImageIdCard,
+            messageTitle: 'Thông báo',
+            message: 'Ảnh chân dung và ảnh trên CCCD không khớp, đề nghị chụp lại',
+            closeMessage: 'CHỤP ẢNH LẠI',
+          })
+          this.messageService.onOpenDialog()
+          return;
         }
       }
     };
