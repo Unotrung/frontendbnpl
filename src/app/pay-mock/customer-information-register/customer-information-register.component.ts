@@ -317,9 +317,18 @@ export class CustomerInformationRegisterComponent implements OnInit {
       }
     })
   }
+  onSelectedWard(ward: string) {
+    this.wardOptions.forEach((value, index) => {
+      if (ward === value.name) {
+        this.selectedWard$.next(value)
+      }
+    })
+  }
 
   onContinue() {
     this.authService.registerStep$.next(Step.customerConfirmInfo)
+
+
     this.customerInformationService.customerInfo = {
     // @ts-ignore
       name: this.f['name'].value,
@@ -331,7 +340,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
 
       city: this.f['city'].value,
       district: this.f['district'].value,
-      ward: this.f['ward'].value,
+      ward: `${this.selectedWard$.getValue().prefix} ${this.f['ward'].value}`,
       street: this.f['street'].value,
 
       personal_title_ref: this.f['personal_title_ref'].value,

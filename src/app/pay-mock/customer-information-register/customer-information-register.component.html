@@ -109,7 +109,7 @@
                        formControlName="ward"
                        onClick="this.setSelectionRange(0, this.value.length)"
                        [matAutocomplete]="autoWard">
-                <mat-autocomplete autoActiveFirstOption #autoWard="matAutocomplete">
+                <mat-autocomplete autoActiveFirstOption #autoWard="matAutocomplete" (optionSelected)="onSelectedWard($event.option.value)">
                     <mat-option *ngFor="let option of wardFilteredOptions | async" [value]="option">
                         {{option}}
                     </mat-option>
