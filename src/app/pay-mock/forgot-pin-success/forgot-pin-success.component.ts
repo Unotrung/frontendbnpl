@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 
 @Component({
   selector: 'app-forgot-pin-success',
@@ -11,7 +11,7 @@ export class ForgotPinSuccessComponent implements OnInit {
 
   constructor(
       private router: Router,
-      private authService: AuthService
+      private authService: AuthBnplService
   ) { }
 
   ngOnInit(): void {

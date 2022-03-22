@@ -5,7 +5,7 @@ import {BehaviorSubject, map, Observable, startWith} from "rxjs";
 import {City, District, Ward} from "../vietnamLocation";
 import {Router} from "@angular/router";
 import {CustomerInformationService} from "../customer-information.service";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {Step} from "../step";
 import {PictureService} from "../picture.service";
 import {DatePipe} from "@angular/common";
@@ -44,7 +44,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
   constructor(
       private locationAddressService: LocationAddressService,
       private customerInformationService: CustomerInformationService,
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private router: Router,
       private pictureService: PictureService,
       private datePipe: DatePipe

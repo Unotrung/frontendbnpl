@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {Router} from "@angular/router";
 import {Step} from "../step";
 import {LoadingService} from "../loading.service";
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
     submitted = false;
     constructor(
         private formBuilder: FormBuilder,
-        private authService: AuthService,
+        private authService: AuthBnplService,
         private router: Router,
         private loadingService: LoadingService
     ) { }

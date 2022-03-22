@@ -11,15 +11,15 @@ import {
     UrlTree
 } from '@angular/router';
 import {max, Observable} from 'rxjs';
-import {AuthService} from "./auth.service";
+import {AuthBnplService} from "./auth-bnpl.service";
 import {Step} from "./step";
 
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad {
+export class AuthBnplGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad {
 
-    constructor(private authService: AuthService, private router: Router) {
+    constructor(private authService: AuthBnplService, private router: Router) {
     }
 
     canActivate(

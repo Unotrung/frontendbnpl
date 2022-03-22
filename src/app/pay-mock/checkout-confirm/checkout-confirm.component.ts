@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TenorService} from "../tenor.service";
 import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {LoadingService} from "../loading.service";
 import {CheckoutService} from "../checkout.service";
 
@@ -16,7 +16,7 @@ export class CheckoutConfirmComponent implements OnInit {
   constructor(
       public tenorService: TenorService,
       private router: Router,
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private loadingService: LoadingService,
       private checkoutService: CheckoutService
   ) { }

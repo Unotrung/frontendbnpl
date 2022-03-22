@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {Router} from "@angular/router";
 import {LoadingService} from "../loading.service";
 
@@ -12,7 +12,7 @@ import {LoadingService} from "../loading.service";
 export class ForgotPinCardIdComponent implements OnInit {
   cardIdForm!: FormControl
   constructor(
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private router: Router,
       private loadingService: LoadingService
   ) { }

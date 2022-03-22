@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {ItemService} from "../item.service";
 
 @Component({
@@ -12,7 +12,7 @@ export class CheckoutHeaderComponent implements OnInit {
   credit: number = 0
   @Input() smallView: Boolean = false
   constructor(
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private itemService: ItemService
   ) {
     this.authService.user$.subscribe(({name,creditLimit}) => {

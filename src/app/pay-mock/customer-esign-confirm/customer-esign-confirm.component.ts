@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {EnterOtpComponent} from "../enter-otp/enter-otp.component";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {MessageService} from "../message.service";
 import {MessageReason} from "../message";
 import {ContractService} from "../contract.service";
@@ -22,7 +22,7 @@ export class CustomerEsignConfirmComponent implements OnInit {
   expand: boolean = false
   constructor(
       private dialog: MatDialog,
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private messageService: MessageService,
       private contractService: ContractService,
       private loadingService: LoadingService,

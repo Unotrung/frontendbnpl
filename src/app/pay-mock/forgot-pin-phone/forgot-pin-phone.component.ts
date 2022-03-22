@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 
@@ -13,7 +13,7 @@ export class ForgotPinPhoneComponent implements OnInit {
   phoneForm!: FormControl
 
   constructor(
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private router: Router
       ) { }
 

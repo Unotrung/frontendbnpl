@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 // import {MatDialog} from "@angular/material/dialog";
 import {CustomerInformationService} from "../customer-information.service";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {Step} from "../step";
 import {LoadingService} from "../loading.service";
 
@@ -17,7 +17,7 @@ export class CustomerConfirmInfoComponent implements OnInit {
       // public dialog: MatDialog,
       public customerInformationService: CustomerInformationService,
       private router: Router,
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private loadingService: LoadingService
       ) { }
 

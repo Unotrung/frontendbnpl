@@ -8,7 +8,7 @@ import {LoadingService} from "./loading.service";
 import {MessageService} from "./message.service";
 import {MessageReason} from "./message";
 import {checkInfo} from "./helper/helper";
-import {AuthService} from "./auth.service";
+import {AuthBnplService} from "./auth-bnpl.service";
 import {Step} from "./step";
 
 @Injectable({
@@ -35,7 +35,7 @@ export class PictureService {
       private hv: HypervergeService,
       private loadingService: LoadingService,
       private messageService: MessageService,
-      private authService: AuthService
+      private authService: AuthBnplService
   ) {
     this.selfieImageComplete$ = new BehaviorSubject<boolean>(false);
     this.citizenFrontData$ = new BehaviorSubject<any>(null);

@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from "@angular/core";
 import {MatDialogRef} from "@angular/material/dialog";
 import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {Step} from "../step";
 import {LoadingService} from "../loading.service";
 import {CountdownComponent} from "ngx-countdown";
@@ -21,7 +21,7 @@ export class EnterOtpComponent implements OnInit {
     constructor(
         private dialogRef: MatDialogRef<EnterOtpComponent>,
         private router: Router,
-        private authService: AuthService,
+        private authService: AuthBnplService,
         private loadingService: LoadingService
     ) {
         this.otpFails$ = new BehaviorSubject<number>(0)

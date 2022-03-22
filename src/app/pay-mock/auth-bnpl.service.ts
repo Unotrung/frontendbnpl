@@ -9,7 +9,7 @@ import {CustomerInformationService} from "./customer-information.service";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthBnplService {
   user$: BehaviorSubject<User>;
   registerStep$: BehaviorSubject<Step>;
 

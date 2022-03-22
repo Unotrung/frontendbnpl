@@ -3,7 +3,7 @@ import {CustomerInformation} from "./customer_infomation";
 import {Observable, tap} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpParams} from "@angular/common/http";
-import {AuthService} from "./auth.service";
+import {AuthBnplService} from "./auth-bnpl.service";
 
 @Injectable({
   providedIn: 'root'

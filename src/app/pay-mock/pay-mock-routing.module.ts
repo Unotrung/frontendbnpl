@@ -17,8 +17,7 @@ import {CustomerPinInstallComponent} from "./customer-pin-install/customer-pin-i
 import {CheckoutComponent} from "./checkout/checkout.component";
 import {PictureSelfieComponent} from "./picture-selfie/picture-selfie.component";
 import {CitizenCardComponent} from "./citizen-card/citizen-card.component";
-import {AuthGuard} from "./auth.guard";
-import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import {AuthBnplGuard} from "./auth-bnpl.guard";
 import {ForgotPinPhoneComponent} from "./forgot-pin-phone/forgot-pin-phone.component";
 import {ForgotPinCardIdComponent} from "./forgot-pin-card-id/forgot-pin-card-id.component";
 import {CheckoutConfirmComponent} from "./checkout-confirm/checkout-confirm.component";
@@ -48,34 +47,34 @@ const routes: Routes = [
                 path: 'verify-pin', component: VerifyPinComponent
             },
             {
-                path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthGuard]
+                path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthBnplGuard]
             },
             {
-                path: 'customer-information-process', component: CustomerInformationProcessComponent, canActivate: [AuthGuard]
+                path: 'customer-information-process', component: CustomerInformationProcessComponent, canActivate: [AuthBnplGuard]
             },
             // {
             //     path: 'customer-information-finish', component: CustomerInformationFinishComponent
             // },
             {
-                path: 'customer-information-register', component: CustomerInformationRegisterComponent, canActivate: [AuthGuard]
+                path: 'customer-information-register', component: CustomerInformationRegisterComponent, canActivate: [AuthBnplGuard]
             },
             {
-                path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthGuard]
+                path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthBnplGuard]
             },
             {
-                path: 'customer-esign-confirm', component: CustomerEsignConfirmComponent, canActivate: [AuthGuard]
+                path: 'customer-esign-confirm', component: CustomerEsignConfirmComponent, canActivate: [AuthBnplGuard]
             },
             {
-                path: 'customer-pin-install', component: CustomerPinInstallComponent, canActivate: [AuthGuard]
+                path: 'customer-pin-install', component: CustomerPinInstallComponent, canActivate: [AuthBnplGuard]
             },
             // {
             //     path: 'electronic-contract', component: ElectronicContractComponent
             // },
             {
-                path: 'picture-selfie', component: PictureSelfieComponent, canActivate: [AuthGuard]
+                path: 'picture-selfie', component: PictureSelfieComponent, canActivate: [AuthBnplGuard]
             },
             {
-                path: 'citizen-card', component: CitizenCardComponent, canActivate: [AuthGuard]
+                path: 'citizen-card', component: CitizenCardComponent, canActivate: [AuthBnplGuard]
             },
             {
                 path: 'forgot-pin-phone', component: ForgotPinPhoneComponent
@@ -84,16 +83,16 @@ const routes: Routes = [
                 path: 'forgot-pin-card-id', component: ForgotPinCardIdComponent
             },
             {
-                path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuard]
+                path: 'checkout', component: CheckoutComponent, canActivate: [AuthBnplGuard]
             },
             {
-                path: 'checkout-confirm', component: CheckoutConfirmComponent, canActivate: [AuthGuard]
+                path: 'checkout-confirm', component: CheckoutConfirmComponent, canActivate: [AuthBnplGuard]
             },
             {
-                path: 'checkout-finish', component: CheckoutFinishComponent, canActivate: [AuthGuard]
+                path: 'checkout-finish', component: CheckoutFinishComponent, canActivate: [AuthBnplGuard]
             },
             {
-                path: 'checkout-not-enough-credit', component: CheckoutNotEnoughCreditComponent, canActivate: [AuthGuard]
+                path: 'checkout-not-enough-credit', component: CheckoutNotEnoughCreditComponent, canActivate: [AuthBnplGuard]
             },
             {
                 path: 'forgot-pin-otp', component: ForgotPinOtpComponent

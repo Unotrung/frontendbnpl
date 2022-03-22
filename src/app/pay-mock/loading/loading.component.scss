@@ -14,6 +14,7 @@
   height: 100%;
   z-index: 1003;
   //background: #000000;
+  background: white;
   overflow: hidden;
   opacity: 0.5;
 }
@@ -53,3 +54,12 @@
   box-shadow: 0 3px 3px 0 rgba(61, 175, 255, 1);
   animation: spin 1.5s linear infinite;
 }
+
+//.message {
+//  position: fixed;
+//  display: block;
+//  top: 60%;
+//  left: 20%;
+//  opacity: 1 !important;
+//  background: white;
+//}

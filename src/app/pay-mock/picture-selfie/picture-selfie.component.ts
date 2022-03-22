@@ -5,7 +5,7 @@ import {CameraModalComponent} from "../camera-modal/camera-modal.component";
 import {PictureService} from "../picture.service";
 import {FormControl, ValidationErrors, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {Router} from "@angular/router";
 import {Step} from "../step";
 import {CustomerInformationService} from "../customer-information.service";
@@ -30,7 +30,7 @@ export class PictureSelfieComponent implements OnInit {
       private dialog: MatDialog,
       public pictureService: PictureService,
       private http: HttpClient,
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private router: Router,
       private customerInformationService: CustomerInformationService,
       private loadingService: LoadingService
@@ -50,10 +50,6 @@ export class PictureSelfieComponent implements OnInit {
     //   citizenImage: new FormControl(''),
     //   image: new FormControl('')
     // })
-    console.log(this.citizenId)
-    this.citizenId.valueChanges.subscribe({
-      next : value => console.log(this.citizenId)
-    })
   }
 
   onFileChanged(event: any) {
@@ -81,7 +77,7 @@ export class PictureSelfieComponent implements OnInit {
   onSelfieContinue() {
     const nid = this.citizenId.value
     if (/\b\d{9}\b|\b\d{12}\b/g.exec(nid)) {
-      //to do: check if user exist lazada ... (need api here), then route
+      //todo: check if user exist lazada ... (need api here), then route
       this.authService.user$.next({...this.authService.user$.getValue(),citizenId: this.citizenId.value})
       this.authService.registerStep$.next(Step.citizenCard);
       this.router.navigate(['pay-mock/citizen-card']).then();

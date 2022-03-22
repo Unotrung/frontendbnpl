@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {Step} from "../step";
 import {BehaviorSubject, timer} from "rxjs";
 import {ProgressStepService} from "../progress-step.service";
@@ -14,7 +14,7 @@ export class CustomerInformationProcessComponent implements OnInit {
   progress$: BehaviorSubject<number>
   constructor(
       private router: Router,
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private progressStepService: ProgressStepService
   ) {
     this.progress$ = new BehaviorSubject<number>(0)

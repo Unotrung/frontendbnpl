@@ -3,7 +3,7 @@ import {BehaviorSubject} from "rxjs";
 import {CountdownComponent} from "ngx-countdown";
 import {CodeInputComponent} from "angular-code-input";
 import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {LoadingService} from "../loading.service";
 import {Step} from "../step";
 
@@ -20,7 +20,7 @@ export class ForgotPinOtpComponent implements OnInit {
   @ViewChild('codeInput') codeInput !: CodeInputComponent;
   constructor(
       private router: Router,
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private loadingService: LoadingService
   ) {
     this.otpFails$ = new BehaviorSubject<number>(0)

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ValidatorService} from "../validator.service";
 import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {Step} from "../step";
 import {LoadingService} from "../loading.service";
 import {ProgressStepService} from "../progress-step.service";
@@ -18,7 +18,7 @@ export class CustomerPinInstallComponent implements OnInit {
   constructor(
       private validatorService: ValidatorService,
       private router: Router,
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private loadingService: LoadingService,
       private progressStepService: ProgressStepService
   ) { }

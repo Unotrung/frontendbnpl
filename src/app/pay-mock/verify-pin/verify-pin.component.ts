@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {LoadingService} from "../loading.service";
 import {MessageService} from "../message.service";
 import {MessageReason} from "../message";
@@ -16,7 +16,7 @@ export class VerifyPinComponent implements OnInit {
 
   constructor(
       private router: Router,
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private loadingService: LoadingService,
       private messageService: MessageService
   ) { }

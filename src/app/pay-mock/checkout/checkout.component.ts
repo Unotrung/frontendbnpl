@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {Tenor} from "../tenor";
 import {TenorService} from "../tenor.service";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {ItemService} from "../item.service";
 
 @Component({
@@ -17,7 +17,7 @@ export class CheckoutComponent implements OnInit {
   constructor(
       private router: Router,
       private tenorService: TenorService,
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private itemService: ItemService
   ) {
     this.chosenTenor = null

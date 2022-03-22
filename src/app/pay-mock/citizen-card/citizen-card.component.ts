@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {PictureService} from "../picture.service";
-import {AuthService} from "../auth.service";
+import {AuthBnplService} from "../auth-bnpl.service";
 import {Router} from "@angular/router";
 import {Step} from "../step";
 
@@ -16,7 +16,7 @@ export class CitizenCardComponent implements OnInit {
 
   constructor(
       public pictureService: PictureService,
-      private authService: AuthService,
+      private authService: AuthBnplService,
       private router: Router
   ) { }
 
