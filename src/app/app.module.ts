@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from "./material/material.module";
-import { PayMockComponent } from './pay-mock/pay-mock.component';
+// import { PayMockComponent } from './pay-mock/pay-mock.component';
 import { PayMockModule } from "./pay-mock/pay-mock.module";
 import { StartPaymentComponent } from './pay-mock/start-payment/start-payment.component';
 import {HttpClientModule} from "@angular/common/http";
@@ -14,7 +14,7 @@ import {TopBarComponent} from "./top-bar/top-bar.component";
 @NgModule({
     declarations: [
         AppComponent,
-        PayMockComponent,
+        // PayMockComponent,
         TopBarComponent,
         StartPaymentComponent
     ],

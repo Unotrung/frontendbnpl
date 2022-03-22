@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap');
+
+@font-face {
+  font-family: 'mulish';
+  src: url('../font/mulish.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Mulish, "Helvetica Neue", sans-serif; }
+
+.payment-button {
+  width: 310px;
+  height: 40px;
+  background: linear-gradient(260.54deg, #68E89A 0%, #39D074 62.86%);
+  box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.15);
+  border-radius: 30px;
+  color: white;
+}
+.payment-button:hover {
+  cursor: pointer;
+}
+
+.payment-button:disabled,
+.payment-button[disabled]{
+  border: 1px solid #999999;
+  background: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  pointer-events: all !important;
+}
+
+.mat-dialog-container {
+  border-radius: 8px !important; ;
+  padding: 0 !important;
+}
+.error {
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: red;
+}
+
+.global-box {
+  width: 378px;
+  border: 1px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.global-input {
+  padding: 10px 0px 10px 8px;
+  width: 310px;
+  /* surface */
+  background: #FFFFFF;
+  /* Ink/ink300 */
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid rgba(4, 17, 62, 0.5);
+}
+
+.red-star {
+  color: red;
+}
+
+.message-box-wrapper{
+  width: 296px;
+
+  /* background_light */
+  background: #F5F5F5;
+  border-radius: 8px;
+}
+
+.global-title {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+
+  color: #2F2F2F;
+}
+
+button:hover {
+  cursor: pointer;
+}

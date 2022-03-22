@@ -9,8 +9,7 @@ declare var HVDocsModule: any;
 declare var HVNetworkHelper: any;
 import {Injectable, OnInit} from '@angular/core';
 import {environment} from "../../environments/environment";
-import {map, Observable, tap} from "rxjs";
-import axios from "axios";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +33,7 @@ export class HypervergeService implements OnInit{
     this.HVFaceModule = HVFaceModule;
     this.HVDocsModule = HVDocsModule;
     this.HVNetworkHelper = HVNetworkHelper;
-    this.serverAPI = environment.appServerAPI
+    this.serverAPI = environment.localAPIServer
   }
 
   ngOnInit(): void {
@@ -58,7 +57,7 @@ export class HypervergeService implements OnInit{
     // } catch (error) {
     //   console.error(error)
     // }
-    const uri = `${this.serverAPI}hvtoken`
+    const uri = `${this.serverAPI}v1/common/getHVToken`
     return this.http.get(encodeURI(uri));
   }
 }

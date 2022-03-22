@@ -60,8 +60,8 @@ export class PictureService {
     // })
     this.loadingService.loading$.next(true)
     this.hv.onGetHVToken().subscribe({next: data => {
-      if (data && data.status === 'success') {
-        const token = data['result']['token']
+      if (data && data.status) {
+        const token = data['token']
         this.hv.HyperSnapSDK.init(token, this.hv.HyperSnapParams.Region.AsiaPacific);
         this.hv.HyperSnapSDK.startUserSession();
       }

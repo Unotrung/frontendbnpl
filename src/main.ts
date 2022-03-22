@@ -8,7 +8,5 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule, {
-  providers: [{provide: LOCALE_ID, useValue: 'fr-FR' }]
-})
+platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

@@ -49,10 +49,12 @@ import { ForgotPinSuccessComponent } from './forgot-pin-success/forgot-pin-succe
 import { ForgotPinFailComponent } from './forgot-pin-fail/forgot-pin-fail.component';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { ProgressStepComponent } from './progress-step/progress-step.component';
+import {PayMockComponent} from "./pay-mock.component";
 
 
 @NgModule({
   declarations: [
+      PayMockComponent,
     RegisterComponent,
     CartInformationComponent,
       MarginTopDirective,
