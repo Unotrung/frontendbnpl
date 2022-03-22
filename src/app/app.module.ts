@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {DoBootstrap, Injector, NgModule} from '@angular/core';
 import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,6 +9,7 @@ import { PayMockModule } from "./pay-mock/pay-mock.module";
 import { StartPaymentComponent } from './pay-mock/start-payment/start-payment.component';
 import {HttpClientModule} from "@angular/common/http";
 import {TopBarComponent} from "./top-bar/top-bar.component";
+import {createCustomElement} from "@angular/elements";
 
 @NgModule({
     declarations: [
@@ -30,3 +31,13 @@ import {TopBarComponent} from "./top-bar/top-bar.component";
     bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// export class AppModule implements DoBootstrap {
+//     constructor(private injector: Injector) {
+//         const webComponent = createCustomElement(AppComponent, { injector: this.injector });
+//         customElements.define('angular-component', webComponent);
+//     }
+//
+//     ngDoBootstrap() { }
+// }
+

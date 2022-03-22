@@ -29,7 +29,7 @@ export class AuthBnplService {
   }
 
   login(): Observable<any> {
-    const uri = `${environment.localAPIServer}v1/user/login`;
+    const uri = `${environment.localAPIServer}v1/bnpl/user/login`;
     return this.http.post<any>(encodeURI(uri), {
       phone: this.user$.getValue().phone,
       pin: this.user$.getValue().pin
@@ -42,7 +42,7 @@ export class AuthBnplService {
     }))
   }
   register(): Observable<any> {
-    const uri = `${environment.localAPIServer}v1/user/register`;
+    const uri = `${environment.localAPIServer}v1/bnpl/user/register`;
       const rawData = {
         phone: this.user$.getValue().phone,
         pin: this.user$.getValue().pin
@@ -57,7 +57,7 @@ export class AuthBnplService {
   }
 
   checkPossiblePhone(phone: string) {
-    const uri = `${environment.localAPIServer}v1/user/checkPhoneExists`
+    const uri = `${environment.localAPIServer}v1/bnpl/user/checkPhoneExists`
     return this.http.post<any>(encodeURI(uri), {phone});
   }
 
@@ -71,13 +71,13 @@ export class AuthBnplService {
   }
 
   sendOTP(): Observable<any> {
-    const uri = `${environment.localAPIServer}v1/user/sendOtp`
+    const uri = `${environment.localAPIServer}v1/bnpl/user/sendOtp`
     return this.http.post<any>(encodeURI(uri), {
       phone: this.user$.getValue().phone
     })
   }
   verifyOTP(): Observable<any> {
-    const uri = `${environment.localAPIServer}v1/user/verifyOtp`
+    const uri = `${environment.localAPIServer}v1/bnpl/user/verifyOtp`
     return this.http.post<any>(encodeURI(uri), {
       phone: this.user$.getValue().phone,
       otp: this.user$.getValue().otp
@@ -85,7 +85,7 @@ export class AuthBnplService {
   }
 
   updateCustomerInfo(): Observable<any>{
-    const uri = `${environment.localAPIServer}v1/personal/register`
+    const uri = `${environment.localAPIServer}v1/bnpl/personal/register`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.user$.getValue().accessToken}`
@@ -95,7 +95,7 @@ export class AuthBnplService {
     }))
   }
   getCustomerInfo(): Observable<any> {
-    const uri = `${environment.localAPIServer}v1/personal/${this.user$.getValue().id}`
+    const uri = `${environment.localAPIServer}v1/bnpl/personal/${this.user$.getValue().id}`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.user$.getValue().accessToken}`
@@ -107,14 +107,14 @@ export class AuthBnplService {
   }
 
   sendOTPRequestResetPin(): Observable<any> {
-    const uri = `${environment.localAPIServer}v1/user/sendOtpPin`
+    const uri = `${environment.localAPIServer}v1/bnpl/user/sendOtpPin`
     return this.http.post<any>(encodeURI(uri), {
       "phone": this.user$.getValue().phone,
       "nid": this.user$.getValue().citizenId
     })
   }
   verifyOTPRequestPin(): Observable<any> {
-    const uri = `${environment.localAPIServer}v1/user/verifyOtpPin`
+    const uri = `${environment.localAPIServer}v1/bnpl/user/verifyOtpPin`
     return this.http.post<any>(encodeURI(uri), {
       "phone": this.user$.getValue().phone,
       "nid": this.user$.getValue().citizenId,
@@ -127,7 +127,7 @@ export class AuthBnplService {
   }
 
   changePinCode():Observable<any> {
-    const uri = `${environment.localAPIServer}v1/user/updatepin`
+    const uri = `${environment.localAPIServer}v1/bnpl/user/updatepin`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.user$.getValue().accessToken}`
