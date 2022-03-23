@@ -10,5 +10,11 @@ export class LoadingService {
   constructor() {
     this.loading$ = new BehaviorSubject<boolean>(false);
     this.loadingText$ = new BehaviorSubject<string>('');
+    this.loading$.subscribe(load => {
+      if (load) console.log('loading')
+      else {
+        console.log('finish loading')
+      }
+    })
   }
 }

@@ -6,6 +6,7 @@ import {Step} from "../step";
 import {LoadingService} from "../loading.service";
 import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input'
 import value from "*.json";
+import {finalize} from "rxjs";
 
 @Component({
   selector: 'app-register',
@@ -56,7 +57,11 @@ export class RegisterComponent implements OnInit {
         //todo: check the phone number, need api here, so we can redirect to the next step
         this.authService.user$.next({...this.authService.user$.getValue(), phone: this.f['phonenumber'].value})
         this.loadingService.loading$.next(true)
-        this.authService.checkPossiblePhone(this.authService.user$.getValue().phone!).subscribe({
+        this.authService.checkPossiblePhone(this.authService.user$.getValue().phone!).pipe(
+            finalize(()=> {
+                this.loadingService.loading$.next(false)
+            })
+        ).subscribe({
             next: data => {
                 //todo: check the redirect condition
                 this.router.navigate(['pay-mock/verify-pin']).then()
@@ -68,7 +73,6 @@ export class RegisterComponent implements OnInit {
                 }
             },
             complete: () => {
-                this.loadingService.loading$.next(false)
             }
         })
         // this.authService.registerStep$.next(Step.pictureSelfie);

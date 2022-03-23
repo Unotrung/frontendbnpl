@@ -62,19 +62,19 @@ export class AuthBnplGuard implements CanActivate, CanActivateChild, CanDeactiva
 
     checkLogin(url: string, stepCheck: boolean): boolean | UrlTree {
         if (stepCheck) {
-            if ((url.indexOf('picture-selfie') > -1) && (this.authService.registerStep$.getValue() >= Step.pictureSelfie)) {
+            if ((url.indexOf('picture-selfie') > -1) && (this.authService.registerStep$.getValue() === Step.pictureSelfie)) {
                 return true;
-            } else if ((url.indexOf('citizen-card') > -1) && (this.authService.registerStep$.getValue() >= Step.citizenCard)) {
+            } else if ((url.indexOf('citizen-card') > -1) && (this.authService.registerStep$.getValue() === Step.citizenCard)) {
                 return true;
-            } else if ((url.indexOf('customer-information-register') > -1) && (this.authService.registerStep$.getValue() >= Step.customerInformationRegister)) {
+            } else if ((url.indexOf('customer-information-register') > -1) && (this.authService.registerStep$.getValue() === Step.customerInformationRegister)) {
                 return true;
-            } else if ((url.indexOf('customer-confirm-info') > -1) && (this.authService.registerStep$.getValue() >= Step.customerConfirmInfo)) {
+            } else if ((url.indexOf('customer-confirm-info') > -1) && (this.authService.registerStep$.getValue() === Step.customerConfirmInfo)) {
                 return true;
-            } else if ((url.indexOf('customer-pin-install') > -1) && (this.authService.registerStep$.getValue() >= Step.customerPinInstall)) {
+            } else if ((url.indexOf('customer-pin-install') > -1) && (this.authService.registerStep$.getValue() === Step.customerPinInstall)) {
                 return true;
-            } else if ((url.indexOf('customer-esign-confirm') > -1) && (this.authService.registerStep$.getValue() >= Step.customerEsignConfirm)) {
+            } else if ((url.indexOf('customer-esign-confirm') > -1) && (this.authService.registerStep$.getValue() === Step.customerEsignConfirm)) {
                 return true;
-            } else if ((url.indexOf('customer-information-process') > -1) && (this.authService.registerStep$.getValue() >= Step.customerInformationProcess)) {
+            } else if ((url.indexOf('customer-information-process') > -1) && (this.authService.registerStep$.getValue() === Step.customerInformationProcess)) {
                 return true;
             // } else if ((url.indexOf('customer-information-finish') > -1) && (this.authService.registerStep$.getValue() >= Step.customerInformationFinish)) {
             //     return true;
