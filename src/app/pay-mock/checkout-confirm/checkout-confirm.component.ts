@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import {AuthBnplService} from "../auth-bnpl.service";
 import {LoadingService} from "../loading.service";
 import {CheckoutService} from "../checkout.service";
+import {MessageService} from "../message.service";
+import {MessageReason} from "../message";
 
 @Component({
   selector: 'app-checkout-confirm',
@@ -18,7 +20,8 @@ export class CheckoutConfirmComponent implements OnInit {
       private router: Router,
       private authService: AuthBnplService,
       private loadingService: LoadingService,
-      private checkoutService: CheckoutService
+      private checkoutService: CheckoutService,
+      private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -42,7 +45,14 @@ export class CheckoutConfirmComponent implements OnInit {
         console.log(error)
         this.loadingService.loading$.next(false)
         this.checkoutService.checkoutFinish$.next(false)
-        this.router.navigate(['/pay-mock/checkout-finish']).then()
+        this.messageService.messageData$.next({
+          reason: MessageReason.failOnLoginUsePinCode,
+          messageTitle: 'Thông báo',
+          message: 'Mã pin không chính xác',
+          closeMessage: 'TRỞ VỀ'
+        })
+        this.messageService.onOpenDialog()
+        // this.router.navigate(['/pay-mock/checkout-finish']).then()
       }
     })
   }

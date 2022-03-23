@@ -60,7 +60,7 @@ export class VerifyPinComponent implements OnInit {
         this.messageService.messageData$.next({
           reason: MessageReason.failOnLoginUsePinCode,
           messageTitle: 'Thông báo',
-          message: 'Bạn đã điền sai mã pin',
+          message: 'Mã pin không chính xác',
           closeMessage: 'TRỞ VỀ'
         })
         this.messageService.onOpenDialog()

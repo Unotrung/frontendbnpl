@@ -90,6 +90,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
     //address splitter
     const fullAddress = this.checkInfo(citizenFrontData['permanentAddress']).value
     const addressParts = fullAddress.split(',')
+    console.log('address parts',addressParts)
     const addressLength = addressParts.length
     let city = ''
     let district = ''
