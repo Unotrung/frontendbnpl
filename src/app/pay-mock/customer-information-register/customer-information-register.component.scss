@@ -111,3 +111,8 @@
   text-align: left;
   margin-left: 52px;
 }
+
+input:disabled {
+  cursor: not-allowed;
+  background: #cccccc;
+}

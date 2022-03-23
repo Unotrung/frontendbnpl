@@ -13,7 +13,10 @@
         </div>
         <input class="input-info" appMarginTop="8" formControlName="name">
         <div class="info-title" appMarginTop="25">
-            Giới tính
+            Giới tính <span class="red-star">*</span>
+        </div>
+        <div class="error" *ngIf="(f['sex'].touched || f['sex'].dirty) && f['sex'].errors">
+            <span>Vui lòng chọn giới tính</span>
         </div>
         <input class="input-info" appMarginTop="8" formControlName="sex" matInput [matAutocomplete]="autoSex">
         <mat-autocomplete autoActiveFirstOption #autoSex="matAutocomplete">
@@ -74,7 +77,7 @@
         </mat-autocomplete>
         <div class="error" *ngIf="(f['city'].touched || f['city'].dirty) && f['city'].errors">
             <span>Vui lòng chọn thành phố, tỉnh</span>
-        '</div>
+        </div>
             <div class="block-info" appMarginTop="16">
                 <div class="info-title">
                     Quận/Huyện <span class="red-star">*</span>

@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from "./material/material.module";
 import { PayMockModule } from "./pay-mock/pay-mock.module";
 import { StartPaymentComponent } from './pay-mock/start-payment/start-payment.component';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TopBarComponent} from "./top-bar/top-bar.component";
 import {createCustomElement} from "@angular/elements";
+import {RequestHandlerInterceptor} from "./pay-mock/request-handler.interceptor";
 
 @NgModule({
     declarations: [
@@ -27,7 +28,9 @@ import {createCustomElement} from "@angular/elements";
         AppRoutingModule,
         BrowserAnimationsModule
     ],
-    providers: [],
+    providers: [
+        {provide: HTTP_INTERCEPTORS, useClass: RequestHandlerInterceptor, multi: true}
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

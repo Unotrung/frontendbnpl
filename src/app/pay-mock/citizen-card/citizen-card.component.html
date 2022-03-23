@@ -21,7 +21,7 @@
                 <img *ngIf="!(pictureService.citizenFrontImageComplete$ | async)" fxFlexAlign="center" width="24" height="24" alt="" src="assets/images/camera.png">
                 <ng-container *ngIf="pictureService.citizenFrontImageComplete$ | async">
                     <img appMarginTop="8" width="60" height="40" alt="" [src]="pictureService.citizenFrontImage">
-                    <mat-icon appMarginTop="8" (click)="onDeleteImage('front')">delete</mat-icon>
+                    <mat-icon appMarginTop="8" (click)="onDeleteImage(NCardSide.front)">delete</mat-icon>
                 </ng-container>
 
             </div>
@@ -29,7 +29,7 @@
                 <img *ngIf="!(pictureService.citizenBackImageComplete$ | async)" fxFlexAlign="center" width="24" height="24" alt="" src="assets/images/camera.png">
                 <ng-container *ngIf="pictureService.citizenBackImageComplete$ | async">
                     <img appMarginTop="8" width="60" height="40" alt="" [src]="pictureService.citizenBackImage">
-                    <mat-icon appMarginTop="8" (click)="onDeleteImage('back')">delete</mat-icon>
+                    <mat-icon appMarginTop="8" (click)="onDeleteImage(NCardSide.back)">delete</mat-icon>
                 </ng-container>
             </div>
         </div>

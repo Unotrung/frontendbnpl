@@ -11,10 +11,10 @@
                placeholder="Enter Your phone Number"
                [ngClass]="{ 'is-invalid': submitted && f['phonenumber'].errors }">
             <div *ngIf="submitted && f['phonenumber'].errors" class="invalid-feedback"></div>
-            <div *ngIf="f['phonenumber'].errors && f['phonenumber'].errors['required']">
+            <div *ngIf="submitted && f['phonenumber'].errors && f['phonenumber'].errors['required']">
                 <span class="error">Phone number is required</span>
             </div>
-            <div *ngIf="f['phonenumber'].errors && (f['phonenumber'].errors['pattern']
+            <div *ngIf="submitted && f['phonenumber'].errors && (f['phonenumber'].errors['pattern']
             || f['phonenumber'].errors!['maxlength']
             || f['phonenumber'].errors!['minlength'])">
                 <span class="error">Phone number must be 10 numbers</span></div>

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {PictureService} from "../picture.service";
+import {Component, OnInit} from '@angular/core';
+import {NCardSide, PictureService} from "../picture.service";
 import {AuthBnplService} from "../auth-bnpl.service";
 import {Router} from "@angular/router";
 import {Step} from "../step";
@@ -13,6 +13,7 @@ export class CitizenCardComponent implements OnInit {
 
     side = 'front'
     instruction: boolean = false
+    NCardSide = NCardSide
 
   constructor(
       public pictureService: PictureService,
@@ -26,13 +27,13 @@ export class CitizenCardComponent implements OnInit {
 
   onCaptureCitizenCard() {
       if (!this.pictureService.citizenFrontImageComplete$.getValue()) {
-        this.pictureService.citizenCardShot('front');
+        this.pictureService.citizenCardShot(NCardSide.front);
       } else {
-        this.pictureService.citizenCardShot('back');
+        this.pictureService.citizenCardShot(NCardSide.back);
       }
   }
 
-  onDeleteImage(side: string){
+  onDeleteImage(side: NCardSide){
       this.pictureService.onCitizenCardComplete(false, side, '');
   }
 

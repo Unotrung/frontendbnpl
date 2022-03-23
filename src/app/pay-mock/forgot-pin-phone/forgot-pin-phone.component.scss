@@ -1,3 +1,8 @@
 .global-box {
   padding: 0 32px 0 32px;
 }
+
+input:disabled {
+  cursor: not-allowed;
+  background: #cccccc;
+}

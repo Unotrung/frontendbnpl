@@ -8,8 +8,6 @@ import {HttpClient} from "@angular/common/http";
 import {AuthBnplService} from "../auth-bnpl.service";
 import {Router} from "@angular/router";
 import {Step} from "../step";
-import {CustomerInformationService} from "../customer-information.service";
-import {LoadingService} from "../loading.service";
 
 @Component({
   selector: 'app-picture-selfie',
@@ -22,9 +20,9 @@ export class PictureSelfieComponent implements OnInit {
   citizenIdFrontImage = '';
   citizenIdBackImage = '';
   citizenId!: FormControl;
-  // formGroup!: FormGroup;
   apiResults: any
   instruction: boolean = false
+  submitted = false
 
   constructor(
       private dialog: MatDialog,
@@ -32,8 +30,6 @@ export class PictureSelfieComponent implements OnInit {
       private http: HttpClient,
       private authService: AuthBnplService,
       private router: Router,
-      private customerInformationService: CustomerInformationService,
-      private loadingService: LoadingService
   ) { }
 
   ngOnInit(): void {
@@ -75,7 +71,12 @@ export class PictureSelfieComponent implements OnInit {
   }
 
   onSelfieContinue() {
+    this.submitted = true
     const nid = this.citizenId.value
+    if (!nid) {
+      this.citizenId.setErrors(Validators.required)
+      return
+    }
     if (/\b\d{9}\b|\b\d{12}\b/g.exec(nid)) {
       //todo: check if user exist lazada ... (need api here), then route
       this.authService.user$.next({...this.authService.user$.getValue(),citizenId: this.citizenId.value})

@@ -9,7 +9,7 @@
         <p>Vui lòng nhập CMND/CCCD</p>
     </div>
     <input type="text" class="global-input" [formControl]="citizenId" appMarginTop="14">
-    <div class="error" appMarginTop="8" fxFlexAlign="start" *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.invalid">
+    <div class="error" appMarginTop="8" fxFlexAlign="start" *ngIf="(citizenId.dirty || citizenId.touched || submitted) && citizenId.invalid">
             CMND hoặc CCCD có 9 hoặc 12 chữ số
     </div>
 

@@ -18,7 +18,7 @@ export class ForgotPinPhoneComponent implements OnInit {
       ) { }
 
   ngOnInit(): void {
-    this.phoneForm = new FormControl(this.authService.user$.getValue().phone,
+    this.phoneForm = new FormControl({value: this.authService.user$.getValue().phone, disabled: true},
         [
             Validators.required,
           Validators.pattern("^[0-9]*$"),

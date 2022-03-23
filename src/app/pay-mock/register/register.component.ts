@@ -18,10 +18,7 @@ export class RegisterComponent implements OnInit {
     CountryISO = CountryISO;
     PhoneNumberFormat = PhoneNumberFormat;
     preferredCountries: CountryISO[] = [CountryISO.UnitedStates, CountryISO.UnitedKingdom];
-
-    phone: FormControl = new FormControl(undefined, [Validators.required])
     registerForm!: FormGroup;
-    phoneControl!: FormControl;
     submitted = false;
     constructor(
         private formBuilder: FormBuilder,
@@ -40,7 +37,7 @@ export class RegisterComponent implements OnInit {
     }
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
-            phonenumber: ['', [ Validators.required,
+            phonenumber: [this.authService.user$.getValue().phone, [ Validators.required,
                 Validators.pattern("^[0-9]*$"),
                 Validators.minLength(10), Validators.maxLength(10)]]
         });

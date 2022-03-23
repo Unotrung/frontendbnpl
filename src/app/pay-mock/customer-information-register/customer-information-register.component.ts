@@ -65,6 +65,8 @@ export class CustomerInformationRegisterComponent implements OnInit {
 
     const citizenFrontData = this.pictureService.citizenFrontData$.getValue()
     const citizenBackData = this.pictureService.citizenBackData$.getValue()
+    console.log('front data', citizenFrontData)
+    console.log('back data', citizenBackData)
     let name = '', gender = '', birthday = '', issueDay = '', citizenId = '', phone = ''
     if ('name' in citizenFrontData) {
       name = this.checkInfo(citizenFrontData['name']).value
@@ -182,12 +184,12 @@ export class CustomerInformationRegisterComponent implements OnInit {
 
 
       this.registerForm = new FormGroup({
-        name: new FormControl(name),
-        sex: new FormControl(gender),
-        phone: new FormControl(phone),
-        birthday: new FormControl(birthday),
-        citizenId: new FormControl(citizenId),
-        issueDate: new FormControl(issueDay),
+        name: new FormControl({value: name, disabled: true}),
+        sex: new FormControl(gender, [Validators.required]),
+        phone: new FormControl({value: phone, disabled: true}),
+        birthday: new FormControl({value:birthday, disabled: true}),
+        citizenId: new FormControl({value: citizenId, disabled: true}),
+        issueDate: new FormControl({value: issueDay, disabled: true}),
         city: new FormControl(initCity.name, [Validators.required]),
         district: new FormControl(initDistrict.name, [Validators.required]),
         ward: new FormControl(initWardSuccess ? initWard.name : '', [Validators.required]),
