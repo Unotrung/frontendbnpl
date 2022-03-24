@@ -95,15 +95,15 @@ export class CustomerInformationRegisterComponent implements OnInit {
     const addressLength = addressParts.length
     let city = ''
     let district = ''
+    let ward = ''
     let wardStreet = ''
     if (addressLength >= 3) {
       city = addressParts[addressLength - 1]
       district = addressParts[addressLength - 2]
       if (addressLength >= 4) {
-        wardStreet = `${addressParts[0]}${addressParts[1]}`
-      } else {
-        wardStreet = addressParts[0]
+        ward = addressParts[addressLength-3]
       }
+      wardStreet = addressParts[0]
     }
     // console.log(city)
     // console.log(district)
@@ -149,10 +149,18 @@ export class CustomerInformationRegisterComponent implements OnInit {
       this.selectedDistrict$ = new BehaviorSubject<District>(initDistrict);
 
       Object.entries(this.selectedDistrict$.getValue().wards).forEach(([key, value]) => {
-        // @ts-ignore
-        if (wardStreet.toLowerCase().indexOf(<Ward>value.name.toLowerCase()) > -1){
-          initWard = value
-          // console.log(initWard)
+        if (ward) {
+          // @ts-ignore
+          if (ward.toLowerCase().indexOf(<Ward>value.name.toLowerCase()) > -1){
+            initWard = value
+            // console.log(initWard)
+          }
+        }
+        else { // @ts-ignore
+          if (wardStreet.toLowerCase().indexOf(<Ward>value.name.toLowerCase()) > -1){
+                    initWard = value
+                    // console.log(initWard)
+          }
         }
       })
 
@@ -161,7 +169,12 @@ export class CustomerInformationRegisterComponent implements OnInit {
         initWard = this.selectedDistrict$.getValue().wards[0]
       } else {
         initWardSuccess = true
-        initStreet = this.spitStreetFromStreetWard(wardStreet, initWard.name)
+        if (addressLength >= 4) {
+          initStreet = wardStreet
+        } else {
+          initStreet = this.spitStreetFromStreetWard(wardStreet, initWard.name)
+        }
+
         // console.log(initStreet)
       }
 
@@ -198,7 +211,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
         street: new FormControl(initStreet, [Validators.required]),
         personal_title_ref: new FormControl('', [Validators.required]),
         name_ref: new FormControl('', [Validators.required]),
-        phone_ref: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$"),
+        phone_ref: new FormControl('', [Validators.required, Validators.pattern("^0[0-9]*$"),
           Validators.minLength(10), Validators.maxLength(10)])
       })
       this.f['phone_ref'].valueChanges.subscribe(value => {
