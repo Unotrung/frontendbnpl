@@ -9,7 +9,7 @@
         <div class="outer-frame-box" fxLayout="column" fxLayoutAlign="center center" appMarginTop="8" >
             <div class="inner-frame-box">
                 <div>
-                    <img [src]="pictureService.currentShotImage"
+                    <img *ngIf="pictureService.currentShot$" [src]="pictureService.imageCurrentShot"
                          height="200"
                          width="250" alt="">
                 </div>
@@ -58,7 +58,8 @@
     <button class="payment-button"
             appMarginTop="36"
             (click)="onCitizenCardContinue()"
-            [disabled]="!(pictureService.kycCustomerComplete$ | async)">
+            [disabled]="!(pictureService.citizenFrontImageComplete$ | async) ||
+            !(pictureService.citizenBackImageComplete$ | async)">
         <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
     </button>
 

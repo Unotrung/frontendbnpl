@@ -9,3 +9,8 @@ export interface User {
     name: string,
     creditLimit: number
 }
+
+export enum InputType {
+    number,
+    name
+}

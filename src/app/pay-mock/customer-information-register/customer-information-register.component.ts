@@ -8,14 +8,14 @@ import {CustomerInformationService} from "../customer-information.service";
 import {AuthBnplService} from "../auth-bnpl.service";
 import {Step} from "../step";
 import {PictureService} from "../picture.service";
-import {DatePipe} from "@angular/common";
 import {checkInfo} from "../helper/helper";
+import {keyPress} from "../helper/helper";
+import {InputType} from "../user";
 
 @Component({
   selector: 'app-customer-information-register',
   templateUrl: './customer-information-register.component.html',
-  styleUrls: ['./customer-information-register.component.scss'],
-  providers: [DatePipe]
+  styleUrls: ['./customer-information-register.component.scss']
 })
 export class CustomerInformationRegisterComponent implements OnInit {
   registerForm!: FormGroup;
@@ -40,14 +40,15 @@ export class CustomerInformationRegisterComponent implements OnInit {
   selectedStreet$!: BehaviorSubject<any>;
 
   checkInfo = checkInfo
+  keyPress = keyPress
+  InputType = InputType
 
   constructor(
       private locationAddressService: LocationAddressService,
       private customerInformationService: CustomerInformationService,
       private authService: AuthBnplService,
       private router: Router,
-      private pictureService: PictureService,
-      private datePipe: DatePipe
+      private pictureService: PictureService
   ) { }
 
   ngOnInit(): void {
@@ -288,13 +289,13 @@ export class CustomerInformationRegisterComponent implements OnInit {
     return []
   }
 
-  keyPress(event: any) {
-    const pattern = /[0-9]/;
-    let inputChar = String.fromCharCode(event.charCode);
-    if (event.keyCode != 8 && !pattern.test(inputChar)) {
-      event.preventDefault();
-    }
-  }
+  // keyPress(event: any, type: string) {
+  //   const pattern = /[0-9]/;
+  //   let inputChar = String.fromCharCode(event.charCode);
+  //   if (event.keyCode != 8 && !pattern.test(inputChar)) {
+  //     event.preventDefault();
+  //   }
+  // }
 
   get f(): {
     [key: string]: AbstractControl;

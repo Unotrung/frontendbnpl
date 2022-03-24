@@ -6,18 +6,20 @@
     <div class="global-box" fxLayout="column" fxLayoutAlign="top center">
         <p class="margin-top-16 payment-text">Vui lòng nhập điện thoại để tiếp tục</p>
         <form [formGroup]="registerForm">
-        <input (keypress)="keyPress($event)" required type="text" class="phone-input"
+        <input (keypress)="keyPress($event, InputType.number)" required type="text" class="phone-input"
                formControlName="phonenumber"
-               placeholder="Enter Your phone Number"
                [ngClass]="{ 'is-invalid': submitted && f['phonenumber'].errors }">
-            <div *ngIf="submitted && f['phonenumber'].errors" class="invalid-feedback"></div>
             <div *ngIf="submitted && f['phonenumber'].errors && f['phonenumber'].errors['required']">
-                <span class="error">Phone number is required</span>
+                <span class="error">Vui lòng nhập số điện thoại</span>
             </div>
-            <div *ngIf="submitted && f['phonenumber'].errors && (f['phonenumber'].errors['pattern']
-            || f['phonenumber'].errors!['maxlength']
+            <div *ngIf="submitted && f['phonenumber'].errors && (
+            f['phonenumber'].errors!['maxlength']
             || f['phonenumber'].errors!['minlength'])">
-                <span class="error">Phone number must be 10 numbers</span></div>
+                <span class="error">Số điện thoại phải 10 chữ số</span></div>
+            <div *ngIf="submitted && f['phonenumber'].errors && f['phonenumber'].errors['pattern']">
+                <span class="error">Số điện thoại không hợp lệ</span>
+            </div>
+
         </form>
 <!--        <ngx-intl-tel-input-->
 <!--                [cssClass]="'custom'"-->
@@ -42,8 +44,7 @@
             <button class="payment-button"
                     appMarginTop="36"
                     appMarginBottom="16"
-                    (click)="onRegisterContinue()"
-                    [disabled]="f['phonenumber'].errors">
+                    (click)="onRegisterContinue()">
                 <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
         </div>
     </div>

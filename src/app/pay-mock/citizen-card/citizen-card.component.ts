@@ -34,7 +34,7 @@ export class CitizenCardComponent implements OnInit {
   }
 
   onDeleteImage(side: NCardSide){
-      this.pictureService.onCitizenCardComplete(false, side, '');
+      this.pictureService.deleteImage(side)
   }
 
   onCitizenCardContinue() {

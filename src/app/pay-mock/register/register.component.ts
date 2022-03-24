@@ -7,6 +7,8 @@ import {LoadingService} from "../loading.service";
 import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input'
 import value from "*.json";
 import {finalize} from "rxjs";
+import {keyPress} from "../helper/helper";
+import {InputType} from "../user";
 
 @Component({
   selector: 'app-register',
@@ -21,6 +23,8 @@ export class RegisterComponent implements OnInit {
     preferredCountries: CountryISO[] = [CountryISO.UnitedStates, CountryISO.UnitedKingdom];
     registerForm!: FormGroup;
     submitted = false;
+    keyPress = keyPress
+    InputType = InputType
     constructor(
         private formBuilder: FormBuilder,
         private authService: AuthBnplService,
@@ -29,17 +33,17 @@ export class RegisterComponent implements OnInit {
     ) { }
 
     //only number will be add
-    keyPress(event: any) {
-        const pattern = /[0-9]/;
-        let inputChar = String.fromCharCode(event.charCode);
-        if (event.keyCode != 8 && !pattern.test(inputChar)) {
-            event.preventDefault();
-        }
-    }
+    // keyPress(event: any) {
+    //     const pattern = /[0-9]/;
+    //     let inputChar = String.fromCharCode(event.charCode);
+    //     if (event.keyCode != 8 && !pattern.test(inputChar)) {
+    //         event.preventDefault();
+    //     }
+    // }
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
             phonenumber: [this.authService.user$.getValue().phone, [ Validators.required,
-                Validators.pattern("^[0-9]*$"),
+                Validators.pattern("^0[0-9]*$"),
                 Validators.minLength(10), Validators.maxLength(10)]]
         });
         this.f['phonenumber'].valueChanges.subscribe(value => {
@@ -54,6 +58,10 @@ export class RegisterComponent implements OnInit {
     } { return this.registerForm.controls; }
 
     onRegisterContinue() {
+        if (this.f['phonenumber'].invalid){
+            this.submitted = true
+            return
+        }
         //todo: check the phone number, need api here, so we can redirect to the next step
         this.authService.user$.next({...this.authService.user$.getValue(), phone: this.f['phonenumber'].value})
         this.loadingService.loading$.next(true)

@@ -31,9 +31,10 @@ export class PictureService {
     citizenBackImage = '';
     citizenBackData$: BehaviorSubject<any>
 
-    currentShotImage = '';
+    // currentShot$ use for check back or front image, not selfie
+    currentShot$: BehaviorSubject<NCardSide | null>
     citizenBackImageComplete$: BehaviorSubject<boolean>
-    kycCustomerComplete$: BehaviorSubject<boolean>
+    // kycCustomerComplete$: BehaviorSubject<boolean>
     hvInit$: BehaviorSubject<boolean>
 
 
@@ -50,19 +51,23 @@ export class PictureService {
         this.citizenBackData$ = new BehaviorSubject<any>(null);
         this.citizenFrontImageComplete$ = new BehaviorSubject<boolean>(false);
         this.citizenBackImageComplete$ = new BehaviorSubject<boolean>(false);
-        this.kycCustomerComplete$ = new BehaviorSubject<boolean>(false);
-        this.citizenBackImageComplete$.subscribe(completed => {
-            if (completed && this.citizenFrontImageComplete$.getValue()) {
-                console.log('start verify match')
-                this.onVerifyMatchImage();
-            } else return;
-        })
+        this.currentShot$ = new BehaviorSubject<NCardSide | null>(null)
+        // this.kycCustomerComplete$ = new BehaviorSubject<boolean>(false);
+        // this.citizenBackImageComplete$.subscribe(completed => {
+        //     if (completed && this.citizenFrontImageComplete$.getValue()) {
+        //         console.log('start verify match')
+        //         this.onVerifyMatchImage();
+        //     } else return;
+        // })
         // this.citizenFrontImageComplete$.subscribe({
         //   next : completed => {
-        //     if (completed && this.citizenBackImageComplete$.getValue()) {
+        //       // if (!this.selfieImageComplete$.getValue() || !completed) {
+        //       //     this.deleteImage(NCardSide.selfie)
+        //       //     this.deleteImage(NCardSide.front)
+        //       //     return
+        //       // }
         //       console.log('start verify match')
         //       this.onVerifyMatchImage();
-        //     }
         //   }
         // })
         console.log('init picture service')
@@ -92,7 +97,6 @@ export class PictureService {
 
         // this.hv.HyperSnapSDK.init(environment.hyperVergeToken, this.hv.HyperSnapParams.Region.AsiaPacific);
         // this.hv.HyperSnapSDK.startUserSession();
-
         const hvFaceConfig = new this.hv.HVFaceConfig();
         hvFaceConfig.setShouldShowInstructionPage(true);
 
@@ -101,14 +105,11 @@ export class PictureService {
                 const errorCode = HVError.getErrorCode();
                 const errorMessage = HVError.getErrorMessage();
                 console.log('hverror', HVError);
-                this.messageService.messageData$.next({
-                    reason: MessageReason.failSelfieScreenShot,
-                    message: 'Hình chụp selfie không rõ, đề nghị chụp lại',
-                    messageTitle: 'Thông báo',
-                    closeMessage: 'CHỤP LẠI HÌNH'
-                })
-                this.messageService.onOpenDialog()
-                if (errorCode === 401) {
+                if (errorCode === '013') {
+                    return
+                }
+                this.openMessageDialog(MessageReason.failSelfieScreenShot)
+                if (errorCode === '401') {
                     if (errorMessage === 'Token Expired') {
                         //todo Check the token generator
                         console.error(errorMessage);
@@ -118,12 +119,14 @@ export class PictureService {
             }
             if (HVResponse) {
                 const apiResults = HVResponse.getApiResult();
+                console.log(apiResults)
                 const apiHeaders = HVResponse.getApiHeaders();
                 const imageBase64 = HVResponse.getImageBase64();
                 const attemptsCount = HVResponse.getAttemptsCount();
-                if (apiResults && apiResults['status'] === 'success') {
-                    this.onSelfieComplete(true, imageBase64);
-                }
+                // if (apiResults && apiResults['status'] === 'success') {
+                //     this.onSelfieComplete(true, imageBase64);
+                // }
+                this.acceptImage(NCardSide.selfie, imageBase64)
             }
         };
         this.hv.HVFaceModule.start(hvFaceConfig, callback);
@@ -151,7 +154,10 @@ export class PictureService {
                 if (errorCode) {
                     console.log(errorCode);
                 }
-                if (errorCode === 401) {
+                if (errorCode === '013') {
+                    return
+                }
+                if (errorCode === '401') {
                     if (errorMessage === 'Token Expired') {
                         //todo Check the token generator
                         console.error(errorMessage);
@@ -159,25 +165,11 @@ export class PictureService {
                     }
                 }
                 if (side === NCardSide.front) {
-                    // this.messageService.messageData$.next({
-                    //   reason: MessageReason.failFrontIdScreenShot,
-                    //   messageTitle: 'Thông báo',
-                    //   message: 'Lỗi chụp hình cmnd/cccd mặt trước, đề nghị chụp lại',
-                    //   closeMessage: 'Chụp lại'
-                    // })
                     this.openMessageDialog(MessageReason.failFrontIdScreenShot)
                 }
                 if (side === NCardSide.back) {
-                    // this.messageService.messageData$.next({
-                    //   reason: MessageReason.failFrontIdScreenShot,
-                    //   messageTitle: 'Thông báo',
-                    //   message: 'Lỗi chụp hình cmnd/cccd mặt sau, đề nghị chụp lại',
-                    //   closeMessage: 'Chụp lại'
-                    // })
-                    console.log('goi thong bao mat sau')
                     this.openMessageDialog(MessageReason.failBackIdScreenShot)
                 }
-                // this.messageService.onOpenDialog()
 
             }
             if (HVResponse) {
@@ -195,63 +187,78 @@ export class PictureService {
                     }
                     return
                 }
-
-                if (side === NCardSide.front) {
-                    this.citizenFrontData$.next(<Array<any>>apiResults['result']['details'][0]['fieldsExtracted'])
-                }
-                if (side === NCardSide.back) {
-                    this.citizenBackData$.next(<Array<any>>apiResults['result']['details'][0]['fieldsExtracted'])
-                }
+                // if (side === NCardSide.front) {
+                //
+                //     // if (!this.onVerifyMatchImage()) {
+                //     //     this.authService.registerStep$.next(Step.pictureSelfie);
+                //     //     this.openMessageDialog(MessageReason.failOnCheckSelfieAndImageIdCard)
+                //     //     return;
+                //     // }
+                //     // this.citizenFrontData$.next(<Array<any>>apiResults['result']['details'][0]['fieldsExtracted'])
+                // }
+                // if (side === NCardSide.back) {
+                //     this.citizenBackData$.next(<Array<any>>apiResults['result']['details'][0]['fieldsExtracted'])
+                // }
 
                 const imageBase64 = HVResponse.getImageBase64();
                 const attemptsCount = HVResponse.getAttemptsCount();
-                if (apiResults && apiResults['status'] === 'success') {
-                    this.onCitizenCardComplete(true, side, imageBase64);
-                }
+                // if (apiResults && apiResults['status'] === 'success') {
+                //     this.onCitizenCardComplete(true, side, imageBase64);
+                // }
+                this.acceptImage(side, imageBase64, apiResults['result']['details'][0]['fieldsExtracted'])
             }
         };
 
         this.hv.HVDocsModule.start(hvDocConfig, callback);
     }
 
-    onCitizenCardComplete(complete: boolean, side: NCardSide, image: any) {
-        if (complete) {
-            this.currentShotImage = image;
-        }
+    // onCitizenCardComplete(complete: boolean, side: NCardSide, image: any) {
+    //     if (complete) {
+    //         this.currentShotImage = image;
+    //         if (side === NCardSide.front) {
+    //             // @ts-ignore
+    //             // console.log(checkInfo(this.citizenFrontData$.getValue()['idNumber']).value)
+    //             // console.log(this.authService.user$.getValue().citizenId)
+    //             // @ts-ignore
+    //             if (checkInfo(this.citizenFrontData$.getValue()['idNumber']).value !== this.authService.user$.getValue().citizenId) {
+    //                 this.citizenFrontImageComplete$.next(false)
+    //                 this.authService.registerStep$.next(Step.pictureSelfie);
+    //                 this.openMessageDialog(MessageReason.failOnCheckCitizenIdAndManualEnterId)
+    //                 return
+    //             }
+    //             this.citizenFrontImage = image;
+    //             this.citizenFrontImageComplete$.next(complete);
+    //         } else if (side === NCardSide.back) {
+    //             this.citizenBackImage = image;
+    //             this.citizenBackImageComplete$.next(complete);
+    //         }
+    //     }
+    //
+    //     if (!complete) {
+    //         this.
+    //         // if (!(this.citizenFrontImageComplete$ || this.citizenBackImageComplete$)) {
+    //         //     this.currentShotImage = ''
+    //         // }
+    //         // this.kycCustomerComplete$.next(false);
+    //     }
+    // }
 
-        if (side === NCardSide.front) {
-            // @ts-ignore
-            // console.log(checkInfo(this.citizenFrontData$.getValue()['idNumber']).value)
-            // console.log(this.authService.user$.getValue().citizenId)
-            // @ts-ignore
-            if (checkInfo(this.citizenFrontData$.getValue()['idNumber']).value !== this.authService.user$.getValue().citizenId) {
-                this.citizenFrontImageComplete$.next(false)
-                this.authService.registerStep$.next(Step.pictureSelfie);
-                // this.messageService.messageData$.next({
-                //   reason: MessageReason.failOnCheckCitizenIdAndManualEnterId,
-                //   messageTitle: 'Thông báo',
-                //   message: 'Hồ sơ của bạn không được chấp nhận do số CCCD không trùng với số bạn điền vào',
-                //   closeMessage: 'Điền lại số CCCD'
-                // })
-                // this.messageService.onOpenDialog()
-                this.openMessageDialog(MessageReason.failOnCheckCitizenIdAndManualEnterId)
-                return
-            }
-            this.citizenFrontImage = image;
-            this.citizenFrontImageComplete$.next(complete);
-        } else if (side === NCardSide.back) {
-            this.citizenBackImage = image;
-            this.citizenBackImageComplete$.next(complete);
+    verifyNidAndFrontImage(): boolean {
+        console.log(this.citizenFrontData$.getValue())
+        let match = true
+        if (checkInfo(this.citizenFrontData$.getValue()['idNumber']).value !== this.authService.user$.getValue().citizenId) {
+            // this.citizenFrontImageComplete$.next(false)
+            match = false
+            this.deleteImage(NCardSide.front)
+            this.authService.registerStep$.next(Step.pictureSelfie);
+            this.openMessageDialog(MessageReason.failOnCheckCitizenIdAndManualEnterId)
         }
-        if (!complete) {
-            if (!(this.citizenFrontImageComplete$ || this.citizenBackImageComplete$)) {
-                this.currentShotImage = ''
-            }
-            this.kycCustomerComplete$.next(false);
-        }
+        return match
     }
 
-    onVerifyMatchImage() {
+    verifyMatchImage(): boolean {
+        console.log('verify match image')
+        let match = false
         const callback = (HVError: any, HVResponse: any) => {
             this.loadingService.loading$.next(false)
             if (HVError) {
@@ -260,15 +267,8 @@ export class PictureService {
                     console.log(errorCode);
                 }
                 const errorMessage = HVError.getErrorMessage();
-                this.selfieImageComplete$.next(false)
-                this.citizenFrontImageComplete$.next(false)
-                // this.messageService.messageData$.next({
-                //   reason: MessageReason.failOnCheckSelfieAndImageIdCard,
-                //   messageTitle: 'Thông báo',
-                //   message: 'Ảnh chân dung và ảnh trên CCCD không khớp, đề nghị chụp lại',
-                //   closeMessage: 'CHỤP ẢNH LẠI',
-                // })
-                // this.messageService.onOpenDialog()
+                this.deleteImage(NCardSide.selfie)
+                this.deleteImage(NCardSide.front)
                 this.openMessageDialog(MessageReason.failOnCheckSelfieAndImageIdCard)
                 return;
             }
@@ -277,19 +277,13 @@ export class PictureService {
                 const apiHeaders = HVResponse.getApiHeaders();
                 console.log(apiResults);
                 if (apiResults && apiResults['result']['match'] === 'yes') {
-                    this.kycCustomerComplete$.next(true);
+                    // this.kycCustomerComplete$.next(true);
+                    match = true
                     return;
                 }
                 if (apiResults && apiResults['result']['match'] === 'no') {
-                    this.selfieImageComplete$.next(false)
-                    this.citizenFrontImageComplete$.next(false)
-                    // this.messageService.messageData$.next({
-                    //   reason: MessageReason.failOnCheckSelfieAndImageIdCard,
-                    //   messageTitle: 'Thông báo',
-                    //   message: 'Ảnh chân dung và ảnh trên CCCD không khớp, đề nghị chụp lại',
-                    //   closeMessage: 'CHỤP ẢNH LẠI',
-                    // })
-                    // this.messageService.onOpenDialog()
+                    this.deleteImage(NCardSide.front)
+                    this.deleteImage(NCardSide.selfie)
                     this.openMessageDialog(MessageReason.failOnCheckSelfieAndImageIdCard)
                     return;
                 }
@@ -298,6 +292,59 @@ export class PictureService {
         this.loadingService.loading$.next(true)
 
         this.hv.HVNetworkHelper.makeFaceMatchCall(this.selfieImage, this.citizenFrontImage, {}, {}, callback);
+        return match
+    }
+
+    acceptImage(side: NCardSide , image: string, data?: any) {
+        if (side === NCardSide.selfie) {
+            this.selfieImage = image
+            this.selfieImageComplete$.next(true)
+            return;
+        }
+        this.currentShot$.next(side)
+        if (side === NCardSide.front) {
+            this.citizenFrontImage = image
+            this.citizenFrontImageComplete$.next(true)
+            this.citizenFrontData$.next(data)
+            if (!this.verifyNidAndFrontImage()) {
+                return
+            }
+            this.verifyMatchImage()
+        }
+        if (side === NCardSide.back) {
+            this.citizenBackImage = image
+            this.citizenBackImageComplete$.next(true)
+            this.citizenBackData$.next(data)
+        }
+    }
+
+    deleteImage(side: NCardSide) {
+        if (side === NCardSide.selfie) {
+            this.selfieImage = ''
+            this.selfieImageComplete$.next(false)
+            this.citizenFrontData$.next(null)
+            return
+        }
+        if (side === NCardSide.front) {
+            this.citizenFrontImage = ''
+            this.citizenFrontImageComplete$.next(false)
+            this.citizenBackData$.next(null)
+            if (this.citizenBackImageComplete$.getValue()) {
+                this.currentShot$.next(NCardSide.back)
+            } else {
+                this.currentShot$.next(null)
+            }
+            return;
+        }
+        if (side === NCardSide.back) {
+            this.citizenBackImage = ''
+            this.citizenBackImageComplete$.next(false)
+            if (this.citizenFrontImageComplete$.getValue()) {
+                this.currentShot$.next(NCardSide.front)
+            } else {
+                this.currentShot$.next(null)
+            }
+        }
     }
 
 
@@ -354,8 +401,26 @@ export class PictureService {
                 closeMessage: 'Chụp lại'
             })
         }
+        if (reason === MessageReason.failSelfieScreenShot) {
+            this.messageService.messageData$.next({
+                reason: MessageReason.failSelfieScreenShot,
+                message: 'Hình chụp selfie không rõ, đề nghị chụp lại',
+                messageTitle: 'Thông báo',
+                closeMessage: 'CHỤP LẠI HÌNH'
+            })
+        }
 
         this.messageService.onOpenDialog()
+    }
+    // this get backside or frontside on screen
+    get imageCurrentShot(): string {
+        if (!this.currentShot$.getValue()) {
+            return ''
+        }
+        if (this.currentShot$.getValue() === NCardSide.front) {
+            return this.citizenFrontImage
+        }
+        return  this.citizenBackImage
     }
 
 

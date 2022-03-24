@@ -1,13 +1,13 @@
-
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
-import {CameraModalComponent} from "../camera-modal/camera-modal.component";
-import {PictureService} from "../picture.service";
-import {FormControl, ValidationErrors, Validators} from "@angular/forms";
+import {NCardSide, PictureService} from "../picture.service";
+import {FormControl, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {AuthBnplService} from "../auth-bnpl.service";
 import {Router} from "@angular/router";
 import {Step} from "../step";
+import {keyPress} from "../helper/helper";
+import {InputType} from "../user";
 
 @Component({
   selector: 'app-picture-selfie',
@@ -23,6 +23,8 @@ export class PictureSelfieComponent implements OnInit {
   apiResults: any
   instruction: boolean = false
   submitted = false
+  keyPress = keyPress
+  InputType = InputType
 
   constructor(
       private dialog: MatDialog,
@@ -53,7 +55,7 @@ export class PictureSelfieComponent implements OnInit {
   }
 
   onDeleteImage(){
-    this.pictureService.onSelfieComplete(false, '');
+    this.pictureService.deleteImage(NCardSide.selfie)
   }
 
   startCaptureImage() {
