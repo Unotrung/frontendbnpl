@@ -21,10 +21,11 @@ export class CustomerPinInstallComponent implements OnInit {
       private authService: AuthBnplService,
       private loadingService: LoadingService,
       private progressStepService: ProgressStepService
-  ) { }
+  ) {
+    this.progressStepService.step$.next(2)
+  }
 
   ngOnInit(): void {
-    this.progressStepService.step$.next(2)
   }
 
   // this called every time when user changed the code

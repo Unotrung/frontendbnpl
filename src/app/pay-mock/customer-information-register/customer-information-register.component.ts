@@ -346,7 +346,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
     this.authService.registerStep$.next(Step.customerConfirmInfo)
 
 
-    this.customerInformationService.customerInfo = {
+    this.customerInformationService.customerInfo$.next({
     // @ts-ignore
       name: this.f['name'].value,
       sex: this.f['sex'].value,
@@ -363,7 +363,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
       personal_title_ref: this.f['personal_title_ref'].value,
       name_ref: this.f['name_ref'].value,
       phone_ref: this.f['phone_ref'].value
-    }
+    })
 
     this.router.navigate(['/pay-mock/customer-confirm-info']).then();
   }

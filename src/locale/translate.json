@@ -1,0 +1,24 @@
+{
+  "locale": "vi",
+  "translations": {
+    "9220072510400585154": "Vui lòng nhập CMND/CCCD",
+    "4357401379745221269": " CMND hoặc CCCD có 9 hoặc 12 chữ số ",
+    "8752416866567354415": "Chụp ảnh chân dung",
+    "3853055202171391970": " Chân dung ",
+    "1338967669452641535": " Chưa chụp ảnh",
+    "8376568300891044103": " Hướng dẫn chụp ảnh chân dung: ",
+    "3364394551389220690": " Nhấn vào nút màu đỏ để bắt đầu chụp hình ",
+    "3581713675317223887": " Số CMND/CCCD phải điền chính xác. Vui lòng nhập 9 số (CMND) hoặc 12 số (CCCD) ",
+    "5830959738556228506": " Ảnh chụp chân dung phải đủ sáng, không đội mũ, không đeo kính ",
+    "continue": "TIẾP TỤC",
+    "2850388764746305128": "Vui lòng nhập điện thoại để tiếp tục",
+    "6121493171881856952": "Vui lòng nhập số điện thoại",
+    "4605287918130981797": "Số điện thoại phải 10 chữ số",
+    "1907087460319055040": "Số điện thoại không hợp lệ",
+    "6756978167179873450": "TIẾP TỤC",
+    "6583734424214753508": " Nhập mã PIN ",
+    "4736745560154166020": " Vui lòng nhập mã PIN để xác thực thông tin ",
+    "785221774233273993": " Mã pin ",
+    "7711115273580182689": "Quên mã pin {$START_TAG_SPAN}Nhấn vào đây{$CLOSE_TAG_SPAN}"
+  }
+}

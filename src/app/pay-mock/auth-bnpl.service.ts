@@ -64,7 +64,7 @@ export class AuthBnplService {
   logout() {
     this.user$.next({
       name: '',
-      creditLimit: 0
+      creditLimit: 40000000
     });
     this.isLoggedIn$.next(false);
     localStorage.removeItem('accessToken');
@@ -90,8 +90,8 @@ export class AuthBnplService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.user$.getValue().accessToken}`
     })
-    return this.http.post<any>(encodeURI(uri), {...this.customerInfoService.customerInfo, user: this.user$.getValue().id }, {headers}).pipe(tap((data) =>{
-      this.user$.next({...this.user$.getValue(), name: this.customerInfoService.customerInfo.name!})
+    return this.http.post<any>(encodeURI(uri), {...this.customerInfoService.customerInfo$.getValue(), user: this.user$.getValue().id }, {headers}).pipe(tap((data) =>{
+      this.user$.next({...this.user$.getValue(), name: this.customerInfoService.customerInfo$.getValue().name!})
     }))
   }
   getCustomerInfo(): Observable<any> {

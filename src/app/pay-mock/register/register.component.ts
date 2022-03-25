@@ -5,10 +5,10 @@ import {Router} from "@angular/router";
 import {Step} from "../step";
 import {LoadingService} from "../loading.service";
 import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input'
-import value from "*.json";
 import {finalize} from "rxjs";
 import {keyPress} from "../helper/helper";
 import {InputType} from "../user";
+import {PictureService} from "../picture.service";
 
 @Component({
   selector: 'app-register',
@@ -29,18 +29,12 @@ export class RegisterComponent implements OnInit {
         private formBuilder: FormBuilder,
         private authService: AuthBnplService,
         private router: Router,
-        private loadingService: LoadingService
+        private loadingService: LoadingService,
+        private pictureService: PictureService
     ) { }
 
-    //only number will be add
-    // keyPress(event: any) {
-    //     const pattern = /[0-9]/;
-    //     let inputChar = String.fromCharCode(event.charCode);
-    //     if (event.keyCode != 8 && !pattern.test(inputChar)) {
-    //         event.preventDefault();
-    //     }
-    // }
     ngOnInit() {
+        this.clearOldData()
         this.registerForm = this.formBuilder.group({
             phonenumber: [this.authService.user$.getValue().phone, [ Validators.required,
                 Validators.pattern("^0[0-9]*$"),
@@ -72,18 +66,30 @@ export class RegisterComponent implements OnInit {
         ).subscribe({
             next: data => {
                 //todo: check the redirect condition
-                this.router.navigate(['pay-mock/verify-pin']).then()
-            },
-            error: ({error}) => {
-                if (error) {
+                if (data['isExists']) {
+                    this.router.navigate(['pay-mock/verify-pin']).then()
+                }
+                if (!data['isExists']) {
                     this.authService.registerStep$.next(Step.pictureSelfie);
                     this.router.navigate(['/pay-mock/picture-selfie']).then();
                 }
+            },
+            error: ({error}) => {
+                console.log(error)
+                // if (error) {
+                //     this.authService.registerStep$.next(Step.pictureSelfie);
+                //     this.router.navigate(['/pay-mock/picture-selfie']).then();
+                // }
             },
             complete: () => {
             }
         })
         // this.authService.registerStep$.next(Step.pictureSelfie);
         // this.router.navigate(['/pay-mock/picture-selfie']).then();
+    }
+
+    clearOldData() {
+        this.authService.logout()
+        this.pictureService.clearData()
     }
 }

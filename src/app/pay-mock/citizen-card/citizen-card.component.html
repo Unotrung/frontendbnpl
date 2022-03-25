@@ -8,8 +8,8 @@
         </div>
         <div class="outer-frame-box" fxLayout="column" fxLayoutAlign="center center" appMarginTop="8" >
             <div class="inner-frame-box">
-                <div>
-                    <img *ngIf="pictureService.currentShot$" [src]="pictureService.imageCurrentShot"
+                <div *ngIf="pictureService.currentShot$ | async" >
+                    <img [src]="pictureService.imageCurrentShot"
                          height="200"
                          width="250" alt="">
                 </div>

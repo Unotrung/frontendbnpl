@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CustomerInformation} from "./customer_infomation";
-import {Observable, tap} from "rxjs";
+import {BehaviorSubject, Observable, Subject, tap} from "rxjs";
 import {environment} from "../../environments/environment";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {AuthBnplService} from "./auth-bnpl.service";
@@ -10,12 +10,12 @@ import {AuthBnplService} from "./auth-bnpl.service";
 })
 export class CustomerInformationService {
 
-  customerInfo: CustomerInformation
+  customerInfo$: BehaviorSubject<CustomerInformation>
 
   constructor(
       private http: HttpClient
   ) {
-    this.customerInfo = {
+    this.customerInfo$ =  new BehaviorSubject<CustomerInformation>({
       name: undefined,
       sex: undefined,
       phone: undefined,
@@ -31,7 +31,7 @@ export class CustomerInformationService {
       personal_title_ref: '',
       name_ref: '',
       phone_ref: ''
-    }
+    })
   }
 
 

@@ -52,24 +52,6 @@ export class PictureService {
         this.citizenFrontImageComplete$ = new BehaviorSubject<boolean>(false);
         this.citizenBackImageComplete$ = new BehaviorSubject<boolean>(false);
         this.currentShot$ = new BehaviorSubject<NCardSide | null>(null)
-        // this.kycCustomerComplete$ = new BehaviorSubject<boolean>(false);
-        // this.citizenBackImageComplete$.subscribe(completed => {
-        //     if (completed && this.citizenFrontImageComplete$.getValue()) {
-        //         console.log('start verify match')
-        //         this.onVerifyMatchImage();
-        //     } else return;
-        // })
-        // this.citizenFrontImageComplete$.subscribe({
-        //   next : completed => {
-        //       // if (!this.selfieImageComplete$.getValue() || !completed) {
-        //       //     this.deleteImage(NCardSide.selfie)
-        //       //     this.deleteImage(NCardSide.front)
-        //       //     return
-        //       // }
-        //       console.log('start verify match')
-        //       this.onVerifyMatchImage();
-        //   }
-        // })
         console.log('init picture service')
         this.loadingService.loading$.next(true)
         this.hv.onGetHVToken().pipe(
@@ -182,66 +164,19 @@ export class PictureService {
                     if (side === NCardSide.front) {
                         this.openMessageDialog(MessageReason.failFrontIdScreenShot)
                     } else if (side === NCardSide.back) {
-                        console.log('goi thong bao mat sau')
                         this.openMessageDialog(MessageReason.failBackIdScreenShot)
                     }
                     return
                 }
-                // if (side === NCardSide.front) {
-                //
-                //     // if (!this.onVerifyMatchImage()) {
-                //     //     this.authService.registerStep$.next(Step.pictureSelfie);
-                //     //     this.openMessageDialog(MessageReason.failOnCheckSelfieAndImageIdCard)
-                //     //     return;
-                //     // }
-                //     // this.citizenFrontData$.next(<Array<any>>apiResults['result']['details'][0]['fieldsExtracted'])
-                // }
-                // if (side === NCardSide.back) {
-                //     this.citizenBackData$.next(<Array<any>>apiResults['result']['details'][0]['fieldsExtracted'])
-                // }
 
                 const imageBase64 = HVResponse.getImageBase64();
                 const attemptsCount = HVResponse.getAttemptsCount();
-                // if (apiResults && apiResults['status'] === 'success') {
-                //     this.onCitizenCardComplete(true, side, imageBase64);
-                // }
                 this.acceptImage(side, imageBase64, apiResults['result']['details'][0]['fieldsExtracted'])
             }
         };
 
         this.hv.HVDocsModule.start(hvDocConfig, callback);
     }
-
-    // onCitizenCardComplete(complete: boolean, side: NCardSide, image: any) {
-    //     if (complete) {
-    //         this.currentShotImage = image;
-    //         if (side === NCardSide.front) {
-    //             // @ts-ignore
-    //             // console.log(checkInfo(this.citizenFrontData$.getValue()['idNumber']).value)
-    //             // console.log(this.authService.user$.getValue().citizenId)
-    //             // @ts-ignore
-    //             if (checkInfo(this.citizenFrontData$.getValue()['idNumber']).value !== this.authService.user$.getValue().citizenId) {
-    //                 this.citizenFrontImageComplete$.next(false)
-    //                 this.authService.registerStep$.next(Step.pictureSelfie);
-    //                 this.openMessageDialog(MessageReason.failOnCheckCitizenIdAndManualEnterId)
-    //                 return
-    //             }
-    //             this.citizenFrontImage = image;
-    //             this.citizenFrontImageComplete$.next(complete);
-    //         } else if (side === NCardSide.back) {
-    //             this.citizenBackImage = image;
-    //             this.citizenBackImageComplete$.next(complete);
-    //         }
-    //     }
-    //
-    //     if (!complete) {
-    //         this.
-    //         // if (!(this.citizenFrontImageComplete$ || this.citizenBackImageComplete$)) {
-    //         //     this.currentShotImage = ''
-    //         // }
-    //         // this.kycCustomerComplete$.next(false);
-    //     }
-    // }
 
     verifyNidAndFrontImage(): boolean {
         console.log(this.citizenFrontData$.getValue())
@@ -421,6 +356,12 @@ export class PictureService {
             return this.citizenFrontImage
         }
         return  this.citizenBackImage
+    }
+
+    clearData(){
+        this.deleteImage(NCardSide.selfie)
+        this.deleteImage(NCardSide.front)
+        this.deleteImage(NCardSide.back)
     }
 
 

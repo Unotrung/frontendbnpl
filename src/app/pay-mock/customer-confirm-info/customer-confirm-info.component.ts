@@ -22,10 +22,10 @@ export class CustomerConfirmInfoComponent implements OnInit {
       ) { }
 
   ngOnInit(): void {
-    this.address = `${this.customerInformationService.customerInfo.street}, 
-    ${this.customerInformationService.customerInfo.ward}, 
-    ${this.customerInformationService.customerInfo.district}, 
-    ${this.customerInformationService.customerInfo.city}`
+    this.address = `${this.customerInformationService.customerInfo$.getValue().street}, 
+    ${this.customerInformationService.customerInfo$.getValue().ward}, 
+    ${this.customerInformationService.customerInfo$.getValue().district}, 
+    ${this.customerInformationService.customerInfo$.getValue().city}`
   }
 
   onSendConfirm(){

@@ -18,7 +18,7 @@ export const keyPress = function(event: any, type: InputType) {
         pattern = /[0-9]/;
     }
     if (type === InputType.name) {
-        pattern = /^[a-z ,.'-]+$/i
+        pattern = /^[ a-zA-ZàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇßØøÅåÆæœ'`'\-]+$/
     }
     let inputChar = String.fromCharCode(event.charCode);
     if (event.keyCode != 8 && !pattern.test(inputChar)) {
