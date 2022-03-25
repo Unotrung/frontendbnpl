@@ -1,4 +1,4 @@
-import {DoBootstrap, Injector, NgModule} from '@angular/core';
+import {DEFAULT_CURRENCY_CODE, DoBootstrap, Injector, LOCALE_ID, NgModule} from '@angular/core';
 import { FlexLayoutModule, FlexModule } from '@angular/flex-layout';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,6 +11,10 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TopBarComponent} from "./top-bar/top-bar.component";
 import {createCustomElement} from "@angular/elements";
 import {RequestHandlerInterceptor} from "./pay-mock/request-handler.interceptor";
+import {environment} from "../environments/environment";
+import {registerLocaleData} from "@angular/common";
+import localeVn from '@angular/common/locales/vi'
+registerLocaleData(localeVn)
 
 @NgModule({
     declarations: [
@@ -29,7 +33,9 @@ import {RequestHandlerInterceptor} from "./pay-mock/request-handler.interceptor"
         BrowserAnimationsModule
     ],
     providers: [
-        {provide: HTTP_INTERCEPTORS, useClass: RequestHandlerInterceptor, multi: true}
+        {provide: HTTP_INTERCEPTORS, useClass: RequestHandlerInterceptor, multi: true},
+        {provide: LOCALE_ID, useValue: environment.lang},
+        {provide: DEFAULT_CURRENCY_CODE, useValue: environment.currencyCode}
     ],
     bootstrap: [AppComponent]
 })

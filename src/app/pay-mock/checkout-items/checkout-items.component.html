@@ -31,15 +31,15 @@
     </ng-container>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" >
         <div class="item-content">Thành tiền</div>
-        <div class="item-content">{{itemService.sumPriceItem | currency:'VND':''}} VND</div>
+        <div class="item-content">{{itemService.sumPriceItem | currency : currencyCode:''}} VND</div>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="12" >
         <div class="item-content">Phí vận chuyển</div>
-        <div class="item-content">{{itemService.sumShipFee | currency:'VND':''}} VND</div>
+        <div class="item-content">{{itemService.sumShipFee | currency : currencyCode:''}} VND</div>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="12" appMarginBottom="16">
         <div class="item-price">Tổng cộng</div>
-        <div class="item-price">{{itemService.sumPriceItem + itemService.sumShipFee  | currency:'VND':''}} VND</div>
+        <div class="item-price">{{itemService.sumPriceItem + itemService.sumShipFee  | currency : currencyCode:''}} VND</div>
     </div>
 </div>

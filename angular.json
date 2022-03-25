@@ -16,6 +16,18 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": {
+          "code": "vi",
+          "baseHref": ""
+        },
+        "locales": {
+          "en": {
+            "translation": "src/locale/translate.en.json",
+            "baseHref": ""
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -36,7 +48,9 @@
             ],
             "scripts": [
               "./script/hyperverse.sdk.min.js"
-            ]
+            ],
+            "localize": true,
+            "i18nMissingTranslation": "error"
           },
           "configurations": {
             "production": {
@@ -67,6 +81,12 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "en": {
+              "localize": ["en"]
+            },
+            "vi": {
+              "localize": false
             }
           },
           "defaultConfiguration": "production"
@@ -79,6 +99,12 @@
             },
             "development": {
               "browserTarget": "bnpl2:build:development"
+            },
+            "en": {
+              "browserTarget": "bnpl2:build:development,en"
+            },
+            "vi": {
+              "browserTarget": "bnpl2:build:development,vi"
             }
           },
           "defaultConfiguration": "development"
