@@ -3,14 +3,14 @@
     <div class="global-box" fxLayout="column" fxLayoutAlign="start center" appMarginTop="80">
         <div appMarginTop="40"></div>
         <app-checkout-header [smallView]="true"></app-checkout-header>
-        <div class="content-text" appMarginTop="60">
+        <div class="content-text" appMarginTop="60" i18n>
             Bạn vui lòng bỏ sản phẩm ra khỏi giỏ hàng!
         </div>
         <button class="payment-button"
                 appMarginTop="72"
                 appMarginBottom="22"
                 (click)="onNotEnoughCreditConfirm()">
-            <span>QUAY LẠI GIỎ HÀNG </span><span>&nbsp;&nbsp;&nbsp;></span>
+            <span i18n>QUAY LẠI GIỎ HÀNG </span><span>&nbsp;&nbsp;&nbsp;></span>
         </button>
     </div>
     <div appMarginTop="32"></div>

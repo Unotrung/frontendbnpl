@@ -14,6 +14,7 @@ export class CheckoutComponent implements OnInit {
 
   tenors : Tenor[]
   chosenTenor: Tenor | null
+
   constructor(
       private router: Router,
       private tenorService: TenorService,

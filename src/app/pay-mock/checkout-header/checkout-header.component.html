@@ -5,14 +5,14 @@
     <img src="../../../assets/images/UserEllipse.png" alt="" class="checkout-image"/>
     <div class="container-wrapper" fxFlexFill fxLayout="row" fxLayoutAlign="space-between center">
         <div class="customer-name">
-            Chào: {{name}}
+            <span i18n="@@hello">Chào: </span>{{name}}
         </div>
         <div fxLayout="column" fxLayoutAlign="center end">
-            <div class="credit-text">
+            <div class="credit-text" i18n>
                 Hạn mức tín dụng của bạn là:
             </div>
             <div class="credit-number">
-                {{credit | currency: 'VND': ''}} VND
+                {{credit | currency: currencyCode: ''}} VND
             </div>
         </div>
     </div>
@@ -25,13 +25,13 @@
         <img src="../../../assets/images/UserEllipse.png" alt="" class="checkout-image"/>
         <div class="container-wrapper" fxFlexFill fxLayout="column" fxLayoutAlign="start center">
             <div class="customer-name" appMarginTop="8">
-                Chào: {{name}}
+                <span i18n="@@hello">Chào: </span>{{name}}
             </div>
-            <div class="credit-text">
+            <div class="credit-text" i18n>
                 Hạn mức tín dụng của bạn là:
             </div>
             <div class="credit-number" appMarginBottom="8">
-                {{credit | currency: 'VND': ''}} VND
+                {{credit | currency: currencyCode: ''}} VND
             </div>
         </div>
     </div>

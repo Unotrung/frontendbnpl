@@ -4,11 +4,11 @@
     <app-checkout-items></app-checkout-items>
     <div class="global-box no-border" fxLayout="column" fxLayoutAlign="start center">
         <img src="../../../assets/images/SuccessFully.png" alt="" width="28" height="28" appMarginTop="26">
-        <div class="item-message" appMarginTop="12">
+        <div class="item-message" appMarginTop="12" i18n>
             Chúc mừng bạn, với hạn mức tín dụng này bạn đủ điều kiện để hoàn tất đơn hàng
         </div>
     </div>
-    <div class="global-box no-border tenor-header" appMarginTop="24">
+    <div class="global-box no-border tenor-header" appMarginTop="24" i18n>
         Vui lòng chọn Tenor
     </div>
     <ng-container *ngFor="let tenor of tenors">
@@ -23,7 +23,7 @@
             appMarginBottom="36"
             [disabled]="!chosenTenor"
             (click)="onCheckOutContinue()">
-        <span>XÁC NHẬN</span><span>&nbsp;&nbsp;&nbsp;></span>
+        <span i18n="@@confirm">XÁC NHẬN</span><span>&nbsp;&nbsp;&nbsp;></span>
     </button>
 
 </div>

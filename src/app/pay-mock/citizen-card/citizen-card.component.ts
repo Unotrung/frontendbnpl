@@ -11,7 +11,7 @@ import {Step} from "../step";
 })
 export class CitizenCardComponent implements OnInit {
 
-    side = 'front'
+    side = NCardSide.front
     instruction: boolean = false
     NCardSide = NCardSide
 
@@ -40,6 +40,25 @@ export class CitizenCardComponent implements OnInit {
   onCitizenCardContinue() {
       this.authService.registerStep$.next(Step.customerInformationRegister)
       this.router.navigate(['pay-mock/customer-information-register']).then()
+  }
+
+  getTextSideLocalize(side: NCardSide): string {
+        if (side === NCardSide.front) {
+            if (this.pictureService.citizenFrontImageComplete$.getValue()){
+                return $localize `mặt trước/`
+            }
+            else {
+                return ''
+            }
+        }
+
+        if (this.pictureService.citizenBackImageComplete$.getValue()) {
+            return $localize`mặt sau`
+        }
+        else {
+            return ''
+        }
+
   }
 
 }

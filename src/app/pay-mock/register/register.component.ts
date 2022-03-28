@@ -65,6 +65,7 @@ export class RegisterComponent implements OnInit {
             })
         ).subscribe({
             next: data => {
+                console.log(data)
                 //todo: check the redirect condition
                 if (data['isExists']) {
                     this.router.navigate(['pay-mock/verify-pin']).then()

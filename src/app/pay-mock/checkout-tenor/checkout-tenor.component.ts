@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Tenor} from "../tenor";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-checkout-tenor',
@@ -11,6 +12,7 @@ export class CheckoutTenorComponent implements OnInit {
   @Input() tenor!: Tenor
   @Input() checked!: boolean
   @Output() chosenTenor = new EventEmitter<string>()
+  currencyCode = environment.currencyCode
 
   constructor() { }
 

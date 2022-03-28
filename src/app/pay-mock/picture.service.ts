@@ -307,41 +307,41 @@ export class PictureService {
         if (reason === MessageReason.failOnCheckSelfieAndImageIdCard) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failOnCheckSelfieAndImageIdCard,
-                messageTitle: 'Thông báo',
-                message: 'Ảnh chân dung và ảnh trên CCCD không khớp, đề nghị chụp lại',
-                closeMessage: 'CHỤP ẢNH LẠI',
+                messageTitle: $localize `:@@announce:Thông báo`,
+                message: $localize `Ảnh chân dung và ảnh trên CCCD không khớp, đề nghị chụp lại`,
+                closeMessage: $localize `@@:reshot:Chụp lại`,
             })
         }
         if (reason === MessageReason.failOnCheckCitizenIdAndManualEnterId) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failOnCheckCitizenIdAndManualEnterId,
-                messageTitle: 'Thông báo',
-                message: 'Hồ sơ của bạn không được chấp nhận do số CCCD không trùng với số bạn điền vào',
-                closeMessage: 'Điền lại số CCCD'
+                messageTitle: $localize `:@@announce:Thông báo`,
+                message: $localize `Hồ sơ của bạn không được chấp nhận do số CCCD không trùng với số bạn điền vào`,
+                closeMessage: $localize `Điền lại số CCCD`
             })
         }
         if (reason === MessageReason.failFrontIdScreenShot) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failFrontIdScreenShot,
-                messageTitle: 'Thông báo',
-                message: 'Lỗi chụp hình cmnd/cccd mặt trước, đề nghị chụp lại',
-                closeMessage: 'Chụp lại'
+                messageTitle: $localize `:@@announce:Thông báo`,
+                message: $localize `Lỗi chụp hình cmnd/cccd mặt trước, đề nghị chụp lại`,
+                closeMessage: $localize `:@@reshot:Chụp lại`
             })
         }
         if (reason === MessageReason.failBackIdScreenShot) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failBackIdScreenShot,
-                messageTitle: 'Thông báo',
-                message: 'Lỗi chụp hình cmnd/cccd mặt sau, đề nghị chụp lại',
-                closeMessage: 'Chụp lại'
+                messageTitle: $localize `:@@announce:Thông báo`,
+                message: $localize `Lỗi chụp hình cmnd/cccd mặt sau, đề nghị chụp lại`,
+                closeMessage: $localize `:@@reshot:Chụp lại`
             })
         }
         if (reason === MessageReason.failSelfieScreenShot) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failSelfieScreenShot,
-                message: 'Hình chụp selfie không rõ, đề nghị chụp lại',
-                messageTitle: 'Thông báo',
-                closeMessage: 'CHỤP LẠI HÌNH'
+                message: $localize `Hình chụp selfie không rõ, đề nghị chụp lại`,
+                messageTitle: $localize `:@@announce:Thông báo`,
+                closeMessage: $localize `:@@reshot:Chụp lại`
             })
         }
 

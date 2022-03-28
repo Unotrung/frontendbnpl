@@ -2,26 +2,26 @@
     <img src="assets/images/FE-Credit.png" width="155" height="55">
     <div appMarginTop="55"></div>
     <app-progress-step></app-progress-step>
-    <div class="enter-info-text" appMarginTop="33">
+    <div class="enter-info-text" appMarginTop="33" i18n>
         Xác nhận hợp đồng điện tử
     </div>
     <div class="global-box" fxLayout="column" fxLayoutAlign="start center" appMarginTop="36">
         <div class="contract-content-title" appMarginTop="24">
-            <p>Mẫu hợp đồng</p>
+            <p i18n>Mẫu hợp đồng</p>
         </div>
         <div class="contract-content"  [ngClass]="{'expand-content': expand}">
             <p>{{contract.content}}</p>
-            <button class="expand-button" *ngIf="!expand" (click)="expand = !expand">Xem thêm</button>
+            <button class="expand-button" *ngIf="!expand" (click)="expand = !expand" i18n>Xem thêm</button>
         </div>
         <div appMarginTop="16" fxFlexAlign="start">
-            <mat-checkbox [(ngModel)]="agreeContract">Tôi đồng ý với các điều khoản hợp đồng</mat-checkbox>
+            <mat-checkbox [(ngModel)]="agreeContract" i18n>Tôi đồng ý với các điều khoản hợp đồng</mat-checkbox>
         </div>
         <div appMarginTop="16" fxFlexAlign="start">
-            <mat-checkbox [(ngModel)]="sendOtpToPhone">Vui lòng gởi OTP xác nhận về điện thoại đã đăng ký VOOLO của tôi</mat-checkbox>
+            <mat-checkbox [(ngModel)]="sendOtpToPhone" i18n>Vui lòng gởi OTP xác nhận về điện thoại đã đăng ký VOOLO của tôi</mat-checkbox>
         </div>
     </div>
 
     <button class="payment-button" appMarginTop="32" (click)="onAgreeContract()" [disabled]="!(agreeContract && sendOtpToPhone)">
-        <span>KÝ NGAY</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+        <span i18n>KÝ NGAY</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
 
 </div>

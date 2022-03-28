@@ -2,21 +2,19 @@
     <img src="assets/images/FE-Credit.png" width="155" height="55">
     <div appMarginTop="55"></div>
     <app-progress-step></app-progress-step>
-    <div class="enter-info-text" appMarginTop="33">
+    <div class="enter-info-text" appMarginTop="33" i18n>
         Nhập thông tin cá nhân
     </div>
     <div [formGroup]="registerForm">
     <fieldset class="personal-info">
-        <legend>Thông tin cá nhân</legend>
-        <div class="info-title" appMarginTop="25">
-            Họ và tên
-        </div>
+        <legend i18n>Thông tin cá nhân</legend>
+        <div class="info-title" appMarginTop="25" i18n="@@name">Họ và tên</div>
         <input class="input-info" appMarginTop="8" formControlName="name">
         <div class="info-title" appMarginTop="25">
-            Giới tính <span class="red-star">*</span>
+            <ng-container i18n="@@sex">Giới tính</ng-container> <span class="red-star">*</span>
         </div>
         <div class="error" *ngIf="(f['sex'].touched || f['sex'].dirty) && f['sex'].errors">
-            <span>Vui lòng chọn giới tính</span>
+            <span i18n>Vui lòng chọn giới tính</span>
         </div>
         <input class="input-info" appMarginTop="8" formControlName="sex" matInput [matAutocomplete]="autoSex">
         <mat-autocomplete autoActiveFirstOption #autoSex="matAutocomplete">
@@ -26,9 +24,7 @@
         </mat-autocomplete>
         <div fxLayout="row" appMarginTop="25">
             <div class="block-info">
-                <div class="info-title">
-                    Số điện thoại
-                </div>
+                <div class="info-title" i18n="@@phoneNumber">Số điện thoại</div>
                 <input (keypress)="keyPress($event, InputType.number)" type="text" class="narrow-input-info"
                        formControlName="phone"
                        appMarginTop="8"
@@ -36,21 +32,19 @@
 
             </div>
             <div class="block-info margin-left-12">
-                <div class="info-title">
-                    Ngày sinh
-                </div>
+                <div class="info-title" i18n="@@birthday">Ngày sinh</div>
                 <input class="narrow-input-info" appMarginTop="8" type="date" formControlName="birthday">
             </div>
         </div>
         <div fxLayout="row" appMarginTop="25">
             <div class="block-info">
-                <div class="info-title">
+                <div class="info-title" i18n="@@nid">
                     Số CMND/CCCD
                 </div>
                 <input class="narrow-input-info" appMarginTop="8" formControlName="citizenId">
             </div>
             <div class="block-info margin-left-12">
-                <div class="info-title">
+                <div class="info-title" i18n="@@issueDay">
                     Ngày cấp
                 </div>
                 <input class="narrow-input-info" appMarginTop="8" type="date" formControlName="issueDate">
@@ -59,8 +53,8 @@
     </fieldset>
 
     <fieldset class="address-box">
-        <legend>Địa chỉ</legend>
-        <div class="info-title" appMarginTop="25">
+        <legend i18n="@@address">Địa chỉ</legend>
+        <div class="info-title" appMarginTop="25" i18n="@@city">
             Thành phố/Tỉnh <span class="red-star">*</span>
         </div>
         <input class="input-info" type="text"
@@ -76,10 +70,10 @@
             </mat-option>
         </mat-autocomplete>
         <div class="error" *ngIf="(f['city'].touched || f['city'].dirty) && f['city'].errors">
-            <span>Vui lòng chọn thành phố, tỉnh</span>
+            <span i18n>Vui lòng chọn thành phố, tỉnh</span>
         </div>
             <div class="block-info" appMarginTop="16">
-                <div class="info-title">
+                <div class="info-title" i18n="@@district">
                     Quận/Huyện <span class="red-star">*</span>
                 </div>
                 <input class="input-info" type="text"
@@ -95,12 +89,12 @@
                     </mat-option>
                 </mat-autocomplete>
                 <div class="error" *ngIf="(f['district'].touched || f['district'].dirty) && f['district'].errors">
-                    <span>Vui lòng chọn quận, huyện</span>
+                    <span i18n>Vui lòng chọn quận, huyện</span>
                 </div>
             </div>
             <div class="block-info" appMarginTop="16">
                 <div class="info-title">
-                    Phường/Xã <span class="red-star">*</span>
+                    <ng-container i18n="ward">Phường/Xã</ng-container> <span class="red-star">*</span>
                 </div>
 <!--                <input class="narrow-input-info"-->
 <!--                       [ngClass]="{'is-invalid': (f['ward'].touched || f['ward'].dirty) && f['ward'].errors}"-->
@@ -118,24 +112,24 @@
                     </mat-option>
                 </mat-autocomplete>
                 <div class="error" *ngIf="(f['ward'].touched || f['ward'].dirty) && f['ward'].errors">
-                    <span>Vui lòng chọn phường, xã</span>
+                    <span i18n>Vui lòng chọn phường, xã</span>
                 </div>
             </div>
 <!--        </div>-->
         <div class="info-title" appMarginTop="16">
-            Đường <span class="red-star">*</span>
+            <ng-container i18n="@@street">Đường</ng-container> <span class="red-star">*</span>
         </div>
         <input class="input-info"
                [ngClass]="{'is-invalid': (f['street'].touched || f['street'].dirty) && f['street'].errors}"
                appMarginTop="8" formControlName="street">
         <div class="error" *ngIf="(f['street'].touched || f['street'].dirty) && f['street'].errors">
-            <span>Vui lòng chọn địa chỉ</span>
+            <span i18n>Vui lòng chọn địa chỉ</span>
         </div>
     </fieldset>
 
     <fieldset class="reference-box">
-        <legend>Thông tin tham chiếu</legend>
-        <div class="info-title" appMarginTop="25">
+        <legend i18n>Thông tin tham chiếu</legend>
+        <div class="info-title" appMarginTop="25" i18n="@@danhxung">
             Danh xưng <span class="red-star">*</span>
         </div>
 <!--        <input class="input-info"-->
@@ -154,35 +148,35 @@
             </mat-option>
         </mat-autocomplete>
         <div class="error" *ngIf="(f['personal_title_ref'].touched || f['personal_title_ref'].dirty) && f['personal_title_ref'].errors">
-            <span>Vui lòng điền danh xưng</span>
+            <span i18n>Vui lòng điền danh xưng</span>
         </div>
         <div class="info-title" appMarginTop="25">
-            Họ và tên <span class="red-star">*</span>
+            <ng-container i18n="@@name">Họ và tên</ng-container> <span class="red-star">*</span>
         </div>
         <input class="input-info" (keypress)="keyPress($event, InputType.name)"
                [ngClass]="{'is-invalid': (f['name_ref'].touched || f['name_ref'].dirty) && f['name_ref'].errors}"
                appMarginTop="8" formControlName="name_ref">
         <div class="error" *ngIf="(f['name_ref'].touched || f['name_ref'].dirty) && f['name_ref'].errors">
-            <span>Vui lòng điền họ và tên</span>
+            <span i18n>Vui lòng điền họ và tên</span>
         </div>
-        <div class="info-title" appMarginTop="25">
+        <div class="info-title" appMarginTop="25" i18n="@@phoneNumer">
             Số điện thoại <span class="red-star">*</span>
         </div>
         <input class="input-info" (keypress)="keyPress($event, InputType.number)"
                [ngClass]="{'is-invalid': (f['phone_ref'].touched || f['phone_ref'].dirty) && f['phone_ref'].errors}"
                appMarginTop="8" formControlName="phone_ref">
         <div class="error" *ngIf="(f['phone_ref'].touched || f['phone_ref'].dirty) && f['phone_ref'].errors">
-            <span>Vui lòng điền đúng số điện thoại</span>
+            <span i18n>Vui lòng điền đúng số điện thoại</span>
         </div>
     </fieldset>
     </div>
     <div class="note-text" fxFlexAlign="start">Lưu ý</div>
-    <div class="note-text-2" fxFlexAlign="start"><span class="red-star">*</span> Thông tin bắt buộc</div>
+    <div class="note-text-2" fxFlexAlign="start"><span class="red-star">*</span> <ng-container i18n>Thông tin bắt buộc </ng-container></div>
     <div>
         <button class="payment-button"
                 appMarginTop="36"
                 appMarginBottom="36"
                 [disabled]="registerForm.invalid" (click)="onContinue()">
-            <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+            <span i18n="@@continue">TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
     </div>
 </div>

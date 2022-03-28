@@ -8,17 +8,17 @@
                 TENOR <span>1</span>
             </div>
             <div class="tenor-title">
-                Giá sản phẩm: <span>{{tenor.itemPrice | currency:'VND' : ''}} VND</span>
+                <span i18n>Giá sản phẩm: </span><span>{{tenor.itemPrice | currency:currencyCode : ''}} VND</span>
             </div>
             <div class="tenor-title">
-                Phí chuyển đổi: <span>{{tenor.convertFee | currency:'VND' : ''}} VND</span>
+                <span i18n>Phí chuyển đổi: </span><span>{{tenor.convertFee | currency:currencyCode : ''}} VND</span>
             </div>
             <div class="tenor-title">
-                Thời gian thanh toán: <span>{{tenor.paymentSchedule}} ngày</span>
+                <span i18n>Thời gian thanh toán:</span> <span>{{tenor.paymentSchedule}} </span> <span i18n>ngày</span>
             </div>
         </div>
         <div class="tenor-price">
-            {{tenor.itemPrice + tenor.convertFee | currency:'VND' : ''}} VND
+            {{tenor.itemPrice + tenor.convertFee | currency:currencyCode : ''}} VND
         </div>
     </div>
 

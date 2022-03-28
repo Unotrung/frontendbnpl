@@ -1,5 +1,5 @@
 <div class="global-box" appMarginTop="16" fxLayout="column" fxLayoutAlign="start center">
-    <div class="item-header" fxFlexAlign="start" appMarginTop="10">
+    <div class="item-header" fxFlexAlign="start" appMarginTop="10" i18n>
         Thông tin đơn hàng
     </div>
     <ng-container *ngFor="let item of itemService.items">
@@ -24,22 +24,22 @@
     <mat-divider></mat-divider>
     <ng-container *ngIf="discount">
         <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" >
-            <div class="item-content">Add a discount code or a gift card</div>
+            <div class="item-content" i18n>Add a discount code or a gift card</div>
 <!--            <div class="item-content"><input></div>-->
         </div>
         <mat-divider></mat-divider>
     </ng-container>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" >
-        <div class="item-content">Thành tiền</div>
+        <div class="item-content" i18n>Thành tiền</div>
         <div class="item-content">{{itemService.sumPriceItem | currency : currencyCode:''}} VND</div>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="12" >
-        <div class="item-content">Phí vận chuyển</div>
+        <div class="item-content" i18n>Phí vận chuyển</div>
         <div class="item-content">{{itemService.sumShipFee | currency : currencyCode:''}} VND</div>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="12" appMarginBottom="16">
-        <div class="item-price">Tổng cộng</div>
+        <div class="item-price" i18n>Tổng cộng</div>
         <div class="item-price">{{itemService.sumPriceItem + itemService.sumShipFee  | currency : currencyCode:''}} VND</div>
     </div>
 </div>

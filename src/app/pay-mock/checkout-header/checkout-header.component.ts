@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AuthBnplService} from "../auth-bnpl.service";
 import {ItemService} from "../item.service";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'app-checkout-header',
@@ -11,6 +12,7 @@ export class CheckoutHeaderComponent implements OnInit {
   name: string =''
   credit: number = 0
   @Input() smallView: Boolean = false
+  currencyCode = environment.currencyCode
   constructor(
       private authService: AuthBnplService,
       private itemService: ItemService

@@ -10,7 +10,6 @@ import { VerifyPinComponent } from './verify-pin/verify-pin.component';
 import { HighlightDirective } from "./helper/highlight.directive";
 import { ElDimensionDirective } from './helper/el-dimension.directive';
 import { CodeInputModule } from "angular-code-input";
-import { ImageOnTopComponent } from './image-on-top/image-on-top.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { CustomerPinInstallComponent } from './customer-pin-install/customer-pin-install.component';
 import { CustomerEsignConfirmComponent } from './customer-esign-confirm/customer-esign-confirm.component';
@@ -56,7 +55,6 @@ import { PayMockComponent } from "./pay-mock.component";
       HighlightDirective,
       VerifyPinComponent,
       ElDimensionDirective,
-      ImageOnTopComponent,
       CustomerPinInstallComponent,
       CustomerEsignConfirmComponent,
       CustomerInformationProcessComponent,
