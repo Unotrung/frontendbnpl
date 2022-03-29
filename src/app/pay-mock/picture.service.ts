@@ -114,10 +114,10 @@ export class PictureService {
         this.hv.HVFaceModule.start(hvFaceConfig, callback);
     }
 
-    onSelfieComplete(complete: boolean, image: any) {
-        this.selfieImage = image;
-        this.selfieImageComplete$.next(complete);
-    }
+    // onSelfieComplete(complete: boolean, image: any) {
+    //     this.selfieImage = image;
+    //     this.selfieImageComplete$.next(complete);
+    // }
 
     citizenCardShot(side: NCardSide) {
         const hvDocConfig = new this.hv.HVDocConfig();
@@ -160,7 +160,7 @@ export class PictureService {
                 const apiHeaders = HVResponse.getApiHeaders();
                 console.log('screen shot', side, apiResults)
                 console.log(apiHeaders)
-                if (apiResults['result']['summary']['action'] !== 'pass') {
+                if (apiResults['result']['summary']['action'] !== 'pass' || this.checkInfoReview(side)) {
                     if (side === NCardSide.front) {
                         this.openMessageDialog(MessageReason.failFrontIdScreenShot)
                     } else if (side === NCardSide.back) {
@@ -263,7 +263,7 @@ export class PictureService {
         if (side === NCardSide.front) {
             this.citizenFrontImage = ''
             this.citizenFrontImageComplete$.next(false)
-            this.citizenBackData$.next(null)
+            this.citizenFrontData$.next(null)
             if (this.citizenBackImageComplete$.getValue()) {
                 this.currentShot$.next(NCardSide.back)
             } else {
@@ -274,6 +274,7 @@ export class PictureService {
         if (side === NCardSide.back) {
             this.citizenBackImage = ''
             this.citizenBackImageComplete$.next(false)
+            this.citizenBackData$.next(null)
             if (this.citizenFrontImageComplete$.getValue()) {
                 this.currentShot$.next(NCardSide.front)
             } else {
@@ -281,6 +282,8 @@ export class PictureService {
             }
         }
     }
+
+
 
 
     dataURItoBlob(dataURI: string) {
@@ -364,6 +367,21 @@ export class PictureService {
         this.deleteImage(NCardSide.back)
     }
 
+    checkInfoReview(side: NCardSide): boolean{
+        if (side === NCardSide.front && this.citizenFrontData$.getValue()) {
+            const frontData = this.citizenFrontData$.getValue()
+            return checkInfo(frontData['dob']).confirm &&
+                checkInfo(frontData['doe']).confirm &&
+                checkInfo(frontData['idNumber']).confirm &&
+                checkInfo(frontData['name']).confirm &&
+                checkInfo(frontData['permanentAddress']).confirm
+        }
+        if (side === NCardSide.back && this.citizenBackData$.getValue()) {
+            const backData = this.citizenBackData$.getValue()
+            return checkInfo(backData['doi']).confirm
+        }
+        return false
+    }
 
     // checkSelfieImage(): Observable<any> {
     // const headers = new HttpHeaders()

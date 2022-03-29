@@ -39,6 +39,28 @@ export class CustomerInformationRegisterComponent implements OnInit {
   selectedWard$!: BehaviorSubject<Ward>;
   selectedStreet$!: BehaviorSubject<any>;
 
+  initCity = {
+    city: '',
+    success: false
+  }
+  initDistrict = {
+    district: '',
+    success: false
+  }
+  initWard = {
+    ward: '',
+    prefix: '',
+    success: false
+  }
+  initStreet = {
+    street: '',
+    success: false
+  }
+  name = ''
+  birthday = ''
+  issueDay = ''
+  citizenId = ''
+
   checkInfo = checkInfo
   keyPress = keyPress
   InputType = InputType
@@ -70,20 +92,20 @@ export class CustomerInformationRegisterComponent implements OnInit {
     console.log('back data', citizenBackData)
     let name = '', gender = '', birthday = '', issueDay = '', citizenId = '', phone = ''
     if ('name' in citizenFrontData) {
-      name = this.checkInfo(citizenFrontData['name']).value
+      this.name = name = this.checkInfo(citizenFrontData['name']).value
     }
     if ('gender' in citizenFrontData) {
       gender = (this.checkInfo(citizenFrontData['gender']).value === 'F') ? 'Nữ':
           this.checkInfo(citizenFrontData['gender']).value === 'M' ? 'Nam' : ''
     }
     if ('dob' in citizenFrontData) {
-      birthday = this.convertDateString(this.checkInfo(citizenFrontData['dob']).value)
+      this.birthday = birthday = this.convertDateString(this.checkInfo(citizenFrontData['dob']).value)
     }
     if ('doi' in citizenBackData) {
-      issueDay = this.convertDateString(this.checkInfo(citizenBackData['doi']).value)
+      this.issueDay = issueDay = this.convertDateString(this.checkInfo(citizenBackData['doi']).value)
     }
     if ('idNumber' in citizenFrontData) {
-      citizenId = this.checkInfo(citizenFrontData['idNumber']).value
+      this.citizenId = citizenId = this.checkInfo(citizenFrontData['idNumber']).value
     }
 
      phone = this.authService.user$.getValue().phone!
@@ -113,7 +135,6 @@ export class CustomerInformationRegisterComponent implements OnInit {
     let initDistrict: District
     let initWard: Ward
     let initStreet = ''
-    let initWardSuccess = false
     this.locationAddressService.getJSON().subscribe(data => {
       this.vietnamLocationData = data as any[];
       Object.entries(this.vietnamLocationData).forEach(
@@ -132,6 +153,12 @@ export class CustomerInformationRegisterComponent implements OnInit {
       if (initCity === undefined) {
         initCity = this.cityOptions[0]
       }
+      else {
+        this.initCity = {
+          success: true,
+          city: initCity.name
+        }
+      }
 
       this.selectedCity$ = new BehaviorSubject<City>(initCity)
       Object.entries(this.selectedCity$.getValue().districts).forEach(([key, value]) => {
@@ -145,6 +172,13 @@ export class CustomerInformationRegisterComponent implements OnInit {
       // @ts-ignore
       if(initDistrict === undefined) {
         initDistrict = this.selectedCity$.getValue().districts[0]
+      }
+      else {
+        // this.initDistrict = true
+        this.initDistrict = {
+          success: true,
+          district: initDistrict.name
+        }
       }
       this.selectedDistrict$ = new BehaviorSubject<District>(initDistrict);
 
@@ -168,14 +202,22 @@ export class CustomerInformationRegisterComponent implements OnInit {
         initStreet = this.spitStreetFromStreetWard(wardStreet);
         initWard = this.selectedDistrict$.getValue().wards[0]
       } else {
-        initWardSuccess = true
+        this.initWard = {
+          success: true,
+          ward: initWard.name,
+          prefix: initWard.prefix
+        }
+
         if (addressLength >= 4) {
           initStreet = wardStreet
         } else {
           initStreet = this.spitStreetFromStreetWard(wardStreet, initWard.name)
         }
 
-        // console.log(initStreet)
+         this.initStreet = {
+          success: true,
+           street: initStreet
+         }
       }
 
       // @ts-ignore
@@ -205,10 +247,14 @@ export class CustomerInformationRegisterComponent implements OnInit {
         birthday: new FormControl({value:birthday, disabled: true}),
         citizenId: new FormControl({value: citizenId, disabled: true}),
         issueDate: new FormControl({value: issueDay, disabled: true}),
-        city: new FormControl(initCity.name, [Validators.required]),
-        district: new FormControl(initDistrict.name, [Validators.required]),
-        ward: new FormControl(initWardSuccess ? initWard.name : '', [Validators.required]),
-        street: new FormControl(initStreet, [Validators.required]),
+        city: new FormControl({value: this.initCity.success ? this.initCity.city : '', disabled: this.initCity.success},
+            [Validators.required]),
+        district: new FormControl({value: this.initDistrict.success ? this.initDistrict.district : '', disabled: this.initDistrict.success},
+            [Validators.required]),
+        ward: new FormControl({value: this.initWard.success ? this.initWard.ward : '', disabled: this.initWard.success},
+            [Validators.required]),
+        street: new FormControl({value: this.initStreet.success ? this.initStreet.street: '', disabled: this.initStreet.success},
+            [Validators.required]),
         personal_title_ref: new FormControl('', [Validators.required]),
         name_ref: new FormControl('', [Validators.required]),
         phone_ref: new FormControl('', [Validators.required, Validators.pattern("^0[0-9]*$"),
@@ -348,17 +394,17 @@ export class CustomerInformationRegisterComponent implements OnInit {
 
     this.customerInformationService.customerInfo$.next({
     // @ts-ignore
-      name: this.f['name'].value,
+      name: this.name,
       sex: this.f['sex'].value,
-      phone: this.f['phone'].value,
-      birthday: this.f['birthday'].value,
+      phone: this.authService.user$.getValue().phone,
+      birthday: new Date(this.birthday),
       citizenId: this.f['citizenId'].value,
-      issueDate: this.f['issueDate'].value,
+      issueDate: new Date(this.issueDay),
 
-      city: this.f['city'].value,
-      district: this.f['district'].value,
-      ward: `${this.selectedWard$.getValue().prefix} ${this.f['ward'].value}`,
-      street: this.f['street'].value,
+      city: this.initCity.success ? this.initCity.city : this.f['city'].value,
+      district: this.initDistrict.success ? this.initDistrict.district : this.f['district'].value,
+      ward: this.initWard.success ? `${this.initWard.prefix} ${this.initWard.ward}` : `${this.selectedWard$.getValue().prefix} ${this.f['ward'].value}`,
+      street: this.initStreet.success ? this.initStreet.street : this.f['street'].value,
 
       personal_title_ref: this.f['personal_title_ref'].value,
       name_ref: this.f['name_ref'].value,

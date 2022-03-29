@@ -45,18 +45,18 @@ export class CitizenCardComponent implements OnInit {
   getTextSideLocalize(side: NCardSide): string {
         if (side === NCardSide.front) {
             if (this.pictureService.citizenFrontImageComplete$.getValue()){
-                return $localize `mặt trước/`
+                return ''
             }
             else {
-                return ''
+                return $localize `mặt trước/`
             }
         }
 
         if (this.pictureService.citizenBackImageComplete$.getValue()) {
-            return $localize`mặt sau`
+            return ''
         }
         else {
-            return ''
+            return $localize`mặt sau`
         }
 
   }
