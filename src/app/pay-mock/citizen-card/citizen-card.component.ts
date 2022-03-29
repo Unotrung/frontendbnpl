@@ -48,7 +48,7 @@ export class CitizenCardComponent implements OnInit {
                 return ''
             }
             else {
-                return $localize `mặt trước/`
+                return  `mặt trước/`
             }
         }
 
@@ -56,7 +56,7 @@ export class CitizenCardComponent implements OnInit {
             return ''
         }
         else {
-            return $localize`mặt sau`
+            return `mặt sau`
         }
 
   }

@@ -2,22 +2,22 @@
     <img src="assets/images/FE-Credit.png" width="155" height="55">
     <div appMarginTop="55"></div>
     <app-progress-step></app-progress-step>
-    <div class="enter-info-text" appMarginTop="33" i18n>
+    <div class="enter-info-text" appMarginTop="33" >
         Đối soát thông tin
     </div>
     <fieldset class="personal-info-confirm">
-        <legend i18n> Thông tin cá nhân </legend>
+        <legend > Thông tin cá nhân </legend>
         <div fxLayout="row" appMarginTop="9">
             <div class="block-info" fxFlex="50">
                 <div class="info-text-title">
-                    <ng-container i18n="@@name">Họ và tên</ng-container>:
+                    <ng-container>Họ và tên</ng-container>:
                 </div>
                 <div class="info-content" appMarginTop="5">
                     {{customerInformationService.customerInfo$.getValue().name}}
                 </div>
             </div>
             <div class="block-info" fxFlex="50">
-                <div class="info-text-title" i18n="@@sex">Giới tính</div>
+                <div class="info-text-title">Giới tính</div>
                 <div class="info-content" appMarginTop="5">
                     {{customerInformationService.customerInfo$.getValue().sex}}
                 </div>
@@ -25,13 +25,13 @@
         </div>
         <div fxLayout="row" appMarginTop="16">
             <div class="block-info" fxFlex="50">
-                <div class="info-text-title" i18n="@@birthday">Ngày sinh</div>
+                <div class="info-text-title">Ngày sinh</div>
                 <div class="info-content" appMarginTop="5">
                     {{customerInformationService.customerInfo$.getValue().birthday | date: 'dd/MM/yyyy'}}
                 </div>
             </div>
             <div class="block-info" fxFlex="50">
-                <div class="info-text-title" i18n="@@phoneNumber">Số điện thoại</div>
+                <div class="info-text-title">Số điện thoại</div>
                 <div class="info-content" appMarginTop="5">
                     {{customerInformationService.customerInfo$.getValue().phone}}
                 </div>
@@ -39,7 +39,7 @@
         </div>
         <div fxLayout="row" appMarginTop="16">
             <div class="block-info" fxFlex="50">
-                <div class="info-text-title" i18n="@nid">
+                <div class="info-text-title">
                     Số CMND/CCCD:
                 </div>
                 <div class="info-content" appMarginTop="5">
@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="block-info" fxFlex="50">
-                <div class="info-text-title" i18n="issueDay">
+                <div class="info-text-title">
                     Ngày cấp
                 </div>
                 <div class="info-content" appMarginTop="5">
@@ -56,34 +56,34 @@
             </div>
         </div>
         <div fxLayout="column" appMarginTop="16">
-            <div class="info-text-title" i18n="@@street">Đường</div>
+            <div class="info-text-title">Đường</div>
             <div class="info-content" appMarginTop="5">
                 {{address}}
             </div>
         </div>
     </fieldset>
     <fieldset class="ref-info-confirm">
-        <legend i18n="@@refInfo"> Thông tin tham chiếu</legend>
+        <legend> Thông tin tham chiếu</legend>
         <div fxLayout="column">
             <div class="info-text-title" appMarginTop="15">
-                <p i18n>Danh xưng: <span class="info-content">{{customerInformationService.customerInfo$.getValue().personal_title_ref}} </span></p>
+                <p >Danh xưng: <span class="info-content">{{customerInformationService.customerInfo$.getValue().personal_title_ref}} </span></p>
             </div>
         </div>
         <div fxLayout="column">
             <div class="info-text-title" appMarginTop="12">
-                <p><ng-container i18n="@@name">Họ và tên</ng-container>: <span class="info-content">{{customerInformationService.customerInfo$.getValue().name_ref}}</span></p>
+                <p><ng-container>Họ và tên</ng-container>: <span class="info-content">{{customerInformationService.customerInfo$.getValue().name_ref}}</span></p>
             </div>
         </div>
         <div fxLayout="column">
             <div class="info-text-title" appMarginTop="12">
-                <p i18n="@phoneNumber">Số điện thoại: <span class="info-content">{{customerInformationService.customerInfo$.getValue().phone_ref}}</span></p>
+                <p>Số điện thoại: <span class="info-content">{{customerInformationService.customerInfo$.getValue().phone_ref}}</span></p>
             </div>
         </div>
         <div>
 <!--            <button class="payment-button" routerLink="../customer-pin-install"><span>Tiếp tục</span><span>&nbsp;&nbsp;&nbsp;></span> </button>-->
             <button class="payment-button"
                     appMarginTop="36"
-                    (click)="onSendConfirm()"><span i18n="@@continue">TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+                    (click)="onSendConfirm()"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
         </div>
     </fieldset>
 </div>

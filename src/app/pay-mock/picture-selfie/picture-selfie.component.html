@@ -6,17 +6,17 @@
 
 <div class="global-box" fxLayout="column" fxLayoutAlign="start center">
     <div class="global-title" appMarginTop="63">
-        <p i18n>Vui lòng nhập CMND/CCCD</p>
+        <p >Vui lòng nhập CMND/CCCD</p>
     </div>
     <input type="text" class="global-input"
            (keypress)="keyPress($event, InputType.number)"
            [formControl]="citizenId" appMarginTop="14">
-    <div i18n class="error" appMarginTop="8" fxFlexAlign="start" *ngIf="(citizenId.dirty || citizenId.touched || submitted) && citizenId.invalid">
+    <div  class="error" appMarginTop="8" fxFlexAlign="start" *ngIf="(citizenId.dirty || citizenId.touched || submitted) && citizenId.invalid">
             CMND hoặc CCCD có 9 hoặc 12 chữ số
     </div>
 
     <div class="image-title" appMarginTop="24">
-        <p i18n>Chụp ảnh chân dung</p>
+        <p >Chụp ảnh chân dung</p>
     </div>
     <div class="background-gray">
         <div *ngIf="!(pictureService.selfieImageComplete$ | async)" class="background-green">
@@ -38,26 +38,26 @@
         <img appMarginTop="8" width="60" height="40" alt="" [src]="pictureService.selfieImage">
         <mat-icon appMarginTop="8" (click)="onDeleteImage()">delete</mat-icon>
     </div>
-    <div class="image-title" appMarginTop="16" i18n>
+    <div class="image-title" appMarginTop="16" >
         Chân dung
     </div>
     <div class="warning" *ngIf="!(pictureService.selfieImageComplete$ | async)"
          fxFlexAlign="start" fxLayout="row" fxLayoutAlign="start center"
          appMarginTop="10" (click)="instruction = !instruction">
-        <img src="assets/images/warning.png" width="14" height="14"> <div class="image-title" i18n>  Chưa chụp ảnh</div>
+        <img src="assets/images/warning.png" width="14" height="14"> <div class="image-title" >  Chưa chụp ảnh</div>
     </div>
     <ng-container *ngIf="instruction">
-    <div class="picture-selfie-notice" appMarginTop="16" fxFlexAlign="start" i18n>
+    <div class="picture-selfie-notice" appMarginTop="16" fxFlexAlign="start" >
         Hướng dẫn chụp ảnh chân dung:
     </div>
     <ul>
-        <li class="picture-selfie-step" i18n>
+        <li class="picture-selfie-step" >
             Nhấn vào nút màu đỏ để bắt đầu chụp hình
         </li>
-        <li class="picture-selfie-step" i18n>
+        <li class="picture-selfie-step" >
             Số CMND/CCCD phải điền chính xác. Vui lòng nhập 9 số (CMND) hoặc 12 số (CCCD)
         </li>
-        <li class="picture-selfie-step" i18n>
+        <li class="picture-selfie-step" >
             Ảnh chụp chân dung phải đủ sáng, không đội mũ, không đeo kính
         </li>
     </ul>
@@ -68,6 +68,6 @@
         appMarginBottom="32"
         [disabled]="!(pictureService.selfieImageComplete$ | async)"
         (click)="onSelfieContinue()">
-    <span i18n="@@continue">TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
+    <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
 </button>
 </div>

@@ -1,5 +1,5 @@
 <div class="global-box" appMarginTop="16" fxLayout="column" fxLayoutAlign="start center">
-    <div class="item-header" fxFlexAlign="start" appMarginTop="10" i18n>
+    <div class="item-header" fxFlexAlign="start" appMarginTop="10" >
         Thông tin đơn hàng
     </div>
     <ng-container *ngFor="let item of itemService.items">
@@ -24,7 +24,7 @@
     <mat-divider></mat-divider>
     <ng-container *ngIf="discount">
         <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" >
-            <div class="item-content" i18n>Add a discount code or a gift card</div>
+            <div class="item-content" >Add a discount code or a gift card</div>
 <!--            <div class="item-content"><input></div>-->
         </div>
         <mat-divider></mat-divider>

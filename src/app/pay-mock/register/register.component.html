@@ -4,20 +4,20 @@
     <img src="assets/images/image-solugan.png" width="383" height="141">
     <p class="margin-top-16 payment-text" >Intro - FEC Content Team to Update</p>
     <div class="global-box" fxLayout="column" fxLayoutAlign="top center">
-        <p class="margin-top-16 payment-text" i18n>Vui lòng nhập điện thoại để tiếp tục</p>
+        <p class="margin-top-16 payment-text" >Vui lòng nhập điện thoại để tiếp tục</p>
         <form [formGroup]="registerForm">
         <input (keypress)="keyPress($event, InputType.number)" required type="text" class="phone-input"
                formControlName="phonenumber"
                [ngClass]="{ 'is-invalid': submitted && f['phonenumber'].errors }">
             <div *ngIf="submitted && f['phonenumber'].errors && f['phonenumber'].errors['required']">
-                <span class="error" i18n>Vui lòng nhập số điện thoại</span>
+                <span class="error" >Vui lòng nhập số điện thoại</span>
             </div>
             <div *ngIf="submitted && f['phonenumber'].errors && (
             f['phonenumber'].errors!['maxlength']
             || f['phonenumber'].errors!['minlength'])">
-                <span class="error" i18n>Số điện thoại phải 10 chữ số</span></div>
+                <span class="error" >Số điện thoại phải 10 chữ số</span></div>
             <div *ngIf="submitted && f['phonenumber'].errors && f['phonenumber'].errors['pattern']">
-                <span class="error" i18n>Số điện thoại không hợp lệ</span>
+                <span class="error" >Số điện thoại không hợp lệ</span>
             </div>
 
         </form>
@@ -45,7 +45,7 @@
                     appMarginTop="36"
                     appMarginBottom="16"
                     (click)="onRegisterContinue()">
-                <span i18n="@@continue">TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+                <span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
         </div>
     </div>
     <app-checkout-items [discount]="true"></app-checkout-items>

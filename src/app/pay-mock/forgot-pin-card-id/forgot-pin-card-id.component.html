@@ -2,19 +2,19 @@
     <img src="assets/images/FE-Credit.png" width="155" height="55">
     <div class="global-box" fxLayout="column" fxLayoutAlign="start center" appMarginTop="62">
         <div class="text-title" appMarginTop="23">
-            <p i18n>Nhập số CMND/CCCD</p>
+            <p >Nhập số CMND/CCCD</p>
         </div>
         <div class="input-label" fxFlexAlign="start" appMarginTop="16">
-            <p i18n>CMND/CCCD <span class="red-star">*</span></p>
+            <p >CMND/CCCD <span class="red-star">*</span></p>
         </div>
         <input  class="global-input" [formControl]="cardIdForm">
-        <div class="error" appMarginTop="8" fxFlexAlign="start" *ngIf="(cardIdForm.dirty || cardIdForm.touched) && cardIdForm.invalid" i18n>
+        <div class="error" appMarginTop="8" fxFlexAlign="start" *ngIf="(cardIdForm.dirty || cardIdForm.touched) && cardIdForm.invalid" >
             CMND hoặc CCCD có 9 hoặc 12 chữ số
         </div>
         <div appMarginTop="32" appMarginBottom="33">
             <button class="payment-button"
                     appMarginTop="36"
-                    [disabled]="cardIdForm.invalid" (click)="onForgotCardIdContinue()"><span i18n>GỞI OTP</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+                    [disabled]="cardIdForm.invalid" (click)="onForgotCardIdContinue()"><span >GỞI OTP</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
         </div>
     </div>
 </div>
