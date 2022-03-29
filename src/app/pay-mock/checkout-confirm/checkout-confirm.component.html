@@ -4,13 +4,13 @@
     <app-checkout-tenor [tenor]="(tenorService.selectedTenor$ | async)!" [checked]="true"></app-checkout-tenor>
     <app-verify-pin-child (pinCode)="onPinCodeChange($event)"></app-verify-pin-child>
     <div class="save-tenor" appMarginBottom="16">
-        <mat-checkbox [(ngModel)]="saveTenor" i18n> Lưu phương thức thanh toán </mat-checkbox>
+        <mat-checkbox [(ngModel)]="saveTenor" > Lưu phương thức thanh toán </mat-checkbox>
     </div>
     <button class="payment-button"
             appMarginTop="36"
             appMarginBottom="36"
             [disabled]="pinCode.length < 4"
             (click)="onCheckoutConfirm()">
-        <span i18n="@@confirm">XÁC NHẬN</span><span>&nbsp;&nbsp;&nbsp;></span>
+        <span>XÁC NHẬN</span><span>&nbsp;&nbsp;&nbsp;></span>
     </button>
 </div>

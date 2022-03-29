@@ -4,7 +4,7 @@
 
     <div class="global-box" fxLayout="column" fxLayoutAlign="start center" appMarginTop="32">
         <div class="note-text-2" fxFlexAlign="start" appMarginTop="16">
-            <p i18n>Nhập OTP <span class="red-star">*</span></p>
+            <p >Nhập OTP <span class="red-star">*</span></p>
         </div>
         <code-input #codeInput [isCodeHidden]="false"
                     [codeLength]="6"
@@ -15,22 +15,22 @@
              fxFlexAlign="start" fxLayout="row" fxLayoutAlign="start center"
              appMarginTop="8">
             <img src="assets/images/warning.png" width="14" height="14">
-            <div class="image-title" i18n> Mã OTP không hợp lệ {{otpFails$ | async}}/5</div>
+            <div class="image-title" > Mã OTP không hợp lệ {{otpFails$ | async}}/5</div>
         </div>
         <div class="warning" *ngIf="countdownComplete"
              fxFlexAlign="start" fxLayout="row" fxLayoutAlign="start center"
              appMarginTop="8">
             <img src="assets/images/warning.png" width="14" height="14">
-            <div class="image-title" i18n> Mã OTP hết hạn</div>
+            <div class="image-title" > Mã OTP hết hạn</div>
         </div>
         <div class="warning image-title" *ngIf="(otpFails$ | async)! >= 5"
              appElDimension width="240"
-             appMarginTop="16" i18n>
+             appMarginTop="16" >
             Quá trình reset mã pin không thành công. Vui lòng trở lại sau 24h
         </div>
         <div class="note-text" appMarginTop="8" appMarginBottom="16">
-            <p i18n>Không nhận được OTP ?</p>
-            <button class="send-otp" [disabled]="!countdownComplete" (click)="onSendOtp()" i18n>Gởi lại OTP
+            <p >Không nhận được OTP ?</p>
+            <button class="send-otp" [disabled]="!countdownComplete" (click)="onSendOtp()" >Gởi lại OTP
                 <span>(</span>
                 <countdown #cd [config]="{leftTime: 60, format: 's'}" (event)="onCountdown($event)"></countdown>
                 <span>s)</span>
