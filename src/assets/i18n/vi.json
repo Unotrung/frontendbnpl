@@ -15,16 +15,55 @@
 	"checkoutHeader": {
 		"creditLimit": "Hạn mức tín dụng của bạn là"
 	},
+	"customer": {
+		"chooseCity": "Vui lòng chọn thành phố, tỉnh",
+		"chooseDistrict": "Vui lòng chọn quận, huyện",
+		"chooseStreet": "Vui lòng chọn địa chỉ",
+		"chooseWard": "Vui lòng chọn phường, xã",
+		"enterInfo": "Nhập thông tin cá nhân",
+		"info": "Thông tin cá nhân",
+		"name": "Vui lòng điền họ và tên",
+		"refPhone": "Vui lòng điền đúng số điện thoại",
+		"refText": "Thông tin tham chiếu",
+		"refTittle": "Vui lòng điền danh xưng",
+		"warning": "Thông tin bắt buộc"
+	},
+	"error": {
+		"emptySex": "Vui lòng chọn giới tính"
+	},
 	"home": {
 		"chooseLang": "Chọn ngôn ngữ"
 	},
+	"label": {
+		"address": "Địa chỉ",
+		"birthday": "Ngày sinh",
+		"city": "Thành phố/Tỉnh",
+		"district": "Quận/Huyện",
+		"guide": "Hướng dẫn",
+		"issueDay": "Ngày cấp",
+		"name": "Họ và tên",
+		"nid": "Số CMND/CCCD",
+		"perTitle": "Danh xưng",
+		"phoneNumber": "Số điện thoại",
+		"sex": "Giới tính",
+		"street": "Đường",
+		"ward": "Phường/Xã"
+	},
 	"message": {
-		"NCardBackError": "Lỗi chụp hình cmnd/cccd mặt sau, đề nghị chụp lại",
-		"NCardFrontError": "Lỗi chụp hình cmnd/cccd mặt trước, đề nghị chụp lại",
+		"NCardBackError": "Lỗi chụp hình CMND/CCCD mặt sau, đề nghị chụp lại",
+		"NCardFrontError": "Lỗi chụp hình CMND/CCCD mặt trước, đề nghị chụp lại",
 		"announce": "Thông báo",
-		"manualNidAndNCardFrontNotMatch": "Hồ sơ của bạn không được chấp nhận do số CCCD không trùng với số bạn điền vào",
-		"selfieAndNCardFrontNotMatch": "Ảnh chân dung và ảnh trên CCCD không khớp, đề nghị chụp lại",
+		"manualNidAndNCardFrontNotMatch": "Hồ sơ của bạn không được chấp nhận do số CMND/CCCD không trùng với số bạn điền vào",
+		"selfieAndNCardFrontNotMatch": "Ảnh chân dung và ảnh trên CMND/CCCD không khớp, đề nghị chụp lại",
 		"selfieError": "Hình chụp selfie không rõ, đề nghị chụp lại "
+	},
+	"nCard": {
+		"back": "mặt sau",
+		"front": "mặt trước",
+		"guideText": "Nhấn vào nút màu đỏ để lần lượt chụp hình CMND/CCCD mặt trước và sau",
+		"name": "CMND/CCCD",
+		"notShot": "Chưa chụp",
+		"title": "Chụp ảnh CMND/CCCD 2 mặt"
 	},
 	"phone": {
 		"empty": "Vui lòng nhập số điện thoại",
@@ -33,6 +72,17 @@
 	},
 	"register": {
 		"inputLabel": "Vui lòng nhập điện thoại để tiếp tục"
+	},
+	"selfie": {
+		"enterNid": "Vui lòng nhập CMND/CCCD",
+		"portrait": "Chân dung",
+		"shotGuide": "Hướng dẫn chụp ảnh chân dung",
+		"takeShot": "Chụp ảnh chân dung",
+		"textGuide1": "Nhấn vào nút màu đỏ để bắt đầu chụp hình",
+		"textGuide2": "Số CMND/CCCD phải điền chính xác. Vui lòng nhập 9 số (CMND) hoặc 12 số (CCCD)",
+		"textGuide3": "Ảnh chụp chân dung phải đủ sáng, không đội mũ, không đeo kính",
+		"warning": "Chưa chụp ảnh",
+		"wrongFormat": "CMND hoặc CCCD có 9 hoặc 12 chữ số "
 	},
 	"text": {
 		"back": "để trở lại",

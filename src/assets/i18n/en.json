@@ -1,33 +1,93 @@
 {
 	"button": {
 		"confirm": "CONFIRM",
-		"continue": "CONTINUE"
+		"continue": "CONTINUE",
+		"reEnterNid": "Re-enter ID Card number",
+		"reshot": "Capture again"
 	},
 	"checkout": {
-		"buySuccess": "",
-		"chooseTenor": "",
-		"error": "",
-		"greeting": "",
-		"saveTenor": ""
+		"buySuccess": "Congratulations on your successful purchase",
+		"chooseTenor": "Please choose Tenor",
+		"error": "Purchase failed/Unknown error",
+		"greeting": "Congratulations, with this credit you are eligible to complete the order",
+		"saveTenor": "Save payment method"
 	},
 	"checkoutHeader": {
-		"creditLimit": ""
+		"creditLimit": "Your credit limit is"
+	},
+	"customer": {
+		"chooseCity": "Please select city, province",
+		"chooseDistrict": "Please select district",
+		"chooseStreet": "Please select an address",
+		"chooseWard": "Please select a ward or commune",
+		"enterInfo": "Enter personal information",
+		"info": "Personal Information",
+		"name": "Please enter your first and last name",
+		"refPhone": "Please enter the correct phone number",
+		"refText": "Reference information",
+		"refTittle": "Please enter your name",
+		"warning": "Required information"
+	},
+	"error": {
+		"emptySex": "Please select your gender"
 	},
 	"home": {
 		"chooseLang": "Choose language"
 	},
+	"label": {
+		"address": "Address",
+		"birthday": "Birthday",
+		"city": "City/Province",
+		"district": "District",
+		"guide": "",
+		"issueDay": "Issue Date",
+		"name": "First and Last Name",
+		"nid": "ID Card number",
+		"perTitle": "Personal title",
+		"phoneNumber": "Phone Number",
+		"sex": "Sex",
+		"street": "Street",
+		"ward": "Wards"
+	},
+	"message": {
+		"NCardBackError": "Error taking photo of ID Card on the back, please retake it",
+		"NCardFrontError": "Error taking picture of ID Card on the front, please take a photo again",
+		"announce": "Notification",
+		"manualNidAndNCardFrontNotMatch": "Your application is not accepted because the ID Card number does not match the number you entered",
+		"selfieAndNCardFrontNotMatch": "The portrait photo and the photo on ID Card do not match, please retake",
+		"selfieError": "Selfie picture is not clear, please take again"
+	},
+	"nCard": {
+		"back": "backside",
+		"front": "frontside",
+		"guideText": "Click the red button to take a photo of the front and back ID Card, respectively",
+		"name": "ID Card",
+		"notShot": "Not taken yet",
+		"title": "Take a photo of ID Card 2 sides"
+	},
 	"phone": {
-		"empty": "",
-		"wrongFormat": "",
-		"wrongLength": ""
+		"empty": "Please enter the phone number",
+		"wrongFormat": "Invalid phone number",
+		"wrongLength": "Phone number must be 10 digits"
 	},
 	"register": {
-		"inputLabel": ""
+		"inputLabel": "Please enter phone to continue"
+	},
+	"selfie": {
+		"enterNid": "Please enter your ID Card number",
+		"portrait": "Portrait",
+		"shotGuide": "Guide to taking portraits",
+		"takeShot": "Take a portrait photo",
+		"textGuide1": "Click the red button to start taking pictures",
+		"textGuide2": "ID Card number must be entered correctly. Please enter 9 numbers or 12 numbers",
+		"textGuide3": "Portrait photos must be bright enough, no hat, no glasses",
+		"warning": "Haven't taken pictures yet",
+		"wrongFormat": "ID Card with 9 or 12 digits"
 	},
 	"text": {
-		"back": "",
-		"hello": "",
-		"here": "",
-		"press": ""
+		"back": "to comeback",
+		"hello": "Hi",
+		"here": "here",
+		"press": "Click"
 	}
 }

@@ -3,6 +3,7 @@ import {NCardSide, PictureService} from "../picture.service";
 import {AuthBnplService} from "../auth-bnpl.service";
 import {Router} from "@angular/router";
 import {Step} from "../step";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-citizen-card',
@@ -18,7 +19,8 @@ export class CitizenCardComponent implements OnInit {
   constructor(
       public pictureService: PictureService,
       private authService: AuthBnplService,
-      private router: Router
+      private router: Router,
+      private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -48,7 +50,7 @@ export class CitizenCardComponent implements OnInit {
                 return ''
             }
             else {
-                return  `mặt trước/`
+                return  `mặt trước${this.translate.stream('nCard.front')}${this.pictureService.citizenBackImageComplete$.getValue()? '':'/'}`
             }
         }
 
@@ -56,7 +58,7 @@ export class CitizenCardComponent implements OnInit {
             return ''
         }
         else {
-            return `mặt sau`
+            return `mặt sau${this.translate.stream('nCard.front')}`
         }
 
   }
