@@ -3,11 +3,11 @@
     <div appMarginTop="55"></div>
     <app-progress-step></app-progress-step>
     <div appMarginTop="33" class="enter-info-text" >
-        Cài đặt mã pin của bạn
+        {{'customer.pinInstall' | translate}}
     </div>
     <div appMarginTop="39" class="pin-box" fxLayout="column" fxLayoutAlign="top center">
         <div appElDimension appMarginTop="46" fxFlexAlign="start" height="16" width="42">
-            <p class="pin-text-number" >Mã PIN</p>
+            <p class="pin-text-number" >{{'label.pinCode' | translate}}</p>
         </div>
         <div appElDimension appMarginTop="16" height="26" width="250">
             <code-input (codeChanged)="onPinCodeChanged($event)"
@@ -17,7 +17,7 @@
             </code-input>
         </div>
         <div appElDimension appMarginTop="76" fxFlexAlign="start" height="16" width="142">
-            <p class="pin-text-number" >Nhập lại mã PIN</p>
+            <p class="pin-text-number" >{{'customer.reEnterPin' | translate}}</p>
         </div>
         <div appElDimension appMarginTop="16" height="26" width="250">
             <code-input (codeChanged)="onVerifyPinCodeChange($event)"
@@ -27,22 +27,22 @@
             </code-input>
         </div>
         <div *ngIf="pinCode !== verifyPinCode" appElDimension appMarginTop="48" fxFlexAlign="start" height="16">
-            <p class="pin-text-number red-star" >* Mã pin và mã pin nhập lại phải trùng nhau</p>
+            <p class="pin-text-number red-star" >* {{'customer.pinNotMatch' | translate}}</p>
         </div>
-        <div class="note-text" fxFlexAlign="start">Lưu ý</div>
+        <div class="note-text" fxFlexAlign="start">{{'label.note' | translate}}</div>
         <div class="note-text-2" fxFlexAlign="start">
             <span class="red-star">*</span>
-            <ng-container >Mã pin bao gồm 4 số, dùng để checkout khi thanh toán</ng-container></div>
+            <ng-container >{{'customer.pinNote1' | translate}}</ng-container></div>
         <div class="note-text-2" fxFlexAlign="start">
             <span class="red-star">*</span>
-            <ng-container >Mã pin này sẽ được sử dụng cho tất cả các thanh toán tại website voolo.com.vn</ng-container></div>
+            <ng-container >{{'customer.pinNote2' | translate}}</ng-container></div>
     </div>
     <div>
         <button class="payment-button"
                 appMarginTop="32"
                 appMarginBottom="32"
                 [disabled]="pinCode.length < 4 || verifyPinCode.length < 4 || pinCode !== verifyPinCode"
-                (click)="onFinishPinInstall()"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
+                (click)="onFinishPinInstall()"><span>{{'button.continue' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span>
         </button>
     </div>
 

@@ -3,25 +3,25 @@
     <div appMarginTop="55"></div>
     <app-progress-step></app-progress-step>
     <div class="enter-info-text" appMarginTop="33" >
-        Xác nhận hợp đồng điện tử
+        {{'esign.confirm' | translate}}
     </div>
     <div class="global-box" fxLayout="column" fxLayoutAlign="start center" appMarginTop="36">
         <div class="contract-content-title" appMarginTop="24">
-            <p >Mẫu hợp đồng</p>
+            <p>{{'esign.contract' | translate}}</p>
         </div>
         <div class="contract-content"  [ngClass]="{'expand-content': expand}">
             <p>{{contract.content}}</p>
-            <button class="expand-button" *ngIf="!expand" (click)="expand = !expand" >Xem thêm</button>
+            <button class="expand-button" *ngIf="!expand" (click)="expand = !expand" >{{'button.more' | translate}}</button>
         </div>
         <div appMarginTop="16" fxFlexAlign="start">
-            <mat-checkbox [(ngModel)]="agreeContract" >Tôi đồng ý với các điều khoản hợp đồng</mat-checkbox>
+            <mat-checkbox [(ngModel)]="agreeContract" >{{'esign.agree' | translate}}</mat-checkbox>
         </div>
         <div appMarginTop="16" fxFlexAlign="start">
-            <mat-checkbox [(ngModel)]="sendOtpToPhone" >Vui lòng gởi OTP xác nhận về điện thoại đã đăng ký VOOLO của tôi</mat-checkbox>
+            <mat-checkbox [(ngModel)]="sendOtpToPhone" >{{'esign.sendOTP' | translate}}</mat-checkbox>
         </div>
     </div>
 
     <button class="payment-button" appMarginTop="32" (click)="onAgreeContract()" [disabled]="!(agreeContract && sendOtpToPhone)">
-        <span >KÝ NGAY</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+        <span>{{'button.signNow' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
 
 </div>

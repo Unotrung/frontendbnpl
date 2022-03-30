@@ -2,8 +2,10 @@
 	"button": {
 		"confirm": "XÁC NHẬN",
 		"continue": "TIẾP TỤC",
+		"more": "Xem thêm",
 		"reEnterNid": "Điền lại số CMND/CCCD",
-		"reshot": "Chụp lại"
+		"reshot": "Chụp lại",
+		"signNow": "KÝ NGAY"
 	},
 	"checkout": {
 		"buySuccess": "Chúc mừng bạn đã mua hàng thành công",
@@ -25,6 +27,11 @@
 		"infoCheck": "Đối soát thông tin",
 		"name": "Vui lòng điền họ và tên",
 		"personalInfo": "Thông tin cá nhân",
+		"pinInstall": "Cài đặt mã pin của bạn",
+		"pinNotMatch": "Mã pin và mã pin nhập lại phải trùng nhau",
+		"pinNote1": "Mã pin bao gồm 4 số, dùng để checkout khi thanh toán",
+		"pinNote2": "Mã pin này sẽ được sử dụng cho tất cả các thanh toán tại website voolo.com.vn",
+		"reEnterPin": "Nhập lại mã PIN",
 		"refPhone": "Vui lòng điền đúng số điện thoại",
 		"refText": "Thông tin tham chiếu",
 		"refTittle": "Vui lòng điền danh xưng",
@@ -32,6 +39,12 @@
 	},
 	"error": {
 		"emptySex": "Vui lòng chọn giới tính"
+	},
+	"esign": {
+		"agree": "Tôi đồng ý với các điều khoản hợp đồng",
+		"confirm": "Xác nhận hợp đồng điện tử",
+		"contract": "Mẫu hợp đồng",
+		"sendOTP": "Vui lòng gởi OTP xác nhận về điện thoại đã đăng ký VOOLO của tôi"
 	},
 	"home": {
 		"chooseLang": "Chọn ngôn ngữ"
@@ -50,8 +63,10 @@
 		"issueDay": "Ngày cấp",
 		"name": "Họ và tên",
 		"nid": "Số CMND/CCCD",
+		"note": "Lưu ý",
 		"perTitle": "Danh xưng",
 		"phoneNumber": "Số điện thoại",
+		"pinCode": "Mã PIN",
 		"sex": "Giới tính",
 		"shipFee": "Phí vận chuyển",
 		"street": "Đường",

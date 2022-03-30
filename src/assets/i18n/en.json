@@ -2,8 +2,10 @@
 	"button": {
 		"confirm": "CONFIRM",
 		"continue": "CONTINUE",
+		"more": "See more",
 		"reEnterNid": "Re-enter ID Card number",
-		"reshot": "Capture again"
+		"reshot": "Capture again",
+		"signNow": "SIGN UP NOW"
 	},
 	"checkout": {
 		"buySuccess": "Congratulations on your successful purchase",
@@ -22,9 +24,14 @@
 		"chooseWard": "Please select a ward or commune",
 		"enterInfo": "Enter personal information",
 		"info": "Personal Information",
-		"infoCheck": "",
+		"infoCheck": "Information check",
 		"name": "Please enter your first and last name",
-		"personalInfo": "",
+		"personalInfo": "Personal information",
+		"pinInstall": "Set your pin code",
+		"pinNotMatch": "Pin code and re-entered pin code must be the same",
+		"pinNote1": "Pin code includes 4 numbers, used to checkout when paying",
+		"pinNote2": "This pin will be used for all payments at website voolo.com.vn",
+		"reEnterPin": "Re-enter PIN",
 		"refPhone": "Please enter the correct phone number",
 		"refText": "Reference information",
 		"refTittle": "Please enter your name",
@@ -32,6 +39,12 @@
 	},
 	"error": {
 		"emptySex": "Please select your gender"
+	},
+	"esign": {
+		"agree": "I agree to the contract terms",
+		"confirm": "Confirmation of electronic contract",
+		"contract": "Contract Form",
+		"sendOTP": "Please send a confirmation OTP to my VOOLO registered phone"
 	},
 	"home": {
 		"chooseLang": "Choose language"
@@ -50,8 +63,10 @@
 		"issueDay": "Issue Date",
 		"name": "First and Last Name",
 		"nid": "ID Card number",
+		"note": "Note",
 		"perTitle": "Personal title",
 		"phoneNumber": "Phone Number",
+		"pinCode": "PIN code",
 		"sex": "Sex",
 		"shipFee": "Ship fee",
 		"street": "Street",
