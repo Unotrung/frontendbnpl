@@ -45,6 +45,7 @@ import { ForgotPinFailComponent } from './forgot-pin-fail/forgot-pin-fail.compon
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { ProgressStepComponent } from './progress-step/progress-step.component';
 import { PayMockComponent } from "./pay-mock.component";
+import {TranslateModule} from "@ngx-translate/core";
 
 
 @NgModule({
@@ -91,6 +92,9 @@ import { PayMockComponent } from "./pay-mock.component";
     ],
     imports: [
         CommonModule,
+        TranslateModule.forChild({
+            extend: true
+        }),
         MaterialModule,
         HttpClientModule,
         NgxIntlTelInputModule,

@@ -1,0 +1,33 @@
+{
+	"button": {
+		"confirm": "CONFIRM",
+		"continue": "CONTINUE"
+	},
+	"checkout": {
+		"buySuccess": "",
+		"chooseTenor": "",
+		"error": "",
+		"greeting": "",
+		"saveTenor": ""
+	},
+	"checkoutHeader": {
+		"creditLimit": ""
+	},
+	"home": {
+		"chooseLang": "Choose language"
+	},
+	"phone": {
+		"empty": "",
+		"wrongFormat": "",
+		"wrongLength": ""
+	},
+	"register": {
+		"inputLabel": ""
+	},
+	"text": {
+		"back": "",
+		"hello": "",
+		"here": "",
+		"press": ""
+	}
+}

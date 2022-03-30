@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/vi.json --clean --sort --format namespaced-json"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,9 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "@bartholomej/ngx-translate-extract": "^8.0.2",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "@types/axios": "^0.14.0",
     "angular-code-input": "^1.6.0",
     "angular-in-memory-web-api": "^0.13.0",

@@ -5,11 +5,11 @@
     <img src="../../../assets/images/UserEllipse.png" alt="" class="checkout-image"/>
     <div class="container-wrapper" fxFlexFill fxLayout="row" fxLayoutAlign="space-between center">
         <div class="customer-name">
-            <span>Chào: </span>{{name}}
+            <ng-container>{{'text.hello' | translate}}</ng-container>: {{name}}
         </div>
         <div fxLayout="column" fxLayoutAlign="center end">
             <div class="credit-text" >
-                Hạn mức tín dụng của bạn là:
+                <ng-container>{{'checkoutHeader.creditLimit' | translate}}</ng-container> :
             </div>
             <div class="credit-number">
                 {{credit | currency: currencyCode: ''}} VND
@@ -25,10 +25,10 @@
         <img src="../../../assets/images/UserEllipse.png" alt="" class="checkout-image"/>
         <div class="container-wrapper" fxFlexFill fxLayout="column" fxLayoutAlign="start center">
             <div class="customer-name" appMarginTop="8">
-                <span>Chào: </span>{{name}}
+                <span>{{'text.hello' | translate}} </span>{{name}}
             </div>
             <div class="credit-text" >
-                Hạn mức tín dụng của bạn là:
+                {{'checkoutHeader.creditLimit' | translate}}
             </div>
             <div class="credit-number" appMarginBottom="8">
                 {{credit | currency: currencyCode: ''}} VND

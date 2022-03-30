@@ -7,13 +7,16 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from "./material/material.module";
 import { PayMockModule } from "./pay-mock/pay-mock.module";
 import { StartPaymentComponent } from './pay-mock/start-payment/start-payment.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {TopBarComponent} from "./top-bar/top-bar.component";
 import {createCustomElement} from "@angular/elements";
 import {RequestHandlerInterceptor} from "./pay-mock/request-handler.interceptor";
 import {environment} from "../environments/environment";
 import {registerLocaleData} from "@angular/common";
 import localeVn from '@angular/common/locales/vi'
+import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
+import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 registerLocaleData(localeVn)
 
 @NgModule({
@@ -24,13 +27,23 @@ registerLocaleData(localeVn)
     ],
     imports: [
         BrowserModule,
+        TranslateModule.forRoot({
+            // @ts-ignore
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (http: HttpClient) => new TranslateHttpLoader(http, './assets/i18n/', '.json'),
+                deps: [HttpClient]
+            }
+        }),
         HttpClientModule,
         FlexModule,
         FlexLayoutModule,
         PayMockModule,
         MaterialModule,
         AppRoutingModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: RequestHandlerInterceptor, multi: true},
@@ -50,3 +63,6 @@ export class AppModule { }
 //     ngDoBootstrap() { }
 // }
 
+export function createTranslateLoader(http: HttpClient) {
+    return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

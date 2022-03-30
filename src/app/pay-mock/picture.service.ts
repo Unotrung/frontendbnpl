@@ -10,6 +10,8 @@ import {MessageReason} from "./message";
 import {checkInfo} from "./helper/helper";
 import {AuthBnplService} from "./auth-bnpl.service";
 import {Step} from "./step";
+import {TranslateService} from "@ngx-translate/core";
+import {translate} from "@angular/localize/tools";
 
 export enum NCardSide {
     front = 'front',
@@ -43,7 +45,8 @@ export class PictureService {
         private hv: HypervergeService,
         private loadingService: LoadingService,
         private messageService: MessageService,
-        private authService: AuthBnplService
+        private authService: AuthBnplService,
+        private translate: TranslateService
     ) {
         this.hvInit$ = new BehaviorSubject<boolean>(false)
         this.selfieImageComplete$ = new BehaviorSubject<boolean>(false);
@@ -310,41 +313,41 @@ export class PictureService {
         if (reason === MessageReason.failOnCheckSelfieAndImageIdCard) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failOnCheckSelfieAndImageIdCard,
-                messageTitle:  `Thông báo`,
-                message:  `Ảnh chân dung và ảnh trên CCCD không khớp, đề nghị chụp lại`,
-                closeMessage:  `Chụp lại`,
+                messageTitle:  `${this.translate.stream('message.announce')}`,
+                message:  `${this.translate.stream('message.selfieAndNCardFrontNotMatch')}`,
+                closeMessage:  `Chụp lại ${this.translate.stream('button.reshot')}`,
             })
         }
         if (reason === MessageReason.failOnCheckCitizenIdAndManualEnterId) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failOnCheckCitizenIdAndManualEnterId,
-                messageTitle:  `Thông báo`,
-                message:  `Hồ sơ của bạn không được chấp nhận do số CCCD không trùng với số bạn điền vào`,
-                closeMessage:  `Điền lại số CCCD`
+                messageTitle:  `${this.translate.stream('message.announce')}`,
+                message:  `${this.translate.stream('message.manualNidAndNCardFrontNotMatch')}`,
+                closeMessage:  `${this.translate.stream('button.reEnterNid')}`
             })
         }
         if (reason === MessageReason.failFrontIdScreenShot) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failFrontIdScreenShot,
-                messageTitle:  `Thông báo`,
-                message:  `Lỗi chụp hình cmnd/cccd mặt trước, đề nghị chụp lại`,
-                closeMessage:  `Chụp lại`
+                messageTitle:  `${this.translate.stream('message.announce')}`,
+                message:  `${this.translate.stream('message.NCardFrontError')}`,
+                closeMessage:  `${this.translate.stream('button.reshot')}`
             })
         }
         if (reason === MessageReason.failBackIdScreenShot) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failBackIdScreenShot,
-                messageTitle: `Thông báo`,
-                message:  `Lỗi chụp hình cmnd/cccd mặt sau, đề nghị chụp lại`,
-                closeMessage:  `Chụp lại`
+                messageTitle: `Thông báo ${this.translate.stream('message.announce')}`,
+                message:  `${this.translate.stream('message.NCardBackError')}`,
+                closeMessage:  `${this.translate.stream('button.reshot')}`
             })
         }
         if (reason === MessageReason.failSelfieScreenShot) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failSelfieScreenShot,
-                message:  `Hình chụp selfie không rõ, đề nghị chụp lại`,
-                messageTitle:  `Thông báo`,
-                closeMessage:  `Chụp lại`
+                message:  `${this.translate.stream('message.selfieError')}`,
+                messageTitle:  `${this.translate.stream('message.announce')}`,
+                closeMessage:  `${this.translate.stream('button.reshot')}`
             })
         }
 

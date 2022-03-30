@@ -1,0 +1,43 @@
+{
+	"button": {
+		"confirm": "XÁC NHẬN",
+		"continue": "TIẾP TỤC",
+		"reEnterNid": "Điền lại số CMND/CCCD",
+		"reshot": "Chụp lại"
+	},
+	"checkout": {
+		"buySuccess": "Chúc mừng bạn đã mua hàng thành công",
+		"chooseTenor": "Vui lòng chọn Tenor",
+		"error": "Mua hàng không thành công/ Lỗi không xác định",
+		"greeting": "Chúc mừng bạn, với hạn mức tín dụng này bạn đủ điều kiện để hoàn tất đơn hàng",
+		"saveTenor": "Lưu phương thức thanh toán"
+	},
+	"checkoutHeader": {
+		"creditLimit": "Hạn mức tín dụng của bạn là"
+	},
+	"home": {
+		"chooseLang": "Chọn ngôn ngữ"
+	},
+	"message": {
+		"NCardBackError": "Lỗi chụp hình cmnd/cccd mặt sau, đề nghị chụp lại",
+		"NCardFrontError": "Lỗi chụp hình cmnd/cccd mặt trước, đề nghị chụp lại",
+		"announce": "Thông báo",
+		"manualNidAndNCardFrontNotMatch": "Hồ sơ của bạn không được chấp nhận do số CCCD không trùng với số bạn điền vào",
+		"selfieAndNCardFrontNotMatch": "Ảnh chân dung và ảnh trên CCCD không khớp, đề nghị chụp lại",
+		"selfieError": "Hình chụp selfie không rõ, đề nghị chụp lại "
+	},
+	"phone": {
+		"empty": "Vui lòng nhập số điện thoại",
+		"wrongFormat": "Số điện thoại không hợp lệ",
+		"wrongLength": "Số điện thoại phải 10 chữ số"
+	},
+	"register": {
+		"inputLabel": "Vui lòng nhập điện thoại để tiếp tục"
+	},
+	"text": {
+		"back": "để trở lại",
+		"hello": "Chào",
+		"here": "đây",
+		"press": "Bấm vào"
+	}
+}

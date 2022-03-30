@@ -1,6 +1,13 @@
 <div fxLayout="column" fxLayoutAlign="center" class="payment-box">
     <div fxFlex="100">
         <app-top-bar></app-top-bar>
+<!--        <p>{{'home.title' | translate}}</p>-->
+    </div>
+    <div class="fix">
+        <label>{{'home.chooseLang' | translate}} </label>
+        <select [formControl]="langControl">
+            <option *ngFor="let lang of supportLanguages" [value]="lang">{{lang}}</option>
+        </select>
     </div>
     <div class="box" fxFlex="100">
         <router-outlet></router-outlet>
