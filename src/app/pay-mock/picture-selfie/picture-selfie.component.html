@@ -68,6 +68,6 @@
         appMarginBottom="32"
         [disabled]="!(pictureService.selfieImageComplete$ | async)"
         (click)="onSelfieContinue()">
-    <span>{{'button.continue'}}</span><span>&nbsp;&nbsp;&nbsp;></span>
+    <span>{{'button.continue' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span>
 </button>
 </div>

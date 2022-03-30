@@ -22,7 +22,9 @@
 		"chooseWard": "Vui lòng chọn phường, xã",
 		"enterInfo": "Nhập thông tin cá nhân",
 		"info": "Thông tin cá nhân",
+		"infoCheck": "Đối soát thông tin",
 		"name": "Vui lòng điền họ và tên",
+		"personalInfo": "Thông tin cá nhân",
 		"refPhone": "Vui lòng điền đúng số điện thoại",
 		"refText": "Thông tin tham chiếu",
 		"refTittle": "Vui lòng điền danh xưng",
@@ -34,10 +36,15 @@
 	"home": {
 		"chooseLang": "Chọn ngôn ngữ"
 	},
+	"items": {
+		"header": "Thông tin đơn hàng"
+	},
 	"label": {
 		"address": "Địa chỉ",
+		"amount": "Thành tiền",
 		"birthday": "Ngày sinh",
 		"city": "Thành phố/Tỉnh",
+		"discount": "Thêm mã giảm giá hoặc thẻ quà tặng",
 		"district": "Quận/Huyện",
 		"guide": "Hướng dẫn",
 		"issueDay": "Ngày cấp",
@@ -46,7 +53,9 @@
 		"perTitle": "Danh xưng",
 		"phoneNumber": "Số điện thoại",
 		"sex": "Giới tính",
+		"shipFee": "Phí vận chuyển",
 		"street": "Đường",
+		"total": "Tổng cộng",
 		"ward": "Phường/Xã"
 	},
 	"message": {
@@ -58,10 +67,12 @@
 		"selfieError": "Hình chụp selfie không rõ, đề nghị chụp lại "
 	},
 	"nCard": {
-		"back": "mặt sau",
+		"back": "mặt trước",
 		"front": "mặt trước",
 		"guideText": "Nhấn vào nút màu đỏ để lần lượt chụp hình CMND/CCCD mặt trước và sau",
-		"name": "CMND/CCCD",
+		"nCardBack": "CMND mặt sau",
+		"nCardFront": "CMND mặt trước",
+		"name": "",
 		"notShot": "Chưa chụp",
 		"title": "Chụp ảnh CMND/CCCD 2 mặt"
 	},

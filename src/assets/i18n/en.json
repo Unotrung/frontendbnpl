@@ -22,7 +22,9 @@
 		"chooseWard": "Please select a ward or commune",
 		"enterInfo": "Enter personal information",
 		"info": "Personal Information",
+		"infoCheck": "",
 		"name": "Please enter your first and last name",
+		"personalInfo": "",
 		"refPhone": "Please enter the correct phone number",
 		"refText": "Reference information",
 		"refTittle": "Please enter your name",
@@ -34,19 +36,26 @@
 	"home": {
 		"chooseLang": "Choose language"
 	},
+	"items": {
+		"header": ""
+	},
 	"label": {
 		"address": "Address",
+		"amount": "Into money",
 		"birthday": "Birthday",
 		"city": "City/Province",
+		"discount": "Add a discount code or a gift card",
 		"district": "District",
-		"guide": "",
+		"guide": "Guide",
 		"issueDay": "Issue Date",
 		"name": "First and Last Name",
 		"nid": "ID Card number",
 		"perTitle": "Personal title",
 		"phoneNumber": "Phone Number",
 		"sex": "Sex",
+		"shipFee": "Ship fee",
 		"street": "Street",
+		"total": "Total",
 		"ward": "Wards"
 	},
 	"message": {
@@ -61,6 +70,8 @@
 		"back": "backside",
 		"front": "frontside",
 		"guideText": "Click the red button to take a photo of the front and back ID Card, respectively",
+		"nCardBack": "ID card backside",
+		"nCardFront": "ID Card frontside",
 		"name": "ID Card",
 		"notShot": "Not taken yet",
 		"title": "Take a photo of ID Card 2 sides"

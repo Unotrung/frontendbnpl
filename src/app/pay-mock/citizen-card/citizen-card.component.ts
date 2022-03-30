@@ -50,7 +50,7 @@ export class CitizenCardComponent implements OnInit {
                 return ''
             }
             else {
-                return  `mặt trước${this.translate.stream('nCard.front')}${this.pictureService.citizenBackImageComplete$.getValue()? '':'/'}`
+                return  `${this.translate.instant('nCard.front')}${this.pictureService.citizenBackImageComplete$.getValue()? '':'/'}`
             }
         }
 
@@ -58,7 +58,7 @@ export class CitizenCardComponent implements OnInit {
             return ''
         }
         else {
-            return `mặt sau${this.translate.stream('nCard.front')}`
+            return `${this.translate.instant('nCard.back')}`
         }
 
   }
