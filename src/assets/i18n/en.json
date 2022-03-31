@@ -2,22 +2,28 @@
 	"button": {
 		"confirm": "CONFIRM",
 		"continue": "CONTINUE",
-		"more": "See more",
+		"more": "More",
 		"reEnterNid": "Re-enter ID Card number",
 		"reshot": "Capture again",
-		"signNow": "SIGN UP NOW"
+		"retry": "RETRY",
+		"sendOTP": "SEND OTP",
+		"signNow": "SIGN UP NOW",
+		"turnBackToCart": "BACK TO CART"
 	},
 	"checkout": {
 		"buySuccess": "Congratulations on your successful purchase",
 		"chooseTenor": "Please choose Tenor",
 		"error": "Purchase failed/Unknown error",
 		"greeting": "Congratulations, with this credit you are eligible to complete the order",
+		"removeItem": "Please remove the product from the cart",
 		"saveTenor": "Save payment method"
 	},
 	"checkoutHeader": {
 		"creditLimit": "Your credit limit is"
 	},
 	"customer": {
+		"checkProgress": "In progress of information verification",
+		"checkTime": "The application verification process will take 5-15 minutes",
 		"chooseCity": "Please select city, province",
 		"chooseDistrict": "Please select district",
 		"chooseStreet": "Please select an address",
@@ -50,7 +56,7 @@
 		"chooseLang": "Choose language"
 	},
 	"items": {
-		"header": ""
+		"header": "Cart information"
 	},
 	"label": {
 		"address": "Address",
@@ -91,10 +97,33 @@
 		"notShot": "Not taken yet",
 		"title": "Take a photo of ID Card 2 sides"
 	},
+	"otp": {
+		"enter": "Enter OTP",
+		"expired": "Expired OTP",
+		"invalid": "Invalid OTP code",
+		"networkError": "The registration process is interrupted. Please come back in 24 hours",
+		"notReceive": "OTP not received",
+		"resend": "Resend OTP",
+		"resetFail": "Pin code reset failed. Please come back in 24 hours"
+	},
 	"phone": {
 		"empty": "Please enter the phone number",
 		"wrongFormat": "Invalid phone number",
 		"wrongLength": "Phone number must be 10 digits"
+	},
+	"pin": {
+		"changeFail": "Pin change failed, please try again or contact support for instructions.",
+		"enter": "Enter PIN",
+		"forgot": "Forgot pin code",
+		"notMatch": "Pin code and re-entered pin code must be the same",
+		"operator": "Support call center",
+		"reEnter": "Re-enter PIN",
+		"reEnterCheck": "Please enter PIN to verify information",
+		"reinstall": "Reset your pin code",
+		"resetSuccess": "Congratulations, you have successfully changed your pin code"
+	},
+	"pinForgot": {
+		"enterNid": "Enter ID Card number"
 	},
 	"register": {
 		"inputLabel": "Please enter phone to continue"
@@ -110,8 +139,21 @@
 		"warning": "Haven't taken pictures yet",
 		"wrongFormat": "ID Card with 9 or 12 digits"
 	},
+	"step": {
+		"customerInfo": "Customer information",
+		"eSign": "E-sign",
+		"finish": "Finish",
+		"infoCheck": "Verify Information",
+		"pinInstall": "Pin install"
+	},
+	"tenor": {
+		"convertFee": "Product price",
+		"itemPrice": "Conversion fee",
+		"paymentDue": "Payment time"
+	},
 	"text": {
 		"back": "to comeback",
+		"completed": "completed",
 		"hello": "Hi",
 		"here": "here",
 		"press": "Click"

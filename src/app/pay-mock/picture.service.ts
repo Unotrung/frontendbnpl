@@ -314,40 +314,40 @@ export class PictureService {
             this.messageService.messageData$.next({
                 reason: MessageReason.failOnCheckSelfieAndImageIdCard,
                 messageTitle:  `${this.translate.stream('message.announce')}`,
-                message:  `${this.translate.stream('message.selfieAndNCardFrontNotMatch')}`,
-                closeMessage:  `Chụp lại ${this.translate.stream('button.reshot')}`,
+                message:  `${this.translate.instant('message.selfieAndNCardFrontNotMatch')}`,
+                closeMessage:  `Chụp lại ${this.translate.instant('button.reshot')}`,
             })
         }
         if (reason === MessageReason.failOnCheckCitizenIdAndManualEnterId) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failOnCheckCitizenIdAndManualEnterId,
-                messageTitle:  `${this.translate.stream('message.announce')}`,
-                message:  `${this.translate.stream('message.manualNidAndNCardFrontNotMatch')}`,
-                closeMessage:  `${this.translate.stream('button.reEnterNid')}`
+                messageTitle:  `${this.translate.instant('message.announce')}`,
+                message:  `${this.translate.instant('message.manualNidAndNCardFrontNotMatch')}`,
+                closeMessage:  `${this.translate.instant('button.reEnterNid')}`
             })
         }
         if (reason === MessageReason.failFrontIdScreenShot) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failFrontIdScreenShot,
-                messageTitle:  `${this.translate.stream('message.announce')}`,
-                message:  `${this.translate.stream('message.NCardFrontError')}`,
-                closeMessage:  `${this.translate.stream('button.reshot')}`
+                messageTitle:  `${this.translate.instant('message.announce')}`,
+                message:  `${this.translate.instant('message.NCardFrontError')}`,
+                closeMessage:  `${this.translate.instant('button.reshot')}`
             })
         }
         if (reason === MessageReason.failBackIdScreenShot) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failBackIdScreenShot,
-                messageTitle: `Thông báo ${this.translate.stream('message.announce')}`,
-                message:  `${this.translate.stream('message.NCardBackError')}`,
-                closeMessage:  `${this.translate.stream('button.reshot')}`
+                messageTitle: `Thông báo ${this.translate.instant('message.announce')}`,
+                message:  `${this.translate.instant('message.NCardBackError')}`,
+                closeMessage:  `${this.translate.instant('button.reshot')}`
             })
         }
         if (reason === MessageReason.failSelfieScreenShot) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failSelfieScreenShot,
-                message:  `${this.translate.stream('message.selfieError')}`,
-                messageTitle:  `${this.translate.stream('message.announce')}`,
-                closeMessage:  `${this.translate.stream('button.reshot')}`
+                message:  `${this.translate.instant('message.selfieError')}`,
+                messageTitle:  `${this.translate.instant('message.announce')}`,
+                closeMessage:  `${this.translate.instant('button.reshot')}`
             })
         }
 

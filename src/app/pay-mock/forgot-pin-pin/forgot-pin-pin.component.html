@@ -1,11 +1,11 @@
 <div fxLayout="column" fxLayoutAlign="center center">
     <img height="55" src="assets/images/FE-Credit.png" width="155">
     <div appMarginTop="33" class="enter-info-text" >
-        Cài đặt lại mã pin của bạn
+        {{'pin.reinstall' | translate}}
     </div>
     <div appMarginTop="39" class="global-box" fxLayout="column" fxLayoutAlign="start center">
         <div fxFlexAlign="start" appMarginTop="16">
-            <p class="pin-text-number">Mã PIN</p>
+            <p class="pin-text-number">{{'label.pinCode' | translate}}</p>
         </div>
         <div appElDimension appMarginTop="8" width="250">
             <code-input (codeChanged)="onPinCodeChanged($event)"
@@ -15,7 +15,7 @@
             </code-input>
         </div>
         <div appElDimension appMarginTop="32" fxFlexAlign="start">
-            <p class="pin-text-number" >Nhập lại mã PIN</p>
+            <p class="pin-text-number" >{{'pin.reEnter' | translate}}</p>
         </div>
         <div appElDimension appMarginTop="8" width="250" appMarginBottom="16">
             <code-input (codeChanged)="onVerifyPinCodeChange($event)"
@@ -25,7 +25,7 @@
             </code-input>
         </div>
         <div *ngIf="pinCode !== verifyPinCode"  appMarginTop="16" fxFlexAlign="start">
-            <p class="pin-text-number red-star" >* Mã pin và mã pin nhập lại phải trùng nhau</p>
+            <p class="pin-text-number red-star" >* {{'pin.notMatch' | translate}}</p>
         </div>
     </div>
     <div>
@@ -33,7 +33,7 @@
                 appMarginTop="32"
                 appMarginBottom="32"
                 [disabled]="pinCode.length < 4 || verifyPinCode.length < 4 || pinCode !== verifyPinCode"
-                (click)="onFinishPinInstall()"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
+                (click)="onFinishPinInstall()"><span>{{'button.continue' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span>
         </button>
     </div>
 

@@ -9,6 +9,7 @@ import {finalize} from "rxjs";
 import {keyPress} from "../helper/helper";
 import {InputType} from "../user";
 import {PictureService} from "../picture.service";
+import {ProgressStepService} from "../progress-step.service";
 
 @Component({
   selector: 'app-register',
@@ -30,7 +31,8 @@ export class RegisterComponent implements OnInit {
         private authService: AuthBnplService,
         private router: Router,
         private loadingService: LoadingService,
-        private pictureService: PictureService
+        private pictureService: PictureService,
+        private stepService: ProgressStepService
     ) { }
 
     ngOnInit() {
@@ -92,5 +94,6 @@ export class RegisterComponent implements OnInit {
     clearOldData() {
         this.authService.logout()
         this.pictureService.clearData()
+        this.stepService.resetStep()
     }
 }

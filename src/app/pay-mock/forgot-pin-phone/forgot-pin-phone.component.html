@@ -7,18 +7,18 @@
         <input class="global-input" appMarginTop="26" [formControl]="phoneForm">
         <div fxFlexAlign="start">
             <div *ngIf="phoneForm.errors && phoneForm.errors['required']">
-                <span class="error" >Vui lòng không để trống số điện thoại</span>
+                <span class="error">{{'phone.empty' | translate}}</span>
             </div>
             <div *ngIf="phoneForm.errors && (phoneForm.errors['pattern']
             || phoneForm.errors!['maxlength']
             || phoneForm.errors!['minlength'])">
-                <span class="error" >Số điện thoại không hợp lệ</span>
+                <span class="error">{{'phone.wrongFormat' | translate}}</span>
             </div>
         </div>
         <div appMarginTop="32" appMarginBottom="33">
             <button class="payment-button"
                     appMarginTop="36"
-                    [disabled]="phoneForm.invalid" (click)="onForgotPhoneContinue()"><span>TIẾP TỤC</span><span>&nbsp;&nbsp;&nbsp;></span>
+                    [disabled]="phoneForm.invalid" (click)="onForgotPhoneContinue()"><span>{{'button.continue' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span>
             </button>
         </div>
     </div>
