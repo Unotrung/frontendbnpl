@@ -46,6 +46,7 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { ProgressStepComponent } from './progress-step/progress-step.component';
 import { PayMockComponent } from "./pay-mock.component";
 import {TranslateModule} from "@ngx-translate/core";
+import { PluralTranslatePipe } from './helper/plural-translate.pipe';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import {TranslateModule} from "@ngx-translate/core";
       ForgotPinSuccessComponent,
       ForgotPinFailComponent,
       ProgressBarComponent,
-      ProgressStepComponent
+      ProgressStepComponent,
+      PluralTranslatePipe
   ],
     exports: [
         LoadingComponent,

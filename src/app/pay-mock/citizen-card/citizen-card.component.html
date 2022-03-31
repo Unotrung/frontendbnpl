@@ -42,7 +42,7 @@
              appMarginBottom="32"
              appMarginTop="10" (click)="instruction = !instruction">
             <img src="assets/images/warning.png" width="14" height="14">
-            <div class="image-title"> <ng-container>{{'nCard.notShot' | translate}} </ng-container> {{getTextSideLocalize(NCardSide.front)}}{{getTextSideLocalize(NCardSide.back)}} <ng-container > CMND/CCCD</ng-container> </div>
+            <div class="image-title"> <ng-container>{{'nCard.notShot' | translate}} </ng-container> {{getTextSideLocalize(NCardSide.front)}}{{getTextSideLocalize(NCardSide.back)}} <ng-container> {{'nCard.name' | translate}}</ng-container> </div>
         </div>
         <ng-container *ngIf="!((pictureService.citizenFrontImageComplete$ | async) && (pictureService.citizenBackImageComplete$ | async)) && instruction">
         <div class="picture-selfie-notice" fxFlexAlign="start" >
