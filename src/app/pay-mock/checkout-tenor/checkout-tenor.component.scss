@@ -13,6 +13,11 @@
     cursor: pointer;
   }
 }
+.disabled {
+    cursor: not-allowed !important;
+    background: #999999;
+    pointer-events: all !important;
+}
 
 .tenor-header {
   font-family: 'Mulish';

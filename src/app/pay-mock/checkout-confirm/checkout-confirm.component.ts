@@ -6,6 +6,8 @@ import {LoadingService} from "../loading.service";
 import {CheckoutService} from "../checkout.service";
 import {MessageService} from "../message.service";
 import {MessageReason} from "../message";
+import {ItemService} from "../item.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-checkout-confirm',
@@ -21,7 +23,9 @@ export class CheckoutConfirmComponent implements OnInit {
       private authService: AuthBnplService,
       private loadingService: LoadingService,
       private checkoutService: CheckoutService,
-      private messageService: MessageService
+      private messageService: MessageService,
+      public itemService: ItemService,
+      private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -47,14 +51,28 @@ export class CheckoutConfirmComponent implements OnInit {
         this.checkoutService.checkoutFinish$.next(false)
         this.messageService.messageData$.next({
           reason: MessageReason.failOnLoginUsePinCode,
-          messageTitle: 'Thông báo',
-          message: 'Mã pin không chính xác',
-          closeMessage: 'TRỞ VỀ'
+          messageTitle: this.translate.instant('message.announce'),
+          message: this.translate.instant('pin.notExact'),
+          closeMessage: this.translate.instant('button.back')
         })
         this.messageService.onOpenDialog()
         // this.router.navigate(['/pay-mock/checkout-finish']).then()
+      },
+      complete: () => {
       }
     })
+
+    if (this.saveTenor) {
+      this.authService.updateTenor().subscribe({
+        next: data => {
+          console.log(data)
+        },
+        error: err => {
+          console.log(err)
+        }
+      })
+    }
+
   }
 
 }

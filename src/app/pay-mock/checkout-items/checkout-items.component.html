@@ -2,25 +2,10 @@
     <div class="item-header" fxFlexAlign="start" appMarginTop="10" >
         {{'items.header' | translate}}
     </div>
-    <ng-container *ngFor="let item of itemService.items">
+    <ng-container *ngFor="let item of items">
         <app-checkout-item [item]="item"></app-checkout-item>
     </ng-container>
 
-<!--    <div class="item-wrapper" fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="8">-->
-<!--        <img src="assets/images/begin-yoga-mat-5mm.png" width="60" height="72">-->
-<!--        <div fxFlex="40" fxLayout="column" fxLayoutAlign="space-between start">-->
-<!--            <div class="item-title">-->
-<!--                Begin Yoga Mat 5MM-->
-<!--            </div>-->
-<!--            <div class="item-des">-->
-<!--                Steel Grey/One Size-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="item-price">-->
-<!--            5.000.000 VND-->
-<!--        </div>-->
-
-<!--    </div>-->
     <mat-divider></mat-divider>
     <ng-container *ngIf="discount">
         <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" >
@@ -31,15 +16,15 @@
     </ng-container>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" >
         <div class="item-content" >{{'label.amount' | translate}}</div>
-        <div class="item-content">{{itemService.sumPriceItem | currency : currencyCode:''}} VND</div>
+        <div class="item-content">{{sumPriceItem | currency:currencyCode:''}} VND</div>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="12" >
         <div class="item-content" >{{'label.shipFee' | translate}}</div>
-        <div class="item-content">{{itemService.sumShipFee | currency : currencyCode:''}} VND</div>
+        <div class="item-content">{{sumShipFee | currency:currencyCode:''}} VND</div>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="12" appMarginBottom="16">
         <div class="item-price" >{{'label.total' | translate}}</div>
-        <div class="item-price">{{itemService.sumPriceItem + itemService.sumShipFee  | currency : currencyCode:''}} VND</div>
+        <div class="item-price">{{sum | currency:currencyCode:''}} VND</div>
     </div>
 </div>

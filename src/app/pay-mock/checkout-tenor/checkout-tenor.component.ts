@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Tenor} from "../tenor";
 import {environment} from "../../../environments/environment";
+import {ItemService} from "../item.service";
 
 @Component({
   selector: 'app-checkout-tenor',
@@ -11,16 +12,30 @@ export class CheckoutTenorComponent implements OnInit {
 
   @Input() tenor!: Tenor
   @Input() checked!: boolean
+  @Input() index!: number
   @Output() chosenTenor = new EventEmitter<string>()
   currencyCode = environment.currencyCode
+  priceTenor: number = 0
 
-  constructor() { }
+  constructor(
+      public itemService: ItemService
+  ) {
+    console.log(this.tenor)
+
+  }
 
   ngOnInit(): void {
+    this.priceTenor = this.itemService.sumPriceItem*(1 + this.tenor.convertFee/100)
   }
   onTenorClick() {
+
+    if (!this.tenor.enable) return
+
     this.checked = true;
     this.chosenTenor.emit(this.tenor.tenorId)
   }
+  // get priceTenor():number {
+  //   return this.itemService.sumPriceItem*(+this.tenor.convertFee)
+  // }
 
 }

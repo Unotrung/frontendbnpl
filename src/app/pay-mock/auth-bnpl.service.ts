@@ -5,6 +5,8 @@ import {User} from "./user";
 import {environment} from "../../environments/environment";
 import {Step} from "./step";
 import {CustomerInformationService} from "./customer-information.service";
+import {ItemService} from "./item.service";
+import {TenorService} from "./tenor.service";
 
 @Injectable({
   providedIn: 'root'
@@ -18,13 +20,15 @@ export class AuthBnplService {
   httpError: HttpErrorResponse | undefined;
   constructor(
       private http: HttpClient,
-      private customerInfoService: CustomerInformationService
+      private customerInfoService: CustomerInformationService,
+      public itemService: ItemService,
+      private tenorService: TenorService
   ) {
     this.isLoggedIn$ = new BehaviorSubject<boolean>(false);
     this.registerStep$ = new BehaviorSubject<number>(Step.register);
     this.user$ = new BehaviorSubject<User>({
-      name: 'Nguyen Van Thương',
-      creditLimit: 40000000
+      name: '',
+      creditLimit: 0
     });
   }
 
@@ -64,7 +68,7 @@ export class AuthBnplService {
   logout() {
     this.user$.next({
       name: '',
-      creditLimit: 40000000
+      creditLimit: 0
     });
     this.isLoggedIn$.next(false);
     localStorage.removeItem('accessToken');
@@ -85,24 +89,33 @@ export class AuthBnplService {
   }
 
   updateCustomerInfo(): Observable<any>{
-    const uri = `${environment.localAPIServer}v1/bnpl/personal/register`
+    const uri = `${environment.localAPIServer}v1/bnpl/personal/addInfoPersonal`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.user$.getValue().accessToken}`
     })
-    return this.http.post<any>(encodeURI(uri), {...this.customerInfoService.customerInfo$.getValue(), user: this.user$.getValue().id }, {headers}).pipe(tap((data) =>{
-      this.user$.next({...this.user$.getValue(), name: this.customerInfoService.customerInfo$.getValue().name!})
+    return this.http.post<any>(encodeURI(uri), this.customerInfoService.customerInfo$.getValue(), {headers}).pipe(tap((data) =>{
+      console.log(data)
+      // if(data['status']){
+      //   this.itemService.items$.next(data['items'] as Item[])
+      //
+      //   console.log(this.itemService.items$.getValue())
+      // }
+      // this.user$.next({...this.user$.getValue(), name: this.customerInfoService.customerInfo$.getValue().name!})
+      this.getInfoFromData(data)
     }))
   }
   getCustomerInfo(): Observable<any> {
-    const uri = `${environment.localAPIServer}v1/bnpl/personal/${this.user$.getValue().id}`
+    const uri = `${environment.localAPIServer}v1/bnpl/personal/${this.user$.getValue().phone}`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.user$.getValue().accessToken}`
     })
     // @ts-ignore
-    return this.http.get(encodeURI(uri), {headers}).pipe(tap(({data}) => {
-      this.user$.next({...this.user$.getValue(), name: data['name']})
+    return this.http.get<any>(encodeURI(uri), {headers}).pipe(tap((data) => {
+      console.log(data)
+      this.getInfoFromData(data)
+      // this.user$.next({...this.user$.getValue(), name: data['name']})
     }))
   }
 
@@ -138,5 +151,30 @@ export class AuthBnplService {
     }, {headers}).pipe(tap(data => {
 
     }))
+  }
+
+  updateTenor() {
+    const uri = `${environment.localAPIServer}v1/bnpl/personal/updateTenor`
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.user$.getValue().accessToken}`
+    })
+    return this.http.put<any>(encodeURI(uri), {
+      "id": this.tenorService.selectedTenor$.getValue()?.tenorId,
+      "phone": this.user$.getValue().phone
+    })
+  }
+
+  private getInfoFromData(data: any) {
+    if (data['status']) {
+      console.log('get info')
+      this.user$.next({...this.user$.getValue(), name: data['data']['name'], creditLimit: +data['data']['credit_limit']})
+      if (data['data']['tenor']) {
+        this.tenorService.selectedTenor$.next(data['data']['tenor'])
+      }
+      if (data['data']['items']) {
+        this.itemService.updateItemList(data['data']['items'])
+      }
+    }
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CheckoutService} from "../checkout.service";
 import {Router} from "@angular/router";
+import {ItemService} from "../item.service";
 
 @Component({
   selector: 'app-checkout-finish',
@@ -11,7 +12,8 @@ export class CheckoutFinishComponent implements OnInit {
 
   constructor(
       public checkoutService: CheckoutService,
-      private router: Router
+      private router: Router,
+      public itemService: ItemService
   ) { }
 
   ngOnInit(): void {

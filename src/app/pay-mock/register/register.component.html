@@ -48,7 +48,8 @@
                 <span>{{'button.continue' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
         </div>
     </div>
-    <app-checkout-items [discount]="true"></app-checkout-items>
+    <app-checkout-items [discount]="true" [items]="itemService.fakeItem"></app-checkout-items>
     <div appMarginBottom="32"></div>
+
 
 </div>

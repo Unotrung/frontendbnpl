@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {ItemService} from "../item.service";
 
 @Component({
   selector: 'app-start-payment',
@@ -8,7 +9,10 @@ import {Router} from "@angular/router";
 })
 export class StartPaymentComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(
+      private router: Router,
+      public itemService: ItemService
+  ) { }
 
   ngOnInit(): void {
   }

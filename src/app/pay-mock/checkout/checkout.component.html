@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="start center">
     <img src="../../../assets/images/LogoFeCredit.png" alt="FE Credit" width="130" height="55"/>
     <app-checkout-header [smallView]="false"></app-checkout-header>
-    <app-checkout-items></app-checkout-items>
+    <app-checkout-items [items]="(itemService.items$ | async)!"></app-checkout-items>
     <div class="global-box no-border" fxLayout="column" fxLayoutAlign="start center">
         <img src="../../../assets/images/SuccessFully.png" alt="" width="28" height="28" appMarginTop="26">
         <div class="item-message" appMarginTop="12" >
@@ -11,8 +11,9 @@
     <div class="global-box no-border tenor-header" appMarginTop="24" >
         {{'checkout.chooseTenor' | translate}}
     </div>
-    <ng-container *ngFor="let tenor of tenors">
+    <ng-container *ngFor="let tenor of tenors;index as i">
         <app-checkout-tenor [tenor]="tenor"
+                            [index]="i"
                             [checked]="chosenTenor ? (chosenTenor.tenorId === tenor.tenorId) : false"
                             (chosenTenor)="onChoseTenor($event)"
         ></app-checkout-tenor>

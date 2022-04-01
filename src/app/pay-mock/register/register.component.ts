@@ -10,6 +10,7 @@ import {keyPress} from "../helper/helper";
 import {InputType} from "../user";
 import {PictureService} from "../picture.service";
 import {ProgressStepService} from "../progress-step.service";
+import {ItemService} from "../item.service";
 
 @Component({
   selector: 'app-register',
@@ -32,7 +33,8 @@ export class RegisterComponent implements OnInit {
         private router: Router,
         private loadingService: LoadingService,
         private pictureService: PictureService,
-        private stepService: ProgressStepService
+        private stepService: ProgressStepService,
+        public itemService: ItemService
     ) { }
 
     ngOnInit() {
@@ -51,7 +53,8 @@ export class RegisterComponent implements OnInit {
 // convenience getter for easy access to form fields
     get f(): {
         [key: string]: AbstractControl;
-    } { return this.registerForm.controls; }
+    } {
+        return this.registerForm.controls; }
 
     onRegisterContinue() {
         if (this.f['phonenumber'].invalid){
@@ -69,10 +72,10 @@ export class RegisterComponent implements OnInit {
             next: data => {
                 console.log(data)
                 //todo: check the redirect condition
-                if (data['isExists']) {
+                if (data['status']) {
                     this.router.navigate(['pay-mock/verify-pin']).then()
                 }
-                if (!data['isExists']) {
+                if (!data['status']) {
                     this.authService.registerStep$.next(Step.pictureSelfie);
                     this.router.navigate(['/pay-mock/picture-selfie']).then();
                 }

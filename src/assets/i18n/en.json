@@ -1,5 +1,6 @@
 {
 	"button": {
+		"back": "Back",
 		"confirm": "CONFIRM",
 		"continue": "CONTINUE",
 		"more": "More",
@@ -42,6 +43,11 @@
 		"refText": "Reference information",
 		"refTittle": "Please enter your name",
 		"warning": "Required information"
+	},
+	"daysNumber": {
+		"none": "",
+		"plural": "{{ days }} days",
+		"singular": "{{ days }} day"
 	},
 	"error": {
 		"emptySex": "Please select your gender"
@@ -115,6 +121,7 @@
 		"changeFail": "Pin change failed, please try again or contact support for instructions.",
 		"enter": "Enter PIN",
 		"forgot": "Forgot pin code",
+		"notExact": "Pin code not exactly",
 		"notMatch": "Pin code and re-entered pin code must be the same",
 		"operator": "Support call center",
 		"reEnter": "Re-enter PIN",

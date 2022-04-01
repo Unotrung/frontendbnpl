@@ -5,6 +5,8 @@ import {AuthBnplService} from "../auth-bnpl.service";
 import {Step} from "../step";
 import {LoadingService} from "../loading.service";
 import {ProgressStepService} from "../progress-step.service";
+import {ItemService} from "../item.service";
+import {Item} from "../item";
 
 @Component({
   selector: 'app-customer-pin-install',
@@ -20,7 +22,8 @@ export class CustomerPinInstallComponent implements OnInit {
       private router: Router,
       private authService: AuthBnplService,
       private loadingService: LoadingService,
-      private progressStepService: ProgressStepService
+      private progressStepService: ProgressStepService,
+      private itemService: ItemService
   ) {
     this.progressStepService.step$.next(2)
   }
@@ -60,11 +63,24 @@ export class CustomerPinInstallComponent implements OnInit {
         console.log(error)
       },
       complete: () => {
-        this.authService.updateCustomerInfo().subscribe((data) => {
-          console.log(data)
-          this.loadingService.loading$.next(false)
-          this.authService.registerStep$.next(Step.customerEsignConfirm)
-          this.router.navigate(['pay-mock/customer-esign-confirm']).then();
+        this.authService.updateCustomerInfo().subscribe({
+          next :(data) => {
+            this.loadingService.loading$.next(false)
+            if (data['status']) {
+              // @ts-ignore
+              this.authService.registerStep$.next(Step.customerEsignConfirm)
+              this.router.navigate(['pay-mock/customer-esign-confirm']).then();
+            }
+            else{
+              //up form unsuccessful ->
+            }
+
+        },
+          error: err => {
+            this.loadingService.loading$.next(false)
+            // up form error
+          },
+          complete: ()=> {}
         })
       }
     })

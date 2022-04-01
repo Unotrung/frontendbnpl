@@ -1,24 +1,24 @@
 <div class="tenor-wrapper">
     <img *ngIf="checked" class="tenor-checked" src="../../../assets/images/SuccessFully.png" alt="" width="28" height="28">
-    <div fxFlexFill class="global-box" [ngClass]="{'checked': checked}"
+    <div fxFlexFill class="global-box" [ngClass]="{'checked': checked && tenor.enable, 'disabled': !tenor.enable}"
          fxLayout="row" fxLayoutAlign="space-between center"
          appMarginTop="12" (click)="onTenorClick()">
         <div appMarginTop="16" appMarginBottom="16">
             <div class="tenor-title">
-                TENOR <span>1</span>
+                TENOR <span>{{index}}</span>
             </div>
             <div class="tenor-title">
-                <span>{{'tenor.itemPrice' | translate}}: </span><span>{{tenor.itemPrice | currency:currencyCode : ''}} VND</span>
+                <span>{{'tenor.itemPrice' | translate}}: </span><span>{{itemService.sumPriceItem | currency:currencyCode : ''}} VND</span>
             </div>
             <div class="tenor-title">
-                <span>{{'tenor.convertFee' | translate}}: </span><span>{{tenor.convertFee | currency:currencyCode : ''}} VND</span>
+                <span>{{'tenor.convertFee' | translate}}: </span><span>{{itemService.sumShipFee | currency:currencyCode : ''}} VND</span>
             </div>
             <div class="tenor-title">
-                <span>{{'tenor.paymentDue' | translate}}:</span> <span>{{tenor.paymentSchedule}} </span> <span >ngày</span>
+                <span>{{'tenor.paymentDue' | translate}}: </span> <span>{{'daysNumber' | pluralTranslate:tenor.paymentSchedule | translate: { days: tenor.paymentSchedule } }}</span>
             </div>
         </div>
         <div class="tenor-price">
-            {{tenor.itemPrice + tenor.convertFee | currency:currencyCode : ''}} VND
+            {{priceTenor + itemService.sumShipFee | currency:currencyCode : ''}} VND
         </div>
     </div>
 

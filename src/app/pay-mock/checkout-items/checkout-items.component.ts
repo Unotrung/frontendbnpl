@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ItemService} from "../item.service";
 import {environment} from "../../../environments/environment";
+import {Item} from "../item";
+import {shouldBeautify} from "@angular-devkit/build-angular/src/utils/environment-options";
 
 @Component({
   selector: 'app-checkout-items',
@@ -9,10 +10,22 @@ import {environment} from "../../../environments/environment";
 })
 export class CheckoutItemsComponent implements OnInit {
   @Input() discount = false
+  @Input() items: Item[] = []
   currencyCode = environment.currencyCode
-  constructor(public itemService: ItemService) { }
+  sumPriceItem = 0
+  sumShipFee = 0
+  sum = 0
+  constructor() {
+
+  }
 
   ngOnInit(): void {
+    this.items.forEach(item => {
+      console.log(item)
+      this.sumPriceItem += item.price
+      this.sumShipFee += item.shipFee
+    })
+    this.sum = this.sumPriceItem + this.sumShipFee
   }
 
 }

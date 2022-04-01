@@ -1,5 +1,6 @@
 {
 	"button": {
+		"back": "Trở về",
 		"confirm": "XÁC NHẬN",
 		"continue": "TIẾP TỤC",
 		"more": "Xem thêm",
@@ -42,6 +43,11 @@
 		"refText": "Thông tin tham chiếu",
 		"refTittle": "Vui lòng điền danh xưng",
 		"warning": "Thông tin bắt buộc"
+	},
+	"daysNumber": {
+		"none": "",
+		"plural": "{{ days }} ngày",
+		"singular": "{{ days }} ngày"
 	},
 	"error": {
 		"emptySex": "Vui lòng chọn giới tính"
@@ -115,6 +121,7 @@
 		"changeFail": "Thay đổi mã pin không thành công, vui lòng thử lại hoặc liên hệ hỗ trợ để được hướng dẫn.",
 		"enter": "Nhập mã PIN",
 		"forgot": "Quên mã pin",
+		"notExact": "Mã pin không chính xác",
 		"notMatch": "Mã pin và mã pin nhập lại phải trùng nhau",
 		"operator": "Tổng đài hỗ trợ",
 		"reEnter": "Nhập lại mã PIN",
@@ -137,7 +144,7 @@
 		"textGuide2": "Số CMND/CCCD phải điền chính xác. Vui lòng nhập 9 số (CMND) hoặc 12 số (CCCD)",
 		"textGuide3": "Ảnh chụp chân dung phải đủ sáng, không đội mũ, không đeo kính",
 		"warning": "Chưa chụp ảnh",
-		"wrongFormat": "CMND hoặc CCCD có 9 hoặc 12 chữ số "
+		"wrongFormat": "Choặc CCCD có 9 hoặc 12 chữ số "
 	},
 	"step": {
 		"customerInfo": "Thông tin khách hàng",

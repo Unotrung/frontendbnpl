@@ -4,6 +4,7 @@ import {AuthBnplService} from "../auth-bnpl.service";
 import {LoadingService} from "../loading.service";
 import {MessageService} from "../message.service";
 import {MessageReason} from "../message";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-verify-pin',
@@ -18,7 +19,8 @@ export class VerifyPinComponent implements OnInit {
       private router: Router,
       private authService: AuthBnplService,
       private loadingService: LoadingService,
-      private messageService: MessageService
+      private messageService: MessageService,
+      private translate: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +46,6 @@ export class VerifyPinComponent implements OnInit {
     this.loadingService.loading$.next(true)
     this.authService.login().subscribe({
       next: data => {
-        console.log(data)
         this.authService.getCustomerInfo().subscribe({
           next : data => {
           console.log(data)
