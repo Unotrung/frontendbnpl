@@ -14,7 +14,7 @@
         </button>
     </div>
     <div appMarginTop="32"></div>
-    <app-checkout-items></app-checkout-items>
+    <app-checkout-items [items]="(itemService.items$ | async)!"></app-checkout-items>
     <div appMarginBottom="32"></div>
 
 </div>

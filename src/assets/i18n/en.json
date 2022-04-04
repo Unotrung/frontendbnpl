@@ -76,7 +76,7 @@
 		"name": "First and Last Name",
 		"nid": "ID Card number",
 		"note": "Note",
-		"perTitle": "Personal title",
+		"perTitle": "Relationship",
 		"phoneNumber": "Phone Number",
 		"pinCode": "PIN code",
 		"sex": "Sex",

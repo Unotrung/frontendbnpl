@@ -9,14 +9,14 @@ import {ProgressStepService} from "../progress-step.service";
 })
 export class ProgressStepComponent implements OnInit {
 
-  progressSteps: ProgressStep[]
-  currentStep: number
+  // progressSteps: ProgressStep[]
+  // currentStep: number
 
   constructor(
-      private progressStepService: ProgressStepService
+      public progressStepService: ProgressStepService
   ) {
-    this.progressSteps = this.progressStepService.progressSteps$.getValue()
-    this.currentStep = this.progressStepService.step$.getValue()
+    // this.progressSteps = this.progressStepService.progressSteps$.getValue()
+    // this.currentStep = this.progressStepService.step$.getValue()
   }
 
   ngOnInit(): void {

@@ -42,8 +42,20 @@ export class CheckoutConfirmComponent implements OnInit {
         console.log(data)
         //todo: api call for payment, also check save tenor of not
         this.loadingService.loading$.next(false)
-        this.checkoutService.checkoutFinish$.next(true)
-        this.router.navigate(['/pay-mock/checkout-finish']).then()
+        if (data['status']) {
+          this.checkoutService.checkoutFinish$.next(true)
+          this.router.navigate(['/pay-mock/checkout-finish']).then()
+        }
+        else {
+          this.checkoutService.checkoutFinish$.next(false)
+          this.messageService.messageData$.next({
+            reason: MessageReason.failOnLoginUsePinCode,
+            messageTitle: this.translate.instant('message.announce'),
+            message: this.translate.instant('pin.notExact'),
+            closeMessage: this.translate.instant('button.back')
+          })
+          this.messageService.onOpenDialog()
+        }
       },
       error: ({error}) => {
         console.log(error)

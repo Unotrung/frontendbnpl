@@ -47,7 +47,8 @@ export class CheckoutComponent implements OnInit {
 
   onCheckOutContinue () {
     //todo : api call for check customer enough credit for checkout
-    this.tenorService.selectedTenor$.next(this.chosenTenor)
+    if (!this.chosenTenor) return;
+    this.tenorService.updateSelectedTenor(this.chosenTenor)
     this.router.navigate(['/pay-mock/checkout-confirm']).then(() =>{
       this.authService.user$.next({...this.authService.user$.getValue(), pin: ''})
     })

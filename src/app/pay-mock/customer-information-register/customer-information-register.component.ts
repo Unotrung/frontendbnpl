@@ -83,7 +83,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
 
   initFormInfo() {
 
-    this.personalTitleOptions = ['Ông', 'Bà', 'Vợ', 'Chồng', 'Con']
+    this.personalTitleOptions = ['Ông', 'Bà']
     this.sexOptions = ['Nữ', 'Nam']
 
     const citizenFrontData = this.pictureService.citizenFrontData$.getValue()
@@ -257,7 +257,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
             [Validators.required]),
         personal_title_ref: new FormControl('', [Validators.required]),
         name_ref: new FormControl('', [Validators.required]),
-        phone_ref: new FormControl('', [Validators.required, Validators.pattern("^0[0-9]*$"),
+        phone_ref: new FormControl('', [Validators.required, Validators.pattern(/^(09|03|07|08|05)+([0-9]{8}$)/g),
           Validators.minLength(10), Validators.maxLength(10)])
       })
       this.f['phone_ref'].valueChanges.subscribe(value => {

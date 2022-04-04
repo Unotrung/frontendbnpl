@@ -7,6 +7,7 @@ import {Step} from "./step";
 import {CustomerInformationService} from "./customer-information.service";
 import {ItemService} from "./item.service";
 import {TenorService} from "./tenor.service";
+import {Tenor} from "./tenor";
 
 @Injectable({
   providedIn: 'root'
@@ -162,7 +163,7 @@ export class AuthBnplService {
     return this.http.put<any>(encodeURI(uri), {
       "id": this.tenorService.selectedTenor$.getValue()?.tenorId,
       "phone": this.user$.getValue().phone
-    })
+    }, {headers})
   }
 
   private getInfoFromData(data: any) {
@@ -170,10 +171,27 @@ export class AuthBnplService {
       console.log('get info')
       this.user$.next({...this.user$.getValue(), name: data['data']['name'], creditLimit: +data['data']['credit_limit']})
       if (data['data']['tenor']) {
-        this.tenorService.selectedTenor$.next(data['data']['tenor'])
+        const tenor: Tenor = {
+          tenorId: data['data']['tenor']._id,
+          convertFee: data['data']['tenor'].convertFee,
+          paymentSchedule: data['data']['tenor'].paymentSchedule,
+          enable: true
+        }
+        this.tenorService.selectedTenor$.next(tenor)
       }
       if (data['data']['items']) {
-        this.itemService.updateItemList(data['data']['items'])
+        let items : any = []
+        data['data']['items'].forEach((item: any) => {
+          items.push({
+            id: item._id,
+            name: item.name,
+            price: item.price,
+            shipFee: item.shipFee,
+            image: item.image,
+            description: item.description
+          })
+        } )
+        this.itemService.updateItemList(items)
       }
     }
   }

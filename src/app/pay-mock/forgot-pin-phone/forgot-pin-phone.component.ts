@@ -18,6 +18,9 @@ export class ForgotPinPhoneComponent implements OnInit {
       ) { }
 
   ngOnInit(): void {
+      if (!this.authService.user$.getValue().phone) {
+          this.router.navigate(['pay-mock/register']).then()
+      }
     this.phoneForm = new FormControl({value: this.authService.user$.getValue().phone, disabled: true},
         [
             Validators.required,

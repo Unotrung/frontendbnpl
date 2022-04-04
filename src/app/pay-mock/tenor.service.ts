@@ -47,5 +47,8 @@ export class TenorService {
     console.log('tenors', tenors)
     this.tenors$.next(tenors)
   }
+  updateSelectedTenor(tenor: Tenor) {
+    this.selectedTenor$.next(tenor)
+  }
 
 }

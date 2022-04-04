@@ -20,11 +20,11 @@ export class CheckoutTenorComponent implements OnInit {
   constructor(
       public itemService: ItemService
   ) {
-    console.log(this.tenor)
 
   }
 
   ngOnInit(): void {
+    console.log(this.tenor)
     this.priceTenor = this.itemService.sumPriceItem*(1 + this.tenor.convertFee/100)
   }
   onTenorClick() {

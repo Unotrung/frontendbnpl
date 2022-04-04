@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
         this.clearOldData()
         this.registerForm = this.formBuilder.group({
             phonenumber: [this.authService.user$.getValue().phone, [ Validators.required,
-                Validators.pattern("^0[0-9]*$"),
+                Validators.pattern(/^(09|03|07|08|05)+([0-9]{8}$)/g),
                 Validators.minLength(10), Validators.maxLength(10)]]
         });
         this.f['phonenumber'].valueChanges.subscribe(value => {
@@ -49,6 +49,9 @@ export class RegisterComponent implements OnInit {
                 this.f['phonenumber'].setValue(value.slice(0,10))
             }
         })
+        if (this.pictureService.initPictureService$.getValue() && !this.pictureService.hvInit$.getValue()) {
+            this.pictureService.initHVToken()
+        }
     }
 // convenience getter for easy access to form fields
     get f(): {

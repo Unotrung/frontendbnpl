@@ -18,10 +18,16 @@ export class ForgotPinCardIdComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    if (!this.authService.user$.getValue().phone) {
+      this.router.navigate(['pay-mock/register']).then()
+    }
     this.cardIdForm = new FormControl(this.authService.user$.getValue().citizenId, [Validators.pattern(/\b\d{9}\b|\b\d{12}\b/g),Validators.required])
   }
 
   onForgotCardIdContinue() {
+    console.log(this.cardIdForm.invalid)
+    if (this.cardIdForm.invalid) return
     //todo: check design here
     this.loadingService.loading$.next(true)
     this.authService.user$.next({...this.authService.user$.getValue(), citizenId: this.cardIdForm.value})
@@ -30,7 +36,11 @@ export class ForgotPinCardIdComponent implements OnInit {
         this.loadingService.loading$.next(false)
         if (data && data['status']) {
           console.log(data)
-          this.router.navigate(['pay-mock/forgot-pin-otp']).then()
+          this.router.navigate(['pay-mock/forgot-pin-otp']).then(
+              () => {
+                this.authService.user$.next({...this.authService.user$.getValue(), citizenId: ''})
+              }
+          )
         }
       },
       error: err => {

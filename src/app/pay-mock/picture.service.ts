@@ -12,6 +12,7 @@ import {AuthBnplService} from "./auth-bnpl.service";
 import {Step} from "./step";
 import {TranslateService} from "@ngx-translate/core";
 import {translate} from "@angular/localize/tools";
+import {Router} from "@angular/router";
 
 export enum NCardSide {
     front = 'front',
@@ -37,6 +38,7 @@ export class PictureService {
     currentShot$: BehaviorSubject<NCardSide | null>
     citizenBackImageComplete$: BehaviorSubject<boolean>
     // kycCustomerComplete$: BehaviorSubject<boolean>
+    initPictureService$: BehaviorSubject<boolean>
     hvInit$: BehaviorSubject<boolean>
 
 
@@ -46,8 +48,10 @@ export class PictureService {
         private loadingService: LoadingService,
         private messageService: MessageService,
         private authService: AuthBnplService,
-        private translate: TranslateService
+        private translate: TranslateService,
+        private router: Router
     ) {
+        this.initPictureService$ = new BehaviorSubject<boolean>(false)
         this.hvInit$ = new BehaviorSubject<boolean>(false)
         this.selfieImageComplete$ = new BehaviorSubject<boolean>(false);
         this.citizenFrontData$ = new BehaviorSubject<any>(null);
@@ -55,6 +59,10 @@ export class PictureService {
         this.citizenFrontImageComplete$ = new BehaviorSubject<boolean>(false);
         this.citizenBackImageComplete$ = new BehaviorSubject<boolean>(false);
         this.currentShot$ = new BehaviorSubject<NCardSide | null>(null)
+        this.initHVToken()
+    }
+
+    initHVToken() {
         console.log('init picture service')
         this.loadingService.loading$.next(true)
         this.hv.onGetHVToken().pipe(
@@ -73,9 +81,9 @@ export class PictureService {
                 }
             }, complete: () => {
                 this.hvInit$.next(true)
+                this.initPictureService$.next(true)
             }
         })
-
     }
 
     selfieScreenShot() {
@@ -97,6 +105,7 @@ export class PictureService {
                 if (errorCode === '401') {
                     if (errorMessage === 'Token Expired') {
                         //todo Check the token generator
+                        this.hvInit$.next(false)
                         console.error(errorMessage);
                         return;
                     }
@@ -146,6 +155,8 @@ export class PictureService {
                     if (errorMessage === 'Token Expired') {
                         //todo Check the token generator
                         console.error(errorMessage);
+                        this.hvInit$.next(false)
+                        this.router.navigate(['pay-mock/register']).then()
                         return;
                     }
                 }

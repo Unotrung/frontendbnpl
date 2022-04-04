@@ -17,7 +17,7 @@ export class CheckoutFinishComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    setTimeout(this.onCheckoutFinish.bind(this), 15000)
+    setTimeout(this.onCheckoutFinish.bind(this), 5000)
   }
   onCheckoutFinish() {
     this.router.navigate(['pay-mock/start-payment']).then(
