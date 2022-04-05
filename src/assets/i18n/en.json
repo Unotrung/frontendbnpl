@@ -154,8 +154,8 @@
 		"pinInstall": "Pin install"
 	},
 	"tenor": {
-		"convertFee": "Product price",
-		"itemPrice": "Conversion fee",
+		"convertFee": "Conversion fee",
+		"itemPrice": "Product price",
 		"paymentDue": "Payment time"
 	},
 	"text": {

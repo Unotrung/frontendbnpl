@@ -16,6 +16,7 @@ export class CheckoutTenorComponent implements OnInit {
   @Output() chosenTenor = new EventEmitter<string>()
   currencyCode = environment.currencyCode
   priceTenor: number = 0
+  convertFee: number = 0
 
   constructor(
       public itemService: ItemService
@@ -25,7 +26,8 @@ export class CheckoutTenorComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.tenor)
-    this.priceTenor = this.itemService.sumPriceItem*(1 + this.tenor.convertFee/100)
+    this.convertFee = this.itemService.sumPriceItem*this.tenor.convertFee/100
+    this.priceTenor = this.convertFee + this.itemService.sumPriceItem + this.itemService.sumShipFee;
   }
   onTenorClick() {
 

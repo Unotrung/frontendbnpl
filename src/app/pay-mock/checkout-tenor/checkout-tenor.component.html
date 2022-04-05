@@ -11,14 +11,14 @@
                 <span>{{'tenor.itemPrice' | translate}}: </span><span>{{itemService.sumPriceItem | currency:currencyCode : ''}} VND</span>
             </div>
             <div class="tenor-title">
-                <span>{{'tenor.convertFee' | translate}}: </span><span>{{itemService.sumShipFee | currency:currencyCode : ''}} VND</span>
+                <span>{{'tenor.convertFee' | translate}}: </span><span>{{convertFee | currency:currencyCode : ''}} VND</span>
             </div>
             <div class="tenor-title">
                 <span>{{'tenor.paymentDue' | translate}}: </span> <span>{{'daysNumber' | pluralTranslate:tenor.paymentSchedule | translate: { days: tenor.paymentSchedule } }}</span>
             </div>
         </div>
         <div class="tenor-price">
-            {{priceTenor + itemService.sumShipFee | currency:currencyCode : ''}} VND
+            {{priceTenor | currency:currencyCode : ''}} VND
         </div>
     </div>
 
