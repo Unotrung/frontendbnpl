@@ -7,7 +7,7 @@
             <div [style]="progressStep.id <= (progressStepService.step$ | async)! ? 'background-color:#4ECB71':null" class="cycle-step"></div>
         </mat-grid-tile>
         <mat-grid-tile *ngFor="let progressStep of (progressStepService.progressSteps$ | async) ">
-            <p class="text-step">{{progressStep.title}}</p>
+            <p class="text-step">{{progressStep.title | translate}}</p>
         </mat-grid-tile>
     </mat-grid-list>
 </div>

@@ -11,7 +11,6 @@ import {checkInfo} from "./helper/helper";
 import {AuthBnplService} from "./auth-bnpl.service";
 import {Step} from "./step";
 import {TranslateService} from "@ngx-translate/core";
-import {translate} from "@angular/localize/tools";
 import {Router} from "@angular/router";
 
 export enum NCardSide {

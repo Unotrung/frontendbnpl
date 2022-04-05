@@ -36,10 +36,6 @@ export class VerifyPinComponent implements OnInit {
   //   this.pin = code
   // }
 
-  onForgotPin(){
-    this.router.navigate(['pay-mock/forgot-pin-phone']).then();
-  }
-
   onVerifyPinContinue() {
     //todo: check pin code is correct here and navigate to checkout
     this.authService.user$.next({...this.authService.user$.getValue(), pin: this.pin})
@@ -49,24 +45,33 @@ export class VerifyPinComponent implements OnInit {
         this.authService.getCustomerInfo().subscribe({
           next : data => {
           console.log(data)
-          this.loadingService.loading$.next(false)
-          this.router.navigate(['pay-mock/checkout']).then()
+            if (data['status']) {
+              this.loadingService.loading$.next(false)
+              this.router.navigate(['pay-mock/checkout']).then()
+            }
+            else {
+              this.openDialogFailPinCode()
+            }
+
         }
         })
 
       },
       error: ({error}) => {
         console.log(error)
-        this.loadingService.loading$.next(false)
-        this.messageService.messageData$.next({
-          reason: MessageReason.failOnLoginUsePinCode,
-          messageTitle: 'Thông báo',
-          message: 'Mã pin không chính xác',
-          closeMessage: 'TRỞ VỀ'
-        })
-        this.messageService.onOpenDialog()
+        this.openDialogFailPinCode()
       }
     })
 
+  }
+
+  openDialogFailPinCode() {
+    this.messageService.messageData$.next({
+      reason: MessageReason.failOnLoginUsePinCode,
+      messageTitle: this.translate.instant('message.announce'),
+      message: this.translate.instant('pin.notExact'),
+      closeMessage: this.translate.instant('button.back')
+    })
+    this.messageService.onOpenDialog()
   }
 }
