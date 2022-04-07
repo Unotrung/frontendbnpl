@@ -42,24 +42,34 @@ export class VerifyPinComponent implements OnInit {
     this.loadingService.loading$.next(true)
     this.authService.login().subscribe({
       next: data => {
-        this.authService.getCustomerInfo().subscribe({
-          next : data => {
-          console.log(data)
-            if (data['status']) {
-              this.loadingService.loading$.next(false)
-              this.router.navigate(['pay-mock/checkout']).then()
-            }
-            else {
-              this.openDialogFailPinCode()
-            }
-
+        this.loadingService.loading$.next(false)
+        if (!data['status']) {
+          this.openDialogFailPinCode()
         }
-        })
-
       },
       error: ({error}) => {
+        this.loadingService.loading$.next(false)
         console.log(error)
         this.openDialogFailPinCode()
+      },
+      complete: () => {
+
+        if (this.authService.isLoggedIn$.getValue()) {
+          this.loadingService.loading$.next(true)
+          this.authService.getCustomerInfo().subscribe({
+            next: data => {
+              this.loadingService.loading$.next(false)
+              console.log(data)
+              if (data['status']) {
+                this.router.navigate(['pay-mock/checkout']).then()
+              } else {
+              }
+            },
+            error: err => {
+              this.loadingService.loading$.next(false)
+            }
+          })
+        }
       }
     })
 
