@@ -55,6 +55,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   getTenorPrice(tenor: Tenor) {
+    console.log('tenor',this.itemService.sumPriceItem*(1 + tenor.convertFee/100) + this.itemService.sumShipFee)
     return this.itemService.sumPriceItem*(1 + tenor.convertFee/100) + this.itemService.sumShipFee
   }
 

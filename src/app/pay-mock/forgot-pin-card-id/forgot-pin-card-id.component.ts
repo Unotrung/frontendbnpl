@@ -38,7 +38,7 @@ export class ForgotPinCardIdComponent implements OnInit {
           console.log(data)
           this.router.navigate(['pay-mock/forgot-pin-otp']).then(
               () => {
-                this.authService.user$.next({...this.authService.user$.getValue(), citizenId: ''})
+                // this.authService.user$.next({...this.authService.user$.getValue(), citizenId: ''})
               }
           )
         }

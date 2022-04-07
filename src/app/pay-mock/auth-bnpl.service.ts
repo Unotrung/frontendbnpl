@@ -95,7 +95,7 @@ export class AuthBnplService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.user$.getValue().accessToken}`
     })
-    return this.http.post<any>(encodeURI(uri), this.customerInfoService.customerInfo$.getValue(), {headers}).pipe(tap((data) =>{
+    return this.http.post<any>(encodeURI(uri), {...this.customerInfoService.customerInfo$.getValue(), pin: this.user$.getValue().pin }, {headers}).pipe(tap((data) =>{
       console.log(data)
       // if(data['status']){
       //   this.itemService.items$.next(data['items'] as Item[])
@@ -141,14 +141,14 @@ export class AuthBnplService {
   }
 
   changePinCode():Observable<any> {
-    const uri = `${environment.localAPIServer}v1/bnpl/user/updatepin`
+    const uri = `${environment.localAPIServer}v1/bnpl/user/resetPin`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.user$.getValue().accessToken}`
     })
     return this.http.put<any>(encodeURI(uri), {
       "phone": this.user$.getValue().phone,
-      "pin": this.user$.getValue().pin
+      "new_pin": this.user$.getValue().pin
     }, {headers}).pipe(tap(data => {
 
     }))

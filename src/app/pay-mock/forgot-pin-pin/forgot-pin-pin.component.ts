@@ -53,6 +53,9 @@ export class ForgotPinPinComponent implements OnInit {
         if (data && data['status']) {
           this.router.navigate(['pay-mock/forgot-pin-success']).then()
         }
+        else {
+          this.router.navigate(['pay-mock/forgot-pin-fail']).then()
+        }
       },
       error: ({error}) => {
         this.loadingService.loading$.next(false)
