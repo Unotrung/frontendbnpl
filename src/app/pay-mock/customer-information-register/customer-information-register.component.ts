@@ -242,7 +242,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
 
       this.registerForm = new FormGroup({
         name: new FormControl({value: name, disabled: true}),
-        sex: new FormControl(gender, [Validators.required]),
+        sex: new FormControl({ value: gender, disabled: gender ? true : false}, [Validators.required]),
         phone: new FormControl({value: phone, disabled: true}),
         birthday: new FormControl({value:birthday, disabled: true}),
         citizenId: new FormControl({value: citizenId, disabled: true}),
@@ -255,10 +255,10 @@ export class CustomerInformationRegisterComponent implements OnInit {
             [Validators.required]),
         street: new FormControl({value: this.initStreet.success ? this.initStreet.street: '', disabled: this.initStreet.success},
             [Validators.required]),
-        personal_title_ref: new FormControl('', [Validators.required]),
-        name_ref: new FormControl('', [Validators.required]),
-        phone_ref: new FormControl('', [Validators.required, Validators.pattern(/^(09|03|07|08|05)+([0-9]{8}$)/g),
-          Validators.minLength(10), Validators.maxLength(10)])
+        personal_title_ref: new FormControl('', {validators: [Validators.required], updateOn: 'blur'}),
+        name_ref: new FormControl('', {validators: [Validators.required], updateOn: 'blur'}),
+        phone_ref: new FormControl('', {validators: [Validators.required, Validators.pattern(/^(09|03|07|08|05)+([0-9]{8}$)/g),
+          Validators.minLength(10), Validators.maxLength(10)], updateOn: 'blur'})
       })
       this.f['phone_ref'].valueChanges.subscribe(value => {
         if (value.length > 10) {

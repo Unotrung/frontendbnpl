@@ -40,9 +40,9 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
         this.clearOldData()
         this.registerForm = this.formBuilder.group({
-            phonenumber: [this.authService.user$.getValue().phone, [ Validators.required,
+            phonenumber: ['',{validators: [ Validators.required,
                 Validators.pattern(/^(09|03|07|08|05)+([0-9]{8}$)/g),
-                Validators.minLength(10), Validators.maxLength(10)]]
+                Validators.minLength(10), Validators.maxLength(10)], updateOn: 'blur' } ]
         });
         this.f['phonenumber'].valueChanges.subscribe(value => {
             if (value.length > 10) {
@@ -60,10 +60,10 @@ export class RegisterComponent implements OnInit {
         return this.registerForm.controls; }
 
     onRegisterContinue() {
-        if (this.f['phonenumber'].invalid){
-            this.submitted = true
-            return
-        }
+        // if (this.f['phonenumber'].invalid){
+        //     this.submitted = true
+        //     return
+        // }
         //todo: check the phone number, need api here, so we can redirect to the next step
         this.authService.user$.next({...this.authService.user$.getValue(), phone: this.f['phonenumber'].value})
         this.loadingService.loading$.next(true)

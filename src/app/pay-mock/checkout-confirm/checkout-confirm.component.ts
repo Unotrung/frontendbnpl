@@ -48,26 +48,14 @@ export class CheckoutConfirmComponent implements OnInit {
         }
         else {
           this.checkoutService.checkoutFinish$.next(false)
-          this.messageService.messageData$.next({
-            reason: MessageReason.failOnLoginUsePinCode,
-            messageTitle: this.translate.instant('message.announce'),
-            message: this.translate.instant('pin.notExact'),
-            closeMessage: this.translate.instant('button.back')
-          })
-          this.messageService.onOpenDialog()
+          this.messagePinNotExact()
         }
       },
       error: ({error}) => {
         console.log(error)
         this.loadingService.loading$.next(false)
         this.checkoutService.checkoutFinish$.next(false)
-        this.messageService.messageData$.next({
-          reason: MessageReason.failOnLoginUsePinCode,
-          messageTitle: this.translate.instant('message.announce'),
-          message: this.translate.instant('pin.notExact'),
-          closeMessage: this.translate.instant('button.back')
-        })
-        this.messageService.onOpenDialog()
+        this.messagePinNotExact()
         // this.router.navigate(['/pay-mock/checkout-finish']).then()
       },
       complete: () => {
@@ -85,6 +73,15 @@ export class CheckoutConfirmComponent implements OnInit {
       })
     }
 
+  }
+  messagePinNotExact(){
+    this.messageService.messageData$.next({
+      reason: MessageReason.failOnLoginUsePinCode,
+      messageTitle: this.translate.instant('message.announce'),
+      message: this.translate.instant('pin.notExact'),
+      closeMessage: this.translate.instant('button.back')
+    })
+    this.messageService.onOpenDialog()
   }
 
 }

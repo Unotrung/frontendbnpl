@@ -3,6 +3,7 @@ import {FormControl, Validators} from "@angular/forms";
 import {AuthBnplService} from "../auth-bnpl.service";
 import {Router} from "@angular/router";
 import {LoadingService} from "../loading.service";
+import {MessageService} from "../message.service";
 
 @Component({
   selector: 'app-forgot-pin-card-id',
@@ -14,7 +15,8 @@ export class ForgotPinCardIdComponent implements OnInit {
   constructor(
       private authService: AuthBnplService,
       private router: Router,
-      private loadingService: LoadingService
+      private loadingService: LoadingService,
+      private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +44,9 @@ export class ForgotPinCardIdComponent implements OnInit {
               }
           )
         }
+        else {
+
+        }
       },
       error: err => {
         this.loadingService.loading$.next(false)
@@ -49,6 +54,9 @@ export class ForgotPinCardIdComponent implements OnInit {
         console.log(err)
       }
     })
+
+  }
+  messageNidNotExact(){
 
   }
 

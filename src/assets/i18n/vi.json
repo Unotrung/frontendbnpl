@@ -94,7 +94,7 @@
 		"selfieError": "Hình chụp selfie không rõ, đề nghị chụp lại "
 	},
 	"nCard": {
-		"back": "mặt trước",
+		"back": "mặt sau",
 		"front": "mặt trước",
 		"guideText": "Nhấn vào nút màu đỏ để lần lượt chụp hình CMND/CCCD mặt trước và sau",
 		"nCardBack": "CMND mặt sau",
@@ -110,7 +110,7 @@
 		"networkError": "Quá trình đăng ký bị gián đoạn. Vui lòng trở lại sau 24h",
 		"notReceive": "Không nhận được OTP",
 		"resend": "Gởi lại OTP",
-		"resetFail": "Quá trình reset mã pin không thành công. Vui lòng trở lại sau 24h"
+		"resetFail": "Quá trình cài đặt lại mã pin không thành công. Vui lòng trở lại sau 24h"
 	},
 	"phone": {
 		"empty": "Vui lòng nhập số điện thoại",
@@ -144,7 +144,7 @@
 		"textGuide2": "Số CMND/CCCD phải điền chính xác. Vui lòng nhập 9 số (CMND) hoặc 12 số (CCCD)",
 		"textGuide3": "Ảnh chụp chân dung phải đủ sáng, không đội mũ, không đeo kính",
 		"warning": "Chưa chụp ảnh",
-		"wrongFormat": "Choặc CCCD có 9 hoặc 12 chữ số "
+		"wrongFormat": "CMND hoặc CCCD có 9 hoặc 12 chữ số "
 	},
 	"step": {
 		"customerInfo": "Thông tin khách hàng",

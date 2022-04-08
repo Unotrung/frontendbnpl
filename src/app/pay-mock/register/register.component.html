@@ -9,14 +9,14 @@
         <input (keypress)="keyPress($event, InputType.number)" required type="text" class="phone-input"
                formControlName="phonenumber"
                [ngClass]="{ 'is-invalid': submitted && f['phonenumber'].errors }">
-            <div *ngIf="submitted && f['phonenumber'].errors && f['phonenumber'].errors['required']">
+            <div *ngIf="f['phonenumber']?.invalid && (f['phonenumber']?.dirty || f['phonenumber']?.touched) && f['phonenumber'].errors && f['phonenumber'].errors['required']">
                 <span class="error" >{{'phone.empty' | translate}}</span>
             </div>
-            <div *ngIf="submitted && f['phonenumber'].errors && (
+            <div *ngIf="f['phonenumber'].errors && (
             f['phonenumber'].errors!['maxlength']
             || f['phonenumber'].errors!['minlength'])">
                 <span class="error" >{{'phone.wrongLength' | translate}}</span></div>
-            <div *ngIf="submitted && f['phonenumber'].errors && f['phonenumber'].errors['pattern']">
+            <div *ngIf="f['phonenumber'].errors && f['phonenumber'].errors['pattern']">
                 <span class="error" >{{'phone.wrongFormat' | translate}}</span>
             </div>
 
@@ -44,6 +44,7 @@
             <button class="payment-button"
                     appMarginTop="36"
                     appMarginBottom="16"
+                    [disabled]="f['phonenumber'].invalid"
                     (click)="onRegisterContinue()">
                 <span>{{'button.continue' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
         </div>

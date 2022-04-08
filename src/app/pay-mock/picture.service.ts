@@ -90,7 +90,7 @@ export class PictureService {
         // this.hv.HyperSnapSDK.init(environment.hyperVergeToken, this.hv.HyperSnapParams.Region.AsiaPacific);
         // this.hv.HyperSnapSDK.startUserSession();
         const hvFaceConfig = new this.hv.HVFaceConfig();
-        hvFaceConfig.setShouldShowInstructionPage(true);
+        // hvFaceConfig.setShouldShowInstructionPage(true);
 
         const callback = (HVError: any, HVResponse: any) => {
             if (HVError) {
@@ -347,7 +347,7 @@ export class PictureService {
         if (reason === MessageReason.failBackIdScreenShot) {
             this.messageService.messageData$.next({
                 reason: MessageReason.failBackIdScreenShot,
-                messageTitle: `Thông báo ${this.translate.instant('message.announce')}`,
+                messageTitle: `${this.translate.instant('message.announce')}`,
                 message:  `${this.translate.instant('message.NCardBackError')}`,
                 closeMessage:  `${this.translate.instant('button.reshot')}`
             })
