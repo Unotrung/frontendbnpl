@@ -17,6 +17,7 @@ import localeVn from '@angular/common/locales/vi'
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { GraphQLModule } from './graphql/graphql.module';
 registerLocaleData(localeVn)
 
 @NgModule({
@@ -43,7 +44,8 @@ registerLocaleData(localeVn)
         AppRoutingModule,
         BrowserAnimationsModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        GraphQLModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: RequestHandlerInterceptor, multi: true},

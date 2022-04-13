@@ -8,6 +8,8 @@ import {CustomerInformationService} from "./customer-information.service";
 import {ItemService} from "./item.service";
 import {TenorService} from "./tenor.service";
 import {Tenor} from "./tenor";
+import {Apollo} from "apollo-angular";
+import {subscriptionGraphql} from "../graphql/subscription.graphql";
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,8 @@ export class AuthBnplService {
       private http: HttpClient,
       private customerInfoService: CustomerInformationService,
       public itemService: ItemService,
-      private tenorService: TenorService
+      private tenorService: TenorService,
+      private apollo: Apollo
   ) {
     this.isLoggedIn$ = new BehaviorSubject<boolean>(false);
     this.registerStep$ = new BehaviorSubject<number>(Step.register);
@@ -31,6 +34,11 @@ export class AuthBnplService {
       name: '',
       creditLimit: 0
     });
+    apollo.subscribe({
+      query: subscriptionGraphql.newUserEvent,
+    }).subscribe({
+      next : data => console.log(data)
+    })
   }
 
   login(): Observable<any> {
