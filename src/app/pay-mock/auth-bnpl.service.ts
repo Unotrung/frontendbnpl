@@ -74,6 +74,14 @@ export class AuthBnplService {
     return this.http.post<any>(encodeURI(uri), {phone});
   }
 
+  checkNidPhoneMatch(nid: string){
+    const uri = `${environment.localAPIServer}v1/bnpl/user/checkNidPhoneExists`
+    return this.http.post<any>(encodeURI(uri), {
+      phone: this.user$.getValue().phone,
+      nid
+    })
+  }
+
   logout() {
     this.user$.next({
       name: '',

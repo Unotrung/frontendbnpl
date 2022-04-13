@@ -13,6 +13,7 @@
             <p>{{contract.content}}</p>
             <button class="expand-button" *ngIf="!expand" (click)="expand = !expand" >{{'button.more' | translate}}</button>
         </div>
+<!--        <iframe src="https://bnpl.dzhxww9188dsv.amplifyapp.com/pay-mock/register" height="500"></iframe>-->
         <div appMarginTop="16" fxFlexAlign="start">
             <mat-checkbox [(ngModel)]="agreeContract" >{{'esign.agree' | translate}}</mat-checkbox>
         </div>

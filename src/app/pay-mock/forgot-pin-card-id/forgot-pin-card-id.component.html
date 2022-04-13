@@ -8,8 +8,11 @@
             <p>{{'nCard.name' | translate}} <span class="red-star">*</span></p>
         </div>
         <input  class="global-input" [formControl]="cardIdForm">
-        <div class="error" appMarginTop="8" fxFlexAlign="start" *ngIf="(cardIdForm.dirty || cardIdForm.touched) && cardIdForm.invalid" >
+        <div class="error" appMarginTop="8" fxFlexAlign="start" *ngIf="(cardIdForm.dirty || cardIdForm.touched) && cardIdForm.errors && (cardIdForm.errors['pattern'] || cardIdForm.errors['required'])" >
             {{'selfie.wrongFormat' | translate}}
+        </div>
+        <div class="error" appMarginTop="8" fxFlexAlign="start" *ngIf="(cardIdForm.dirty || cardIdForm.touched) && cardIdForm.errors && cardIdForm.errors['wrongnid']" >
+            {{'nCard.wrongNidPhone' | translate}}
         </div>
         <div appMarginTop="32" appMarginBottom="33">
             <button class="payment-button"
