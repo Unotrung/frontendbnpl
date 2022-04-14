@@ -1,4 +1,4 @@
-<div class="global-box" fxLayout="column" fxLayoutAlign="start center" appMarginTop="16">
+<div class="pin-verify-box" [ngClass]="{'border-box' : !popUp}" fxLayout="column" fxLayoutAlign="start center" appMarginTop="16">
     <div  class="pin-header" appMarginTop="32" >
         {{'pin.enter' | translate}}
     </div>
@@ -8,7 +8,7 @@
     <div fxFlexAlign="start" appMarginTop="16" class="pin-text" >
         {{'label.pinCode' | translate}}
     </div>
-    <div appElDimension width="300" height="26" appMarginTop="23">
+    <div appMarginTop="23">
         <!--            <input class="pin-input-fill" type="number" maxlength="1">-->
         <!--            <input class="pin-input-fill" type="number" maxlength="1">-->
         <!--            <input class="pin-input-fill" type="number" maxlength="1">-->
@@ -19,6 +19,22 @@
                     (codeCompleted)="onCodeCompleted($event)">
         </code-input>
     </div>
+    <div class="warning" *ngIf="pinFails"
+         fxFlexAlign="start" fxLayout="row" fxLayoutAlign="start center"
+         appMarginTop="8">
+        <img src="assets/images/warning.png" width="14" height="14"> <div class="image-title">  <ng-container >{{'pin.invalid' | translate}}</ng-container> {{pinFails}}/5</div>
+    </div>
+    <div class="warning" *ngIf="pinDirty && !pin"
+         fxFlexAlign="start" fxLayout="row" fxLayoutAlign="start center"
+         appMarginTop="8">
+        <img src="assets/images/warning.png" width="14" height="14"> <div class="image-title">  <ng-container >{{'pin.empty' | translate}}</ng-container></div>
+    </div>
+    <div *ngIf="pinFails >= 5"
+         fxLayout="row" fxLayoutAlign="center center"
+         appMarginTop="8" appElDimension width="160">
+         <div class="image-title">  <ng-container >{{'pin.registerInterrupt' | translate}}</ng-container></div>
+    </div>
+
     <div appElDimension width="214" height="24" appMarginTop="64" fxLayout="row" fxLayoutAlign="space-around center" >
         <p class="forgot-pin-text">{{'pin.forgot' | translate}} <span (click)="onForgotPin()">{{'text.press' | translate}} {{'text.here' | translate}}</span></p>
     </div>

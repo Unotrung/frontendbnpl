@@ -47,6 +47,7 @@ import { ProgressStepComponent } from './progress-step/progress-step.component';
 import { PayMockComponent } from "./pay-mock.component";
 import {TranslateModule} from "@ngx-translate/core";
 import { PluralTranslatePipe } from './helper/plural-translate.pipe';
+import { CheckoutConfirmPinComponent } from './checkout-confirm-pin/checkout-confirm-pin.component';
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { PluralTranslatePipe } from './helper/plural-translate.pipe';
       ForgotPinFailComponent,
       ProgressBarComponent,
       ProgressStepComponent,
-      PluralTranslatePipe
+      PluralTranslatePipe,
+      CheckoutConfirmPinComponent
   ],
     exports: [
         LoadingComponent,

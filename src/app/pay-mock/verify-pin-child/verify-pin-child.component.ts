@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Optional, Output} from '@angular/core';
 import {Router} from "@angular/router";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-verify-pin-child',
@@ -9,14 +10,25 @@ import {Router} from "@angular/router";
 export class VerifyPinChildComponent implements OnInit {
 
   @Output() pinCode = new EventEmitter<string>()
-  constructor(private router: Router) { }
+  @Input() popUp = false
+  @Input() pinFails = 0
+  pinDirty = false
+  pin = ''
+  constructor(
+      @Optional() private dialogRef: MatDialogRef<VerifyPinChildComponent>,
+      private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   // this called every time when user changed the code
   onCodeChanged(code: string) {
+    this.pin = code
     this.pinCode.emit(code)
+    if (!this.pinDirty) {
+      this.pinDirty = true
+    }
   }
 
   // this called only if user entered full code
@@ -24,7 +36,12 @@ export class VerifyPinChildComponent implements OnInit {
   }
 
   onForgotPin(){
-    this.router.navigate(['pay-mock/forgot-pin-phone']).then();
+    this.router.navigate(['pay-mock/forgot-pin-phone']).then(()=> {
+      if (this.popUp) {
+        console.log('close popup')
+        this.dialogRef.close()
+      }
+    });
   }
 
   // onVerifyPinContinue() {

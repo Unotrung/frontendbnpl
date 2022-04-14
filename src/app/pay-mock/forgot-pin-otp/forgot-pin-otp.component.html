@@ -6,7 +6,7 @@
         <div class="note-text-2" fxFlexAlign="start" appMarginTop="16">
             <p >{{'otp.enter' | translate}} <span class="red-star">*</span></p>
         </div>
-        <code-input #codeInput [isCodeHidden]="false"
+        <code-input #codeInput [isCodeHidden]="true"
                     [codeLength]="6"
                     (codeChanged)="onCodeChanged($event)"
                     (codeCompleted)="onCodeCompleted($event)">
@@ -30,10 +30,10 @@
         </div>
         <div class="note-text" appMarginTop="8" appMarginBottom="16">
             <p>{{'otp.notReceive' | translate}} ?</p>
-            <button class="send-otp" [disabled]="!countdownComplete" (click)="onSendOtp()">{{'otp.resend' | translate}}
-                <span>(</span>
+            <button class="send-otp" [ngClass]="{'highlight' : countdownComplete}" [disabled]="!countdownComplete" (click)="onSendOtp()">{{'otp.resend' | translate}}
+                <span [ngClass]="{'hidden' : countdownComplete}"><span>(</span>
                 <countdown #cd [config]="{leftTime: 60, format: 's'}" (event)="onCountdown($event)"></countdown>
-                <span>s)</span>
+                <span>s)</span></span>
             </button>
         </div>
 

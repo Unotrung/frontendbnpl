@@ -119,13 +119,16 @@
 	},
 	"pin": {
 		"changeFail": "Thay đổi mã pin không thành công, vui lòng thử lại hoặc liên hệ hỗ trợ để được hướng dẫn.",
+		"empty":  "Vui lòng nhập mã pin",
 		"enter": "Nhập mã PIN",
 		"forgot": "Quên mã pin",
+		"invalid": "Mã pin chưa chính xác",
 		"notExact": "Mã pin không chính xác",
 		"notMatch": "Mã pin và mã pin nhập lại phải trùng nhau",
 		"operator": "Tổng đài hỗ trợ",
 		"reEnter": "Nhập lại mã PIN",
 		"reEnterCheck": "Vui lòng nhập mã PIN để xác thực thông tin",
+		"registerInterrupt": "Quá trình bị gián đoạn. Vui lòng trở lại sau 24h",
 		"reinstall": "Cài đặt lại mã pin của bạn",
 		"resetSuccess": "Chúc mừng bạn đã thay đổi mã pin thành công"
 	},

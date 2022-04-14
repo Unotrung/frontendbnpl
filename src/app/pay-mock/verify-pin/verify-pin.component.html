@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutAlign="center center">
     <img src="assets/images/FE-Credit.png" width="155" height="55">
     <p class="margin-top-16 payment-text" appMarginTop="5" >Slogan - FEC Content Team to Update</p>
-    <app-verify-pin-child (pinCode)="onCodeChanged($event)"></app-verify-pin-child>
+    <app-verify-pin-child (pinCode)="onCodeChanged($event)" [pinFails]="pinFails"></app-verify-pin-child>
     <button class="payment-button"
             appMarginTop="32"
             [disabled]="pin.length < 4"

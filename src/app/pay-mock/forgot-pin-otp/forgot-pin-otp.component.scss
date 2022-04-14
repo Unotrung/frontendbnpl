@@ -49,3 +49,22 @@ button {
 .global-box {
   padding: 0 32px 0 32px;
 }
+
+.hidden {
+  display: none;
+}
+.highlight {
+  background: white;
+  color: #1155cc;
+  text-decoration: underline;
+}
+
+code-input {
+  --item-border-radius: 50%;
+  --item-height: 32px;
+  --text-security-style: disc;
+  --item-background: #C4C4C4;
+  --item-shadow-focused: 0px 2px 7px #C4C4C4;
+  --item-spacing: 16px;
+}
+

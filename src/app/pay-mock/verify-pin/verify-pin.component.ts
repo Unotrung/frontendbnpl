@@ -14,6 +14,7 @@ import {TranslateService} from "@ngx-translate/core";
 export class VerifyPinComponent implements OnInit {
 
   pin: string = '';
+  pinFails = 0
 
   constructor(
       private router: Router,
@@ -44,13 +45,15 @@ export class VerifyPinComponent implements OnInit {
       next: data => {
         this.loadingService.loading$.next(false)
         if (!data['status']) {
-          this.openDialogFailPinCode()
+          this.pinFails ++
+          // this.openDialogFailPinCode()
         }
       },
       error: ({error}) => {
         this.loadingService.loading$.next(false)
         console.log(error)
-        this.openDialogFailPinCode()
+        this.pinFails ++
+        // this.openDialogFailPinCode()
       },
       complete: () => {
 

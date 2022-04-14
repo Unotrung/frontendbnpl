@@ -109,9 +109,6 @@ p.forgot-pin-text {
   /* Black/black500 */
   color: rgba(0, 0, 0, 0.8);
 }
-.global-box {
-  padding: 0 42px 0 42px;
-}
 
 .pin-title {
   font-family: 'Mulish';
@@ -136,4 +133,32 @@ p.forgot-pin-text {
 
   /* Ink/ink500 */
   color: #04113E;
+}
+
+code-input {
+  --item-border-radius: 50%;
+  --item-height: 48px;
+  --text-security-style: disc;
+  --item-background: #C4C4C4;
+  --item-shadow-focused: 0px 2px 7px #C4C4C4;
+  --item-spacing: 16px;
+}
+.pin-verify-box {
+  width: 378px;
+  padding: 0 42px 0 42px;
+}
+.border-box {
+  border: 1px solid #C4C4C4;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.image-title {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 30px;
+  /* or 214% */
+
+  color: #000000;
 }

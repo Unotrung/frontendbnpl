@@ -93,3 +93,8 @@ body { margin: 0; font-family: Mulish, "Helvetica Neue", sans-serif; }
 button:hover {
   cursor: pointer;
 }
+
+input.has-value {
+  -webkit-text-fill-color: #17D7A0 !important;
+  -webkit-box-shadow:0 0 0 50px #17D7A0 inset !important;
+}

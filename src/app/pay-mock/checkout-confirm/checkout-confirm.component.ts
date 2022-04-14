@@ -8,6 +8,8 @@ import {MessageService} from "../message.service";
 import {MessageReason} from "../message";
 import {ItemService} from "../item.service";
 import {TranslateService} from "@ngx-translate/core";
+import {MatDialog} from "@angular/material/dialog";
+import {CheckoutConfirmPinComponent} from "../checkout-confirm-pin/checkout-confirm-pin.component";
 
 @Component({
   selector: 'app-checkout-confirm',
@@ -15,7 +17,6 @@ import {TranslateService} from "@ngx-translate/core";
   styleUrls: ['./checkout-confirm.component.scss']
 })
 export class CheckoutConfirmComponent implements OnInit {
-  pinCode: string = ''
   saveTenor: Boolean = false
   constructor(
       public tenorService: TenorService,
@@ -25,53 +26,53 @@ export class CheckoutConfirmComponent implements OnInit {
       private checkoutService: CheckoutService,
       private messageService: MessageService,
       public itemService: ItemService,
-      private translate: TranslateService
+      private translate: TranslateService,
+      private dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
   }
-  onPinCodeChange(event: string) {
-    this.pinCode = event
-  }
 
   onCheckoutConfirm(){
-    this.loadingService.loading$.next(true)
-    this.authService.user$.next({...this.authService.user$.getValue(), pin: this.pinCode})
-    this.authService.login().subscribe({
-      next: data => {
-        console.log(data)
-        //todo: api call for payment, also check save tenor of not
-        this.loadingService.loading$.next(false)
-        if (data['status']) {
-          this.checkoutService.checkoutFinish$.next(true)
-          this.router.navigate(['/pay-mock/checkout-finish']).then()
-        }
-        else {
-          this.checkoutService.checkoutFinish$.next(false)
-          this.messagePinNotExact()
-        }
-      },
-      error: ({error}) => {
-        console.log(error)
-        this.loadingService.loading$.next(false)
-        this.checkoutService.checkoutFinish$.next(false)
-        this.messagePinNotExact()
-        // this.router.navigate(['/pay-mock/checkout-finish']).then()
-      },
-      complete: () => {
-      }
-    })
+    const dialogRef = this.dialog.open(CheckoutConfirmPinComponent, { disableClose: true });
 
-    if (this.saveTenor) {
-      this.authService.updateTenor().subscribe({
-        next: data => {
-          console.log(data)
-        },
-        error: err => {
-          console.log(err)
-        }
-      })
-    }
+    // this.loadingService.loading$.next(true)
+    // this.authService.user$.next({...this.authService.user$.getValue(), pin: this.pinCode})
+    // this.authService.login().subscribe({
+    //   next: data => {
+    //     console.log(data)
+    //     //todo: api call for payment, also check save tenor of not
+    //     this.loadingService.loading$.next(false)
+    //     if (data['status']) {
+    //       this.checkoutService.checkoutFinish$.next(true)
+    //       this.router.navigate(['/pay-mock/checkout-finish']).then()
+    //     }
+    //     else {
+    //       this.checkoutService.checkoutFinish$.next(false)
+    //       this.messagePinNotExact()
+    //     }
+    //   },
+    //   error: ({error}) => {
+    //     console.log(error)
+    //     this.loadingService.loading$.next(false)
+    //     this.checkoutService.checkoutFinish$.next(false)
+    //     this.messagePinNotExact()
+    //     // this.router.navigate(['/pay-mock/checkout-finish']).then()
+    //   },
+    //   complete: () => {
+    //   }
+    // })
+
+    // if (this.saveTenor) {
+    //   this.authService.updateTenor().subscribe({
+    //     next: data => {
+    //       console.log(data)
+    //     },
+    //     error: err => {
+    //       console.log(err)
+    //     }
+    //   })
+    // }
 
   }
   messagePinNotExact(){

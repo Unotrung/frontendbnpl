@@ -19,8 +19,8 @@
     </div>
     <div class="note-text" appMarginTop="8">
        <p>{{'otp.notReceive' | translate}} ?</p>
-        <button class="send-otp" [disabled]="!countdownComplete" (click)="onSendOtp()">{{'otp.resend' | translate}}
-            <span [ngClass]="{'hidden': countdownComplete }">(</span><countdown #cd [config]="{leftTime: 60, format: 's'}" (event)="onCountdown($event)" ></countdown><span>s)</span>
+        <button class="send-otp" [ngClass]="{'highlight': countdownComplete }" [disabled]="!countdownComplete" (click)="onSendOtp()">{{'otp.resend' | translate}}
+            <span [ngClass]="{'hidden': countdownComplete }"><span>(</span><countdown #cd [config]="{leftTime: 60, format: 's'}" (event)="onCountdown($event)" ></countdown><span>s)</span></span>
         </button>
     </div>
 

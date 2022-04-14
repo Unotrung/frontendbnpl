@@ -48,3 +48,12 @@
   letter-spacing: 0em;
   text-align: left;
 }
+
+code-input {
+  --item-border-radius: 50%;
+  --item-height: 42px;
+  --text-security-style: disc;
+  --item-background: #C4C4C4;
+  --item-shadow-focused: 0px 2px 7px #C4C4C4;
+  --item-spacing: 16px;
+}
