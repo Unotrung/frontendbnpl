@@ -43,13 +43,14 @@
   border-radius: 8px;
 }
 
-.error {
+.verify-error {
   font-family: Mulish;
   font-style: normal;
   font-weight: normal;
-  font-size: 10px;
-  line-height: 12px;
-  color: red;
+  font-size: 12px;
+  line-height: 18px;
+  color: rgba(4, 17, 62, 0.7);
+  //color: red;
 }
 
 //.payment-button:disabled,

@@ -113,6 +113,7 @@
 		"resetFail": "Quá trình cài đặt lại mã pin không thành công. Vui lòng trở lại sau 24h"
 	},
 	"phone": {
+		"block": "Số điện thoại này đã bị giới hạn/khoá",
 		"empty": "Vui lòng nhập số điện thoại",
 		"wrongFormat": "Số điện thoại không hợp lệ",
 		"wrongLength": "Số điện thoại phải 10 chữ số"

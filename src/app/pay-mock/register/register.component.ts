@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {
+    AbstractControl,
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    ValidationErrors,
+    ValidatorFn,
+    Validators
+} from "@angular/forms";
 import {AuthBnplService} from "../auth-bnpl.service";
 import {Router} from "@angular/router";
 import {Step} from "../step";
@@ -27,6 +35,7 @@ export class RegisterComponent implements OnInit {
     submitted = false;
     keyPress = keyPress
     InputType = InputType
+    blockPhones : string[] = []
     constructor(
         private formBuilder: FormBuilder,
         private authService: AuthBnplService,
@@ -42,7 +51,9 @@ export class RegisterComponent implements OnInit {
         this.registerForm = this.formBuilder.group({
             phonenumber: ['',{validators: [ Validators.required,
                 Validators.pattern(/^(09|03|07|08|05)+([0-9]{8}$)/g),
-                Validators.minLength(10), Validators.maxLength(10)], updateOn: 'blur' } ]
+                Validators.minLength(10), Validators.maxLength(10),
+                this.validatorBlockPhone()
+                ], updateOn: 'blur' } ]
         });
         this.f['phonenumber'].valueChanges.subscribe(value => {
             if (value.length > 10) {
@@ -79,6 +90,11 @@ export class RegisterComponent implements OnInit {
                     this.router.navigate(['pay-mock/verify-pin']).then()
                 }
                 if (!data['status']) {
+                    if (data['message'].indexOf('This phone is block') > -1) {
+                        this.blockPhones.push(this.authService.user$.getValue().phone!)
+                        this.f['phonenumber'].updateValueAndValidity()
+                        return
+                    }
                     this.authService.registerStep$.next(Step.pictureSelfie);
                     this.router.navigate(['/pay-mock/picture-selfie']).then();
                 }
@@ -101,5 +117,16 @@ export class RegisterComponent implements OnInit {
         this.authService.logout()
         this.pictureService.clearData()
         this.stepService.resetStep()
+    }
+
+    validatorBlockPhone(): ValidatorFn {
+        return (control: AbstractControl) : ValidationErrors | null => {
+            if (this.blockPhones.length === 0) {
+                return null
+            }
+            const value = control.value
+            const phone = this.blockPhones.find(number => number === value)
+            return phone ? {blockPhone: true} : null
+        }
     }
 }

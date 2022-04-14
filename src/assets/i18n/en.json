@@ -113,6 +113,7 @@
 		"resetFail": "Pin code reset failed. Please come back in 24 hours"
 	},
 	"phone": {
+		"block": "This number is limited/blocked",
 		"empty": "Please enter the phone number",
 		"wrongFormat": "Invalid phone number",
 		"wrongLength": "Phone number must be 10 digits"

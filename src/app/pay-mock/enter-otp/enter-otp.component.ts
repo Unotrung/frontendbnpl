@@ -58,6 +58,10 @@ export class EnterOtpComponent implements OnInit {
                         () => this.dialogRef.close()
                     )
                 }
+                else {
+                    this.otpFails$.next(this.otpFails$.getValue() + 1)
+                    this.codeInput.reset()
+                }
             },
             error: ({error}) => {
                 this.otpFails$.next(this.otpFails$.getValue() + 1)
