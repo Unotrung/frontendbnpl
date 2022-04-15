@@ -10,7 +10,7 @@
 //}
 
 .payment-text {
-  font-family: Mulish;
+  font-family: 'Montserrat Alternates';
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -44,7 +44,7 @@
 }
 
 .verify-error {
-  font-family: Mulish;
+  font-family: 'Montserrat Alternates';
   font-style: normal;
   font-weight: normal;
   font-size: 12px;
@@ -53,6 +53,36 @@
   //color: red;
 }
 
+.voolo-header {
+  font-family: 'Montserrat Alternates';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 150%;
+  /* or 30px */
+  /* Black/black500 */
+  color: rgba(0, 0, 0, 0.8);
+
+}
+
+.voolo-content {
+  background: #FFFFFF;
+  padding: 30px 30px 30px 30px;
+}
+.voolo-help {
+  font-family: 'Montserrat Alternates';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+}
+.voolo-help-detail {
+  font-family: 'Montserrat Alternates';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
 //.payment-button:disabled,
 //.payment-button[disabled]{
 //  border: 1px solid #999999;

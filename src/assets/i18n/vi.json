@@ -168,5 +168,13 @@
 		"hello": "Chào",
 		"here": "đây",
 		"press": "Bấm vào"
+	},
+	"voolo": {
+		"buy": "Mua sắm không giới hạn",
+		"help": "VOOLO giúp bạn",
+		"pay": "Thanh toán linh hoạt",
+		"promo": "Ưu đãi hoàn tiền chỉ trong 1 ngày",
+		"slogan": "Có VOOLO - Mua sắm VÔ LO",
+		"sloganDetail": "VOOLO - Mua Trước Trả Sau Không khoản trả trước - Nhẹ nhàng với 0% lãi suất"
 	}
 }

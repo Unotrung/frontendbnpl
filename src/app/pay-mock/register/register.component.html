@@ -1,55 +1,78 @@
-<div fxLayout="column" fxLayoutAlign="center center">
-    <img src="assets/images/FE-Credit.png" width="155" height="55">
-    <p class="margin-top-16 payment-text">Slogan - FEC Content Team to Update</p>
-    <img src="assets/images/image-solugan.png" width="383" height="141">
-    <p class="margin-top-16 payment-text" >Intro - FEC Content Team to Update</p>
-    <div class="global-box" fxLayout="column" fxLayoutAlign="top center">
-        <p class="margin-top-16 payment-text" >{{'register.inputLabel' | translate}}</p>
-        <form [formGroup]="registerForm">
-        <input (keypress)="keyPress($event, InputType.number)" required type="text" class="phone-input"
-               formControlName="phonenumber"
-               [ngClass]="{ 'is-invalid': submitted && f['phonenumber'].errors }">
-            <div appMarginTop="8" *ngIf="f['phonenumber']?.invalid && (f['phonenumber']?.dirty || f['phonenumber']?.touched) && f['phonenumber'].errors && f['phonenumber'].errors['required']">
-                <img src="assets/images/error.png" width="16" height="16"><span class="verify-error" > {{'phone.empty' | translate}}</span>
-            </div>
-            <div appMarginTop="8" *ngIf="f['phonenumber'].errors && (
-            f['phonenumber'].errors!['maxlength']
-            || f['phonenumber'].errors!['minlength'])">
-                <img src="assets/images/error.png" width="16" height="16"><span class="verify-error" > {{'phone.wrongLength' | translate}}</span></div>
-            <div appMarginTop="8" *ngIf="f['phonenumber'].errors && f['phonenumber'].errors['pattern'] && !f['phonenumber'].errors['blockPhone']">
-                <img src="assets/images/error.png" width="16" height="16"><span class="verify-error" > {{'phone.wrongFormat' | translate}}</span>
-            </div>
-            <div appMarginTop="8" *ngIf="f['phonenumber'].errors && f['phonenumber'].errors['blockPhone']">
-                <img src="assets/images/error.png" width="16" height="16"><span class="verify-error"> {{'phone.block' | translate}}</span>
+<div fxLayout="column" fxLayoutAlign="start center" class="global-wrapper">
+    <img src="assets/images/voolo-logo.png" width="179" height="35">
+    <div class="voolo-header" appMarginTop="56">
+        {{'voolo.slogan' | translate}}
+    </div>
+    <div class="middle-box voolo-content margin-top-default" fxFlexFill>
+        <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">
+            <p>{{'voolo.help' | translate}}</p>
+        </div>
+        <div fxFlexAlign="start" class="voolo-help-detail">
+            <ul>
+                <li>{{'voolo.buy' | translate}}</li>
+                <li>{{'voolo.pay' | translate}}</li>
+                <li>{{'voolo.promo' | translate }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="paragraph-text margin-top-default">
+        {{'voolo.sloganDetail' | translate}}
+    </div>
+    <!--    <p class="margin-top-16 payment-text">Slogan - FEC Content Team to Update</p>-->
+    <!--    <img src="assets/images/image-solugan.png" width="383" height="141">-->
+    <!--    <p class="margin-top-16 payment-text" >Intro - FEC Content Team to Update</p>-->
+    <div class="middle-box input-box">
+        <p class="paragraph-text paragraph-text-bold">{{'register.inputLabel' | translate}}</p>
+        <div [formGroup]="registerForm" fxFlexFill>
+            <div class="input-wrapper" fxFlexFill fxLayout="row" fxLayoutAlign="center center">
+                <input (keypress)="keyPress($event, InputType.number)" required type="text" class="input-global"
+                       formControlName="phonenumber"
+                       [ngClass]="{ 'input-invalid': f['phonenumber'].invalid && f['phonenumber'].dirty && f['phonenumber'].touched }">
+                <span></span>
             </div>
 
-        </form>
-<!--        <ngx-intl-tel-input-->
-<!--                [cssClass]="'custom'"-->
-<!--                [preferredCountries]="preferredCountries"-->
-<!--                [enableAutoCountrySelect]="true"-->
-<!--                [enablePlaceholder]="true"-->
-<!--                [searchCountryFlag]="true"-->
-<!--                [searchCountryField]="[-->
-<!--          SearchCountryField.Iso2,-->
-<!--          SearchCountryField.Name-->
-<!--        ]"-->
-<!--                [selectFirstCountry]="false"-->
-<!--                [selectedCountryISO]="CountryISO.India"-->
-<!--                [maxLength]="'15'"-->
-<!--                [phoneValidation]="true"-->
-<!--                [separateDialCode]="separateDialCode"-->
-<!--                [numberFormat]="PhoneNumberFormat.National"-->
-<!--                [formControl]="phone"-->
-<!--        >-->
-<!--        </ngx-intl-tel-input>-->
-        <div>
+            <div appMarginTop="8" class="error-text"
+                 *ngIf="f['phonenumber']?.invalid && (f['phonenumber']?.dirty || f['phonenumber']?.touched) && f['phonenumber'].errors && f['phonenumber'].errors['required']">
+                {{'phone.empty' | translate}}
+            </div>
+            <div appMarginTop="8" class="error-text"
+                 *ngIf="f['phonenumber'].errors && (f['phonenumber'].errors!['maxlength']|| f['phonenumber'].errors!['minlength'])">
+                {{'phone.wrongLength' | translate}}
+            </div>
+            <div appMarginTop="8" class="error-text"
+                 *ngIf="f['phonenumber'].errors && f['phonenumber'].errors['pattern'] && !f['phonenumber'].errors['blockPhone']">
+                {{'phone.wrongFormat' | translate}}
+            </div>
+            <div appMarginTop="8" class="error-text" *ngIf="f['phonenumber'].errors && f['phonenumber'].errors['blockPhone']">
+                {{'phone.block' | translate}}
+            </div>
+
+        </div>
+        <!--        <ngx-intl-tel-input-->
+        <!--                [cssClass]="'custom'"-->
+        <!--                [preferredCountries]="preferredCountries"-->
+        <!--                [enableAutoCountrySelect]="true"-->
+        <!--                [enablePlaceholder]="true"-->
+        <!--                [searchCountryFlag]="true"-->
+        <!--                [searchCountryField]="[-->
+        <!--          SearchCountryField.Iso2,-->
+        <!--          SearchCountryField.Name-->
+        <!--        ]"-->
+        <!--                [selectFirstCountry]="false"-->
+        <!--                [selectedCountryISO]="CountryISO.India"-->
+        <!--                [maxLength]="'15'"-->
+        <!--                [phoneValidation]="true"-->
+        <!--                [separateDialCode]="separateDialCode"-->
+        <!--                [numberFormat]="PhoneNumberFormat.National"-->
+        <!--                [formControl]="phone"-->
+        <!--        >-->
+        <!--        </ngx-intl-tel-input>-->
+        <div fxFlexFill>
             <button class="payment-button"
-                    appMarginTop="36"
-                    appMarginBottom="16"
+                    appMarginTop="44"
                     [disabled]="f['phonenumber'].invalid"
                     (click)="onRegisterContinue()">
-                <span>{{'button.continue' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
+                <span>{{'button.continue' | translate}}</span></button>
         </div>
     </div>
     <app-checkout-items [discount]="true" [items]="itemService.fakeItem"></app-checkout-items>

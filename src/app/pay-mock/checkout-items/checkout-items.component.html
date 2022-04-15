@@ -1,30 +1,34 @@
-<div class="global-box" appMarginTop="16" fxLayout="column" fxLayoutAlign="start center">
-    <div class="item-header" fxFlexAlign="start" appMarginTop="10" >
+<div class="middle-box white-box" appMarginTop="16" >
+    <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start" appMarginTop="10" >
         {{'items.header' | translate}}
     </div>
     <ng-container *ngFor="let item of items">
-        <app-checkout-item [item]="item"></app-checkout-item>
+        <app-checkout-item *ngFor="let item of items" [item]="item"></app-checkout-item>
     </ng-container>
 
-    <mat-divider></mat-divider>
+<!--    <mat-divider></mat-divider>-->
     <ng-container *ngIf="discount">
-        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" >
-            <div class="item-content" >{{'label.discount' | translate}}</div>
-<!--            <div class="item-content"><input></div>-->
+<!--        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" >-->
+<!--            <div class="item-content" >{{'label.discount' | translate}}</div>-->
+<!--&lt;!&ndash;            <div class="item-content"><input></div>&ndash;&gt;-->
+<!--        </div>-->
+<!--        <mat-divider></mat-divider>-->
+        <div class="input-wrapper margin-top-default">
+            <input class="input-global input-gift-card" placeholder="{{'label.discount' | translate}}">
         </div>
-        <mat-divider></mat-divider>
+
     </ng-container>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" >
-        <div class="item-content" >{{'label.amount' | translate}}</div>
-        <div class="item-content">{{sumPriceItem | currency:currencyCode:''}} VND</div>
+        <div class="paragraph-text" >{{'label.amount' | translate}}</div>
+        <div class="paragraph-text">{{sumPriceItem | currency:currencyCode:''}} VND</div>
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="12" >
-        <div class="item-content" >{{'label.shipFee' | translate}}</div>
-        <div class="item-content">{{sumShipFee | currency:currencyCode:''}} VND</div>
+        <div class="paragraph-text" >{{'label.shipFee' | translate}}</div>
+        <div class="paragraph-text">{{sumShipFee | currency:currencyCode:''}} VND</div>
     </div>
 
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="12" appMarginBottom="16">
-        <div class="item-price" >{{'label.total' | translate}}</div>
-        <div class="item-price">{{sum | currency:currencyCode:''}} VND</div>
+        <div class="paragraph-text paragraph-text-bold" >{{'label.total' | translate}}</div>
+        <div class="paragraph-text paragraph-text-bold text-sum">{{sum | currency:currencyCode:''}} VND</div>
     </div>
 </div>

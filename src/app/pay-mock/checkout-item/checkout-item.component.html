@@ -1,15 +1,19 @@
 <div class="item-wrapper" fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="8">
-    <img [src]="item.image" width="60" height="72">
-    <div fxFlex="40" fxLayout="column" fxLayoutAlign="space-between start">
+<!--    <img [src]="item.image" width="60" height="72">-->
+    <div fxFlex fxLayout="column" fxLayoutAlign="top start">
+        <img [src]="item.image" width="60" height="72">
+    </div>
+    <div fxLayout="column" fxLayoutAlign="top start">
         <div class="item-title">
             {{item.name}}
         </div>
         <div class="item-des">
             {{item.description}}
         </div>
+        <div class="item-price">
+            {{item.price | currency : currencyCode:''}} VND
+        </div>
     </div>
-    <div class="item-price">
-        {{item.price | currency : currencyCode:''}} VND
-    </div>
+
 
 </div>

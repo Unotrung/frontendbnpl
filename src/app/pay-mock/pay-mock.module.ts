@@ -92,7 +92,8 @@ import { CheckoutConfirmPinComponent } from './checkout-confirm-pin/checkout-con
   ],
     exports: [
         LoadingComponent,
-        CheckoutItemsComponent
+        CheckoutItemsComponent,
+        MarginTopDirective
     ],
     imports: [
         CommonModule,

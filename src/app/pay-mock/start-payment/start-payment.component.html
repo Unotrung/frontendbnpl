@@ -1,55 +1,22 @@
-<div fxLayout="column">
-<!--    <div style="display: block; height: 43px"></div>-->
-<!--    <div class="payment-box" >-->
-<!--        <div class="cart-top">-->
-<!--            <div class="cart-title">-->
-<!--                Thông tin giỏ hàng-->
-<!--            </div>-->
-<!--            <div fxLayout="row">-->
-<!--                <img src="assets/images/begin-yoga-mat-5mm.png" width="60" height="72">-->
-<!--                <div class="cart-info">-->
-<!--                    <div>-->
-<!--                        <p>Begin Yoga Mat 5MM</p>-->
-<!--                        <p class="grey-text-small">Steel Grey/ One Size</p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="price">-->
-<!--                    <p style="">5.000.000 VND</p>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        <mat-divider></mat-divider>-->
-<!--        <div class="middle">-->
-<!--            <p>Add a discount code or a gift card</p>-->
-<!--        </div>-->
-<!--        <mat-divider></mat-divider>-->
-<!--        <div fxLayout="row">-->
-<!--            <span fxFlex class="payment-text">Thành tiền</span>-->
-<!--            <span class="spacer"></span>-->
-<!--            <span class="payment-text price-align-right">5.000.000 VND</span>-->
-<!--        </div>-->
-<!--        <div fxLayout="row">-->
-<!--            <span fxFlex class="payment-text">Phí vận chuyển</span>-->
-<!--            <span class="spacer"></span>-->
-<!--            <span class="payment-text price-align-right">30.000 VND</span>-->
-<!--        </div>-->
-<!--        <div class="block-32"></div>-->
-<!--        <div fxLayout="row">-->
-<!--            <span fxFlex class="payment-text">Tổng cộng</span>-->
-<!--            <span class="spacer"></span>-->
-<!--            <span class="payment-text price-align-right">5.030.000 VND</span>-->
-<!--        </div>-->
-
-<!--    </div>-->
+<div  class="global-wrapper">
     <app-checkout-items [discount]="true" [items]="itemService.fakeItem"></app-checkout-items>
-    <img src="./assets/images/payment-option.png" width="447" height="269">
+<!--    <div class="payment-option">-->
+<!--        <input type="radio" id="radio4">-->
+<!--        <label for="radio4" class="radio-label">Phương thức thanh toán BNPL</label>-->
+<!--        <img src="assets/images/FE-Credit.png" width="155" height="55" style="margin-left: 48px">-->
+<!--        <div>-->
+<!--            <button class="payment-button" routerLink="../register"><span>CHỌN</span><span>&nbsp;&nbsp;&nbsp;></span> </button>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="paragraph-text paragraph-text-bold header-2" appMarginTop="40">
+        {{'voolo.choosePaymentMethod' | translate}}
+    </div>
     <div class="payment-option">
-        <input type="radio" id="radio4">
-        <label for="radio4" class="radio-label">Phương thức thanh toán BNPL</label>
-        <img src="assets/images/FE-Credit.png" width="155" height="55" style="margin-left: 48px">
-        <div>
-            <button class="payment-button" routerLink="../register"><span>CHỌN</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
-        </div>
+            <input type="checkbox" id="radio4">
+            <label for="radio4" class="radio-label">Phương thức thanh toán BNPL</label>
+    </div>
+    <div appMarginTop="32" style="width: 100%">
+        <button class="payment-button" routerLink="../register"><span>CHỌN</span> </button>
     </div>
 </div>
