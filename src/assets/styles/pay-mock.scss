@@ -169,9 +169,12 @@ input.has-value {
   font-size: 14px;
   line-height: 17px;
 }
+.input-invalid {
+  border-color: #c0392b;
+}
 .input-invalid+span:after {
-  content: url("../images/validator.png");
-  margin-left: -48px;
+  content: url("../images/validator1.png");
+  margin-left: -36px;
 }
 
 
