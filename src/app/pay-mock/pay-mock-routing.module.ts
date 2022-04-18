@@ -71,10 +71,12 @@ const routes: Routes = [
             //     path: 'electronic-contract', component: ElectronicContractComponent
             // },
             {
-                path: 'picture-selfie', component: PictureSelfieComponent, canActivate: [AuthBnplGuard]
+                path: 'picture-selfie', component: PictureSelfieComponent
+                // , canActivate: [AuthBnplGuard]
             },
             {
-                path: 'citizen-card', component: CitizenCardComponent, canActivate: [AuthBnplGuard]
+                path: 'citizen-card', component: CitizenCardComponent
+                // , canActivate: [AuthBnplGuard]
             },
             {
                 path: 'forgot-pin-phone', component: ForgotPinPhoneComponent

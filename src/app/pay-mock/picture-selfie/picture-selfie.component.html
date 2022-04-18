@@ -1,21 +1,32 @@
-<div fxLayout="column" fxLayoutAlign="start center">
-    <img alt="FE Credit" src="assets/images/LogoFeCredit.png"/>
-    <div class="picture-selfie-slogan" appMarginTop="16">
-        Slogan - FEC Content Team to update
-    </div>
+<script src="picture-selfie.component.ts"></script>
+<div class="global-wrapper">
+<!--    <img alt="FE Credit" src="assets/images/LogoFeCredit.png"/>-->
+<!--    <div class="picture-selfie-slogan" appMarginTop="16">-->
+<!--        Slogan - FEC Content Team to update-->
+<!--    </div>-->
 
-<div class="global-box" fxLayout="column" fxLayoutAlign="start center">
-    <div class="global-title" appMarginTop="63">
+<!--<div class="global-box" fxLayout="column" fxLayoutAlign="start center">-->
+    <div class="paragraph-text paragraph-text-bold" appMarginTop="40">
         <p>{{'selfie.enterNid' | translate}}</p>
     </div>
-    <input type="text" class="global-input"
-           (keypress)="keyPress($event, InputType.number)"
-           [formControl]="citizenId" appMarginTop="14">
-    <div  class="error" appMarginTop="8" fxFlexAlign="start" *ngIf="(citizenId.dirty || citizenId.touched || submitted) && citizenId.invalid">
-            {{'selfie.wrongFormat' | translate}}
+    <div class="input-wrapper">
+        <input type="text" class="input-global"
+               (keypress)="keyPress($event, InputType.number)"
+               [formControl]="citizenId"
+               [ngClass]="{ 'input-invalid': citizenId.invalid && (citizenId.dirty || citizenId.touched) }">
+        <span></span>
+    </div>
+    <div  class="error-text" appMarginTop="8"
+          *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.errors && citizenId.errors['required']">
+        {{'error.nCard.empty' | translate}}
+    </div>
+    <div  class="error-text" appMarginTop="8"
+          *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.errors && citizenId.errors['pattern']">
+        {{'error.nCard.wrongFormat' | translate}}
     </div>
 
-    <div class="image-title" appMarginTop="24">
+
+    <div class="paragraph-text paragraph-text-bold" appMarginTop="30">
         <p>{{'selfie.takeShot' | translate}}</p>
     </div>
     <div class="background-gray">
@@ -23,51 +34,55 @@
             <div class="circle-red" (click)="startCaptureImage()">
             </div>
         </div>
-        <div>
-            <img *ngIf="pictureService.selfieImageComplete$ | async" [src]="pictureService.selfieImage"
+        <div *ngIf="pictureService.selfieImageComplete$ | async" class="image-frame">
+            <img [src]="pictureService.selfieImage"
                  class="image-blurred-edge"
                  height="235"
                  width="305">
+            <div class="circle-red" (click)="startCaptureImage()">
+            </div>
         </div>
     </div>
 
-    <div class="picture-selfie-overlay" fxLayout="column" fxLayoutAlign="center center" *ngIf="!(pictureService.selfieImageComplete$ | async)">
-        <img fxFlexAlign="center" width="24" height="24" alt="" src="assets/images/camera.png">
+    <div appMarginTop="34" class="picture-selfie-overlay" fxLayout="column" fxLayoutAlign="center center" *ngIf="!(pictureService.selfieImageComplete$ | async)">
+        <img fxFlexAlign="center" width="38" height="38" alt="" src="assets/images/camera1.png">
     </div>
-    <div class="picture-selfie-overlay" fxLayout="column" fxLayoutAlign="top center" *ngIf="pictureService.selfieImageComplete$ | async">
-        <img appMarginTop="8" width="60" height="40" alt="" [src]="pictureService.selfieImage">
-        <mat-icon appMarginTop="8" (click)="onDeleteImage()">delete</mat-icon>
+    <div appMarginTop="34" class="picture-selfie-overlay" *ngIf="pictureService.selfieImageComplete$ | async">
+        <img class="image-small" [src]="pictureService.selfieImage" alt="">
+        <img class="checked-mark" src="assets/images/checkedMark.png">
+<!--        <mat-icon appMarginTop="8" (click)="onDeleteImage()">delete</mat-icon>-->
     </div>
-    <div class="image-title" appMarginTop="16" >
+    <div class="paragraph-text paragraph-text-small" appMarginTop="16" >
         {{'selfie.portrait' | translate}}
     </div>
     <div class="warning" *ngIf="!(pictureService.selfieImageComplete$ | async)"
          fxFlexAlign="start" fxLayout="row" fxLayoutAlign="start center"
          appMarginTop="10" (click)="instruction = !instruction">
-        <img src="assets/images/warning.png" width="14" height="14"> <div class="image-title" >  {{'selfie.warning' | translate}}</div>
+<!--        <img src="assets/images/warning.png" width="14" height="14">-->
+        <div class="paragraph-text paragraph-text-bold" >  {{'selfie.warning' | translate}}</div>
     </div>
     <ng-container *ngIf="instruction">
-    <div class="picture-selfie-notice" appMarginTop="16" fxFlexAlign="start" >
+    <div class="paragraph-text paragraph-text-small paragraph-text-bold red-color" appMarginTop="16" fxFlexAlign="start" >
         {{'selfie.shotGuide' | translate}}:
     </div>
     <ul>
-        <li class="picture-selfie-step" >
+        <li class="picture-selfie-step paragraph-text paragraph-text-small" >
             {{'selfie.textGuide1' | translate}}
         </li>
-        <li class="picture-selfie-step" >
+        <li class="picture-selfie-step paragraph-text paragraph-text-small" >
             {{'selfie.textGuide2' | translate}}
         </li>
-        <li class="picture-selfie-step" >
+        <li class="picture-selfie-step paragraph-text paragraph-text-small" >
             {{'selfie.textGuide3' | translate}}
         </li>
     </ul>
     </ng-container>
-</div>
+<!--</div>-->
 <button class="payment-button"
         appMarginTop="36"
         appMarginBottom="32"
         [disabled]="!(pictureService.selfieImageComplete$ | async) || citizenId.invalid"
         (click)="onSelfieContinue()">
-    <span>{{'button.continue' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span>
+    <span>{{'button.continue' | translate}}</span>
 </button>
 </div>

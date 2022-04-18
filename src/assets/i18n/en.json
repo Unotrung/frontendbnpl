@@ -50,7 +50,11 @@
 		"singular": "{{ days }} day"
 	},
 	"error": {
-		"emptySex": "Please select your gender"
+		"emptySex": "Please select your gender",
+		"nCard": {
+			"empty": "Vui lòng không để trống số CMND/ CCCD",
+			"wrongFormat": "CMND/ CCCD không hợp lệ"
+		}
 	},
 	"esign": {
 		"agree": "I agree to the contract terms",
@@ -97,6 +101,7 @@
 		"back": "backside",
 		"front": "frontside",
 		"guideText": "Click the red button to take a photo of the front and back ID Card, respectively",
+		"guideTwo": "Hướng dẫn chụp đầy đủ 2 ảnh",
 		"nCardBack": "ID card backside",
 		"nCardFront": "ID Card frontside",
 		"name": "ID Card",
@@ -175,6 +180,7 @@
 		"pay": "Thanh toán linh hoạt",
 		"promo": "Ưu đãi hoàn tiền chỉ trong 1 ngày",
 		"slogan": "Có VOOLO - Mua sắm VÔ LO",
-		"sloganDetail": "VOOLO - Mua Trước Trả Sau Không khoản trả trước - Nhẹ nhàng với 0% lãi suất"
+		"sloganDetail": "VOOLO - Mua Trước Trả Sau Không khoản trả trước - Nhẹ nhàng với 0% lãi suất",
+		"welcomeBNPL": "Chào mừng bạn đến với quy trình đăng ký mua trước trả sau"
 	}
 }

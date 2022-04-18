@@ -168,9 +168,10 @@ input.has-value {
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
+  border: none;
 }
 .input-invalid {
-  border-color: #c0392b;
+  border: 1px solid #c0392b;
 }
 .input-invalid+span:after {
   content: url("../images/validator1.png");
@@ -187,9 +188,23 @@ input.has-value {
   color: #000000;
   text-align: center;
 }
+.paragraph-text-small {
+  font-size: 12px;
+}
 .paragraph-text-bold {
   font-weight: 600;
 }
+.text-bold-2 {
+  font-weight: 700;
+}
+.text-big-16 {
+  font-size: 16px;
+}
+.text-big-20 {
+  font-size: 20px;
+  line-height: 30px;
+}
+
 .header-2 {
   font-size: 16px;
 }
@@ -202,4 +217,22 @@ input.has-value {
   line-height: 18px;
   text-align: center;
   color: #CA5656;
+}
+
+.red-color {
+  color: red;
+}
+img.checked-mark {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  bottom: 0;
+  right: 4px;
+}
+img.checked-mark-flex {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  bottom: -60px;
+  margin-left: 40px;
 }

@@ -48,6 +48,8 @@ import { PayMockComponent } from "./pay-mock.component";
 import {TranslateModule} from "@ngx-translate/core";
 import { PluralTranslatePipe } from './helper/plural-translate.pipe';
 import { CheckoutConfirmPinComponent } from './checkout-confirm-pin/checkout-confirm-pin.component';
+import { SmallImageWrapperComponent } from './small-image-wrapper/small-image-wrapper.component';
+import { VooloRegisterHeaderComponent } from './voolo-register-header/voolo-register-header.component';
 
 
 @NgModule({
@@ -88,7 +90,9 @@ import { CheckoutConfirmPinComponent } from './checkout-confirm-pin/checkout-con
       ProgressBarComponent,
       ProgressStepComponent,
       PluralTranslatePipe,
-      CheckoutConfirmPinComponent
+      CheckoutConfirmPinComponent,
+      SmallImageWrapperComponent,
+      VooloRegisterHeaderComponent
   ],
     exports: [
         LoadingComponent,

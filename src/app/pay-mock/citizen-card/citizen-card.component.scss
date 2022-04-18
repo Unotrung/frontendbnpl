@@ -1,8 +1,8 @@
 .citizen-box {
-  width: 378px;
-  border: 1px solid #C4C4C4;
-  box-sizing: border-box;
-  border-radius: 8px;
+  //width: 378px;
+  //border: 1px solid #C4C4C4;
+  //box-sizing: border-box;
+  //border-radius: 8px;
   .title-box {
     width: 303px;
     height: 32px;
@@ -19,13 +19,13 @@
   .outer-frame-box {
     width: 305px;
     height: 305px;
+    border-radius: 10px;
 
     background: #C4C4C4;
     .inner-frame-box {
       width: 258px;
       height: 256px;
-
-      border: 1px solid #0BFBA6;
+      border: 1px solid rgba(255, 255, 255, 0.5);
       box-sizing: border-box;
       display: block;
       position: relative;
@@ -38,9 +38,9 @@
   height: 42px;
   border-radius: 50%;
   border: 5px solid #ffffff;
-  background-color: #fa1818;
+  background: transparent;
   position: absolute;
-  bottom: -21px;
+  bottom: 10px;
   //left: 30%;
   //transform: translateX(50%);
   //bottom: -20px;
@@ -64,7 +64,7 @@
 
   background: #FFFFFF;
   box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.15);
-  border-radius: 8px;
+  border-radius: 30px;
 }
 .citizen-image-text {
   font-family: 'Montserrat Alternates';
@@ -87,8 +87,9 @@
 
 .picture-selfie-step {
   font-weight: normal;
-  font-size: 14px;
+  font-size: 12px;
   color: rgba(4, 17, 62, 0.5);
+  text-align: left;
 }
 
 ul {
@@ -111,4 +112,13 @@ ul {
   &:hover{
     cursor: pointer;
   }
+}
+
+.hr-break {
+  width: calc(100% + 40px);
+  border-color: rgba(0, 0, 0, 0.2);
+  margin: 45px -20px 30px -20px;
+}
+ul {
+  margin-block-start: 0;
 }

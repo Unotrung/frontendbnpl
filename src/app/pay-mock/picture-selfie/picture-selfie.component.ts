@@ -41,7 +41,7 @@ export class PictureSelfieComponent implements OnInit {
     const citizenId = this.authService.user$.getValue().citizenId
 
     this.citizenId = new FormControl(citizenId, {validators: [
-        // Validators.pattern(/\b\d{9}\b|\b\d{12}\b/g),
+        Validators.pattern(/\b\d{9}\b|\b\d{12}\b/g),
         Validators.required
       ], updateOn: 'blur'})
     // this.formGroup = new FormGroup({
@@ -59,6 +59,9 @@ export class PictureSelfieComponent implements OnInit {
   }
 
   startCaptureImage() {
+    if (this.pictureService.selfieImageComplete$.getValue()){
+      this.onDeleteImage()
+    }
 
     this.pictureService.selfieScreenShot();
 

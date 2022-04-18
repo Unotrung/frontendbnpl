@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="start center" class="global-wrapper">
+<div class="global-wrapper">
     <img src="assets/images/voolo-logo.png" width="179" height="35">
     <div class="voolo-header" appMarginTop="56">
         {{'voolo.slogan' | translate}}
@@ -27,7 +27,7 @@
             <div class="input-wrapper" fxFlexFill fxLayout="row" fxLayoutAlign="center center">
                 <input (keypress)="keyPress($event, InputType.number)" required type="text" class="input-global"
                        formControlName="phonenumber"
-                       [ngClass]="{ 'input-invalid': f['phonenumber'].invalid && f['phonenumber'].dirty && f['phonenumber'].touched }">
+                       [ngClass]="{ 'input-invalid': f['phonenumber'].invalid && (f['phonenumber'].dirty || f['phonenumber'].touched) }">
                 <span></span>
             </div>
 
