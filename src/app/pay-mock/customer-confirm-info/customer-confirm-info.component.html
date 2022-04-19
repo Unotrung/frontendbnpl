@@ -1,89 +1,77 @@
-<div fxLayout="column" fxLayoutAlign="center center">
-    <img src="assets/images/FE-Credit.png" width="155" height="55">
-    <div appMarginTop="55"></div>
-    <app-progress-step></app-progress-step>
-    <div class="enter-info-text" appMarginTop="33" >
+<div class="global-wrapper">
+<!--    <img src="assets/images/FE-Credit.png" width="155" height="55">-->
+<!--    <div appMarginTop="55"></div>-->
+<!--    <app-progress-step></app-progress-step>-->
+    <app-voolo-register-header></app-voolo-register-header>
+    <div class="paragraph-text text-big-20 text-bold-2">
         {{'customer.infoCheck' | translate}}
     </div>
-    <fieldset class="personal-info-confirm">
-        <legend > {{'customer.personalInfo' | translate}} </legend>
-        <div fxLayout="row" appMarginTop="9">
-            <div class="block-info" fxFlex="50">
-                <div class="info-text-title">
-                    <ng-container>{{'label.name' | translate}}</ng-container>:
-                </div>
-                <div class="info-content" appMarginTop="5">
-                    {{customerInformationService.customerInfo$.getValue().name}}
-                </div>
-            </div>
-            <div class="block-info" fxFlex="50">
-                <div class="info-text-title">{{'label.sex' | translate}}</div>
-                <div class="info-content" appMarginTop="5">
-                    {{customerInformationService.customerInfo$.getValue().sex}}
-                </div>
-            </div>
+    <div class="middle-box white-box margin-top-default">
+        <div class="paragraph-text paragraph-text-small paragraph-text-bold" > {{'customer.personalInfo' | translate}} </div>
+        <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
+            <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.name' | translate}} </div>
+            <div class="paragraph-text">{{customerInformationService.customerInfo$.getValue().name}}</div>
         </div>
-        <div fxLayout="row" appMarginTop="16">
-            <div class="block-info" fxFlex="50">
-                <div class="info-text-title">{{'label.birthday' | translate}}</div>
-                <div class="info-content" appMarginTop="5">
-                    {{customerInformationService.customerInfo$.getValue().birthday | date: 'dd/MM/yyyy'}}
-                </div>
-            </div>
-            <div class="block-info" fxFlex="50">
-                <div class="info-text-title">{{'label.phoneNumber' | translate}}</div>
-                <div class="info-content" appMarginTop="5">
-                    {{customerInformationService.customerInfo$.getValue().phone}}
-                </div>
-            </div>
+        <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
+            <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.birthday' | translate}} </div>
+            <div class="paragraph-text">{{customerInformationService.customerInfo$.getValue().birthday | date: 'dd/MM/yyyy'}}</div>
         </div>
-        <div fxLayout="row" appMarginTop="16">
-            <div class="block-info" fxFlex="50">
-                <div class="info-text-title">
-                    {{'label.nid' | translate}}:
-                </div>
-                <div class="info-content" appMarginTop="5">
-                    {{customerInformationService.customerInfo$.getValue().citizenId}}
-                </div>
-            </div>
-            <div class="block-info" fxFlex="50">
-                <div class="info-text-title">
-                    {{'label.issueDay' | translate}}
-                </div>
-                <div class="info-content" appMarginTop="5">
-                    {{customerInformationService.customerInfo$.getValue().issueDate | date: 'dd/MM/yyyy'}}
-                </div>
-            </div>
+        <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
+            <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.sex' | translate}} </div>
+            <div class="paragraph-text">{{customerInformationService.customerInfo$.getValue().sex}}</div>
         </div>
-        <div fxLayout="column" appMarginTop="16">
-            <div class="info-text-title">{{'label.street' | translate}}</div>
-            <div class="info-content" appMarginTop="5">
-                {{address}}
-            </div>
+        <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
+            <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.nid' | translate}} </div>
+            <div class="paragraph-text">{{customerInformationService.customerInfo$.getValue().citizenId}}</div>
         </div>
-    </fieldset>
-    <fieldset class="ref-info-confirm">
-        <legend> {{'customer.refText' | translate}} </legend>
-        <div fxLayout="column">
-            <div class="info-text-title" appMarginTop="15">
-                <p>{{'label.perTitle' | translate}}: <span class="info-content">{{customerInformationService.customerInfo$.getValue().personal_title_ref}} </span></p>
-            </div>
+        <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
+            <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.phoneNumber' | translate}} </div>
+            <div class="paragraph-text">{{customerInformationService.customerInfo$.getValue().phone}}</div>
         </div>
-        <div fxLayout="column">
-            <div class="info-text-title" appMarginTop="12">
-                <p><ng-container>{{'label.name'}}</ng-container>: <span class="info-content">{{customerInformationService.customerInfo$.getValue().name_ref}}</span></p>
-            </div>
+        <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
+            <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.issueDay' | translate}} </div>
+            <div class="paragraph-text">{{customerInformationService.customerInfo$.getValue().issueDate | date: 'dd/MM/yyyy'}}</div>
         </div>
-        <div fxLayout="column">
-            <div class="info-text-title" appMarginTop="12">
-                <p>{{'label.phoneNumber' | translate}}: <span class="info-content">{{customerInformationService.customerInfo$.getValue().phone_ref}}</span></p>
-            </div>
+        <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
+            <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.street' | translate}} </div>
+            <div class="paragraph-text">{{address}}</div>
         </div>
-        <div>
+    </div>
+    <div class="middle-box white-box margin-top-default">
+        <div class="paragraph-text paragraph-text-small paragraph-text-bold" > {{'customer.refText' | translate}} </div>
+        <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
+            <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.perTitle' | translate}} </div>
+            <div class="paragraph-text">{{customerInformationService.customerInfo$.getValue().personal_title_ref}}</div>
+        </div>
+        <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
+            <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.name' | translate}} </div>
+            <div class="paragraph-text">{{customerInformationService.customerInfo$.getValue().name_ref}}</div>
+        </div>
+        <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
+            <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.phoneNumber' | translate}} </div>
+            <div class="paragraph-text">{{customerInformationService.customerInfo$.getValue().phone_ref}}</div>
+        </div>
+<!--        <div fxLayout="column">-->
+<!--            <div class="info-text-title" appMarginTop="15">-->
+<!--                <p>{{'label.perTitle' | translate}}: <span class="info-content">{{customerInformationService.customerInfo$.getValue().personal_title_ref}} </span></p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div fxLayout="column">-->
+<!--            <div class="info-text-title" appMarginTop="12">-->
+<!--                <p><ng-container>{{'label.name' | translate}}</ng-container>: <span class="info-content">{{customerInformationService.customerInfo$.getValue().name_ref}}</span></p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div fxLayout="column">-->
+<!--            <div class="info-text-title" appMarginTop="12">-->
+<!--                <p>{{'label.phoneNumber' | translate}}: <span class="info-content">{{customerInformationService.customerInfo$.getValue().phone_ref}}</span></p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div>-->
 <!--            <button class="payment-button" routerLink="../customer-pin-install"><span>Tiếp tục</span><span>&nbsp;&nbsp;&nbsp;></span> </button>-->
-            <button class="payment-button"
-                    appMarginTop="36"
-                    (click)="onSendConfirm()"><span>{{'button.continue' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
-        </div>
-    </fieldset>
+
+    </div>
+    <button class="payment-button"
+            appMarginTop="36"
+            (click)="onSendConfirm()"><span>{{'button.continue' | translate}}</span>
+    </button>
 </div>

@@ -47,7 +47,8 @@ const routes: Routes = [
                 path: 'verify-pin', component: VerifyPinComponent
             },
             {
-                path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthBnplGuard]
+                path: 'customer-confirm-info', component: CustomerConfirmInfoComponent
+                // , canActivate: [AuthBnplGuard]
             },
             {
                 path: 'customer-information-process', component: CustomerInformationProcessComponent, canActivate: [AuthBnplGuard]
@@ -56,7 +57,8 @@ const routes: Routes = [
             //     path: 'customer-information-finish', component: CustomerInformationFinishComponent
             // },
             {
-                path: 'customer-information-register', component: CustomerInformationRegisterComponent, canActivate: [AuthBnplGuard]
+                path: 'customer-information-register', component: CustomerInformationRegisterComponent
+                , canActivate: [AuthBnplGuard]
             },
             {
                 path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthBnplGuard]
@@ -65,18 +67,19 @@ const routes: Routes = [
                 path: 'customer-esign-confirm', component: CustomerEsignConfirmComponent, canActivate: [AuthBnplGuard]
             },
             {
-                path: 'customer-pin-install', component: CustomerPinInstallComponent, canActivate: [AuthBnplGuard]
+                path: 'customer-pin-install', component: CustomerPinInstallComponent
+                // , canActivate: [AuthBnplGuard]
             },
             // {
             //     path: 'electronic-contract', component: ElectronicContractComponent
             // },
             {
                 path: 'picture-selfie', component: PictureSelfieComponent
-                // , canActivate: [AuthBnplGuard]
+                , canActivate: [AuthBnplGuard]
             },
             {
                 path: 'citizen-card', component: CitizenCardComponent
-                // , canActivate: [AuthBnplGuard]
+                , canActivate: [AuthBnplGuard]
             },
             {
                 path: 'forgot-pin-phone', component: ForgotPinPhoneComponent

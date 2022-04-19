@@ -1,182 +1,215 @@
 <div class="global-wrapper">
-    <img src="assets/images/FE-Credit.png" width="155" height="55">
-    <div appMarginTop="55"></div>
-    <app-progress-step></app-progress-step>
-    <div class="enter-info-text" appMarginTop="33" >
+    <!--    <img src="assets/images/FE-Credit.png" width="155" height="55">-->
+    <!--    <div appMarginTop="55"></div>-->
+    <!--    <app-progress-step></app-progress-step>-->
+    <app-voolo-register-header></app-voolo-register-header>
+    <div class="paragraph-text text-big-20 text-bold-2">
         {{'customer.enterInfo' | translate}}
     </div>
-    <div [formGroup]="registerForm">
-    <fieldset class="personal-info">
-        <legend >{{'customer.info' | translate}}</legend>
-        <div class="info-title" appMarginTop="25">{{'label.name' | translate}}</div>
-        <input class="input-info" appMarginTop="8" formControlName="name">
-        <div class="info-title" appMarginTop="25">
-            <ng-container>{{'label.sex' | translate}}</ng-container> <span class="red-star">*</span>
-        </div>
-        <div class="error" *ngIf="(f['sex'].touched || f['sex'].dirty) && f['sex'].errors">
-            <span>{{'error.emptySex' | translate}}</span>
-        </div>
-        <input class="input-info" appMarginTop="8" formControlName="sex" matInput [matAutocomplete]="autoSex">
-        <mat-autocomplete autoActiveFirstOption #autoSex="matAutocomplete">
-            <mat-option *ngFor="let option of sexOptions" [value]="option">
-                {{option}}
-            </mat-option>
-        </mat-autocomplete>
-        <div fxLayout="row" appMarginTop="25">
-            <div class="block-info">
-                <div class="info-title">{{'label.phoneNumber' | translate}}</div>
-                <input (keypress)="keyPress($event, InputType.number)" type="text" class="narrow-input-info"
-                       formControlName="phone"
-                       appMarginTop="8"
-                       [ngClass]="{ 'is-invalid': (f['phone'].touched || f['phone'].dirty) && f['phone'].errors }">
+    <div class="form-wrapper margin-top-default" [formGroup]="registerForm" >
+        <div class="middle-box input-box">
+            <div class="paragraph-text paragraph-text-small paragraph-text-bold">{{'customer.info' | translate}}</div>
+            <div fxFlexAlign="start" class="paragraph-text margin-top-default">
+                {{'label.name' | translate}}
+            </div>
+            <div class="input-wrapper">
+                <input class="input-global" formControlName="name" appMarginTop="5">
+            </div>
 
+            <div fxFlexAlign="start" class="paragraph-text margin-top-default">
+                {{'label.sex' | translate}} <span class="red-star">*</span>
             </div>
-            <div class="block-info margin-left-12">
-                <div class="info-title">{{'label.birthday' | translate}}</div>
-                <input class="narrow-input-info" appMarginTop="8" type="date" formControlName="birthday">
+            <div class="input-wrapper">
+                <input class="input-global" formControlName="sex" matInput [matAutocomplete]="autoSex"
+                       appMarginTop="5"
+                       [ngClass]="{ 'input-invalid': f['sex'].invalid && (f['sex'].dirty || f['sex'].touched) }">
+                <span appMarginTop="5"></span>
+                <mat-autocomplete autoActiveFirstOption #autoSex="matAutocomplete">
+                    <mat-option *ngFor="let option of sexOptions" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
             </div>
-        </div>
-        <div fxLayout="row" appMarginTop="25">
-            <div class="block-info">
-                <div class="info-title">
-                    {{'label.nid' | translate}}
-                </div>
-                <input class="narrow-input-info" appMarginTop="8" formControlName="citizenId">
+            <div class="error-text" *ngIf="(f['sex'].touched || f['sex'].dirty) && f['sex'].errors">
+                <span>{{'error.emptySex' | translate}}</span>
             </div>
-            <div class="block-info margin-left-12">
-                <div class="info-title">
-                    {{'label.issueDay' | translate}}
-                </div>
-                <input class="narrow-input-info" appMarginTop="8" type="date" formControlName="issueDate">
-            </div>
-        </div>
-    </fieldset>
+            <div fxLayout="row" appMarginTop="25">
+                <div class="block-info">
+                    <div class="info-title">{{'label.phoneNumber' | translate}}</div>
+                    <input (keypress)="keyPress($event, InputType.number)" type="text" class="input-global narrow-input-info"
+                           formControlName="phone"
+                           appMarginTop="5"
+                           [ngClass]="{ 'input-invalid': (f['phone'].touched || f['phone'].dirty) && f['phone'].errors }">
 
-    <fieldset class="address-box">
-        <legend>{{'label.address' | translate}}</legend>
-        <div class="info-title" appMarginTop="25">
-            {{'label.city' | translate}} <span class="red-star">*</span>
-        </div>
-        <input class="input-info" type="text"
-               [ngClass]="{'is-invalid': (f['city'].touched || f['city'].dirty) && f['city'].errors}"
-               appMarginTop="8"
-               matInput
-               onClick="this.setSelectionRange(0, this.value.length)"
-               formControlName="city"
-               [matAutocomplete]="autoCity">
-        <mat-autocomplete autoActiveFirstOption #autoCity="matAutocomplete" (optionSelected)="onSelectedCity($event.option.value)">
-            <mat-option *ngFor="let option of cityFilteredOptions | async" [value]="option">
-                {{option}}
-            </mat-option>
-        </mat-autocomplete>
-        <div class="error" *ngIf="(f['city'].touched || f['city'].dirty) && f['city'].errors">
-            <span >{{'customer.chooseCity' | translate}}</span>
-        </div>
-            <div class="block-info" appMarginTop="16">
-                <div class="info-title">
-                    {{'label.district' | translate}} <span class="red-star">*</span>
                 </div>
-                <input class="input-info" type="text"
-                       [ngClass]="{'is-invalid': (f['district'].touched || f['district'].dirty) && f['district'].errors}"
-                       appMarginTop="8"
+                <div class="block-info margin-left-12">
+                    <div class="info-title">{{'label.birthday' | translate}}</div>
+                    <input appMarginTop="5" class="input-global narrow-input-info" type="date" formControlName="birthday">
+                </div>
+            </div>
+            <div fxLayout="row" appMarginTop="25">
+                <div class="block-info">
+                    <div class="info-title">
+                        {{'label.nid' | translate}}
+                    </div>
+                    <input appMarginTop="5" class="input-global narrow-input-info" formControlName="citizenId">
+                </div>
+                <div class="block-info margin-left-12">
+                    <div class="info-title">
+                        {{'label.issueDay' | translate}}
+                    </div>
+                    <input appMarginTop="5" class="input-global narrow-input-info" type="date" formControlName="issueDate">
+                </div>
+            </div>
+        </div>
+
+        <div class="middle-box input-box" appMarginTop="30">
+            <div class="paragraph-text paragraph-text-small paragraph-text-bold">{{'label.address' | translate}}</div>
+            <div fxFlexAlign="start" class="paragraph-text margin-top-default">
+                {{'label.city' | translate}} <span class="red-star">*</span>
+            </div>
+            <div class="input-wrapper">
+                <input class="input-global" type="text"
+                       [ngClass]="{'input-invalid': (f['city'].touched || f['city'].dirty) && f['city'].errors}"
+                       appMarginTop="5"
+                       matInput
+                       onClick="this.setSelectionRange(0, this.value.length)"
+                       formControlName="city"
+                       [matAutocomplete]="autoCity">
+                <span appMarginTop="5"></span>
+                <mat-autocomplete autoActiveFirstOption #autoCity="matAutocomplete"
+                                  (optionSelected)="onSelectedCity($event.option.value)">
+                    <mat-option *ngFor="let option of cityFilteredOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </div>
+
+            <div class="error-text" *ngIf="(f['city'].touched || f['city'].dirty) && f['city'].errors">
+                <span>{{'customer.chooseCity' | translate}}</span>
+            </div>
+            <div fxFlexAlign="start" class="paragraph-text margin-top-default">
+                {{'label.district' | translate}} <span class="red-star">*</span>
+            </div>
+            <div class="input-wrapper">
+                <input class="input-global" type="text"
+                       [ngClass]="{'input-invalid': (f['district'].touched || f['district'].dirty) && f['district'].errors}"
+                       appMarginTop="5"
                        matInput
                        formControlName="district"
                        onClick="this.setSelectionRange(0, this.value.length)"
                        [matAutocomplete]="autoDistrict">
-                <mat-autocomplete autoActiveFirstOption #autoDistrict="matAutocomplete" (optionSelected)="onSelectedDistrict($event.option.value)">
+                <span appMarginTop="5"></span>
+                <mat-autocomplete autoActiveFirstOption #autoDistrict="matAutocomplete"
+                                  (optionSelected)="onSelectedDistrict($event.option.value)">
                     <mat-option *ngFor="let option of districtFilteredOptions | async" [value]="option">
                         {{option}}
                     </mat-option>
                 </mat-autocomplete>
-                <div class="error" *ngIf="(f['district'].touched || f['district'].dirty) && f['district'].errors">
-                    <span>{{'customer.chooseDistrict' | translate}}</span>
-                </div>
             </div>
-            <div class="block-info" appMarginTop="16">
-                <div class="info-title">
-                    <ng-container>{{'label.ward' | translate}}</ng-container> <span class="red-star">*</span>
-                </div>
-<!--                <input class="narrow-input-info"-->
-<!--                       [ngClass]="{'is-invalid': (f['ward'].touched || f['ward'].dirty) && f['ward'].errors}"-->
-<!--                       appMarginTop="8" formControlName="ward">-->
-                <input class="input-info" type="text"
-                       [ngClass]="{'is-invalid': (f['ward'].touched || f['ward'].dirty) && f['ward'].errors}"
-                       appMarginTop="8"
+            <div class="error-text" *ngIf="(f['district'].touched || f['district'].dirty) && f['district'].errors">
+                <span>{{'customer.chooseDistrict' | translate}}</span>
+            </div>
+            <div fxFlexAlign="start" class="paragraph-text margin-top-default">
+                {{'label.ward' | translate}} <span class="red-star">*</span>
+            </div>
+            <div class="input-wrapper">
+                <input class="input-global" type="text"
+                       [ngClass]="{'input-invalid': (f['ward'].touched || f['ward'].dirty) && f['ward'].errors}"
+                       appMarginTop="5"
                        matInput
                        formControlName="ward"
                        onClick="this.setSelectionRange(0, this.value.length)"
                        [matAutocomplete]="autoWard">
-                <mat-autocomplete autoActiveFirstOption #autoWard="matAutocomplete" (optionSelected)="onSelectedWard($event.option.value)">
+                <span appMarginTop="5"></span>
+                <mat-autocomplete autoActiveFirstOption #autoWard="matAutocomplete"
+                                  (optionSelected)="onSelectedWard($event.option.value)">
                     <mat-option *ngFor="let option of wardFilteredOptions | async" [value]="option">
                         {{option}}
                     </mat-option>
                 </mat-autocomplete>
-                <div class="error" *ngIf="(f['ward'].touched || f['ward'].dirty) && f['ward'].errors">
-                    <span >{{'customer.chooseWard' | translate}}</span>
-                </div>
             </div>
-<!--        </div>-->
-        <div class="info-title" appMarginTop="16">
-            <ng-container>{{'label.street' | translate}}</ng-container> <span class="red-star">*</span>
+            <div class="error-text" *ngIf="(f['ward'].touched || f['ward'].dirty) && f['ward'].errors">
+                <span>{{'customer.chooseWard' | translate}}</span>
+            </div>
+            <div fxFlexAlign="start" class="paragraph-text margin-top-default">
+                {{'label.street' | translate}} <span class="red-star">*</span>
+            </div>
+            <div class="input-wrapper">
+                <input class="input-global"
+                       [ngClass]="{'input-invalid': (f['street'].touched || f['street'].dirty) && f['street'].errors}"
+                       appMarginTop="5" formControlName="street">
+                <span></span>
+            </div>
+            <div class="error-text" *ngIf="(f['street'].touched || f['street'].dirty) && f['street'].errors">
+                <span>{{'customer.chooseStreet' | translate}}</span>
+            </div>
         </div>
-        <input class="input-info"
-               [ngClass]="{'is-invalid': (f['street'].touched || f['street'].dirty) && f['street'].errors}"
-               appMarginTop="8" formControlName="street">
-        <div class="error" *ngIf="(f['street'].touched || f['street'].dirty) && f['street'].errors">
-            <span>{{'customer.chooseStreet' | translate}}</span>
-        </div>
-    </fieldset>
 
-    <fieldset class="reference-box">
-        <legend>{{'customer.refText' | translate}}</legend>
-        <div class="info-title" appMarginTop="25">
-            {{'label.perTitle' | translate}} <span class="red-star">*</span>
+        <div class="middle-box input-box" appMarginTop="30">
+            <div class="paragraph-text paragraph-text-small paragraph-text-bold">{{'customer.refText' | translate}}</div>
+            <div fxFlexAlign="start" class="paragraph-text margin-top-default">
+                {{'label.perTitle' | translate}} <span class="red-star">*</span>
+            </div>
+            <div class="input-wrapper">
+                <input class="input-global" type="text"
+                       [ngClass]="{'input-invalid': (f['personal_title_ref'].touched || f['personal_title_ref'].dirty) && f['personal_title_ref'].errors}"
+                       appMarginTop="5"
+                       matInput
+                       formControlName="personal_title_ref"
+                       onClick="this.setSelectionRange(0, this.value.length)"
+                       [matAutocomplete]="autoPersonalTitle">
+                <span appMarginTop="5"></span>
+                <mat-autocomplete autoActiveFirstOption #autoPersonalTitle="matAutocomplete">
+                    <mat-option *ngFor="let option of personalTitleFilterOptions | async" [value]="option">
+                        {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </div>
+            <div class="error-text"
+                 *ngIf="(f['personal_title_ref'].touched || f['personal_title_ref'].dirty) && f['personal_title_ref'].errors">
+                {{'customer.needEnterInfo' | translate}}
+            </div>
+            <div fxFlexAlign="start" class="paragraph-text margin-top-default">
+                {{'label.name' | translate}} <span class="red-star">*</span>
+            </div>
+            <div class="input-wrapper">
+                <input class="input-global" (keypress)="keyPress($event, InputType.name)"
+                       [ngClass]="{'input-invalid': (f['name_ref'].touched || f['name_ref'].dirty) && f['name_ref'].errors}"
+                       appMarginTop="5" formControlName="name_ref">
+                <span></span>
+            </div>
+            <div class="error-text" *ngIf="(f['name_ref'].touched || f['name_ref'].dirty) && f['name_ref'].errors">
+                <span>{{'customer.needEnterInfo' | translate}}</span>
+            </div>
+            <div fxFlexAlign="start" class="paragraph-text margin-top-default">
+                {{'label.phoneNumber' | translate}} <span class="red-star">*</span>
+            </div>
+            <div class="input-wrapper">
+                <input class="input-global" (keypress)="keyPress($event, InputType.number)"
+                       [ngClass]="{'input-invalid': (f['phone_ref'].touched || f['phone_ref'].dirty) && f['phone_ref'].errors}"
+                       appMarginTop="5" formControlName="phone_ref">
+                <span appMarginTop="5"></span>
+            </div>
+
+            <div class="error-text" *ngIf="(f['phone_ref'].touched || f['phone_ref'].dirty) && f['phone_ref'].errors">
+                <span>{{'customer.refPhone' | translate}}</span>
+            </div>
         </div>
-<!--        <input class="input-info"-->
-<!--               [ngClass]="{'is-invalid': (f['personal_title_ref'].touched || f['personal_title_ref'].dirty) && f['personal_title_ref'].errors}"-->
-<!--               appMarginTop="8" formControlName="personal_title_ref">-->
-        <input class="input-info" type="text"
-               [ngClass]="{'is-invalid': (f['personal_title_ref'].touched || f['personal_title_ref'].dirty) && f['personal_title_ref'].errors}"
-               appMarginTop="8"
-               matInput
-               formControlName="personal_title_ref"
-               onClick="this.setSelectionRange(0, this.value.length)"
-               [matAutocomplete]="autoPersonalTitle">
-        <mat-autocomplete autoActiveFirstOption #autoPersonalTitle="matAutocomplete">
-            <mat-option *ngFor="let option of personalTitleFilterOptions | async" [value]="option">
-                {{option}}
-            </mat-option>
-        </mat-autocomplete>
-        <div class="error" *ngIf="(f['personal_title_ref'].touched || f['personal_title_ref'].dirty) && f['personal_title_ref'].errors">
-            <span>{{'customer.refTittle' | translate}}</span>
-        </div>
-        <div class="info-title" appMarginTop="25">
-            <ng-container>{{'label.name' | translate}}</ng-container> <span class="red-star">*</span>
-        </div>
-        <input class="input-info" (keypress)="keyPress($event, InputType.name)"
-               [ngClass]="{'is-invalid': (f['name_ref'].touched || f['name_ref'].dirty) && f['name_ref'].errors}"
-               appMarginTop="8" formControlName="name_ref">
-        <div class="error" *ngIf="(f['name_ref'].touched || f['name_ref'].dirty) && f['name_ref'].errors">
-            <span >{{'customer.name' | translate}}</span>
-        </div>
-        <div class="info-title" appMarginTop="25">
-            {{'label.phoneNumber' | translate}} <span class="red-star">*</span>
-        </div>
-        <input class="input-info" (keypress)="keyPress($event, InputType.number)"
-               [ngClass]="{'is-invalid': (f['phone_ref'].touched || f['phone_ref'].dirty) && f['phone_ref'].errors}"
-               appMarginTop="8" formControlName="phone_ref">
-        <div class="error" *ngIf="(f['phone_ref'].touched || f['phone_ref'].dirty) && f['phone_ref'].errors">
-            <span>{{'customer.refPhone' | translate}}</span>
-        </div>
-    </fieldset>
     </div>
-    <div class="note-text" fxFlexAlign="start">{{'label.note' | translate}}</div>
-    <div class="note-text-2" fxFlexAlign="start"><span class="red-star">*</span> <ng-container > {{'customer.warning' | translate}} </ng-container></div>
-    <div>
+<!--    <div class="note-text" fxFlexAlign="start">{{'label.note' | translate}}</div>-->
+<!--    <div class="note-text-2" fxFlexAlign="start"><span class="red-star">*</span>-->
+<!--        <ng-container> {{'customer.warning' | translate}} </ng-container>-->
+<!--    </div>-->
+    <div class="paragraph-text margin-top-default">
+        <span class="paragraph-text-bold">{{'label.note' | translate}}: </span>
+        <span class="red-star">* </span>
+        <span>{{'customer.warning' | translate}}</span>
+    </div>
         <button class="payment-button"
                 appMarginTop="36"
                 appMarginBottom="36"
                 [disabled]="registerForm.invalid" (click)="onContinue()">
-            <span>{{'button.continue' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span> </button>
-    </div>
+            <span>{{'button.continue' | translate}}</span>
+        </button>
 </div>

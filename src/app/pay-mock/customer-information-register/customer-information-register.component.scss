@@ -46,8 +46,8 @@
 .info-title {
   font-family: 'Montserrat Alternates';
   font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
+  font-weight: 400;
+  font-size: 14px;
   line-height: 16px;
 }
 
@@ -68,11 +68,11 @@
   width: 147px;
   left: 0px;
   top: 0px;
-  border-radius: 8px;
-  padding: 10px 8px 10px 8px;
-  background: #FFFFFF;
-  border: 1px solid #4ECB71;
-  box-sizing: border-box;
+  //border-radius: 8px;
+  //padding: 10px 8px 10px 8px;
+  //background: #FFFFFF;
+  //border: 1px solid #4ECB71;
+  //box-sizing: border-box;
 
 }
 .is-invalid {
@@ -115,4 +115,13 @@
 input:disabled {
   cursor: not-allowed;
   background: #cccccc;
+}
+.form-wrapper {
+  width: 348px;
+}
+//.input-box {
+//  margin: 20px 20px 20px 20px;
+//}
+.input-global[type="date"]{
+  font-size: 12px;
 }

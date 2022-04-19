@@ -33,6 +33,7 @@
 		"info": "Personal Information",
 		"infoCheck": "Information check",
 		"name": "Please enter your first and last name",
+		"needEnterInfo": "Vui lòng nhập thông tin",
 		"personalInfo": "Personal information",
 		"pinInstall": "Set your pin code",
 		"pinNotMatch": "Pin code and re-entered pin code must be the same",

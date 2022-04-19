@@ -75,6 +75,26 @@ export class CustomerInformationRegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initFormInfo();
+    // this.registerForm = new FormGroup({
+    //   name: new FormControl(''),
+    //   sex: new FormControl('', [Validators.required]),
+    //   phone: new FormControl(''),
+    //   birthday: new FormControl(''),
+    //   citizenId: new FormControl(''),
+    //   issueDate: new FormControl(''),
+    //   city: new FormControl({value: this.initCity.success ? this.initCity.city : '', disabled: this.initCity.success},
+    //       [Validators.required]),
+    //   district: new FormControl({value: this.initDistrict.success ? this.initDistrict.district : '', disabled: this.initDistrict.success},
+    //       [Validators.required]),
+    //   ward: new FormControl({value: this.initWard.success ? this.initWard.ward : '', disabled: this.initWard.success},
+    //       [Validators.required]),
+    //   street: new FormControl({value: this.initStreet.success ? this.initStreet.street: '', disabled: this.initStreet.success},
+    //       [Validators.required]),
+    //   personal_title_ref: new FormControl('', {validators: [Validators.required], updateOn: 'blur'}),
+    //   name_ref: new FormControl('', {validators: [Validators.required], updateOn: 'blur'}),
+    //   phone_ref: new FormControl('', {validators: [Validators.required, Validators.pattern(/^(09|03|07|08|05)+([0-9]{8}$)/g),
+    //       Validators.minLength(10), Validators.maxLength(10)], updateOn: 'blur'})
+    // })
 
     // this.f['phone'].setValue(this.authService.user$.getValue().phone);
     // this.f['citizenId'].setValue(this.authService.user$.getValue().citizenId);
