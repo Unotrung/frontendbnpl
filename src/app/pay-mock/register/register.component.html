@@ -35,10 +35,10 @@
                  *ngIf="f['phonenumber']?.invalid && (f['phonenumber']?.dirty || f['phonenumber']?.touched) && f['phonenumber'].errors && f['phonenumber'].errors['required']">
                 {{'phone.empty' | translate}}
             </div>
-            <div appMarginTop="8" class="error-text"
-                 *ngIf="f['phonenumber'].errors && (f['phonenumber'].errors!['maxlength']|| f['phonenumber'].errors!['minlength'])">
-                {{'phone.wrongLength' | translate}}
-            </div>
+<!--            <div appMarginTop="8" class="error-text"-->
+<!--                 *ngIf="f['phonenumber'].errors && (f['phonenumber'].errors!['maxlength']|| f['phonenumber'].errors!['minlength'])">-->
+<!--                {{'phone.wrongLength' | translate}}-->
+<!--            </div>-->
             <div appMarginTop="8" class="error-text"
                  *ngIf="f['phonenumber'].errors && f['phonenumber'].errors['pattern'] && !f['phonenumber'].errors['blockPhone']">
                 {{'phone.wrongFormat' | translate}}

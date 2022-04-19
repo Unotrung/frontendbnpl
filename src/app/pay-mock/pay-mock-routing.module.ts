@@ -48,11 +48,11 @@ const routes: Routes = [
             },
             {
                 path: 'customer-confirm-info', component: CustomerConfirmInfoComponent
-                // , canActivate: [AuthBnplGuard]
+                , canActivate: [AuthBnplGuard]
             },
             {
                 path: 'customer-information-process', component: CustomerInformationProcessComponent
-                // , canActivate: [AuthBnplGuard]
+                , canActivate: [AuthBnplGuard]
             },
             // {
             //     path: 'customer-information-finish', component: CustomerInformationFinishComponent
@@ -66,11 +66,11 @@ const routes: Routes = [
             },
             {
                 path: 'customer-esign-confirm', component: CustomerEsignConfirmComponent
-                // , canActivate: [AuthBnplGuard]
+                , canActivate: [AuthBnplGuard]
             },
             {
                 path: 'customer-pin-install', component: CustomerPinInstallComponent
-                // , canActivate: [AuthBnplGuard]
+                , canActivate: [AuthBnplGuard]
             },
             // {
             //     path: 'electronic-contract', component: ElectronicContractComponent
