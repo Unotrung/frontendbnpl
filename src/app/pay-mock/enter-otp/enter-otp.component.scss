@@ -1,8 +1,10 @@
 .otp-box {
-  width: 378px;
-  background: #FFFFFF;
+  width: 388px;
+  background: #F3F3F3;
   border: 1px solid #C4C4C4;
   box-sizing: border-box;
+  box-shadow: 0px 10px 100px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
   //border-radius: 16px;
   padding: 34px;
   .note-text-2 {
@@ -28,17 +30,18 @@
 
 }
 
-button:disabled {
+button.send-otp:disabled {
   border: none;
   color: grey;
   cursor: not-allowed;
   pointer-events: all !important;
 }
-button:hover {
-  cursor: pointer;
+button.send-otp:hover {
+  //cursor: pointer;
 }
 
-button {
+button.send-otp {
+  cursor: pointer;
   border: none;
 }
 
@@ -58,20 +61,45 @@ button {
   display: none;
 }
 .highlight {
-  background: white;
+  //background: white;
   color: #1155cc;
   text-decoration: underline;
 }
 
 code-input {
-  --item-border-radius: 50%;
-  --item-height: 32px;
-  --text-security-style: disc;
-  --item-background: #C4C4C4;
-  --item-shadow-focused: 0px 2px 7px #C4C4C4;
-  --item-spacing: 16px;
+  --item-height: 45px;
+  --item-background: white;
+  //--item-shadow-focused: 0px 2px 7px #C4C4C4;
+  --item-spacing: 6px;
+  --item-border: none;
+  --item-border-bottom: none;
+  --item-border-has-value: none;
+  --item-border-bottom-has-value: none;
 }
 
+.code-input-finish {
+  ////--item-border-radius: 50%;
+  //--item-height: 45px;
+  ////--text-security-style: disc;
+  //--item-background: white;
+  //--item-shadow-focused: 0px 2px 7px #C4C4C4;
+  //--item-spacing: 6px;
+  --item-border: 1px solid #17D7A0;
+  --item-border-bottom: 1px solid #17D7A0;
+  --item-border-focused: 1px solid #17D7A0;
+  --item-border-bottom-focused: 1px solid #17D7A0;
+  --item-border-has-value: 1px solid #17D7A0;
+  --item-border-bottom-has-value: 1px solid #17D7A0;
+}
+
+.code-input-error {
+  --item-border: 1px solid #FF8080;
+  --item-border-bottom: 1px solid #FF8080;
+  --item-border-focused: 1px solid #FF8080;
+  --item-border-bottom-focused: 1px solid #FF8080;
+  --item-border-has-value: 1px solid #FF8080;
+  --item-border-bottom-has-value: 1px solid #FF8080;
+}
 //.send-otp:hover {
 //  cursor: pointer;
 //}
@@ -93,4 +121,7 @@ code-input {
 //  --item-border-bottom-focused: 2px solid #809070;
 //  --item-shadow-focused: none;
 //  --item-border-radius: 0px;
+//}
+//input {
+//  border: none;
 //}

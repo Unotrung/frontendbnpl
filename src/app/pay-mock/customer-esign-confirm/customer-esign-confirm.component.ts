@@ -33,6 +33,7 @@ export class CustomerEsignConfirmComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // const dialogRef = this.dialog.open(EnterOtpComponent, { disableClose: true });
 
   }
 
@@ -42,7 +43,19 @@ export class CustomerEsignConfirmComponent implements OnInit {
       next: data => {
         console.log(data)
         this.loadingService.loading$.next(false)
-        const dialogRef = this.dialog.open(EnterOtpComponent, { disableClose: true });
+        if (data && data['status']) {
+          const dialogRef = this.dialog.open(EnterOtpComponent, { disableClose: true });
+        }
+        else {
+          this.loadingService.loading$.next(false)
+          this.messageService.messageData$.next({
+            messageTitle: 'Thông báo',
+            message: 'Kết nối mạng lỗi, hãy kiểm tra lại kết nối mạng của bạn',
+            reason: MessageReason.failOnSentOTP,
+            closeMessage: 'Đóng'
+          })
+          this.messageService.onOpenDialog()
+        }
       },
       error: ({error}) => {
         console.log(error)
@@ -53,6 +66,7 @@ export class CustomerEsignConfirmComponent implements OnInit {
           reason: MessageReason.failOnSentOTP,
           closeMessage: 'Đóng'
         })
+        this.messageService.onOpenDialog()
       }
     })
 

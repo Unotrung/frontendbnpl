@@ -15,7 +15,9 @@ import {BehaviorSubject} from "rxjs";
 })
 export class EnterOtpComponent implements OnInit {
     countdownComplete = false
+    otpCode = ''
     otpFails$: BehaviorSubject<number>
+    enterNewOTP = true
     @ViewChild('cd', { static: false }) private countdown!: CountdownComponent;
     @ViewChild('codeInput') codeInput !: CodeInputComponent;
     constructor(
@@ -44,12 +46,19 @@ export class EnterOtpComponent implements OnInit {
     }
     // this called every time when user changed the code
     onCodeChanged(code: string) {
+        this.enterNewOTP = true
+        console.log(this.otpCode.length)
+        this.otpCode = code
     }
 
     // this called only if user entered full code
     onCodeCompleted(code: string) {
+        this.otpCode = code
+    }
+
+    verifyOTP() {
         //todo Check if otp code is correct, then
-        this.authService.user$.next({...this.authService.user$.getValue(), otp: code})
+        this.authService.user$.next({...this.authService.user$.getValue(), otp: this.otpCode})
         this.authService.verifyOTP().subscribe({
             next: data => {
                 if (data && data['status']) {
@@ -60,18 +69,29 @@ export class EnterOtpComponent implements OnInit {
                 }
                 else {
                     this.otpFails$.next(this.otpFails$.getValue() + 1)
-                    this.codeInput.reset()
+                    this.enterNewOTP = false
+                    // this.codeInput.reset()
                 }
             },
             error: ({error}) => {
                 this.otpFails$.next(this.otpFails$.getValue() + 1)
-                this.codeInput.reset()
+                this.enterNewOTP = false
+                // this.codeInput.reset()
 
             },
             complete: () => {
 
             }
         })
+    }
+
+    exitOnFailOTP() {
+        this.authService.registerStep$.next(Step.register)
+        this.router.navigate(['pay-mock/register']).then(
+            () => {
+                this.dialogRef.close()
+            }
+        )
     }
 
     onCountdown(event: any){

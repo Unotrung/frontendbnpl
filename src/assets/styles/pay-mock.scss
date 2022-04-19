@@ -5,6 +5,7 @@
 //  src: url('../font/mulish.ttf')  format('truetype'); /* Safari, Android, iOS */
 //}
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "animation";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Montserrat Alternates', sans-serif; }
@@ -24,6 +25,7 @@ body { margin: 0; font-family: 'Montserrat Alternates', sans-serif; }
   font-weight: 600;
   font-size: 18px;
   line-height: 22px;
+  font-family: 'Montserrat Alternates';
 }
 //.payment-button span {
 //  margin-left: auto;
@@ -44,7 +46,7 @@ body { margin: 0; font-family: 'Montserrat Alternates', sans-serif; }
 }
 
 .mat-dialog-container {
-  border-radius: 8px !important; ;
+  border-radius: 20px !important; ;
   padding: 0 !important;
 }
 .error {
@@ -100,7 +102,7 @@ button:hover {
   cursor: pointer;
 }
 
-input.has-value {
+.pin-code.has-value {
   -webkit-text-fill-color: #17D7A0 !important;
   -webkit-box-shadow:0 0 0 50px #17D7A0 inset !important;
 }

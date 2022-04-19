@@ -51,7 +51,8 @@ const routes: Routes = [
                 // , canActivate: [AuthBnplGuard]
             },
             {
-                path: 'customer-information-process', component: CustomerInformationProcessComponent, canActivate: [AuthBnplGuard]
+                path: 'customer-information-process', component: CustomerInformationProcessComponent
+                // , canActivate: [AuthBnplGuard]
             },
             // {
             //     path: 'customer-information-finish', component: CustomerInformationFinishComponent
@@ -64,7 +65,8 @@ const routes: Routes = [
                 path: 'customer-confirm-info', component: CustomerConfirmInfoComponent, canActivate: [AuthBnplGuard]
             },
             {
-                path: 'customer-esign-confirm', component: CustomerEsignConfirmComponent, canActivate: [AuthBnplGuard]
+                path: 'customer-esign-confirm', component: CustomerEsignConfirmComponent
+                // , canActivate: [AuthBnplGuard]
             },
             {
                 path: 'customer-pin-install', component: CustomerPinInstallComponent

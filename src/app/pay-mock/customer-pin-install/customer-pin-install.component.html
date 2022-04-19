@@ -11,7 +11,7 @@
         {{'label.pinCode' | translate}}
     </div>
     <div appElDimension appMarginTop="16" height="26" width="250">
-        <code-input (codeChanged)="onPinCodeChanged($event)"
+        <code-input class="pin-code" (codeChanged)="onPinCodeChanged($event)"
                     (codeCompleted)="onPinCodeCompleted($event)"
                     [codeLength]="4"
                     [isCodeHidden]="true">
@@ -24,7 +24,7 @@
 <!--        <p class="pin-text-number">{{'customer.reEnterPin' | translate}}</p>-->
 <!--    </div>-->
     <div appElDimension appMarginTop="16" height="26" width="250">
-        <code-input (codeChanged)="onVerifyPinCodeChange($event)"
+        <code-input class="pin-code" (codeChanged)="onVerifyPinCodeChange($event)"
                     (codeCompleted)="onVerifyPinCodeComplete($event)"
                     [codeLength]="4"
                     [isCodeHidden]="true">

@@ -1,27 +1,47 @@
 <div class="otp-box" fxLayout="column" fxLayoutAlign="start center">
-    <div class="note-text-2" fxFlexAlign="start">
-        <p>{{'otp.enter' | translate}} <span class="red-star">*</span></p>
+    <div class="paragraph-text text-bold-2 text-big-20">
+        {{'otp.enter' | translate}}
     </div>
-    <code-input #codeInput [isCodeHidden]="false"
+    <div class="paragraph-text paragraph-text-bold" appMarginTop="12" appMarginBottom="34">
+        {{'otp.pleaseEnter' | translate}}
+    </div>
+    <code-input [ngClass]="{
+    'code-input-error': countdownComplete || ((otpFails$ | async) && !enterNewOTP),
+    'code-input-finish': !countdownComplete && enterNewOTP && (otpCode.length === 6)
+    }"
+                #codeInput [isCodeHidden]="false"
                 [codeLength]="6"
                 (codeChanged)="onCodeChanged($event)"
                 (codeCompleted)="onCodeCompleted($event)">
     </code-input>
-    <div class="warning" *ngIf="otpFails$ | async"
-         fxFlexAlign="start" fxLayout="row" fxLayoutAlign="start center"
-         appMarginTop="8">
-        <img src="assets/images/warning.png" width="14" height="14"> <div class="image-title">  <ng-container >{{'otp.invalid' | translate}}</ng-container> {{otpFails$ | async}}/5</div>
+
+<!--    <div class="warning" *ngIf="otpFails$ | async"-->
+<!--         appMarginTop="8">-->
+<!--        <img src="assets/images/warning.png" width="14" height="14"> <div class="image-title">  <ng-container >{{'otp.invalid' | translate}}</ng-container> {{otpFails$ | async}}/5</div>-->
+<!--    </div>-->
+    <div class="error-text" appMarginTop="8" *ngIf="otpFails$ | async">
+        {{'otp.invalid' | translate}} {{otpFails$ | async}}/5
     </div>
-    <div class="warning image-title" *ngIf="(otpFails$ | async)! >= 5"
-         appElDimension width="240"
-         appMarginTop="16" >
-        {{'otp.networkError' | translate}}
+    <div class="error-text" appMarginTop="8" *ngIf="countdownComplete">
+        {{'otp.expired' | translate}}
     </div>
-    <div class="note-text" appMarginTop="8">
-       <p>{{'otp.notReceive' | translate}} ?</p>
+<!--    <div class="warning image-title" *ngIf="(otpFails$ | async)! >= 5"-->
+<!--         appElDimension width="240"-->
+<!--         appMarginTop="16" >-->
+<!--        {{'otp.networkError' | translate}}-->
+<!--    </div>-->
+    <button *ngIf="(otpFails$ | async)! <= 5" class="payment-button" appMarginTop="32" (click)="verifyOTP()" [disabled]="otpCode.length < 6">
+        <span>{{'button.continue' | translate}}</span>
+    </button>
+    <button *ngIf="(otpFails$ | async)! > 5" class="payment-button" appMarginTop="32" (click)="exitOnFailOTP()">
+        <span>{{'button.turnBack' | translate}}</span>
+    </button>
+    <div class="paragraph-text" appMarginTop="14">
+       <span>{{'otp.notReceive' | translate}} ?</span>
         <button class="send-otp" [ngClass]="{'highlight': countdownComplete }" [disabled]="!countdownComplete" (click)="onSendOtp()">{{'otp.resend' | translate}}
             <span [ngClass]="{'hidden': countdownComplete }"><span>(</span><countdown #cd [config]="{leftTime: 60, format: 's'}" (event)="onCountdown($event)" ></countdown><span>s)</span></span>
         </button>
     </div>
+
 
 </div>

@@ -1,5 +1,6 @@
 :host {
   width: 100%;
+  align-self: center;
 }
 .progress-bar-container {
   background: #FFFFFF;
@@ -26,3 +27,13 @@
   bottom:0;
   background-image: linear-gradient(90deg, rgba(18, 194, 233, 0.7) 10.73%, rgba(196, 113, 237, 0.8) 47.81%, rgba(246, 79, 89, 0.8) 93.52%); /* your gradient here */
 }
+
+.spinner {
+  -webkit-animation: rotating 2s linear infinite;
+  -moz-animation: rotating 2s linear infinite;
+  -ms-animation: rotating 2s linear infinite;
+  -o-animation: rotating 2s linear infinite;
+  animation: rotating 2s linear infinite;
+}
+
+
