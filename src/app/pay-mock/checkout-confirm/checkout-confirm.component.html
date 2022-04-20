@@ -1,7 +1,9 @@
-<div fxLayout="column" fxLayoutAlign="start center">
+<div class="global-wrapper">
+    <img src="../../../assets/images/voolo-logo.png" alt="FE Credit" width="179" height="35" appMarginBottom="42"/>
     <app-checkout-header></app-checkout-header>
     <app-checkout-items [items]="(itemService.items$ | async)!"></app-checkout-items>
     <app-checkout-tenor [tenor]="(tenorService.selectedTenor$ | async)!" [checked]="true"></app-checkout-tenor>
+<!--    <app-checkout-tenor [tenor]="(tenorService.tenors$ |async)![0]"></app-checkout-tenor>-->
 <!--    <app-verify-pin-child (pinCode)="onPinCodeChange($event)"></app-verify-pin-child>-->
 <!--    <div class="save-tenor" appMarginTop="16">-->
 <!--        <mat-checkbox [(ngModel)]="saveTenor" >{{'checkout.saveTenor' | translate}}</mat-checkbox>-->
@@ -10,6 +12,6 @@
             appMarginTop="36"
             appMarginBottom="36"
             (click)="onCheckoutConfirm()">
-        <span>{{'button.confirm' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span>
+        <span>{{'button.confirm' | translate}}</span>
     </button>
 </div>

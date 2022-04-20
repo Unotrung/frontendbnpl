@@ -10,6 +10,7 @@ import {ItemService} from "../item.service";
 })
 export class CheckoutFinishComponent implements OnInit {
 
+  timeOut: any
   constructor(
       public checkoutService: CheckoutService,
       private router: Router,
@@ -17,11 +18,12 @@ export class CheckoutFinishComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    setTimeout(this.onCheckoutFinish.bind(this), 5000)
+    this.timeOut = setTimeout(this.onCheckoutFinish.bind(this), 5000)
   }
   onCheckoutFinish() {
     this.router.navigate(['pay-mock/start-payment']).then(
         ()=> {
+          clearTimeout(this.timeOut)
           //todo: set navigate result here
         }
     )

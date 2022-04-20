@@ -133,6 +133,7 @@
 		"notExact": "Pin code not exactly",
 		"notMatch": "Pin code and re-entered pin code must be the same",
 		"operator": "Support call center",
+		"paymentConfirm": "Vui lòng nhập mã PIN để xác nhận thanh toán",
 		"reEnter": "Re-enter PIN",
 		"reEnterCheck": "Please enter PIN to verify information",
 		"registerInterrupt": "Quá trình bị gián đoạn. Vui lòng trở lại sau 24h",
