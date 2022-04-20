@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="citizen-frame-list" fxLayout="row" fxLayoutAlign="space-around center" appMarginTop="34">
-            <div class="card-box" fxLayout="column" fxLayoutAlign="center center">
+            <div class="card-box" fxLayout="column" fxLayoutAlign="space-around center">
                 <img *ngIf="!(pictureService.citizenFrontImageComplete$ | async)" fxFlexAlign="center" width="38" height="38" alt="" src="assets/images/camera1.png">
                 <ng-container *ngIf="pictureService.citizenFrontImageComplete$ | async">
                     <img appMarginTop="8" width="92" height="52" alt="" [src]="pictureService.citizenFrontImage">
@@ -35,7 +35,7 @@
                 </ng-container>
 
             </div>
-            <div class="card-box" fxLayout="column" fxLayoutAlign="center center">
+            <div class="card-box" fxLayout="column" fxLayoutAlign="space-around center">
                 <ng-container *ngIf="!(pictureService.citizenBackImageComplete$ | async)">
                     <img fxFlexAlign="center" width="38" height="38" alt="" src="assets/images/camera1.png">
                 </ng-container>

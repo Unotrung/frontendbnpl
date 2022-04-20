@@ -1,14 +1,14 @@
-<div fxLayout="column" fxLayoutAlign="start center">
-    <img src="../../../assets/images/LogoFeCredit.png" alt="FE Credit" width="130" height="55"/>
-    <app-checkout-header [smallView]="false"></app-checkout-header>
+<div class="global-wrapper">
+    <img src="../../../assets/images/voolo-logo.png" alt="FE Credit" width="179" height="35" appMarginBottom="42"/>
+    <app-checkout-header></app-checkout-header>
     <app-checkout-items [items]="(itemService.items$ | async)!"></app-checkout-items>
-    <div class="global-box no-border" fxLayout="column" fxLayoutAlign="start center">
-        <img src="../../../assets/images/SuccessFully.png" alt="" width="28" height="28" appMarginTop="26">
-        <div class="item-message" appMarginTop="12" >
+<!--    <div class="global-box no-border" fxLayout="column" fxLayoutAlign="start center">-->
+        <img src="../../../assets/images/voolo-smile.png" alt="" width="50" height="48" appMarginTop="20">
+        <div class="paragraph-text paragraph-text-small text-bold-2" appMarginTop="8" >
             {{'checkout.greeting' | translate}}
         </div>
-    </div>
-    <div class="global-box no-border tenor-header" appMarginTop="24" >
+<!--    </div>-->
+    <div class="paragraph-text text-big-16 text-bold-2" appMarginTop="32" >
         {{'checkout.chooseTenor' | translate}}
     </div>
     <ng-container *ngFor="let tenor of tenors;index as i">
@@ -24,7 +24,7 @@
             appMarginBottom="36"
             [disabled]="!chosenTenor"
             (click)="onCheckOutContinue()">
-        <span>{{'button.confirm' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span>
+        <span>{{'button.confirm' | translate}}</span>
     </button>
 
 </div>

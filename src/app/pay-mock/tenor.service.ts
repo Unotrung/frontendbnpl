@@ -18,7 +18,8 @@ export class TenorService {
       {
         tenorId: '1',
         convertFee: 0,
-        paymentSchedule: 0
+        paymentSchedule: 0,
+        enable: true
       }
     ])
     this.selectedTenor$ = new BehaviorSubject<Tenor | null>(null)

@@ -12,6 +12,7 @@ import {AuthBnplService} from "./auth-bnpl.service";
 import {Step} from "./step";
 import {TranslateService} from "@ngx-translate/core";
 import {Router} from "@angular/router";
+import {translate} from "@angular/localize/tools";
 
 export enum NCardSide {
     front = 'front',
@@ -48,7 +49,7 @@ export class PictureService {
         private messageService: MessageService,
         private authService: AuthBnplService,
         private translate: TranslateService,
-        private router: Router
+        private router: Router,
     ) {
         this.initPictureService$ = new BehaviorSubject<boolean>(false)
         this.hvInit$ = new BehaviorSubject<boolean>(false)
@@ -91,6 +92,7 @@ export class PictureService {
         // this.hv.HyperSnapSDK.startUserSession();
         const hvFaceConfig = new this.hv.HVFaceConfig();
         // hvFaceConfig.setShouldShowInstructionPage(true);
+        hvFaceConfig.faceTextConfig.setFaceCaptureTitle(this.translate.instant('picture.selfie'))
 
         const callback = (HVError: any, HVResponse: any) => {
             if (HVError) {
@@ -134,8 +136,10 @@ export class PictureService {
         const hvDocConfig = new this.hv.HVDocConfig();
         if (side === NCardSide.front) {
             hvDocConfig.setOCRDetails("https://vnm-docs.hyperverge.co/v2/nationalID", hvDocConfig.DocumentSide.FRONT, {}, {});
+            hvDocConfig.docTextConfig.setDocCaptureTitle(this.translate.instant('picture.front'))
         } else if (side === NCardSide.back) {
             hvDocConfig.setOCRDetails("https://vnm-docs.hyperverge.co/v2/nationalID", hvDocConfig.DocumentSide.BACK, {}, {});
+            hvDocConfig.docTextConfig.setDocCaptureTitle(this.translate.instant('picture.back'))
         }
 
 

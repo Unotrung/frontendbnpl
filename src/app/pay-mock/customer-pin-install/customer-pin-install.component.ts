@@ -9,81 +9,89 @@ import {ItemService} from "../item.service";
 import {Item} from "../item";
 
 @Component({
-  selector: 'app-customer-pin-install',
-  templateUrl: './customer-pin-install.component.html',
-  styleUrls: ['./customer-pin-install.component.scss']
+    selector: 'app-customer-pin-install',
+    templateUrl: './customer-pin-install.component.html',
+    styleUrls: ['./customer-pin-install.component.scss']
 })
 export class CustomerPinInstallComponent implements OnInit {
 
-  pinCode = '';
-  verifyPinCode = '';
-  constructor(
-      private validatorService: ValidatorService,
-      private router: Router,
-      private authService: AuthBnplService,
-      private loadingService: LoadingService,
-      private progressStepService: ProgressStepService,
-      private itemService: ItemService
-  ) {
-    this.progressStepService.step$.next(2)
-  }
+    pinCode = '';
+    verifyPinCode = '';
 
-  ngOnInit(): void {
-  }
+    constructor(
+        private validatorService: ValidatorService,
+        private router: Router,
+        private authService: AuthBnplService,
+        private loadingService: LoadingService,
+        private progressStepService: ProgressStepService,
+        private itemService: ItemService
+    ) {
+        this.progressStepService.step$.next(2)
+    }
 
-  // this called every time when user changed the code
-  onPinCodeChanged(code: string) {
-    this.pinCode = code;
-  }
+    ngOnInit(): void {
+    }
 
-  // this called only if user entered full code
-  onPinCodeCompleted(code: string) {
+    // this called every time when user changed the code
+    onPinCodeChanged(code: string) {
+        this.pinCode = code;
+    }
 
-  }
+    // this called only if user entered full code
+    onPinCodeCompleted(code: string) {
 
-  onVerifyPinCodeChange(code:string) {
-    this.verifyPinCode = code;
-  }
+    }
 
-  onVerifyPinCodeComplete(code: string) {
-    console.log(code)
-  }
+    onVerifyPinCodeChange(code: string) {
+        this.verifyPinCode = code;
+    }
 
-  onFinishPinInstall(){
-    this.loadingService.loading$.next(true)
-    // this.authService.user$.next({...this.authService.user$.getValue(), password: this.pinCode.toString()})
-    this.authService.user$.next({...this.authService.user$.getValue(), pin: this.pinCode})
-    this.authService.register().subscribe({
-      next: data => {
-        console.log(data)
+    onVerifyPinCodeComplete(code: string) {
+        console.log(code)
+    }
 
-      },
-      error: ({error}) => {
-        this.loadingService.loading$.next(false)
-        console.log(error)
-      },
-      complete: () => {
-        this.authService.updateCustomerInfo().subscribe({
-          next :(data) => {
-            this.loadingService.loading$.next(false)
-            if (data['status']) {
-              // @ts-ignore
-              this.authService.registerStep$.next(Step.customerEsignConfirm)
-              this.router.navigate(['pay-mock/customer-esign-confirm']).then();
+    onFinishPinInstall() {
+        this.loadingService.loading$.next(true)
+        // this.authService.user$.next({...this.authService.user$.getValue(), password: this.pinCode.toString()})
+        this.authService.user$.next({...this.authService.user$.getValue(), pin: this.pinCode})
+        this.authService.register().subscribe({
+            next: data => {
+                this.loadingService.loading$.next(false)
+                if (data['status']) {
+                    // @ts-ignore
+                    this.authService.registerStep$.next(Step.customerEsignConfirm)
+                    this.router.navigate(['pay-mock/customer-esign-confirm']).then();
+                } else {
+                    //up form unsuccessful ->
+                }
+
+            },
+            error: ({error}) => {
+                this.loadingService.loading$.next(false)
+                console.log(error)
+            },
+            complete: () => {
+                // this.authService.updateCustomerInfo().subscribe({
+                //   next :(data) => {
+                //     this.loadingService.loading$.next(false)
+                //     if (data['status']) {
+                //       // @ts-ignore
+                //       this.authService.registerStep$.next(Step.customerEsignConfirm)
+                //       this.router.navigate(['pay-mock/customer-esign-confirm']).then();
+                //     }
+                //     else{
+                //       //up form unsuccessful ->
+                //     }
+                //
+                // },
+                //   error: err => {
+                //     this.loadingService.loading$.next(false)
+                //     // up form error
+                //   },
+                //   complete: ()=> {}
+                // })
             }
-            else{
-              //up form unsuccessful ->
-            }
-
-        },
-          error: err => {
-            this.loadingService.loading$.next(false)
-            // up form error
-          },
-          complete: ()=> {}
         })
-      }
-    })
 
-  }
+    }
 }

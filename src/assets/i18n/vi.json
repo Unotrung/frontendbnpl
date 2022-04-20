@@ -12,6 +12,7 @@
 		"turnBackToCart": "QUAY LẠI GIỎ HÀNG"
 	},
 	"checkout": {
+		"autoBack": "Tự động trở lại trang mua hàng sau 15s",
 		"buySuccess": "Chúc mừng bạn đã mua hàng thành công",
 		"chooseTenor": "Vui lòng chọn Tenor",
 		"error": "Mua hàng không thành công/ Lỗi không xác định",
@@ -133,6 +134,7 @@
 		"notExact": "Mã pin không chính xác",
 		"notMatch": "Mã pin và mã pin nhập lại phải trùng nhau",
 		"operator": "Tổng đài hỗ trợ",
+		"paymentConfirm": "Vui lòng nhập mã PIN để xác nhận thanh toán",
 		"reEnter": "Nhập lại mã PIN",
 		"reEnterCheck": "Vui lòng nhập mã PIN để xác thực thông tin",
 		"registerInterrupt": "Quá trình bị gián đoạn. Vui lòng trở lại sau 24h",

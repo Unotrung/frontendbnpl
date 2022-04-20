@@ -4,14 +4,15 @@
 //  align-items: center;
 //}
 :host {
-  width: 378px;
+  width: 348px;
 }
-.global-box {
+.tenor-box {
   padding: 0 24px 0 24px;
   &:hover {
     background: rgba(78, 203, 113, 0.2);
     cursor: pointer;
   }
+  border-radius: 10px;
 }
 .disabled {
     cursor: not-allowed !important;
@@ -41,15 +42,15 @@
   /* Black/black500 */
   color: rgba(0, 0, 0, 0.8);
 
-  span {
-    font-weight: bold;
-  }
+  //span {
+  //  font-weight: bold;
+  //}
 }
 .tenor-price {
   font-family: 'Montserrat Alternates';
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 32px;
   /* or 160% */
   display: flex;
@@ -57,12 +58,15 @@
   text-align: center;
 
   /* Brand/branda500 */
-  color: #00B74F;
+  color: #397DCE;
 }
 
 .tenor-wrapper {
   display: block;
   position: relative;
+  background: white;
+  border-radius: 10px;
+  border: none;
   //width: 100%;
 }
 .tenor-checked {

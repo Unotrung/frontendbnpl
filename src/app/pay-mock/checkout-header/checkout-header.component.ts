@@ -11,7 +11,6 @@ import {environment} from "../../../environments/environment";
 export class CheckoutHeaderComponent implements OnInit {
   name: string =''
   credit: number = 0
-  @Input() smallView: Boolean = false
   currencyCode = environment.currencyCode
   constructor(
       private authService: AuthBnplService,

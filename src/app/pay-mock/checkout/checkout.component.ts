@@ -24,8 +24,9 @@ export class CheckoutComponent implements OnInit {
   ) {
     this.chosenTenor = this.tenorService.selectedTenor$.getValue()
     this.tenors = this.tenorService.tenors$.getValue()
-    this.tenors.map(tenor => ({...tenor, enable: this.authService.user$.getValue().creditLimit > this.getTenorPrice(tenor)}))
+    this.tenors.map(tenor => ({...tenor, enable: this.authService.user$.getValue().creditLimit >= this.getTenorPrice(tenor)}))
         .forEach(tenor => {
+          console.log('tenor',tenor)
           if (tenor.enable) {
             this.enoughCredit = true
           }

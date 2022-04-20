@@ -90,16 +90,20 @@ const routes: Routes = [
                 path: 'forgot-pin-card-id', component: ForgotPinCardIdComponent
             },
             {
-                path: 'checkout', component: CheckoutComponent, canActivate: [AuthBnplGuard]
+                path: 'checkout', component: CheckoutComponent
+                , canActivate: [AuthBnplGuard]
             },
             {
-                path: 'checkout-confirm', component: CheckoutConfirmComponent, canActivate: [AuthBnplGuard]
+                path: 'checkout-confirm', component: CheckoutConfirmComponent
+                // , canActivate: [AuthBnplGuard]
             },
             {
-                path: 'checkout-finish', component: CheckoutFinishComponent, canActivate: [AuthBnplGuard]
+                path: 'checkout-finish', component: CheckoutFinishComponent
+                , canActivate: [AuthBnplGuard]
             },
             {
-                path: 'checkout-not-enough-credit', component: CheckoutNotEnoughCreditComponent, canActivate: [AuthBnplGuard]
+                path: 'checkout-not-enough-credit', component: CheckoutNotEnoughCreditComponent
+                , canActivate: [AuthBnplGuard]
             },
             {
                 path: 'forgot-pin-otp', component: ForgotPinOtpComponent

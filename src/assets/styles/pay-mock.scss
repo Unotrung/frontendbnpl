@@ -26,6 +26,7 @@ body { margin: 0; font-family: 'Montserrat Alternates', sans-serif; }
   font-size: 18px;
   line-height: 22px;
   font-family: 'Montserrat Alternates';
+  border: none;
 }
 //.payment-button span {
 //  margin-left: auto;
@@ -38,7 +39,7 @@ body { margin: 0; font-family: 'Montserrat Alternates', sans-serif; }
 
 .payment-button:disabled,
 .payment-button[disabled]{
-  border: 1px solid #999999;
+  //border: 1px solid #999999;
   background: #E1E1E1;
   color: white;
   cursor: not-allowed;
@@ -102,7 +103,7 @@ button:hover {
   cursor: pointer;
 }
 
-.pin-code.has-value {
+.code-hidden .has-value {
   -webkit-text-fill-color: #17D7A0 !important;
   -webkit-box-shadow:0 0 0 50px #17D7A0 inset !important;
 }
@@ -235,7 +236,7 @@ img.checked-mark-flex {
   width: 14px;
   height: 14px;
   position: absolute;
-  bottom: -90px;
+  margin-top: 40px;
   margin-left: 40px;
 }
 .white-box {

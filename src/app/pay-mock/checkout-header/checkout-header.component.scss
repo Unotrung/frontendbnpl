@@ -15,11 +15,11 @@
 
 .checkout-info-header-small {
   width: 284px;
-  border: 1px solid #CCCCCC;
-  border-radius: 8px;
-  //padding: 12px 20px 20px 8px;
-  display: block;
-  position: relative;
+  //border: 1px solid #CCCCCC;
+  //border-radius: 8px;
+  ////padding: 12px 20px 20px 8px;
+  //display: block;
+  //position: relative;
 }
 
 .container-wrapper {
@@ -48,18 +48,18 @@
   font-family: 'Montserrat Alternates';
   font-style: normal;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 14px;
   line-height: 24px;
   /* identical to box height, or 100% */
 
-  color: #EB5757;
+  color: #56CA8B;
 }
-img {
-  max-width: 100%;
-  object-fit: cover;
-  flex-shrink: 0;
-  position: absolute;
-  top:-37px;
-  left: -30px;
-  z-index: 2;
-}
+//img {
+//  max-width: 100%;
+//  object-fit: cover;
+//  flex-shrink: 0;
+//  position: absolute;
+//  top:-37px;
+//  left: -30px;
+//  z-index: 2;
+//}

@@ -55,18 +55,33 @@ export class AuthBnplService {
     }))
   }
   register(): Observable<any> {
-    const uri = `${environment.localAPIServer}v1/bnpl/user/register`;
-      const rawData = {
-        phone: this.user$.getValue().phone,
-        pin: this.user$.getValue().pin
+    const uri = `${environment.localAPIServer}v1/bnpl/personal/addInfoPersonal`;
+    return this.http.post<any>(encodeURI(uri), {...this.customerInfoService.customerInfo$.getValue(), pin: this.user$.getValue().pin }).pipe(tap((data) =>{
+      console.log(data)
+      if (data && data['status']) {
+        this.isLoggedIn$.next(true)
+        this.getInfoFromData(data)
       }
-      return this.http.post<any>(encodeURI(uri), rawData).pipe(tap((data) => {
-        console.log(data)
-        if (data && data['status']) {
-          this.user$.next({...this.user$.getValue(), accessToken: data['token'], id: data['data']['_id'] })
-          this.isLoggedIn$.next(true);
-        }
-      }))
+      // if(data['status']){
+      //   this.itemService.items$.next(data['items'] as Item[])
+      //
+      //   console.log(this.itemService.items$.getValue())
+      // }
+      // this.user$.next({...this.user$.getValue(), name: this.customerInfoService.customerInfo$.getValue().name!})
+      // this.getInfoFromData(data)
+    }))
+
+    // const rawData = {
+    //     phone: this.user$.getValue().phone,
+    //     pin: this.user$.getValue().pin
+    //   }
+    //   return this.http.post<any>(encodeURI(uri), rawData).pipe(tap((data) => {
+    //     console.log(data)
+    //     if (data && data['status']) {
+    //       this.user$.next({...this.user$.getValue(), accessToken: data['token'], id: data['data']['_id'] })
+    //       this.isLoggedIn$.next(true);
+    //     }
+    //   }))
   }
 
   checkPossiblePhone(phone: string) {

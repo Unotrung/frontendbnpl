@@ -1,38 +1,52 @@
 
 <!--large header view-->
-<ng-container *ngIf="!smallView">
-<div class="checkout-info-header" appMarginTop="80">
-    <img src="../../../assets/images/UserEllipse.png" alt="" class="checkout-image"/>
-    <div class="container-wrapper" fxFlexFill fxLayout="row" fxLayoutAlign="space-between center">
-        <div class="customer-name">
-            <ng-container>{{'text.hello' | translate}}</ng-container>: {{name}}
-        </div>
-        <div fxLayout="column" fxLayoutAlign="center end">
-            <div class="credit-text" >
-                <ng-container>{{'checkoutHeader.creditLimit' | translate}}</ng-container> :
-            </div>
-            <div class="credit-number">
-                {{credit | currency: currencyCode: ''}} VND
-            </div>
-        </div>
-    </div>
-</div>
-</ng-container>
+<!--<ng-container *ngIf="!smallView">-->
+<!--<div class="checkout-info-header" appMarginTop="80">-->
+<!--    <img src="../../../assets/images/UserEllipse.png" alt="" class="checkout-image"/>-->
+<!--    <div class="container-wrapper" fxFlexFill fxLayout="row" fxLayoutAlign="space-between center">-->
+<!--        <div class="customer-name">-->
+<!--            <ng-container>{{'text.hello' | translate}}</ng-container>: {{name}}-->
+<!--        </div>-->
+<!--        <div fxLayout="column" fxLayoutAlign="center end">-->
+<!--            <div class="credit-text" >-->
+<!--                <ng-container>{{'checkoutHeader.creditLimit' | translate}}</ng-container> :-->
+<!--            </div>-->
+<!--            <div class="credit-number">-->
+<!--                {{credit | currency: currencyCode: ''}} VND-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</ng-container>-->
 
 <!--small header view-->
-<ng-container *ngIf="smallView">
-    <div class="checkout-info-header-small" fxLayout="column">
-        <img src="../../../assets/images/UserEllipse.png" alt="" class="checkout-image"/>
-        <div class="container-wrapper" fxFlexFill fxLayout="column" fxLayoutAlign="start center">
-            <div class="customer-name" appMarginTop="8">
-                <span>{{'text.hello' | translate}} </span>{{name}}
-            </div>
-            <div class="credit-text" >
-                {{'checkoutHeader.creditLimit' | translate}}
-            </div>
-            <div class="credit-number" appMarginBottom="8">
-                {{credit | currency: currencyCode: ''}} VND
-            </div>
-        </div>
-    </div>
-</ng-container>
+<!--<ng-container *ngIf="smallView">-->
+<div fxLayout="row" fxLayoutAlign="space-around center" fxLayoutGap="20">
+    <img src="../../../assets/images/user.png" width="70" height="70" alt="" class="checkout-image"/>
+    <div fxFlexFill fxLayout="column" fxLayoutAlign="start start">
+                    <div class="paragraph-text paragraph-text-bold text-big-16" appMarginTop="8">
+                        <span>{{'text.hello' | translate}} </span>{{name}}
+                    </div>
+                    <div class="paragraph-text paragraph-text-small" >
+                        {{'checkoutHeader.creditLimit' | translate}}
+                    </div>
+                    <div class="credit-number" appMarginBottom="8">
+                        {{credit | currency: currencyCode: ''}} VND
+                    </div>
+                </div>
+</div>
+<!--    <div class="checkout-info-header-small" fxLayout="column">-->
+<!--        <img src="../../../assets/images/UserEllipse.png" alt="" class="checkout-image"/>-->
+<!--        <div class="container-wrapper" fxFlexFill fxLayout="column" fxLayoutAlign="start center">-->
+<!--            <div class="customer-name" appMarginTop="8">-->
+<!--                <span>{{'text.hello' | translate}} </span>{{name}}-->
+<!--            </div>-->
+<!--            <div class="credit-text" >-->
+<!--                {{'checkoutHeader.creditLimit' | translate}}-->
+<!--            </div>-->
+<!--            <div class="credit-number" appMarginBottom="8">-->
+<!--                {{credit | currency: currencyCode: ''}} VND-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</ng-container>-->

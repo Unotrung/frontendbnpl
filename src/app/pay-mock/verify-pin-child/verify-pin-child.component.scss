@@ -80,9 +80,9 @@
 .forgot-pin-text {
   //styleName: Body / SemiBold;
   font-family: 'Montserrat Alternates';
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: 24px;
   letter-spacing: 0px;
   text-align: center;
@@ -137,18 +137,18 @@ p.forgot-pin-text {
 
 code-input {
   --item-border-radius: 50%;
-  --item-height: 48px;
+  --item-height: 32px;
   --text-security-style: disc;
   --item-background: #C4C4C4;
   --item-shadow-focused: 0px 2px 7px #C4C4C4;
-  --item-spacing: 16px;
+  --item-spacing: 32px;
 }
 .pin-verify-box {
-  width: 378px;
+  width: 388px;
   padding: 0 42px 0 42px;
 }
 .border-box {
-  border: 1px solid #C4C4C4;
+  //border: 1px solid #C4C4C4;
   box-sizing: border-box;
   border-radius: 8px;
 }

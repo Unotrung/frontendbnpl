@@ -1,18 +1,18 @@
-<div fxLayout="column" fxLayoutAlign="start center">
-    <img src="../../../assets/images/LogoFeCredit.png" alt="FE Credit" width="130" height="55"/>
-    <div class="global-box" fxLayout="column" fxLayoutAlign="start center" appMarginTop="80">
-        <div appMarginTop="40"></div>
-        <app-checkout-header [smallView]="true"></app-checkout-header>
-        <div class="content-text" appMarginTop="60" >
+<div class="global-wrapper">
+    <img src="../../../assets/images/voolo-logo.png" alt="FE Credit" width="179" height="35" appMarginBottom="42"/>
+<!--    <div class="global-box" fxLayout="column" fxLayoutAlign="start center" appMarginTop="80">-->
+<!--        <div appMarginTop="40"></div>-->
+        <app-checkout-header></app-checkout-header>
+    <img src="../../../assets/images/voolo-smile.png" alt="" width="50" height="48" appMarginTop="20">
+    <div class="paragraph-text paragraph-text-small text-bold-2" appMarginTop="30" >
             {{'checkout.removeItem' | translate}}!
         </div>
         <button class="payment-button"
-                appMarginTop="72"
-                appMarginBottom="22"
+                appMarginTop="40"
                 (click)="onNotEnoughCreditConfirm()">
-            <span >{{'button.turnBackToCart' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span>
+            <span >{{'button.turnBackToCart' | translate}}</span>
         </button>
-    </div>
+<!--    </div>-->
     <div appMarginTop="32"></div>
     <app-checkout-items [items]="(itemService.items$ | async)!"></app-checkout-items>
     <div appMarginBottom="32"></div>
