@@ -47,7 +47,7 @@ export class EnterOtpComponent implements OnInit {
     // this called every time when user changed the code
     onCodeChanged(code: string) {
         this.enterNewOTP = true
-        console.log(this.otpCode.length)
+        // console.log(this.otpCode.length)
         this.otpCode = code
     }
 

@@ -14,6 +14,7 @@ export class VerifyPinChildComponent implements OnInit {
   @Input() pinFails = 0
   pinDirty = false
   pin = ''
+  enterNewPin = false
   constructor(
       @Optional() private dialogRef: MatDialogRef<VerifyPinChildComponent>,
       private router: Router
@@ -24,6 +25,7 @@ export class VerifyPinChildComponent implements OnInit {
 
   // this called every time when user changed the code
   onCodeChanged(code: string) {
+    this.enterNewPin = true
     this.pin = code
     this.pinCode.emit(code)
     if (!this.pinDirty) {
