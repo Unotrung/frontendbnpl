@@ -12,7 +12,6 @@ import {AuthBnplService} from "./auth-bnpl.service";
 import {Step} from "./step";
 import {TranslateService} from "@ngx-translate/core";
 import {Router} from "@angular/router";
-import {translate} from "@angular/localize/tools";
 
 export enum NCardSide {
     front = 'front',
@@ -93,6 +92,7 @@ export class PictureService {
         const hvFaceConfig = new this.hv.HVFaceConfig();
         // hvFaceConfig.setShouldShowInstructionPage(true);
         hvFaceConfig.faceTextConfig.setFaceCaptureTitle(this.translate.instant('picture.selfie'))
+        hvFaceConfig.faceTextConfig.setFaceDetectedDescription(this.translate.instant('picture.detected'))
 
         const callback = (HVError: any, HVResponse: any) => {
             if (HVError) {
@@ -102,15 +102,17 @@ export class PictureService {
                 if (errorCode === '013') {
                     return
                 }
-                this.openMessageDialog(MessageReason.failSelfieScreenShot)
+                // this.openMessageDialog(MessageReason.failSelfieScreenShot)
                 if (errorCode === '401') {
                     if (errorMessage === 'Token Expired') {
                         //todo Check the token generator
                         this.hvInit$.next(false)
+                        this.openMessageDialog(MessageReason.failOnHVTokenExpired)
                         console.error(errorMessage);
                         return;
                     }
                 }
+                this.openMessageDialog(MessageReason.failSelfieScreenShot)
             }
             if (HVResponse) {
                 const apiResults = HVResponse.getApiResult();
@@ -152,14 +154,17 @@ export class PictureService {
                     console.log(errorCode);
                 }
                 if (errorCode === '013') {
+                    console.log(errorCode)
                     return
                 }
                 if (errorCode === '401') {
                     if (errorMessage === 'Token Expired') {
                         //todo Check the token generator
                         console.error(errorMessage);
+
                         this.hvInit$.next(false)
-                        this.router.navigate(['pay-mock/register']).then()
+                        this.openMessageDialog(MessageReason.failOnHVTokenExpired)
+                        // this.router.navigate(['pay-mock/register']).then()
                         return;
                     }
                 }
@@ -324,48 +329,7 @@ export class PictureService {
     }
 
     openMessageDialog(reason: MessageReason) {
-        if (reason === MessageReason.failOnCheckSelfieAndImageIdCard) {
-            this.messageService.messageData$.next({
-                reason: MessageReason.failOnCheckSelfieAndImageIdCard,
-                messageTitle:  `${this.translate.stream('message.announce')}`,
-                message:  `${this.translate.instant('message.selfieAndNCardFrontNotMatch')}`,
-                closeMessage:  `Chụp lại ${this.translate.instant('button.reshot')}`,
-            })
-        }
-        if (reason === MessageReason.failOnCheckCitizenIdAndManualEnterId) {
-            this.messageService.messageData$.next({
-                reason: MessageReason.failOnCheckCitizenIdAndManualEnterId,
-                messageTitle:  `${this.translate.instant('message.announce')}`,
-                message:  `${this.translate.instant('message.manualNidAndNCardFrontNotMatch')}`,
-                closeMessage:  `${this.translate.instant('button.reEnterNid')}`
-            })
-        }
-        if (reason === MessageReason.failFrontIdScreenShot) {
-            this.messageService.messageData$.next({
-                reason: MessageReason.failFrontIdScreenShot,
-                messageTitle:  `${this.translate.instant('message.announce')}`,
-                message:  `${this.translate.instant('message.NCardFrontError')}`,
-                closeMessage:  `${this.translate.instant('button.reshot')}`
-            })
-        }
-        if (reason === MessageReason.failBackIdScreenShot) {
-            this.messageService.messageData$.next({
-                reason: MessageReason.failBackIdScreenShot,
-                messageTitle: `${this.translate.instant('message.announce')}`,
-                message:  `${this.translate.instant('message.NCardBackError')}`,
-                closeMessage:  `${this.translate.instant('button.reshot')}`
-            })
-        }
-        if (reason === MessageReason.failSelfieScreenShot) {
-            this.messageService.messageData$.next({
-                reason: MessageReason.failSelfieScreenShot,
-                message:  `${this.translate.instant('message.selfieError')}`,
-                messageTitle:  `${this.translate.instant('message.announce')}`,
-                closeMessage:  `${this.translate.instant('button.reshot')}`
-            })
-        }
-
-        this.messageService.onOpenDialog()
+        this.messageService.messageDialog(reason)
     }
     // this get backside or frontside on screen
     get imageCurrentShot(): string {

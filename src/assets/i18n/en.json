@@ -96,7 +96,8 @@
 		"announce": "Notification",
 		"manualNidAndNCardFrontNotMatch": "Your application is not accepted because the ID Card number does not match the number you entered",
 		"selfieAndNCardFrontNotMatch": "The portrait photo and the photo on ID Card do not match, please retake",
-		"selfieError": "Selfie picture is not clear, please take again"
+		"selfieError": "Selfie picture is not clear, please take again",
+		"tokenExpired": "Token expired"
 	},
 	"nCard": {
 		"back": "backside",
@@ -117,6 +118,10 @@
 		"notReceive": "Didn't receive OTP",
 		"resend": "Resend OTP",
 		"resetFail": "Pin code reset failed. Please come back in 24 hours"
+	},
+	"picture": {
+		"selfie": "Chụp ảnh chân dung",
+		"detected": "Capture now"
 	},
 	"phone": {
 		"block": "This number is limited/blocked",

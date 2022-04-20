@@ -97,7 +97,8 @@
 		"announce": "Thông báo",
 		"manualNidAndNCardFrontNotMatch": "Hồ sơ của bạn không được chấp nhận do số CMND/CCCD không trùng với số bạn điền vào",
 		"selfieAndNCardFrontNotMatch": "Ảnh chân dung và ảnh trên CMND/CCCD không khớp, đề nghị chụp lại",
-		"selfieError": "Hình chụp selfie không rõ, đề nghị chụp lại "
+		"selfieError": "Hình chụp selfie không rõ, đề nghị chụp lại ",
+		"tokenExpired": "Token hết hạn"
 	},
 	"nCard": {
 		"back": "mặt sau",
@@ -118,6 +119,10 @@
 		"notReceive": "Không nhận được OTP",
 		"resend": "Gởi lại OTP",
 		"resetFail": "Quá trình cài đặt lại mã pin không thành công. Vui lòng trở lại sau 24h"
+	},
+	"picture": {
+		"selfie": "Chụp ảnh chân dung",
+		"detected": "Chụp ảnh ngay"
 	},
 	"phone": {
 		"block": "Số điện thoại này đã bị giới hạn/khoá",
