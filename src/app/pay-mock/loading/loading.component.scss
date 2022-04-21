@@ -14,9 +14,9 @@
   height: 100%;
   z-index: 1003;
   //background: #000000;
-  background: white;
+  background: transparent;
   overflow: hidden;
-  opacity: 0.5;
+  opacity: 0.9;
 }
 .spinner {
   -webkit-animation: rotating 2s linear infinite;

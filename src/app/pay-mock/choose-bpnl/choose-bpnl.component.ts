@@ -19,7 +19,7 @@ export class ChooseBpnlComponent implements OnInit {
         id: "1",
         name: "FE Credit",
         img: "assets/images/fe-credit-logo.png",
-        checked: false,
+        checked: true,
         width: 141,
         height: 27
       },

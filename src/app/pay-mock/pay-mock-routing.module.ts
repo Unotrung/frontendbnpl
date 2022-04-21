@@ -35,7 +35,7 @@ const routes: Routes = [
         component: PayMockComponent,
         children: [
             {
-                path: '', redirectTo: 'register', pathMatch: 'full'
+                path: '', redirectTo: 'start-payment', pathMatch: 'full'
             },
             {
                 path: 'start-payment', component: StartPaymentComponent

@@ -67,6 +67,23 @@
 	"home": {
 		"chooseLang": "Chọn ngôn ngữ"
 	},
+	"hv": {
+		"face": {
+			"faceCaptureBottomDescription": "Mặt của bạn cần ở trong khung hình",
+			"faceCaptureReviewBottomDescription": "Hãy kiểm tra ảnh của bạn",
+			"faceCaptureReviewTitle": "Ảnh của bạn có rõ không?",
+			"faceCaptureTitle": "Chụp ảnh chân dung",
+			"faceDetectedDescription": "Chụp ảnh",
+			"faceNotDetectedDescription": "Khuôn mặt cần ở trong khung hình",
+			"faceTooBigDescription": "Hãy di chuyển ra xa một chút"
+		},
+		"doc": {
+			"docCaptureBottomDescription": "Hình ảnh cần nằm trong khung hình và không bị chói",
+			"docCaptureReviewTitle": "Hãy kiểm tra lại ảnh",
+			"docCaptureTitleBack": "Chụp hình CMND/ CCCD mặt sau",
+			"docCaptureTitleFront": "Chụp hình CMND/ CCCD mặt trước"
+		}
+	},
 	"items": {
 		"header": "Thông tin đơn hàng"
 	},

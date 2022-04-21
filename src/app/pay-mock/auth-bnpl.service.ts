@@ -185,6 +185,11 @@ export class AuthBnplService {
     }))
   }
 
+  checkNidExist(nId: string) {
+    const uri = `${environment.localAPIServer}v1/bnpl/user/checkNidExists`
+    return this.http.post<any>(encodeURI(uri), {"nid": nId})
+  }
+
   updateTenor() {
     const uri = `${environment.localAPIServer}v1/bnpl/personal/updateTenor`
     const headers = new HttpHeaders({

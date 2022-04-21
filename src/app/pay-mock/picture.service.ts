@@ -91,8 +91,13 @@ export class PictureService {
         // this.hv.HyperSnapSDK.startUserSession();
         const hvFaceConfig = new this.hv.HVFaceConfig();
         // hvFaceConfig.setShouldShowInstructionPage(true);
-        hvFaceConfig.faceTextConfig.setFaceCaptureTitle(this.translate.instant('picture.selfie'))
-        hvFaceConfig.faceTextConfig.setFaceDetectedDescription(this.translate.instant('picture.detected'))
+        hvFaceConfig.faceTextConfig.setFaceCaptureTitle(this.translate.instant('hv.face.faceCaptureTitle'))
+        hvFaceConfig.faceTextConfig.setFaceCaptureBottomDescription(this.translate.instant('hv.face.faceCaptureBottomDescription'))
+        hvFaceConfig.faceTextConfig.setFaceNotDetectedDescription(this.translate.instant('hv.face.faceNotDetectedDescription'))
+        hvFaceConfig.faceTextConfig.setFaceTooBigDescription(this.translate.instant('hv.face.faceTooBigDescription'))
+        hvFaceConfig.faceTextConfig.setFaceDetectedDescription(this.translate.instant('hv.face.faceDetectedDescription'))
+        hvFaceConfig.faceTextConfig.setFaceCaptureReviewTitle(this.translate.instant('hv.face.faceCaptureReviewTitle'))
+        hvFaceConfig.faceTextConfig.setFaceCaptureReviewBottomDescription(this.translate.instant('hv.face.faceCaptureReviewBottomDescription'))
 
         const callback = (HVError: any, HVResponse: any) => {
             if (HVError) {
@@ -103,14 +108,14 @@ export class PictureService {
                     return
                 }
                 // this.openMessageDialog(MessageReason.failSelfieScreenShot)
-                if (errorCode === '401') {
-                    if (errorMessage === 'Token Expired') {
+                if (errorCode === 401) {
+                    //token expired
                         //todo Check the token generator
                         this.hvInit$.next(false)
                         this.openMessageDialog(MessageReason.failOnHVTokenExpired)
                         console.error(errorMessage);
                         return;
-                    }
+
                 }
                 this.openMessageDialog(MessageReason.failSelfieScreenShot)
             }
@@ -136,12 +141,15 @@ export class PictureService {
 
     citizenCardShot(side: NCardSide) {
         const hvDocConfig = new this.hv.HVDocConfig();
+        hvDocConfig.docTextConfig.setDocCaptureBottomDescription(this.translate.instant('hv.doc.docCaptureBottomDescription'))
+        hvDocConfig.docTextConfig.setDocCaptureReviewTitle(this.translate.instant('hv.doc.docCaptureReviewTitle'))
+        hvDocConfig.docTextConfig.setDocReviewBottomDescription(this.translate.instant('hv.doc.docReviewBottomDescription'))
         if (side === NCardSide.front) {
             hvDocConfig.setOCRDetails("https://vnm-docs.hyperverge.co/v2/nationalID", hvDocConfig.DocumentSide.FRONT, {}, {});
-            hvDocConfig.docTextConfig.setDocCaptureTitle(this.translate.instant('picture.front'))
+            hvDocConfig.docTextConfig.setDocCaptureTitle(this.translate.instant('hv.doc.docCaptureTitleFront'))
         } else if (side === NCardSide.back) {
             hvDocConfig.setOCRDetails("https://vnm-docs.hyperverge.co/v2/nationalID", hvDocConfig.DocumentSide.BACK, {}, {});
-            hvDocConfig.docTextConfig.setDocCaptureTitle(this.translate.instant('picture.back'))
+            hvDocConfig.docTextConfig.setDocCaptureTitle(this.translate.instant('hv.doc.docCaptureTitleBack'))
         }
 
 
@@ -157,16 +165,14 @@ export class PictureService {
                     console.log(errorCode)
                     return
                 }
-                if (errorCode === '401') {
-                    if (errorMessage === 'Token Expired') {
-                        //todo Check the token generator
-                        console.error(errorMessage);
-
+                if (errorCode === 401) {
+                        console.error(errorCode);
+                        console.error(errorMessage)
+                    //token expired
                         this.hvInit$.next(false)
                         this.openMessageDialog(MessageReason.failOnHVTokenExpired)
                         // this.router.navigate(['pay-mock/register']).then()
                         return;
-                    }
                 }
                 if (side === NCardSide.front) {
                     this.openMessageDialog(MessageReason.failFrontIdScreenShot)

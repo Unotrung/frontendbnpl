@@ -25,26 +25,30 @@ export class ForgotPinCardIdComponent implements OnInit {
       this.router.navigate(['pay-mock/register']).then()
     }
     this.cardIdForm = new FormControl(this.authService.user$.getValue().citizenId, {validators: [Validators.pattern(/\b\d{9}\b|\b\d{12}\b/g),Validators.required], updateOn: 'blur'})
-    this.cardIdForm.valueChanges.subscribe({
-      next: (value => {
-        console.log(value)
-        if (this.cardIdForm.invalid) return
-        this.loadingService.loading$.next(true)
-        this.authService.checkNidPhoneMatch(value).subscribe({
-          next: (data) => {
-            this.loadingService.loading$.next(false)
-            console.log(data)
-            if (data && data['status']) {
-              this.cardIdForm.setErrors(null)
-            } else {
-              this.cardIdForm.setErrors({'wrongnid': true})
-            }
-          },
-          error: err => {
-            this.loadingService.loading$.next(false)
-          }
-        })
-      })
+    // this.cardIdForm.valueChanges.subscribe({
+    //   next: (value => {
+    //     console.log(value)
+    //
+    //   })
+    // })
+  }
+
+  checkIdCardMatchPhone(){
+    if (this.cardIdForm.invalid) return
+    this.loadingService.loading$.next(true)
+    this.authService.checkNidPhoneMatch(this.cardIdForm.value).subscribe({
+      next: (data) => {
+        this.loadingService.loading$.next(false)
+        console.log(data)
+        if (data && data['status']) {
+          this.cardIdForm.setErrors(null)
+        } else {
+          this.cardIdForm.setErrors({'wrongnid': true})
+        }
+      },
+      error: err => {
+        this.loadingService.loading$.next(false)
+      }
     })
   }
 

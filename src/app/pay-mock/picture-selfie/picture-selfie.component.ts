@@ -1,13 +1,21 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {NCardSide, PictureService} from "../picture.service";
-import {FormControl, Validators} from "@angular/forms";
+import {
+  AbstractControl,
+  AsyncValidatorFn,
+  FormControl,
+  ValidationErrors,
+  ValidatorFn,
+  Validators
+} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {AuthBnplService} from "../auth-bnpl.service";
 import {Router} from "@angular/router";
 import {Step} from "../step";
 import {keyPress} from "../helper/helper";
 import {InputType} from "../user";
+import {EMPTY, map, Observable, of} from "rxjs";
 
 @Component({
   selector: 'app-picture-selfie',
@@ -22,7 +30,6 @@ export class PictureSelfieComponent implements OnInit {
   citizenId!: FormControl;
   apiResults: any
   instruction: boolean = false
-  submitted = false
   keyPress = keyPress
   InputType = InputType
 
@@ -36,18 +43,14 @@ export class PictureSelfieComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // this.pictureService.selfieScreenShot()
-    // this.loadingService.loading$.next(true)
     const citizenId = this.authService.user$.getValue().citizenId
 
     this.citizenId = new FormControl(citizenId, {validators: [
         Validators.pattern(/\b\d{9}\b|\b\d{12}\b/g),
-        Validators.required
+        Validators.required,
+          // this.validatorNidExist()
       ], updateOn: 'blur'})
-    // this.formGroup = new FormGroup({
-    //   citizenImage: new FormControl(''),
-    //   image: new FormControl('')
-    // })
+
   }
 
   onFileChanged(event: any) {
@@ -74,9 +77,33 @@ export class PictureSelfieComponent implements OnInit {
     //   // console.log(this.pictureService.webcamImage?.imageAsDataUrl)
     // })
   }
+  validatorNidExist(): AsyncValidatorFn {
+
+    return (control: AbstractControl) : Observable<ValidationErrors | null> => {
+      console.log('validator')
+      const value = this.citizenId?.value
+      console.log(value)
+      if (!value) return EMPTY
+      return this.authService.checkNidExist(value).pipe(map(data => data && data['status'] ? {'nidExist': true} : null
+      ))
+    }
+  }
+
+  // checkNidExist(){
+  //   this.authService.checkNidExist(this.citizenId.value).subscribe({
+  //     next: (data) => {
+  //       console.log(data)
+  //       if(data && data['status']) {
+  //         this.citizenId.setErrors({'nidExist': true})
+  //       }
+  //       else {
+  //         this.citizenId.setErrors({'nidExist': null})
+  //       }
+  //     }
+  //   })
+  // }
 
   onSelfieContinue() {
-    this.submitted = true
     const nid = this.citizenId.value
     if (!nid) {
       this.citizenId.setErrors(Validators.required)

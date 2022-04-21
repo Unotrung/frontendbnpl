@@ -66,6 +66,23 @@
 	"home": {
 		"chooseLang": "Choose language"
 	},
+	"hv": {
+		"face": {
+			"faceCaptureBottomDescription": "Make sure your face is inside the circle and is fully visible",
+			"faceCaptureReviewBottomDescription": "Please Review if your face is fully visible",
+			"faceCaptureReviewTitle": "Is your face fully visible, and not blurred?",
+			"faceCaptureTitle": "Capture Selfie",
+			"faceDetectedDescription": "Capture Now",
+			"faceNotDetectedDescription": "Please place your face inside the circle",
+			"faceTooBigDescription": "Please move away from the camera"
+		},
+		"doc": {
+			"docCaptureBottomDescription": "Make sure your document is without any glare and is fully inside",
+			"docCaptureReviewTitle": "Review your photo",
+			"docCaptureTitleBack": "Capture back side Id Card",
+			"docCaptureTitleFront": "Capture front side Id Card"
+		}
+	},
 	"items": {
 		"header": "Cart information"
 	},
