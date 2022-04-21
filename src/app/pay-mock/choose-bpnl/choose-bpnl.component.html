@@ -1,0 +1,18 @@
+<div class="global-wrapper no-margin">
+    <div class="paragraph-text text-big-16 text-bold-2" appMarginTop="20" appMarginBottom="20">
+        {{'voolo.choosePaymentMethod' | translate}} BNPL
+    </div>
+    <div *ngFor="let bnpl of bnplPayments" class="bnpl-wrapper" fxFlexFill appMarginTop="20">
+        <mat-radio-button [(ngModel)]="bnpl.checked" [disabled]="bnpl.id !== '1'" color="primary"></mat-radio-button>
+        <div class="paragraph-text text-fill">{{bnpl.name}}</div>
+        <div class="logo-wrapper">
+            <img [src]="bnpl.img" [width]="bnpl.width || 141" [height]="bnpl.height || 42">
+        </div>
+    </div>
+    <button class="payment-button"
+            appMarginTop="36"
+            appMarginBottom="36"
+            (click)="chooseBNPL()">
+        <span>{{'button.confirm' | translate}}</span>
+    </button>
+</div>

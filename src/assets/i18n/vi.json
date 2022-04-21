@@ -183,8 +183,13 @@
 		"press": "Bấm vào"
 	},
 	"voolo": {
+		"atm": "Thẻ ATM",
+		"bnpl": "Mua trước Trả sau (BNPL)",
 		"buy": "Mua sắm không giới hạn",
+		"choosePaymentMethod": "Chọn phương thức thanh toán",
+		"creditCard": "Thẻ tín dụng/ Ghi nợ",
 		"help": "VOOLO giúp bạn",
+		"grab": "Ví Moca | Grab",
 		"pay": "Thanh toán linh hoạt",
 		"promo": "Ưu đãi hoàn tiền chỉ trong 1 ngày",
 		"slogan": "Có VOOLO - Mua sắm VÔ LO",

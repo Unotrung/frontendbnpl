@@ -12,11 +12,37 @@
     <div class="paragraph-text paragraph-text-bold header-2" appMarginTop="40">
         {{'voolo.choosePaymentMethod' | translate}}
     </div>
-    <div class="payment-option">
-            <input type="checkbox" id="radio4">
-            <label for="radio4" class="radio-label">Phương thức thanh toán BNPL</label>
+    <div class="middle-box">
+        <div class="payment-wrapper" fxFlexFill>
+            <mat-radio-button [checked]="chooseBNPL" (change)="choose($event)" color="primary"></mat-radio-button>
+            <div class="paragraph-text">
+                {{'voolo.bnpl' | translate}}
+            </div>
+            <div fxFlexFill fxLayout="row" fxLayoutAlign="space-around center">
+                <div class="image-wrapper" (click)="chooseBNPLMethod()">
+                    <img src="assets/images/voolo-logo.png" width="120" height="22">
+                </div>
+                <div class="image-wrapper">
+                    <img src="assets/images/lazada-logo.png" width="100" height="22">
+                </div>
+            </div>
+        </div>
+        <div *ngFor="let paymentMethod of paymentMethods" class="payment-wrapper" fxFlexFill appMarginTop="50">
+            <mat-radio-button [disabled]="true"></mat-radio-button>
+            <div class="image-wrapper image-wrapper-small">
+                <img [src]="paymentMethod.img" [width]="paymentMethod.width || 48" [height]="paymentMethod.height || 30">
+            </div>
+            <div class="paragraph-text">
+                {{paymentMethod.name | translate}}
+            </div>
+        </div>
     </div>
-    <div appMarginTop="32" style="width: 100%">
-        <button class="payment-button" routerLink="../register"><span>CHỌN</span> </button>
-    </div>
+
+
+
+<!--            <input type="checkbox" id="radio4">-->
+<!--            <label for="radio4" class="radio-label">Phương thức thanh toán BNPL</label>-->
+<!--    <div appMarginTop="32" style="width: 100%">-->
+<!--        <button class="payment-button" routerLink="../register"><span>CHỌN</span> </button>-->
+<!--    </div>-->
 </div>

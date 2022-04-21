@@ -6,6 +6,7 @@
 //}
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "animation";
+@import "hv-customize";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Montserrat Alternates', sans-serif; }
@@ -84,8 +85,8 @@ body { margin: 0; font-family: 'Montserrat Alternates', sans-serif; }
   width: 296px;
 
   /* background_light */
-  background: #F5F5F5;
-  border-radius: 8px;
+  background: #ffffff;
+  border-radius: 30px;
 }
 
 .global-title {
@@ -189,6 +190,9 @@ button:hover {
   font-size: 14px;
   line-height: 20px;
   color: #000000;
+  //text-align: center;
+}
+.text-center{
   text-align: center;
 }
 .paragraph-text-small {
@@ -244,21 +248,14 @@ img.checked-mark-flex {
   //width: 348px;
 }
 
-.hv-modal-content {
-  border-radius: 30px;
-  max-width: 388px !important;
-}
-.hv-title {
-  font-family: 'Montserrat Alternates';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 18px;
-}
-.hv-bottom-instruction {
-  font-family: 'Montserrat Alternates';
-  font-style: normal;
-  font-weight: 400;
+input {
   font-size: 14px;
-  line-height: 18px;
+  font-family: 'Montserrat Alternates';
+}
+
+.round-checkbox {
+  & .mat-checkbox-background, .mat-checkbox-frame {
+    border-radius: 70% !important;
+    //border: none;
+  }
 }

@@ -50,6 +50,7 @@ import { PluralTranslatePipe } from './helper/plural-translate.pipe';
 import { CheckoutConfirmPinComponent } from './checkout-confirm-pin/checkout-confirm-pin.component';
 import { SmallImageWrapperComponent } from './small-image-wrapper/small-image-wrapper.component';
 import { VooloRegisterHeaderComponent } from './voolo-register-header/voolo-register-header.component';
+import { ChooseBpnlComponent } from './choose-bpnl/choose-bpnl.component';
 
 
 @NgModule({
@@ -92,7 +93,8 @@ import { VooloRegisterHeaderComponent } from './voolo-register-header/voolo-regi
       PluralTranslatePipe,
       CheckoutConfirmPinComponent,
       SmallImageWrapperComponent,
-      VooloRegisterHeaderComponent
+      VooloRegisterHeaderComponent,
+      ChooseBpnlComponent
   ],
     exports: [
         LoadingComponent,

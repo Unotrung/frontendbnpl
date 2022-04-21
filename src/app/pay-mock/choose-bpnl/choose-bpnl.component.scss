@@ -1,0 +1,23 @@
+.no-margin {
+  margin: 0;
+}
+.bnpl-wrapper{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: start;
+  align-items: center;
+  flex: 1;
+  gap: 12px;
+}
+
+.logo-wrapper {
+  width: 142px;
+  height: 42px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.text-fill {
+  flex: 1;
+}
