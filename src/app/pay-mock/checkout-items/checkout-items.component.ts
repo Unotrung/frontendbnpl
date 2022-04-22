@@ -22,8 +22,8 @@ export class CheckoutItemsComponent implements OnInit {
   ngOnInit(): void {
     this.items.forEach(item => {
       console.log(item)
-      this.sumPriceItem += item.price
-      this.sumShipFee += item.shipFee
+      this.sumPriceItem += +item.price
+      this.sumShipFee += +item.shipFee
     })
     this.sum = this.sumPriceItem + this.sumShipFee
   }

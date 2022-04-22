@@ -36,7 +36,7 @@
             <div fxLayout="row" appMarginTop="25">
                 <div class="block-info">
                     <div class="info-title">{{'label.phoneNumber' | translate}}</div>
-                    <input (keypress)="keyPress($event, InputType.number)" type="text" class="input-global narrow-input-info"
+                    <input #phone (keypress)="keyPress($event, InputType.number)" type="text" class="input-global narrow-input-info"
                            formControlName="phone"
                            appMarginTop="5"
                            [ngClass]="{ 'input-invalid': (f['phone'].touched || f['phone'].dirty) && f['phone'].errors }">

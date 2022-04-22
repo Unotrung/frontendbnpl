@@ -2,9 +2,9 @@
     <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start" appMarginTop="10" >
         {{'items.header' | translate}}
     </div>
-    <ng-container *ngFor="let item of items">
+<!--    <ng-container *ngFor="let item of items">-->
         <app-checkout-item *ngFor="let item of items" [item]="item"></app-checkout-item>
-    </ng-container>
+<!--    </ng-container>-->
 
 <!--    <mat-divider></mat-divider>-->
     <ng-container *ngIf="discount">
