@@ -3,10 +3,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {NCardSide, PictureService} from "../picture.service";
 import {
     AbstractControl,
-    AsyncValidatorFn,
     FormControl,
     ValidationErrors,
-    ValidatorFn,
     Validators
 } from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
@@ -49,7 +47,7 @@ export class PictureSelfieComponent implements OnInit {
         this.citizenId = new FormControl(citizenId, {
             validators:
                 [
-                    Validators.pattern(/\b\d{9}\b|\b\d{12}\b/g),
+                    Validators.pattern(/\b\d{9}\b|\b\d{12}\b/),
                     Validators.required],
             asyncValidators: [
                 this.validatorNidExist.bind(this)

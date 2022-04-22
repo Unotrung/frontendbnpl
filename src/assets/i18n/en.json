@@ -1,15 +1,15 @@
 {
 	"button": {
 		"back": "Back",
-		"confirm": "CONFIRM",
-		"continue": "CONTINUE",
+		"confirm": "Confirm",
+		"continue": "Comtinue",
 		"more": "More",
 		"reEnterNid": "Re-enter ID Card number",
 		"reshot": "Capture again",
-		"retry": "RETRY",
-		"sendOTP": "SEND OTP",
-		"signNow": "SIGN UP NOW",
-		"turnBackToCart": "BACK TO CART"
+		"retry": "Retry",
+		"sendOTP": "Send OTP",
+		"signNow": "Sign up now",
+		"turnBackToCart": "Back to cart"
 	},
 	"checkout": {
 		"buySuccess": "Congratulations on your successful purchase",
@@ -145,6 +145,7 @@
 		"invalid": "Invalid OTP code",
 		"networkError": "The registration process is interrupted. Please come back in 24 hours",
 		"notReceive": "Didn't receive OTP",
+		"pleaseEnter": "Please enter OTP",
 		"resend": "Resend OTP",
 		"resetFail": "Pin code reset failed. Please come back in 24 hours"
 	},

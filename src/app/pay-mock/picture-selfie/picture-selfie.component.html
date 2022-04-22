@@ -40,9 +40,7 @@
         </div>
         <div *ngIf="pictureService.selfieImageComplete$ | async" class="image-frame">
             <img [src]="pictureService.selfieImage"
-                 class="image-blurred-edge"
-                 height="235"
-                 width="305">
+                 class="image-blurred-edge">
             <div class="circle-red" (click)="startCaptureImage()">
             </div>
         </div>
@@ -52,7 +50,7 @@
          *ngIf="!(pictureService.selfieImageComplete$ | async)">
         <img fxFlexAlign="center" width="38" height="38" alt="" src="assets/images/camera1.png">
     </div>
-    <div appMarginTop="34" class="picture-selfie-overlay" *ngIf="pictureService.selfieImageComplete$ | async">
+    <div appMarginTop="34" class="picture-selfie-overlay image-selfie" *ngIf="pictureService.selfieImageComplete$ | async">
         <img class="image-small" [src]="pictureService.selfieImage" alt="">
         <img class="checked-mark" src="assets/images/checkedMark.png">
         <!--        <mat-icon appMarginTop="8" (click)="onDeleteImage()">delete</mat-icon>-->
@@ -85,8 +83,7 @@
     <button class="payment-button"
             appMarginTop="36"
             appMarginBottom="32"
-            [disabled]="!(pictureService.selfieImageComplete$ | async) || citizenId.errors && (citizenId.dirty || citizenId.touched)
-               && (citizenId.errors['required'] || citizenId.errors['pattern'] || citizenId.errors['nidExist'])"
+            [disabled]="!(pictureService.selfieImageComplete$ | async) || citizenId.errors"
             (click)="onSelfieContinue()">
         <span>{{'button.continue' | translate}}</span>
     </button>

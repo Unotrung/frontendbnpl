@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {BehaviorSubject} from "rxjs";
 import {LoadingService} from "../loading.service";
 import {AuthBnplService} from "../auth-bnpl.service";
 import {CheckoutService} from "../checkout.service";
 import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
+import {VerifyPinChildComponent} from "../verify-pin-child/verify-pin-child.component";
 
 @Component({
   selector: 'app-checkout-confirm-pin',
@@ -13,6 +14,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 })
 export class CheckoutConfirmPinComponent implements OnInit {
 
+  @ViewChild(VerifyPinChildComponent) pinChild!: VerifyPinChildComponent
   pinCode$ : BehaviorSubject<string>
   pinFails = 0
 
@@ -41,6 +43,7 @@ export class CheckoutConfirmPinComponent implements OnInit {
             }
             else {
               this.pinFails ++
+              this.pinChild.resetCode()
               // this.checkoutService.checkoutFinish$.next(false)
             }
           },
@@ -48,6 +51,7 @@ export class CheckoutConfirmPinComponent implements OnInit {
             console.log(error)
             this.loadingService.loading$.next(false)
             this.pinFails ++
+            this.pinChild.resetCode()
             // this.checkoutService.checkoutFinish$.next(false)
             // this.router.navigate(['/pay-mock/checkout-finish']).then()
           },

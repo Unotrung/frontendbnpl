@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthBnplService} from "../auth-bnpl.service";
 import {LoadingService} from "../loading.service";
 import {MessageService} from "../message.service";
 import {MessageReason} from "../message";
 import {TranslateService} from "@ngx-translate/core";
+import {VerifyPinChildComponent} from "../verify-pin-child/verify-pin-child.component";
 
 @Component({
   selector: 'app-verify-pin',
@@ -12,6 +13,8 @@ import {TranslateService} from "@ngx-translate/core";
   styleUrls: ['./verify-pin.component.scss']
 })
 export class VerifyPinComponent implements OnInit {
+
+  @ViewChild(VerifyPinChildComponent) pinChild!: VerifyPinChildComponent
 
   pin: string = '';
   pinFails = 0
@@ -46,6 +49,7 @@ export class VerifyPinComponent implements OnInit {
         this.loadingService.loading$.next(false)
         if (!data['status']) {
           this.pinFails ++
+          this.pinChild.resetCode()
           // this.openDialogFailPinCode()
         }
       },
@@ -53,6 +57,7 @@ export class VerifyPinComponent implements OnInit {
         this.loadingService.loading$.next(false)
         console.log(error)
         this.pinFails ++
+        this.pinChild.resetCode()
         // this.openDialogFailPinCode()
       },
       complete: () => {

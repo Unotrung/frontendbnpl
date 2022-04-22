@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Optional, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Optional, Output, ViewChild, ViewChildren} from '@angular/core';
 import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
+import {CodeInputComponent} from "angular-code-input";
 
 @Component({
   selector: 'app-verify-pin-child',
@@ -9,12 +10,17 @@ import {MatDialogRef} from "@angular/material/dialog";
 })
 export class VerifyPinChildComponent implements OnInit {
 
+  @ViewChild('codeInput') codeInput! : CodeInputComponent
+
   @Output() pinCode = new EventEmitter<string>()
   @Input() popUp = false
   @Input() pinFails = 0
   pinDirty = false
   pin = ''
   enterNewPin = false
+
+
+
   constructor(
       @Optional() private dialogRef: MatDialogRef<VerifyPinChildComponent>,
       private router: Router
@@ -35,6 +41,10 @@ export class VerifyPinChildComponent implements OnInit {
 
   // this called only if user entered full code
   onCodeCompleted(code: string) {
+  }
+
+  resetCode(){
+    this.codeInput.reset()
   }
 
   onForgotPin(){

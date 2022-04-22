@@ -122,3 +122,13 @@ ul {
 ul {
   margin-block-start: 0;
 }
+
+.height-auto {
+  height: auto !important;
+}
+
+.image-preview {
+  width: 256px;
+  height: auto;
+  object-fit: fill;
+}

@@ -1,15 +1,15 @@
 {
 	"button": {
 		"back": "Trở về",
-		"confirm": "XÁC NHẬN",
-		"continue": "TIẾP TỤC",
+		"confirm": "Xác nhận",
+		"continue": "Tiếp tục",
 		"more": "Xem thêm",
 		"reEnterNid": "Điền lại số CMND/CCCD",
 		"reshot": "Chụp lại",
 		"retry": "THỬ LẠI",
-		"sendOTP": "GỞI OTP",
-		"signNow": "KÝ NGAY",
-		"turnBackToCart": "QUAY LẠI GIỎ HÀNG"
+		"sendOTP": "Gởi OTP",
+		"signNow": "Ký ngay",
+		"turnBackToCart": "Quay lại giỏ hàng"
 	},
 	"checkout": {
 		"autoBack": "Tự động trở lại trang mua hàng sau 15s",
@@ -144,6 +144,7 @@
 		"invalid": "Mã OTP không hợp lệ",
 		"networkError": "Quá trình đăng ký bị gián đoạn. Vui lòng trở lại sau 24h",
 		"notReceive": "Không nhận được OTP",
+		"pleaseEnter": "Vui lòng nhập mã OTP",
 		"resend": "Gởi lại OTP",
 		"resetFail": "Quá trình cài đặt lại mã pin không thành công. Vui lòng trở lại sau 24h"
 	},

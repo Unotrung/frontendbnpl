@@ -1,7 +1,7 @@
 <div class="global-wrapper">
     <img src="../../../assets/images/voolo-logo.png" alt="FE Credit" width="179" height="35" appMarginBottom="42"/>
 <!--    <p class="margin-top-16 payment-text" appMarginTop="5" >Slogan - FEC Content Team to Update</p>-->
-    <app-verify-pin-child (pinCode)="onCodeChanged($event)" [pinFails]="pinFails"></app-verify-pin-child>
+    <app-verify-pin-child #pinChild (pinCode)="onCodeChanged($event)" [pinFails]="pinFails"></app-verify-pin-child>
     <button class="payment-button"
             appMarginTop="32"
             appMarginBottom="32"
