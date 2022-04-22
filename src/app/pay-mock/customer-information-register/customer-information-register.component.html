@@ -155,16 +155,14 @@
                 <input class="input-global" type="text"
                        [ngClass]="{'input-invalid': (f['personal_title_ref'].touched || f['personal_title_ref'].dirty) && f['personal_title_ref'].errors}"
                        appMarginTop="5"
-                       matInput
                        formControlName="personal_title_ref"
-                       onClick="this.setSelectionRange(0, this.value.length)"
-                       [matAutocomplete]="autoPersonalTitle">
+                       onClick="this.setSelectionRange(0, this.value.length)">
                 <span appMarginTop="5"></span>
-                <mat-autocomplete autoActiveFirstOption #autoPersonalTitle="matAutocomplete">
-                    <mat-option *ngFor="let option of personalTitleFilterOptions | async" [value]="option">
-                        {{option}}
-                    </mat-option>
-                </mat-autocomplete>
+<!--                <mat-autocomplete autoActiveFirstOption #autoPersonalTitle="matAutocomplete">-->
+<!--                    <mat-option *ngFor="let option of personalTitleFilterOptions | async" [value]="option">-->
+<!--                        {{option}}-->
+<!--                    </mat-option>-->
+<!--                </mat-autocomplete>-->
             </div>
             <div class="error-text"
                  *ngIf="(f['personal_title_ref'].touched || f['personal_title_ref'].dirty) && f['personal_title_ref'].errors">
@@ -192,8 +190,17 @@
                 <span appMarginTop="5"></span>
             </div>
 
-            <div class="error-text" *ngIf="(f['phone_ref'].touched || f['phone_ref'].dirty) && f['phone_ref'].errors">
-                <span>{{'customer.refPhone' | translate}}</span>
+            <div class="error-text" *ngIf="(f['phone_ref'].touched || f['phone_ref'].dirty) && f['phone_ref'].errors && f['phone_ref'].errors['required']">
+                <span>{{'error.phone.empty' | translate}}</span>
+            </div>
+            <div class="error-text" *ngIf="(f['phone_ref'].touched || f['phone_ref'].dirty) && f['phone_ref'].errors && f['phone_ref'].errors['pattern']">
+                <span>{{'error.phone.wrongFormat' | translate}}</span>
+            </div>
+            <div class="error-text" *ngIf="(f['phone_ref'].touched || f['phone_ref'].dirty) && f['phone_ref'].errors && (f['phone_ref'].errors['minLength'] || f['phone_ref'].errors['maxLength'])">
+                <span>{{'error.phone.wrongLength10' | translate}} {{'error.phone.wrongLength11' | translate}}</span>
+            </div>
+            <div class="error-text" *ngIf="(f['phone_ref'].touched || f['phone_ref'].dirty) && f['phone_ref'].errors && f['phone_ref'].errors['phoneDuplicate']">
+                <span>{{'error.phone.duplicate' | translate}}</span>
             </div>
         </div>
     </div>

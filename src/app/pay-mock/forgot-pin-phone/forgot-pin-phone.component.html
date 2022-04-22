@@ -1,25 +1,16 @@
-<div fxLayout="column" fxLayoutAlign="center center">
-    <img src="assets/images/FE-Credit.png" width="155" height="55">
-    <div class="global-box" fxLayout="column" fxLayoutAlign="start center" appMarginTop="62">
-        <div class="phone-text-title" appMarginTop="23">
+<div class="global-wrapper global-box">
+    <img src="../../../assets/images/voolo-logo.png" alt="FE Credit" width="179" height="35" appMarginTop="30" appMarginBottom="30"/>
+<!--    <div class="global-box" fxLayout="column" fxLayoutAlign="start center" appMarginTop="62">-->
+        <div class="paragraph-text text-big-20 text-bold-2">
             <p>{{'label.phoneNumber' | translate}}</p>
         </div>
-        <input class="global-input" appMarginTop="26" [formControl]="phoneForm">
-        <div fxFlexAlign="start">
-            <div *ngIf="phoneForm.errors && phoneForm.errors['required']">
-                <span class="error">{{'phone.empty' | translate}}</span>
-            </div>
-            <div *ngIf="phoneForm.errors && (phoneForm.errors['pattern']
-            || phoneForm.errors!['maxlength']
-            || phoneForm.errors!['minlength'])">
-                <span class="error">{{'phone.wrongFormat' | translate}}</span>
-            </div>
+        <div class="input-wrapper" appMarginTop="40">
+            <input class="input-global"[formControl]="phoneForm">
         </div>
-        <div appMarginTop="32" appMarginBottom="33">
             <button class="payment-button"
                     appMarginTop="36"
-                    [disabled]="phoneForm.invalid" (click)="onForgotPhoneContinue()"><span>{{'button.continue' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span>
+                    appMarginBottom="40"
+                    [disabled]="phoneForm.invalid" (click)="onForgotPhoneContinue()"><span>{{'button.continue' | translate}}</span>
             </button>
-        </div>
-    </div>
+<!--    </div>-->
 </div>

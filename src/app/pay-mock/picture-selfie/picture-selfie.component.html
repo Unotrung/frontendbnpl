@@ -13,8 +13,7 @@
         <input type="text" class="input-global"
                (keypress)="keyPress($event, InputType.number)"
                [formControl]="citizenId"
-               [ngClass]="{ 'input-invalid': citizenId.errors && (citizenId.dirty || citizenId.touched)
-               && (citizenId.errors['required'] || citizenId.errors['pattern'] || citizenId.errors['nidExist']) }">
+               [ngClass]="{ 'input-invalid': citizenId.errors && (citizenId.dirty || citizenId.touched)}">
         <span></span>
     </div>
     <div class="error-text" appMarginTop="8"
@@ -27,7 +26,7 @@
     </div>
     <div class="error-text" appMarginTop="8"
          *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.errors && citizenId.errors['nidExist']">
-        {{'error.nCard.wrongFormat' | translate}}
+        {{'error.nCard.nidExist' | translate}}
     </div>
 
 

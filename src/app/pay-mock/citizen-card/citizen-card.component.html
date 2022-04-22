@@ -51,17 +51,14 @@
             <p class="citizen-image-text" >{{'nCard.nCardFront' | translate}}</p>
             <p class="citizen-image-text" >{{'nCard.nCardBack' | translate}}</p>
         </div>
-        <div class="warning" *ngIf="!((pictureService.citizenFrontImageComplete$ | async) && (pictureService.citizenBackImageComplete$ | async))"
-             fxFlexAlign="start" fxLayout="row" fxLayoutAlign="start center"
+        <div class="warning paragraph-text paragraph-text-bold" *ngIf="!((pictureService.citizenFrontImageComplete$ | async) && (pictureService.citizenBackImageComplete$ | async))"
              appMarginBottom="10"
              appMarginTop="10" (click)="instruction = !instruction">
 <!--            <img src="assets/images/warning.png" width="14" height="14">-->
 <!--            <div class="paragraph-text paragraph-text-bold">-->
 <!--                <ng-container>{{'nCard.notShot' | translate}} </ng-container> {{getTextSideLocalize(NCardSide.front)}}{{getTextSideLocalize(NCardSide.back)}} <ng-container> {{'nCard.name' | translate}}</ng-container> -->
 <!--            </div>-->
-            <div class="paragraph-text paragraph-text-bold">
                 {{'nCard.guideTwo' | translate}}:
-            </div>
         </div>
         <ng-container *ngIf="!((pictureService.citizenFrontImageComplete$ | async) && (pictureService.citizenBackImageComplete$ | async)) && instruction">
 <!--        <div class="picture-selfie-notice" fxFlexAlign="start" >-->

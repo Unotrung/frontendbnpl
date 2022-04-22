@@ -11,6 +11,13 @@
 :host {
   width: 100%;
 }
+.item-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 16px;
+}
 
 .item-title {
   font-family: 'Montserrat Alternates';

@@ -55,7 +55,17 @@
 		"emptySex": "Vui lòng chọn giới tính",
 		"nCard": {
 			"empty": "Vui lòng không để trống số CMND/ CCCD",
-			"wrongFormat": "CMND/ CCCD không hợp lệ"
+			"nidExist": "Số CMND/ CCCD đã được sử dụng",
+			"wrongFormat": "CMND/ CCCD không hợp lệ",
+			"wrongNidPhone": "Sai số CMND/CCCD"
+		},
+		"phone": {
+			"block": "Số điện thoại này đã bị giới hạn/khoá",
+			"duplicate": "Số điện thoại tham chiếu trùng số điện thoại đăng ký",
+			"empty": "Vui lòng nhập số điện thoại",
+			"wrongFormat": "Số điện thoại không hợp lệ",
+			"wrongLength10": "Số điện thoại phải 10 chữ số",
+			"wrongLength11": "hoặc 11 chữ số"
 		}
 	},
 	"esign": {
@@ -124,7 +134,7 @@
 		"guideTwo": "Hướng dẫn chụp đầy đủ 2 ảnh",
 		"nCardBack": "CMND mặt sau",
 		"nCardFront": "CMND mặt trước",
-		"name": "CMND/CCCD",
+		"name": "CMND/ CCCD",
 		"notShot": "Chưa chụp",
 		"title": "Chụp ảnh CMND/CCCD 2 mặt"
 	},
@@ -164,7 +174,7 @@
 		"resetSuccess": "Chúc mừng bạn đã thay đổi mã pin thành công"
 	},
 	"pinForgot": {
-		"enterNid": "Nhập số CMND/CCCD"
+		"enterNid": "Vui lòng nhập số CMND/CCCD"
 	},
 	"register": {
 		"inputLabel": "Vui lòng nhập điện thoại để tiếp tục"
@@ -190,7 +200,8 @@
 	"tenor": {
 		"convertFee": "Phí chuyển đổi",
 		"itemPrice": "Giá sản phẩm",
-		"paymentDue": "Thời gian thanh toán"
+		"paymentDue": "Thời gian thanh toán",
+		"tenor": "Kì hạn"
 	},
 	"text": {
 		"back": "để trở lại",

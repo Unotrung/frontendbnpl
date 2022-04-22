@@ -5,7 +5,7 @@
          appMarginTop="12" (click)="onTenorClick()">
         <div class="margin-top-default" fxFlexFill fxLayout="row" fxLayoutAlign="space-between center">
             <div class="paragraph-text paragraph-text-small text-bold-2">
-                {{'tenor.tenor' | translate}} <span>{{index + 1}}</span>
+                {{'tenor.tenor' | translate}} <span>{{index ? index + 1 : ''}}</span>
             </div>
             <div class="tenor-price">
                 {{priceTenor | currency:currencyCode : ''}} VND

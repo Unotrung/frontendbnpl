@@ -54,7 +54,19 @@
 		"emptySex": "Please select your gender",
 		"nCard": {
 			"empty": "Vui lòng không để trống số CMND/ CCCD",
-			"wrongFormat": "CMND/ CCCD không hợp lệ"
+			"nidExist": "Số CMND/ CCCD đã được sử dụng",
+			"wrongFormat": "CMND/ CCCD không hợp lệ",
+			"wrongNidPhone": "Wrong ID Card number"
+
+		},
+		"phone": {
+			"block": "This number is limited/blocked",
+			"duplicate": "Reference phone number is duplicate register phone number",
+			"empty": "Please enter the phone number",
+			"wrongFormat": "Invalid phone number",
+			"wrongLength10": "Phone number must be 10 digits",
+			"wrongLength11": "or 11 digits"
+
 		}
 	},
 	"esign": {
@@ -163,7 +175,7 @@
 		"resetSuccess": "Congratulations, you have successfully changed your pin code"
 	},
 	"pinForgot": {
-		"enterNid": "Enter ID Card number"
+		"enterNid": "Please enter ID Card number"
 	},
 	"register": {
 		"inputLabel": "Please enter phone to continue"
@@ -189,7 +201,8 @@
 	"tenor": {
 		"convertFee": "Conversion fee",
 		"itemPrice": "Product price",
-		"paymentDue": "Payment time"
+		"paymentDue": "Payment time",
+		"tenor": "Tenor"
 	},
 	"text": {
 		"back": "to comeback",

@@ -95,7 +95,7 @@ const routes: Routes = [
             },
             {
                 path: 'checkout-confirm', component: CheckoutConfirmComponent
-                // , canActivate: [AuthBnplGuard]
+                , canActivate: [AuthBnplGuard]
             },
             {
                 path: 'checkout-finish', component: CheckoutFinishComponent

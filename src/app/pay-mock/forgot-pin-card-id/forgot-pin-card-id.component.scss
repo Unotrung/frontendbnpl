@@ -1,27 +1,3 @@
 .global-box {
-  padding: 0 32px 0 32px;
-}
-
-.text-title {
-  font-family: 'Montserrat Alternates';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 32px;
-  /* identical to box height, or 160% */
-  display: flex;
-  align-items: center;
-
-  /* Black/black500 */
-  color: rgba(0, 0, 0, 0.8);
-}
-.input-label {
-  font-family: 'Montserrat Alternates';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 16px;
-
-  /* Ink/ink500 */
-  color: #04113E;
+  padding: 0 40px 0 40px;
 }

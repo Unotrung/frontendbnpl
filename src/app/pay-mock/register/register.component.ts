@@ -49,9 +49,8 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
         this.clearOldData()
         this.registerForm = this.formBuilder.group({
-            phonenumber: ['',{validators: [ Validators.required,
-                Validators.pattern(/^(09|03|07|08|05)+([0-9]{8}$)/g),
-                Validators.minLength(10), Validators.maxLength(10),
+            phonenumber: ['',{
+                validators: [ Validators.required, Validators.pattern(/^(09|03|07|08|05)+([0-9]{8}$)/g), Validators.minLength(10), Validators.maxLength(10),
                 this.validatorBlockPhone()
                 ], updateOn: 'blur' } ]
         });

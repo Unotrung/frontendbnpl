@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from "@angular/forms";
 import {LocationAddressService} from "../location-address.service";
 import {BehaviorSubject, map, Observable, startWith} from "rxjs";
 import {City, District, Ward} from "../vietnamLocation";
@@ -277,8 +277,8 @@ export class CustomerInformationRegisterComponent implements OnInit {
             [Validators.required]),
         personal_title_ref: new FormControl('', {validators: [Validators.required], updateOn: 'blur'}),
         name_ref: new FormControl('', {validators: [Validators.required], updateOn: 'blur'}),
-        phone_ref: new FormControl('', {validators: [Validators.required, Validators.pattern(/^(09|03|07|08|05)+([0-9]{8}$)/g),
-          Validators.minLength(10), Validators.maxLength(10)], updateOn: 'blur'})
+        phone_ref: new FormControl('', {validators: [Validators.required, Validators.pattern(/^(0)+(([0-9]{10}|([0-9]{9}))$)/g),
+          Validators.minLength(10), Validators.maxLength(11), this.validatorRefPhone(this.f ? this.f['phone'].value : '')], updateOn: 'blur'})
       })
       this.f['phone_ref'].valueChanges.subscribe(value => {
         if (value.length > 10) {
@@ -406,6 +406,10 @@ export class CustomerInformationRegisterComponent implements OnInit {
         this.selectedWard$.next(value)
       }
     })
+  }
+
+  validatorRefPhone(phone: string ): ValidatorFn {
+    return (control: AbstractControl) : ValidationErrors | null => phone === control.value ? {'phoneDuplicate': true} : null
   }
 
   onContinue() {
