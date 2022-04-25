@@ -233,8 +233,8 @@ img.checked-mark {
   width: 14px;
   height: 14px;
   position: absolute;
-  bottom: 0;
-  right: 4px;
+  bottom: -4px;
+  right: 0px;
 }
 img.checked-mark-flex {
   width: 14px;
@@ -243,6 +243,13 @@ img.checked-mark-flex {
   margin-top: 40px;
   margin-left: 40px;
 }
+
+mat-icon.recycle-image {
+  position: absolute;
+  margin-top: 70px;
+  margin-left: 10px;
+}
+
 .white-box {
   background: #FFFFFF;
   //width: 348px;

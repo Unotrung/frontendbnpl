@@ -15,7 +15,7 @@
         <div class='paragraph-text text-bold-2 text-big-20' appMarginTop="16">
             <p class="title-text" >{{'nCard.title' | translate}}</p>
         </div>
-        <div class="outer-frame-box" [ngClass]="{'height-auto': pictureService.currentShot$ | async}" fxLayout="column" fxLayoutAlign="center center" appMarginTop="8" >
+        <div class="outer-frame-box" [ngClass]="{'height-auto frame-padding': pictureService.currentShot$ | async}" fxLayout="column" fxLayoutAlign="center center" appMarginTop="8" >
             <div class="inner-frame-box" [ngClass]="{'height-auto': pictureService.currentShot$ | async}">
                 <div *ngIf="pictureService.currentShot$ | async" >
                     <img [src]="pictureService.imageCurrentShot" class="image-preview">
@@ -27,20 +27,18 @@
             <div class="card-box" fxLayout="column" fxLayoutAlign="space-around center">
                 <img *ngIf="!(pictureService.citizenFrontImageComplete$ | async)" fxFlexAlign="center" width="38" height="38" alt="" src="assets/images/camera1.png">
                 <ng-container *ngIf="pictureService.citizenFrontImageComplete$ | async">
-                    <img appMarginTop="8" width="92" height="52" alt="" [src]="pictureService.citizenFrontImage">
-                    <mat-icon appMarginTop="8" (click)="onDeleteImage(NCardSide.front)">delete</mat-icon>
+                    <img class="image-small" [src]="pictureService.citizenFrontImage">
+                    <mat-icon class="recycle-image" (click)="onDeleteImage(NCardSide.front)">delete</mat-icon>
                     <img class="checked-mark-flex" src="assets/images/checkedMark.png">
                 </ng-container>
 
             </div>
             <div class="card-box" fxLayout="column" fxLayoutAlign="space-around center">
-                <ng-container *ngIf="!(pictureService.citizenBackImageComplete$ | async)">
-                    <img fxFlexAlign="center" width="38" height="38" alt="" src="assets/images/camera1.png">
-                </ng-container>
+                <img *ngIf="!(pictureService.citizenBackImageComplete$ | async)" fxFlexAlign="center" width="38" height="38" alt="" src="assets/images/camera1.png">
 
                 <ng-container *ngIf="pictureService.citizenBackImageComplete$ | async">
-                    <img appMarginTop="8" width="92" height="52" alt="" [src]="pictureService.citizenBackImage">
-                    <mat-icon appMarginTop="8" (click)="onDeleteImage(NCardSide.back)">delete</mat-icon>
+                    <img class="image-small" [src]="pictureService.citizenBackImage">
+                    <mat-icon class="recycle-image" (click)="onDeleteImage(NCardSide.back)">delete</mat-icon>
                     <img class="checked-mark-flex" src="assets/images/checkedMark.png">
                 </ng-container>
             </div>

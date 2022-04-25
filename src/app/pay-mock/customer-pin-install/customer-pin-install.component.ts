@@ -56,6 +56,7 @@ export class CustomerPinInstallComponent implements OnInit {
         this.authService.user$.next({...this.authService.user$.getValue(), pin: this.pinCode})
         this.authService.register().subscribe({
             next: data => {
+                console.log('register successful, go to next screen')
                 this.loadingService.loading$.next(false)
                 if (data['status']) {
                     // @ts-ignore

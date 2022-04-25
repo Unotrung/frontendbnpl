@@ -81,6 +81,7 @@
   outline-offset: -16px;
   border-radius: 10px;
   object-fit: fill;
+  display: block;
 }
 .circle-red {
   width: 42px;
@@ -105,11 +106,12 @@
   //align-items: center;
   background-color: white;
   border: 3px solid #EEEEEE;
-  border-radius: 30px;
+  border-radius: 20px;
   position: relative;
 }
 .image-selfie {
   height: auto !important;
+  background: rgba(247, 247, 247, 0.85) !important;
 }
 
 .picture-selfie-notice {
@@ -137,9 +139,10 @@ ul {
 }
 
 .image-small {
-  width: 100px;
+  width: 94px;
   height: auto;
-  border-radius: 30px;
+  border-radius: 20px;
   object-fit: fill;
+  display: block;
 }
 

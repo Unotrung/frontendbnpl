@@ -1,41 +1,50 @@
-<div fxLayout="column" fxLayoutAlign="center center">
-    <img height="55" src="assets/images/FE-Credit.png" width="155">
-    <div appMarginTop="33" class="enter-info-text" >
+<div class="global-wrapper global-box">
+    <img src="../../../assets/images/voolo-logo.png" alt="FE Credit" width="179" height="35" appMarginTop="30"
+         appMarginBottom="30"/>
+    <div class="paragraph-text text-big-20 text-bold-2" appMarginBottom="40">
         {{'pin.reinstall' | translate}}
     </div>
-    <div appMarginTop="39" class="global-box" fxLayout="column" fxLayoutAlign="start center">
-        <div fxFlexAlign="start" appMarginTop="16">
-            <p class="pin-text-number">{{'label.pinCode' | translate}}</p>
-        </div>
-        <div appElDimension appMarginTop="8" width="250">
-            <code-input (codeChanged)="onPinCodeChanged($event)"
-                        (codeCompleted)="onPinCodeCompleted($event)"
-                        [codeLength]="4"
-                        [isCodeHidden]="true">
-            </code-input>
-        </div>
-        <div appElDimension appMarginTop="32" fxFlexAlign="start">
-            <p class="pin-text-number" >{{'pin.reEnter' | translate}}</p>
-        </div>
-        <div appElDimension appMarginTop="8" width="250" appMarginBottom="16">
-            <code-input (codeChanged)="onVerifyPinCodeChange($event)"
-                        (codeCompleted)="onVerifyPinCodeComplete($event)"
-                        [codeLength]="4"
-                        [isCodeHidden]="true">
-            </code-input>
-        </div>
-        <div *ngIf="pinCode !== verifyPinCode"  appMarginTop="16" fxFlexAlign="start">
-            <p class="pin-text-number red-star" >* {{'pin.notMatch' | translate}}</p>
-        </div>
+    <!--    <div appMarginTop="39" class="global-box" fxLayout="column" fxLayoutAlign="start center">-->
+    <!--        <div fxFlexAlign="start" appMarginTop="16">-->
+    <!--            <p class="pin-text-number">{{'label.pinCode' | translate}}</p>-->
+    <!--        </div>-->
+    <div class="paragraph-text text-center" appMarginBottom="8">
+        {{'label.pinCode' | translate}}
     </div>
-    <div>
-        <button class="payment-button"
-                appMarginTop="32"
-                appMarginBottom="32"
-                [disabled]="pinCode.length < 4 || verifyPinCode.length < 4 || pinCode !== verifyPinCode"
-                (click)="onFinishPinInstall()"><span>{{'button.continue' | translate}}</span><span>&nbsp;&nbsp;&nbsp;></span>
-        </button>
+    <!--        <div appElDimension appMarginTop="8" width="250">-->
+    <code-input (codeChanged)="onPinCodeChanged($event)"
+                (codeCompleted)="onPinCodeCompleted($event)"
+                [codeLength]="4"
+                [isCodeHidden]="true">
+    </code-input>
+    <div appMarginBottom="32"></div>
+    <!--        </div>-->
+    <!--        <div appElDimension appMarginTop="32" fxFlexAlign="start">-->
+    <!--            <p class="pin-text-number" ></p>-->
+    <!--        </div>-->
+    <div class="paragraph-text text-center" appMarginBottom="8">
+        {{'pin.reEnter' | translate}}
     </div>
-
+    <!--        <div appElDimension appMarginTop="8" width="250" appMarginBottom="16">-->
+    <code-input (codeChanged)="onVerifyPinCodeChange($event)"
+                (codeCompleted)="onVerifyPinCodeComplete($event)"
+                [codeLength]="4"
+                [isCodeHidden]="true">
+    </code-input>
+    <!--        </div>-->
+    <div *ngIf="pinCode !== verifyPinCode" class="error-text" appMarginTop="8">
+        {{'pin.notMatch' | translate}}
+    </div>
+    <button class="payment-button"
+            appMarginTop="32"
+            appMarginBottom="32"
+            [disabled]="pinCode.length < 4 || verifyPinCode.length < 4 || pinCode !== verifyPinCode"
+            (click)="onFinishPinInstall()"><span>{{'button.continue' | translate}}</span>
+    </button>
 </div>
+<!--    <div>-->
+
+<!--    </div>-->
+
+<!--</div>-->
 

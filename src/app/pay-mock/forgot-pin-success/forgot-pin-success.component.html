@@ -1,8 +1,8 @@
-<div fxLayout="column" fxLayoutAlign="start center">
-    <img alt="FE Credit" src="assets/images/LogoFeCredit.png"/>
-    <div class="box" fxLayout="column" fxLayoutAlign="start center">
-        <img src="../../../assets/images/SuccessFully.png" alt="" width="62" height="62" appMarginTop="200">
-        <div class="message" appMarginTop="20" >
+<div class="global-wrapper global-box">
+    <img src="../../../assets/images/voolo-logo.png" alt="FE Credit" width="179" height="35" appMarginTop="30" appMarginBottom="30"/>
+<!--    <div class="box" fxLayout="column" fxLayoutAlign="start center">-->
+        <img src="../../../assets/images/SuccessFully.png" alt="" width="62" height="62" appMarginTop="100">
+        <div class="paragraph-text text-center text-bold-2 text-big-20" appMarginTop="20" >
             {{'pin.resetSuccess' | translate}}
         </div>
         <button class="payment-button"
@@ -10,5 +10,5 @@
                 appMarginBottom="32"
                 (click)="onPinIChangeSuccessContinue()"><span>{{'button.continue' | translate}}</span>
         </button>
-    </div>
+<!--    </div>-->
 </div>

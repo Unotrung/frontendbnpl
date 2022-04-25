@@ -31,7 +31,6 @@
       position: relative;
     }
   }
-
 }
 .circle-red {
   width: 42px;
@@ -126,9 +125,20 @@ ul {
 .height-auto {
   height: auto !important;
 }
+.frame-padding {
+  padding: 20px;
+}
 
 .image-preview {
   width: 256px;
   height: auto;
   object-fit: fill;
+  display: block;
+}
+.image-small {
+  width: 80px;
+  height: auto;
+  //border-radius: 30px;
+  object-fit: fill;
+  display: block;
 }

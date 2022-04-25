@@ -15,7 +15,9 @@ import {Step} from "../step";
 export class ForgotPinOtpComponent implements OnInit {
 
   countdownComplete = false
+  otpCode = ''
   otpFails$: BehaviorSubject<number>
+  enterNewOTP = true
   @ViewChild('cd', { static: false }) private countdown!: CountdownComponent;
   @ViewChild('codeInput') codeInput !: CodeInputComponent;
   constructor(
@@ -43,18 +45,25 @@ export class ForgotPinOtpComponent implements OnInit {
   }
   // this called every time when user changed the code
   onCodeChanged(code: string) {
+    this.enterNewOTP = true
+    this.otpCode = code
   }
 
   // this called only if user entered full code
   onCodeCompleted(code: string) {
-    if (this.countdownComplete) {
-      this.otpFails$.next(this.otpFails$.getValue() + 1)
-      this.codeInput.reset()
-      return
-    }
+    this.otpCode = code
+    // if (this.countdownComplete) {
+    //   this.otpFails$.next(this.otpFails$.getValue() + 1)
+    //   this.codeInput.reset()
+    //   return
+    // }
+
+  }
+
+  verifyOTP(){
     this.loadingService.loading$.next(true)
     //todo Check if otp code is correct, then
-    this.authService.user$.next({...this.authService.user$.getValue(), otp: code})
+    this.authService.user$.next({...this.authService.user$.getValue(), otp: this.otpCode})
     console.log(this.authService.user$.getValue())
     this.authService.verifyOTPRequestPin().subscribe({
       next: data => {
@@ -65,13 +74,15 @@ export class ForgotPinOtpComponent implements OnInit {
         }
         else {
           this.otpFails$.next(this.otpFails$.getValue() + 1)
-          this.codeInput.reset()
+          this.enterNewOTP = false
+          // this.codeInput.reset()
         }
       },
       error: ({error}) => {
         this.loadingService.loading$.next(false)
         this.otpFails$.next(this.otpFails$.getValue() + 1)
-        this.codeInput.reset()
+        this.enterNewOTP = false
+        // this.codeInput.reset()
 
       },
       complete: () => {
@@ -80,6 +91,10 @@ export class ForgotPinOtpComponent implements OnInit {
     })
   }
 
+  exitOnFailOTP() {
+    this.authService.registerStep$.next(Step.register)
+    this.router.navigate(['pay-mock/register']).then()
+  }
   onCountdown(event: any){
     if (event.action === 'done') {
       this.countdownComplete = true;
