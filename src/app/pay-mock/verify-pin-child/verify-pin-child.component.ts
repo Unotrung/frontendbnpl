@@ -1,4 +1,14 @@
-import {Component, EventEmitter, Input, OnInit, Optional, Output, ViewChild, ViewChildren} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Optional,
+  Output, SimpleChanges,
+  ViewChild,
+  ViewChildren
+} from '@angular/core';
 import {Router} from "@angular/router";
 import {MatDialogRef} from "@angular/material/dialog";
 import {CodeInputComponent} from "angular-code-input";
@@ -8,7 +18,7 @@ import {CodeInputComponent} from "angular-code-input";
   templateUrl: './verify-pin-child.component.html',
   styleUrls: ['./verify-pin-child.component.scss']
 })
-export class VerifyPinChildComponent implements OnInit {
+export class VerifyPinChildComponent implements OnInit, OnChanges {
 
   @ViewChild('codeInput') codeInput! : CodeInputComponent
 
@@ -17,9 +27,7 @@ export class VerifyPinChildComponent implements OnInit {
   @Input() pinFails = 0
   pinDirty = false
   pin = ''
-  enterNewPin = false
-
-
+  enterNewPin = true
 
   constructor(
       @Optional() private dialogRef: MatDialogRef<VerifyPinChildComponent>,
@@ -54,6 +62,12 @@ export class VerifyPinChildComponent implements OnInit {
         this.dialogRef.close()
       }
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['pinFails']?.currentValue > 0) {
+      this.enterNewPin = false
+    }
   }
 
   // onVerifyPinContinue() {

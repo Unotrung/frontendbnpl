@@ -56,6 +56,7 @@ export class AuthBnplService {
   }
   register(): Observable<any> {
     const uri = `${environment.localAPIServer}v1/bnpl/personal/addInfoPersonal`;
+    console.log({...this.customerInfoService.customerInfo$.getValue(), pin: this.user$.getValue().pin })
     return this.http.post<any>(encodeURI(uri), {...this.customerInfoService.customerInfo$.getValue(), pin: this.user$.getValue().pin }).pipe(tap((data) =>{
       console.log(data)
       if (data && data['status']) {
@@ -218,16 +219,20 @@ export class AuthBnplService {
       if (data['data']['items']) {
         let items : any = []
         data['data']['items'].forEach((item: any) => {
-          items.push({
-            id: item._id,
-            name: item.name,
-            price: item.price,
-            shipFee: item.shipFee,
-            image: item.image,
-            description: item.description
-          })
-        } )
-        this.itemService.updateItemList(items)
+          if(item) {
+            items.push({
+              id: item._id,
+              name: item.name,
+              price: item.price,
+              shipFee: item.shipFee,
+              image: item.image,
+              description: item.description
+            })
+          }
+        })
+        if (items.length >= 1) {
+          this.itemService.updateItemList(items)
+        }
       }
     }
   }

@@ -1,4 +1,6 @@
+import {Observable} from "rxjs";
+
 export interface ProgressStep {
     id: number,
-    title: string
+    title: Observable<string>
 }

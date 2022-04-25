@@ -13,7 +13,7 @@
         <!--            <input class="pin-input-fill" type="number" maxlength="1">-->
         <!--            <input class="pin-input-fill" type="number" maxlength="1">-->
         <!--            <input class="pin-input" type="number" name="pin" maxlength="1">-->
-        <code-input #codeInput [ngClass]="{'code-input-error': (pinDirty && !pin) || pinFails }" [isCodeHidden]="true"
+        <code-input #codeInput [ngClass]="{'code-input-error': (pinDirty && !pin) || !enterNewPin }" [isCodeHidden]="true"
                     [codeLength]="4"
                     [isFocusingOnLastByClickIfFilled]="true"
                     (codeChanged)="onCodeChanged($event)"

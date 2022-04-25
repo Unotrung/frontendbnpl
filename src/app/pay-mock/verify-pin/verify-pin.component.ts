@@ -6,6 +6,8 @@ import {MessageService} from "../message.service";
 import {MessageReason} from "../message";
 import {TranslateService} from "@ngx-translate/core";
 import {VerifyPinChildComponent} from "../verify-pin-child/verify-pin-child.component";
+import {StepRegisterRestore} from "../step-register-restore";
+import {Step} from "../step";
 
 @Component({
   selector: 'app-verify-pin',
@@ -28,6 +30,9 @@ export class VerifyPinComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if (!this.authService.user$.getValue().phone) {
+      this.router.navigate(['pay-mock/register']).then()
+    }
   }
 
   // this called every time when user changed the code
@@ -43,6 +48,9 @@ export class VerifyPinComponent implements OnInit {
   onVerifyPinContinue() {
     //todo: check pin code is correct here and navigate to checkout
     this.authService.user$.next({...this.authService.user$.getValue(), pin: this.pin})
+    if (this.pinFails >= 5) {
+      this.router.navigate(['pay-mock/register']).then()
+    }
     this.loadingService.loading$.next(true)
     this.authService.login().subscribe({
       next: data => {
@@ -52,6 +60,40 @@ export class VerifyPinComponent implements OnInit {
           this.pinChild.resetCode()
           // this.openDialogFailPinCode()
         }
+         // console.log(data['data']['step'])
+        const step = data['data']['step']
+        // if (data['data']['step'] === StepRegisterRestore.registerSuccess) {
+        //   console.log('go to esign')
+        //   this.authService.registerStep$.next(Step.customerEsignConfirm)
+        //   this.router.navigate(['pay-mock/customer-esign-confirm']).then();
+        // }
+        // if (data['data']['step'] === StepRegisterRestore.kycComplete || data['data']['step'] === StepRegisterRestore.kycProcess) {
+          this.loadingService.loading$.next(true)
+          this.authService.getCustomerInfo().subscribe({
+            next: data => {
+              this.loadingService.loading$.next(false)
+              // console.log(data)
+              // console.log(step)
+              if (data['status']) {
+                if (step === StepRegisterRestore.kycComplete || step === StepRegisterRestore.kycProcess) {
+                this.router.navigate(['pay-mock/checkout']).then()
+                }
+                if (step === StepRegisterRestore.registerSuccess) {
+                  console.log('go to esign')
+                  this.authService.registerStep$.next(Step.customerEsignConfirm)
+                  this.router.navigate(['pay-mock/customer-esign-confirm']).then();
+                }
+              } else {
+                // fail to get customerInfo -> go to register
+                this.authService.registerStep$.next(Step.register)
+                this.router.navigate(['pay-mock/register']).then()
+              }
+            },
+            error: err => {
+              this.loadingService.loading$.next(false)
+            }
+          })
+        // }
       },
       error: ({error}) => {
         this.loadingService.loading$.next(false)
@@ -62,22 +104,28 @@ export class VerifyPinComponent implements OnInit {
       },
       complete: () => {
 
-        if (this.authService.isLoggedIn$.getValue()) {
-          this.loadingService.loading$.next(true)
-          this.authService.getCustomerInfo().subscribe({
-            next: data => {
-              this.loadingService.loading$.next(false)
-              console.log(data)
-              if (data['status']) {
-                this.router.navigate(['pay-mock/checkout']).then()
-              } else {
-              }
-            },
-            error: err => {
-              this.loadingService.loading$.next(false)
-            }
-          })
-        }
+        // if (this.authService.isLoggedIn$.getValue()) {
+        //   this.loadingService.loading$.next(true)
+        //   this.authService.getCustomerInfo().subscribe({
+        //     next: data => {
+        //       this.loadingService.loading$.next(false)
+        //       console.log(data)
+        //       if (data['status']) {
+        //         // if (data['data']['step'] === StepRegisterRestore.kycComplete) {
+        //             this.router.navigate(['pay-mock/checkout']).then()
+        //         // }
+        //
+        //       } else {
+        //         // fail to get customerInfo -> go to register
+        //         this.authService.registerStep$.next(Step.register)
+        //         this.router.navigate(['pay-mock/register']).then()
+        //       }
+        //     },
+        //     error: err => {
+        //       this.loadingService.loading$.next(false)
+        //     }
+        //   })
+        // }
       }
     })
 

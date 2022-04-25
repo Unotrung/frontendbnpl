@@ -15,7 +15,8 @@
     <code-input (codeChanged)="onPinCodeChanged($event)"
                 (codeCompleted)="onPinCodeCompleted($event)"
                 [codeLength]="4"
-                [isCodeHidden]="true">
+                [isCodeHidden]="true"
+                [ngClass]="{'code-input-error': pinCode.length === 4 && verifyPinCode.length === 4 && pinCode !== verifyPinCode}">
     </code-input>
     <div appMarginBottom="32"></div>
     <!--        </div>-->
@@ -29,10 +30,11 @@
     <code-input (codeChanged)="onVerifyPinCodeChange($event)"
                 (codeCompleted)="onVerifyPinCodeComplete($event)"
                 [codeLength]="4"
-                [isCodeHidden]="true">
+                [isCodeHidden]="true"
+                [ngClass]="{'code-input-error': pinCode.length === 4 && verifyPinCode.length === 4 && pinCode !== verifyPinCode}">
     </code-input>
     <!--        </div>-->
-    <div *ngIf="pinCode !== verifyPinCode" class="error-text" appMarginTop="8">
+    <div *ngIf="pinCode.length === 4 && verifyPinCode.length === 4 && pinCode !== verifyPinCode" class="error-text" appMarginTop="8">
         {{'pin.notMatch' | translate}}
     </div>
     <button class="payment-button"

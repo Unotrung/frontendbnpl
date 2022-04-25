@@ -279,18 +279,18 @@ export class CustomerInformationRegisterComponent implements OnInit {
         name_ref: new FormControl('', {validators: [Validators.required], updateOn: 'blur'}),
         phone_ref: new FormControl('', {
           validators: [Validators.required,
-            Validators.pattern(/^(0)+(([0-9]{10}|([0-9]{9}))$)/g),
+            Validators.pattern(/^(0)+(([0-9]{10}|([0-9]{9}))$)/),
             Validators.minLength(10),
-            Validators.maxLength(11),
-            this.validatorRefPhone(this.registerForm ? this.f['phone'].value : '')
+            Validators.maxLength(10),
+            this.validatorRefPhone(phone)
           ],
           updateOn: 'blur'})
       })
-      this.f['phone_ref'].valueChanges.subscribe(value => {
-        if (value.length > 10) {
-          this.f['phone_ref'].setValue(value.slice(0,10))
-        }
-      })
+      // this.f['phone_ref'].valueChanges.subscribe(value => {
+      //   if (value.length > 11) {
+      //     this.f['phone_ref'].setValue(value.slice(0,11))
+      //   }
+      // })
 
       this.cityFilteredOptions = this.f['city'].valueChanges.pipe(
           startWith(''),

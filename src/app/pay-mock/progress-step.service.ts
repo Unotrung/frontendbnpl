@@ -14,11 +14,11 @@ export class ProgressStepService {
   ) {
     this.step$ = new BehaviorSubject<number>(1)
     this.progressSteps$ = new BehaviorSubject<ProgressStep[]>([
-      {id:1,title: this.translate.instant('step.customerInfo')},
-      {id:2,title: this.translate.instant('step.pinInstall')},
-      {id:3,title: this.translate.instant('step.eSign')},
-      {id:4,title: this.translate.instant('step.infoCheck')},
-      {id:5,title: this.translate.instant('step.finish')},
+      {id:1,title: this.translate.stream('step.customerInfo')},
+      {id:2,title: this.translate.stream('step.pinInstall')},
+      {id:3,title: this.translate.stream('step.eSign')},
+      {id:4,title: this.translate.stream('step.infoCheck')},
+      {id:5,title: this.translate.stream('step.finish')},
     ])
   }
   resetStep(){
