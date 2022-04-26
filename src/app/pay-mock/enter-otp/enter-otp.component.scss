@@ -125,3 +125,17 @@ code-input {
 //input {
 //  border: none;
 //}
+@media screen and (max-width: 388px) {
+  .otp-box {
+    //width: 100vw;
+    width: auto;
+    padding: 20px;
+  }
+  code-input {
+    width: calc(100vw - 110px);
+    --item-height: 36px;
+  }
+  //input {
+  //  width: 32px !important;
+  //}
+}
