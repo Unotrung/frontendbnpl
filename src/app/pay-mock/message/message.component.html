@@ -1,11 +1,15 @@
 <div class="message-box" fxLayout="column" fxLayoutAlign="start center">
-    <div class="message-title" appMarginTop="16">
-        <p>{{data.messageTitle}}</p>
+<!--    <div class="message-title" appMarginTop="16">-->
+<!--        <p>{{data.messageTitle}}</p>-->
+<!--    </div>-->
+    <img src="assets/images/voolo-sad.png" width="50" height="48" >
+    <div class="paragraph-text text-bold-2 text-big-16 text-center" appMarginTop="24">
+        {{data.message}}
     </div>
-    <div class="message text-center" appMarginTop="16">
-        <p>{{data.message}}</p>
+    <div class="paragraph-text paragraph-text-small text-center" appMarginTop="18">
+        {{data.closeMessage}}
     </div>
-    <div class="message-closed" appMarginTop="28" appMarginBottom="36">
-        <button (click)="onCloseDialog()">{{data.closeMessage}}</button>
-    </div>
+<!--    <div class="message-closed" appMarginTop="28" appMarginBottom="36">-->
+    <button appMarginTop="30" class="payment-button" (click)="onCloseDialog()">OK</button>
+<!--    </div>-->
 </div>

@@ -26,7 +26,7 @@ export class MessageService {
     const dialogRef = this.dialog.open(MessageComponent, {
       data: this.messageData$.getValue(),
       disableClose: true,
-      panelClass: 'message-box-wrapper'
+      // panelClass: 'message-box-wrapper'
     })
   }
 
