@@ -13,7 +13,8 @@ import {Router} from "@angular/router";
 import {Step} from "../step";
 import {keyPress} from "../helper/helper";
 import {InputType} from "../user";
-import {EMPTY, map, Observable, of} from "rxjs";
+import {EMPTY, firstValueFrom, map, Observable, of} from "rxjs";
+import {HttpError} from "../http-error";
 
 @Component({
     selector: 'app-picture-selfie',
@@ -82,43 +83,23 @@ export class PictureSelfieComponent implements OnInit {
         // })
     }
 
-    validatorNidExist(control: AbstractControl): Observable<ValidationErrors | null> {
-        if (!control.value) return EMPTY
-        return this.authService.checkNidExist(control.value).pipe(map(data => {
-                return data && data['status'] ? {'nidExist': true} : null
+    async validatorNidExist(control: AbstractControl): Promise<ValidationErrors | null> {
+        if (!control.value) return of(null)
+        try {
+            await firstValueFrom(this.authService.checkNidExist(control.value))
+            return {'nidExist': true}
+        } catch (error: any) {
+            if (error.status === HttpError.empty ) {
+                console.log('empty input')
             }
-        ))
+            return null
+        }
     }
 
-    // checkNidExist(){
-    //   this.authService.checkNidExist(this.citizenId.value).subscribe({
-    //     next: (data) => {
-    //       console.log(data)
-    //       if(data && data['status']) {
-    //         this.citizenId.setErrors({'nidExist': true})
-    //       }
-    //       else {
-    //         this.citizenId.setErrors({'nidExist': null})
-    //       }
-    //     }
-    //   })
-    // }
-
     onSelfieContinue() {
-        const nid = this.citizenId.value
-        if (!nid) {
-            this.citizenId.setErrors(Validators.required)
-            return
-        }
-        if (/\b\d{9}\b|\b\d{12}\b/g.exec(nid)) {
-            //todo: check if user exist lazada ... (need api here), then route
-            this.authService.user$.next({...this.authService.user$.getValue(), citizenId: this.citizenId.value})
-            this.authService.registerStep$.next(Step.citizenCard);
-            this.router.navigate(['pay-mock/citizen-card']).then();
-        } else {
-            this.citizenId.setErrors(Validators.pattern(/\b\d{9}\b|\b\d{12}\b/g))
-        }
-
+        this.authService.user$.next({...this.authService.user$.getValue(), citizenId: this.citizenId.value})
+        this.authService.registerStep$.next(Step.citizenCard);
+        this.router.navigate(['pay-mock/citizen-card']).then();
     }
 
     // onFileSelect(event: any) {
