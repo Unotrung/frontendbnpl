@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
+import {BehaviorSubject, firstValueFrom} from "rxjs";
 import {LoadingService} from "../loading.service";
 import {AuthBnplService} from "../auth-bnpl.service";
 import {CheckoutService} from "../checkout.service";
@@ -26,40 +26,55 @@ export class CheckoutConfirmPinComponent implements OnInit {
         private dialogRef: MatDialogRef<CheckoutConfirmPinComponent>,
     ) {
         this.pinCode$ = new BehaviorSubject<string>('')
-        this.pinCode$.subscribe(pin => {
+        this.pinCode$.subscribe(async pin => {
             if (pin.length === 4) {
                 if (this.pinFails >= 5) {
                     return
                 }
                 this.authService.user$.next({...this.authService.user$.getValue(), pin: this.pinCode$.getValue()})
                 this.loadingService.loading$.next(true)
-                this.authService.login().subscribe({
-                    next: data => {
-                        console.log(data)
-                        //todo: api call for payment
-                        this.loadingService.loading$.next(false)
-                        if (data['status']) {
-                            this.checkoutService.checkoutFinish$.next(true)
-                            this.router.navigate(['/pay-mock/checkout-finish']).then(() => {
-                                this.dialogRef.close()
-                            })
-                        } else {
-                            this.pinFails++
-                            this.pinChild.resetCode()
-                            // this.checkoutService.checkoutFinish$.next(false)
-                        }
-                    },
-                    error: ({error}) => {
-                        console.log(error)
-                        this.loadingService.loading$.next(false)
-                        this.pinFails++
+                try {
+                    await firstValueFrom(this.authService.login())
+                    this.checkoutService.checkoutFinish$.next(false)
+                    await this.router.navigate(['/pay-mock/checkout-finish'])
+                    this.dialogRef.close()
+                }
+                catch (error: any) {
+                    console.log(error)
+                    this.loadingService.loading$.next(false)
+                    if (error.error?.countFail) {
+                        this.pinFails = error.error?.countFail
                         this.pinChild.resetCode()
-                        // this.checkoutService.checkoutFinish$.next(false)
-                        // this.router.navigate(['/pay-mock/checkout-finish']).then()
-                    },
-                    complete: () => {
                     }
-                })
+
+                }
+                // this.authService.login().subscribe({
+                //     next: data => {
+                //         console.log(data)
+                //         //todo: api call for payment
+                //         this.loadingService.loading$.next(false)
+                //         if (data['status']) {
+                //             this.checkoutService.checkoutFinish$.next(true)
+                //             this.router.navigate(['/pay-mock/checkout-finish']).then(() => {
+                //                 this.dialogRef.close()
+                //             })
+                //         } else {
+                //             this.pinFails++
+                //             this.pinChild.resetCode()
+                //             // this.checkoutService.checkoutFinish$.next(false)
+                //         }
+                //     },
+                //     error: ({error}) => {
+                //         console.log(error)
+                //         this.loadingService.loading$.next(false)
+                //         this.pinFails++
+                //         this.pinChild.resetCode()
+                //         // this.checkoutService.checkoutFinish$.next(false)
+                //         // this.router.navigate(['/pay-mock/checkout-finish']).then()
+                //     },
+                //     complete: () => {
+                //     }
+                // })
             }
         })
     }

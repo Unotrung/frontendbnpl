@@ -8,6 +8,7 @@ import {TranslateService} from "@ngx-translate/core";
 import {VerifyPinChildComponent} from "../verify-pin-child/verify-pin-child.component";
 import {StepRegisterRestore} from "../step-register-restore";
 import {Step} from "../step";
+import {firstValueFrom} from "rxjs";
 
 @Component({
   selector: 'app-verify-pin',
@@ -45,99 +46,34 @@ export class VerifyPinComponent implements OnInit {
   //   this.pin = code
   // }
 
-  onVerifyPinContinue() {
+  async onVerifyPinContinue() {
     //todo: check pin code is correct here and navigate to checkout
-    this.authService.user$.next({...this.authService.user$.getValue(), pin: this.pin})
-    if (this.pinFails >= 5) {
-      this.router.navigate(['pay-mock/register']).then()
-    }
-    this.loadingService.loading$.next(true)
-    this.authService.login().subscribe({
-      next: data => {
-        this.loadingService.loading$.next(false)
-        if (!data['status']) {
-          this.pinFails ++
-          this.pinChild.resetCode()
-          // this.openDialogFailPinCode()
-        }
-         // console.log(data['data']['step'])
-        const step = data['data']['step']
-        // if (data['data']['step'] === StepRegisterRestore.registerSuccess) {
-        //   console.log('go to esign')
-        //   this.authService.registerStep$.next(Step.customerEsignConfirm)
-        //   this.router.navigate(['pay-mock/customer-esign-confirm']).then();
-        // }
-        // if (data['data']['step'] === StepRegisterRestore.kycComplete || data['data']['step'] === StepRegisterRestore.kycProcess) {
-          this.loadingService.loading$.next(true)
-          this.authService.getCustomerInfo().subscribe({
-            next: data => {
-              this.loadingService.loading$.next(false)
-              // console.log(data)
-              // console.log(step)
-              if (data['status']) {
-                if (step === StepRegisterRestore.kycComplete || step === StepRegisterRestore.kycProcess) {
-                this.router.navigate(['pay-mock/checkout']).then()
-                }
-                if (step === StepRegisterRestore.registerSuccess) {
-                  console.log('go to esign')
-                  this.authService.registerStep$.next(Step.customerEsignConfirm)
-                  this.router.navigate(['pay-mock/customer-esign-confirm']).then();
-                }
-              } else {
-                // fail to get customerInfo -> go to register
-                this.authService.registerStep$.next(Step.register)
-                this.router.navigate(['pay-mock/register']).then()
-              }
-            },
-            error: err => {
-              this.loadingService.loading$.next(false)
-            }
-          })
-        // }
-      },
-      error: ({error}) => {
-        this.loadingService.loading$.next(false)
-        console.log(error)
-        this.pinFails ++
-        this.pinChild.resetCode()
-        // this.openDialogFailPinCode()
-      },
-      complete: () => {
 
-        // if (this.authService.isLoggedIn$.getValue()) {
-        //   this.loadingService.loading$.next(true)
-        //   this.authService.getCustomerInfo().subscribe({
-        //     next: data => {
-        //       this.loadingService.loading$.next(false)
-        //       console.log(data)
-        //       if (data['status']) {
-        //         // if (data['data']['step'] === StepRegisterRestore.kycComplete) {
-        //             this.router.navigate(['pay-mock/checkout']).then()
-        //         // }
-        //
-        //       } else {
-        //         // fail to get customerInfo -> go to register
-        //         this.authService.registerStep$.next(Step.register)
-        //         this.router.navigate(['pay-mock/register']).then()
-        //       }
-        //     },
-        //     error: err => {
-        //       this.loadingService.loading$.next(false)
-        //     }
-        //   })
-        // }
+    try {
+      this.authService.user$.next({...this.authService.user$.getValue(), pin: this.pin})
+      if (this.pinFails >= 5) {
+        this.router.navigate(['pay-mock/register']).then()
       }
-    })
-
-  }
-
-  openDialogFailPinCode() {
-    this.messageService.messageData$.next({
-      reason: MessageReason.failOnLoginUsePinCode,
-      messageTitle: this.translate.instant('message.announce'),
-      message: this.translate.instant('pin.notExact'),
-      closeMessage: this.translate.instant('button.back')
-    })
-    this.messageService.onOpenDialog()
+      this.loadingService.loading$.next(true)
+      const loginResult = await firstValueFrom(this.authService.login())
+      const step = loginResult.data?.step
+      await firstValueFrom(this.authService.getCustomerInfo())
+      this.loadingService.loading$.next(false)
+      if (step === StepRegisterRestore.kycComplete || step === StepRegisterRestore.kycProcess) {
+        this.router.navigate(['pay-mock/checkout']).then()
+      }
+      if (step === StepRegisterRestore.registerSuccess) {
+        console.log('go to esign')
+        this.authService.registerStep$.next(Step.customerEsignConfirm)
+        this.router.navigate(['pay-mock/customer-esign-confirm']).then();
+      }
+    } catch (error: any) {
+      console.log(error)
+      this.loadingService.loading$.next(false)
+      if (error.error?.countFail) {
+        this.pinFails = error.error?.countFail
+        this.pinChild.resetCode()
+      }
+    }
   }
 }

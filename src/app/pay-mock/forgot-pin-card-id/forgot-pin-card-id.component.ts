@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {
     AbstractControl,
-    AsyncValidator,
-    AsyncValidatorFn,
     FormControl,
     ValidationErrors,
     Validators
@@ -11,7 +9,7 @@ import {AuthBnplService} from "../auth-bnpl.service";
 import {Router} from "@angular/router";
 import {LoadingService} from "../loading.service";
 import {MessageService} from "../message.service";
-import {finalize, Observable} from "rxjs";
+import {finalize, firstValueFrom, Observable} from "rxjs";
 import {map} from "rxjs";
 
 @Component({
@@ -38,20 +36,22 @@ export class ForgotPinCardIdComponent implements OnInit {
         this.cardIdForm = new FormControl(this.authService.user$.getValue().citizenId,
             {
                 validators: [Validators.required, Validators.pattern(/\b\d{9}\b|\b\d{12}\b/)],
-                asyncValidators: [this.asyncValidatorNidPhone.bind(this)],
+                asyncValidators: [this.validatorNidPhone.bind(this)],
                 updateOn: 'blur'
             })
     }
 
-    asyncValidatorNidPhone(control: AbstractControl): Observable<ValidationErrors | null> {
+    async validatorNidPhone(control: AbstractControl): Promise<ValidationErrors | null> {
         this.loadingService.loading$.next(true)
-        return this.authService.checkNidPhoneMatch(control.value)
-            .pipe(
-                map(data => data && data['status'] ? null : {'wrongnid': true}),
-                finalize(() => {
-                    this.loadingService.loading$.next(false)
-                })
-            )
+        try {
+            await firstValueFrom(this.authService.checkNidPhoneMatch(control.value))
+            this.loadingService.loading$.next(false)
+            return null
+        }catch (error) {
+            console.log(error)
+            this.loadingService.loading$.next(false)
+            return {'wrongnid': true}
+        }
     }
 
     // checkIdCardMatchPhone() {

@@ -279,9 +279,9 @@ export class CustomerInformationRegisterComponent implements OnInit {
         name_ref: new FormControl('', {validators: [Validators.required], updateOn: 'blur'}),
         phone_ref: new FormControl('', {
           validators: [Validators.required,
-            Validators.pattern(/^(0)+(([0-9]{10}|([0-9]{9}))$)/),
             Validators.minLength(10),
-            Validators.maxLength(10),
+            Validators.maxLength(11),
+            Validators.pattern(/^(0)+(([0-9]{10}|([0-9]{9}))$)/),
             this.validatorRefPhone(phone)
           ],
           updateOn: 'blur'})

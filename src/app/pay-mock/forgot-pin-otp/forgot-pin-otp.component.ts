@@ -29,19 +29,19 @@ export class ForgotPinOtpComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.otpFails$.subscribe({
-      next: otpFails => {
-        if (otpFails >= 5) {
-          //todo: API call for register suspend 24 hours
-          setTimeout(()=> {
-            this.router.navigate(['/pay-mock/start-payment']).then(() => {
-              //todo: clear all user info here
-            })
-          }, 10000)
-        }
-      },
-      error : err => {}
-    })
+    // this.otpFails$.subscribe({
+    //   next: otpFails => {
+    //     if (otpFails >= 5) {
+    //       //todo: API call for register suspend 24 hours
+    //       setTimeout(()=> {
+    //         this.router.navigate(['/pay-mock/start-payment']).then(() => {
+    //           //todo: clear all user info here
+    //         })
+    //       }, 10000)
+    //     }
+    //   },
+    //   error : err => {}
+    // })
   }
   // this called every time when user changed the code
   onCodeChanged(code: string) {
