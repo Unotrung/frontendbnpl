@@ -15,14 +15,26 @@
         <div class='paragraph-text text-bold-2 text-big-20' appMarginTop="16">
             <p class="title-text" >{{'nCard.title' | translate}}</p>
         </div>
-        <div class="outer-frame-box" [ngClass]="{'height-auto frame-padding': pictureService.currentShot$ | async}" fxLayout="column" fxLayoutAlign="center center" appMarginTop="8" >
-            <div class="inner-frame-box" [ngClass]="{'height-auto': pictureService.currentShot$ | async}">
-                <div *ngIf="pictureService.currentShot$ | async" >
-                    <img [src]="pictureService.imageCurrentShot" class="image-preview">
+        <div class="background-gray">
+            <div *ngIf="!(pictureService.currentShot$ | async)" class="background-green">
+                <div class="circle-red" (click)="onCaptureCitizenCard()">
                 </div>
-                <div class="circle-red" (click)="onCaptureCitizenCard()"></div>
+            </div>
+            <div *ngIf="pictureService.currentShot$ | async" class="image-frame">
+                <img [src]="pictureService.imageCurrentShot"
+                     class="image-blurred-edge">
+                <div class="circle-red" (click)="onCaptureCitizenCard()">
+                </div>
             </div>
         </div>
+<!--        <div class="outer-frame-box" [ngClass]="{'height-auto frame-padding': pictureService.currentShot$ | async}" fxLayout="column" fxLayoutAlign="center center" appMarginTop="8" >-->
+<!--            <div class="inner-frame-box" [ngClass]="{'height-auto': pictureService.currentShot$ | async}">-->
+<!--                <div *ngIf="pictureService.currentShot$ | async" >-->
+<!--                    <img [src]="pictureService.imageCurrentShot" class="image-preview">-->
+<!--                </div>-->
+<!--                <div class="circle-red" (click)="onCaptureCitizenCard()"></div>-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="citizen-frame-list" fxLayout="row" fxLayoutAlign="space-around center" appMarginTop="34">
             <div class="card-box" fxLayout="column" fxLayoutAlign="space-around center">
                 <img *ngIf="!(pictureService.citizenFrontImageComplete$ | async)" fxFlexAlign="center" width="38" height="38" alt="" src="assets/images/camera1.png">

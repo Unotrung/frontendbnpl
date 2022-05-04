@@ -35,13 +35,18 @@ export class CheckoutConfirmPinComponent implements OnInit {
                 this.loadingService.loading$.next(true)
                 try {
                     await firstValueFrom(this.authService.login())
-                    this.checkoutService.checkoutFinish$.next(false)
+
+                    //todo: call payment API here and check
+
+                    this.loadingService.loading$.next(false)
+                    this.checkoutService.checkoutFinish$.next(true)
                     await this.router.navigate(['/pay-mock/checkout-finish'])
                     this.dialogRef.close()
                 }
                 catch (error: any) {
                     console.log(error)
                     this.loadingService.loading$.next(false)
+                    this.checkoutService.checkoutFinish$.next(false)
                     if (error.error?.countFail) {
                         this.pinFails = error.error?.countFail
                         this.pinChild.resetCode()

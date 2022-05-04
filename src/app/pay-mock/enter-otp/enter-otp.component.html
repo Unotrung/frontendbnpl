@@ -30,15 +30,15 @@
 <!--         appMarginTop="16" >-->
 <!--        {{'otp.networkError' | translate}}-->
 <!--    </div>-->
-    <button *ngIf="(otpFails$ | async)! <= 5" class="payment-button" appMarginTop="32" (click)="verifyOTP()" [disabled]="otpCode.length < 6">
+    <button *ngIf="(otpFails$ | async)! < 5" class="payment-button" appMarginTop="32" (click)="verifyOTP()" [disabled]="otpCode.length < 6">
         <span>{{'button.continue' | translate}}</span>
     </button>
-    <button *ngIf="(otpFails$ | async)! > 5" class="payment-button" appMarginTop="32" (click)="exitOnFailOTP()">
+    <button *ngIf="(otpFails$ | async)! >= 5" class="payment-button" appMarginTop="32" (click)="exitOnFailOTP()">
         <span>{{'button.turnBack' | translate}}</span>
     </button>
     <div class="paragraph-text" appMarginTop="14">
        <span>{{'otp.notReceive' | translate}} ?</span>
-        <button class="send-otp" [ngClass]="{'highlight': countdownComplete }" [disabled]="!countdownComplete" (click)="onSendOtp()">{{'otp.resend' | translate}}
+        <button class="send-otp" [ngClass]="{'highlight': countdownComplete }" [disabled]="!countdownComplete || ((otpFails$ | async)! >= 5)" (click)="onSendOtp()">{{'otp.resend' | translate}}
             <span [ngClass]="{'hidden': countdownComplete }"><span>(</span><countdown #cd [config]="{leftTime: 60, format: 's'}" (event)="onCountdown($event)" ></countdown><span>s)</span></span>
         </button>
     </div>

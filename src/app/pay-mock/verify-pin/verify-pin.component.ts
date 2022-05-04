@@ -3,7 +3,6 @@ import {Router} from "@angular/router";
 import {AuthBnplService} from "../auth-bnpl.service";
 import {LoadingService} from "../loading.service";
 import {MessageService} from "../message.service";
-import {MessageReason} from "../message";
 import {TranslateService} from "@ngx-translate/core";
 import {VerifyPinChildComponent} from "../verify-pin-child/verify-pin-child.component";
 import {StepRegisterRestore} from "../step-register-restore";
@@ -31,9 +30,9 @@ export class VerifyPinComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (!this.authService.user$.getValue().phone) {
-      this.router.navigate(['pay-mock/register']).then()
-    }
+    // if (!this.authService.user$.getValue().phone) {
+    //   this.router.navigate(['pay-mock/register']).then()
+    // }
   }
 
   // this called every time when user changed the code
