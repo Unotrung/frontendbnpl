@@ -19,7 +19,7 @@
     </div>
     <div class="error-text" appMarginTop="8"
          *ngIf="(cardIdForm.dirty || cardIdForm.touched) && cardIdForm.errors && cardIdForm.errors['pattern']">
-        {{'selfie.wrongFormat' | translate}}
+        {{'error.nCard.wrongFormat' | translate}}
     </div>
     <div class="error-text" appMarginTop="8"
          *ngIf="(cardIdForm.dirty || cardIdForm.touched) && cardIdForm.errors && cardIdForm.errors['wrongnid']">

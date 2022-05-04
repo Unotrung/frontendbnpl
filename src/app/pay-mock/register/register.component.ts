@@ -103,11 +103,13 @@ export class RegisterComponent implements OnInit {
     async validatorBlockPhone(control: AbstractControl): Promise<ValidationErrors | null> {
         this.loadingService.loading$.next(true)
         try {
-            await firstValueFrom(this.authService.checkPossiblePhone(control.value))
+            const data = await firstValueFrom(this.authService.checkPossiblePhone(control.value))
+            console.log(data)
             this.loadingService.loading$.next(false)
             return null
         } catch (error: any) {
             this.loadingService.loading$.next(false)
+            console.log(error)
             if (error.status === HttpError.notAllow){
                 return {'blockPhone': true}
             }

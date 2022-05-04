@@ -5,6 +5,7 @@
 		"continue": "Tiếp tục",
 		"more": "Xem thêm",
 		"reEnterNid": "Điền lại số CMND/CCCD",
+		"reRegister": "Vui lòng thử lại",
 		"reshot": "Chụp lại",
 		"retry": "THỬ LẠI",
 		"sendOTP": "Gởi OTP",
@@ -37,7 +38,7 @@
 		"needEnterInfo": "Vui lòng nhập thông tin",
 		"personalInfo": "Thông tin cá nhân",
 		"pinInstall": "Cài đặt mã pin của bạn",
-		"pinNotMatch": "Mã pin và mã pin nhập lại phải trùng nhau",
+		"pinNotMatch": "Mã pin không trùng khớp",
 		"pinNote1": "Mã pin bao gồm 4 số, dùng để checkout khi thanh toán",
 		"pinNote2": "Mã pin này sẽ được sử dụng cho tất cả các thanh toán tại website voolo.com.vn",
 		"reEnterPin": "Nhập lại mã PIN",
@@ -54,10 +55,10 @@
 	"error": {
 		"emptySex": "Vui lòng chọn giới tính",
 		"nCard": {
-			"empty": "Vui lòng không để trống số CMND/ CCCD",
+			"empty": "Vui lòng nhập CMND/CCCD",
 			"nidExist": "Số CMND/ CCCD đã được sử dụng",
 			"wrongFormat": "CMND/ CCCD không hợp lệ",
-			"wrongNidPhone": "Sai số CMND/CCCD"
+			"wrongNidPhone": "CMND/CCCD không khớp với số điện thoại đã đăng ký"
 		},
 		"phone": {
 			"block": "Số điện thoại này đã bị giới hạn/khoá",
@@ -98,7 +99,7 @@
 		"header": "Thông tin đơn hàng"
 	},
 	"label": {
-		"address": "Địa chỉ",
+		"address": "Địa chỉ hiện tại",
 		"amount": "Thành tiền",
 		"birthday": "Ngày sinh",
 		"city": "Thành phố/Tỉnh",

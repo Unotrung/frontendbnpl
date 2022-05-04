@@ -5,6 +5,7 @@
 		"continue": "Continue",
 		"more": "More",
 		"reEnterNid": "Re-enter ID Card number",
+		"reRegister": "Please try again",
 		"reshot": "Capture again",
 		"retry": "Retry",
 		"sendOTP": "Send OTP",
@@ -33,7 +34,7 @@
 		"info": "Personal Information",
 		"infoCheck": "Information check",
 		"name": "Please enter your first and last name",
-		"needEnterInfo": "Vui lòng nhập thông tin",
+		"needEnterInfo": "Please",
 		"personalInfo": "Personal information",
 		"pinInstall": "Set your pin code",
 		"pinNotMatch": "Pin code and re-entered pin code must be the same",
@@ -53,10 +54,10 @@
 	"error": {
 		"emptySex": "Please select your gender",
 		"nCard": {
-			"empty": "Vui lòng không để trống số CMND/ CCCD",
+			"empty": "Please enter ID Card's number",
 			"nidExist": "Số CMND/ CCCD đã được sử dụng",
 			"wrongFormat": "CMND/ CCCD không hợp lệ",
-			"wrongNidPhone": "Wrong ID Card number"
+			"wrongNidPhone": "ID Card number not match registered phone number"
 
 		},
 		"phone": {
@@ -99,7 +100,7 @@
 		"header": "Cart information"
 	},
 	"label": {
-		"address": "Address",
+		"address": "Current address",
 		"amount": "Into money",
 		"birthday": "Date of birth",
 		"city": "City/Province",
@@ -166,7 +167,7 @@
 		"forgot": "Forgot pin code",
 		"invalid": "PIN code does not match",
 		"notExact": "Pin code not exactly",
-		"notMatch": "Pin code and re-entered pin code must be the same",
+		"notMatch": "PIN Code does not match",
 		"operator": "Support call center",
 		"paymentConfirm": "Vui lòng nhập mã PIN để xác nhận thanh toán",
 		"reEnter": "Re-enter PIN",
@@ -215,15 +216,15 @@
 	"voolo": {
 		"atm": "ATM Card",
 		"bnpl": "Buy now pay later (BNPL)",
-		"buy": "Mua sắm không giới hạn",
+		"buy": "Buy everything you need",
 		"choosePaymentMethod": "Choose payment method",
 		"creditCard": "Credit card",
 		"help": "VOOLO giúp bạn",
 		"grab": "Moca | Grab wallet",
-		"pay": "Thanh toán linh hoạt",
-		"promo": "Ưu đãi hoàn tiền chỉ trong 1 ngày",
-		"slogan": "Có VOOLO - Mua sắm VÔ LO",
-		"sloganDetail": "VOOLO - Mua Trước Trả Sau Không khoản trả trước - Nhẹ nhàng với 0% lãi suất",
+		"pay": "Flexible payment plan",
+		"promo": "Get cashback after just 1 day",
+		"slogan": "WORRY-FREE shopping with VOOLO",
+		"sloganDetail": "VOOLO - Buy Now Pay Later. No interests - No payment in advance.",
 		"welcomeBNPL": "Chào mừng bạn đến với quy trình đăng ký mua trước trả sau"
 	}
 }
