@@ -21,8 +21,11 @@ export class RequestHandlerInterceptor implements HttpInterceptor {
         return next.handle(request)
             .pipe(
                 catchError(error => {
-                    if (error instanceof HttpErrorResponse && !request.url.includes('user/login') && error.status === 403) {
-                        console.log('handle error')
+                    console.log(request)
+                    if (error instanceof HttpErrorResponse
+                        && !request.url.includes('user/login')
+                        && request.headers.has('authorization')
+                        && error.status === 403) {
                         return this.handle403Error(request, next)
                     } else {
                         console.log('throw error')
@@ -32,7 +35,6 @@ export class RequestHandlerInterceptor implements HttpInterceptor {
     }
 
     private handle403Error(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-        console.log('handle error')
         return this.refreshTokenService.getRefreshToken().pipe(
             switchMap(data => {
                 const {accessToken} = data

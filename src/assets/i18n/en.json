@@ -34,7 +34,7 @@
 		"info": "Personal Information",
 		"infoCheck": "Information check",
 		"name": "Please enter your first and last name",
-		"needEnterInfo": "Please",
+		"needEnterInfo": "Please enter information",
 		"personalInfo": "Personal information",
 		"pinInstall": "Set your pin code",
 		"pinNotMatch": "Pin code and re-entered pin code must be the same",
@@ -172,7 +172,7 @@
 		"paymentConfirm": "Vui lòng nhập mã PIN để xác nhận thanh toán",
 		"reEnter": "Re-enter PIN",
 		"reEnterCheck": "Please enter PIN to verify information",
-		"registerInterrupt": "Quá trình bị gián đoạn. Vui lòng trở lại sau 24h",
+		"registerInterrupt": "Your account is temporarily locked. Please try again within 24h.",
 		"reinstall": "Reset your pin code",
 		"resetSuccess": "Congratulations, you have successfully changed your pin code"
 	},
