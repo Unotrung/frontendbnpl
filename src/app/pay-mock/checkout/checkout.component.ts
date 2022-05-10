@@ -23,24 +23,21 @@ export class CheckoutComponent implements OnInit {
       public itemService: ItemService
   ) {
     this.chosenTenor = this.tenorService.selectedTenor$.getValue()
-    this.tenors = this.tenorService.tenors$.getValue()
-    this.tenors.map(tenor => ({...tenor, enable: this.authService.user$.getValue().creditLimit >= this.getTenorPrice(tenor)}))
-        .forEach(tenor => {
-          console.log('tenor',tenor)
-          if (tenor.enable) {
-            this.enoughCredit = true
-          }
-        })
+    const { creditLimit } = this.authService.user$.getValue()
+    this.tenors = this.tenorService.tenors$.getValue().map(tenor => {
+      const tenorPrice = this.getTenorPrice(tenor)
+      const enable = creditLimit >= tenorPrice
+      if (enable) {
+        this.enoughCredit = true
+      }
+      return {...tenor, enable}
+    })
   }
 
   ngOnInit(): void {
-
     if (!this.enoughCredit){
       this.router.navigate(['pay-mock/checkout-not-enough-credit']).then()
     }
-    // if (this.itemService.total > this.authService.user$.getValue().creditLimit) {
-    //
-    // }
   }
   onChoseTenor(tenorId: string) {
     this.chosenTenor = this.tenors.filter(tenor => tenor.tenorId === tenorId)[0]
@@ -56,8 +53,10 @@ export class CheckoutComponent implements OnInit {
   }
 
   getTenorPrice(tenor: Tenor) {
-    console.log('tenor',this.itemService.sumPriceItem*(1 + tenor.convertFee/100) + this.itemService.sumShipFee)
-    return this.itemService.sumPriceItem*(1 + tenor.convertFee/100) + this.itemService.sumShipFee
+    const { creditLimit } = this.authService.user$.getValue()
+    const tenorPrice = this.itemService.sumPriceItem*(1 + tenor.convertFee/100) + this.itemService.sumShipFee
+    // console.log('tenor', creditLimit >= tenorPrice ? true : false)
+    return tenorPrice
   }
 
 }

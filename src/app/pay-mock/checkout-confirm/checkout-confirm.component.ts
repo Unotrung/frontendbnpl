@@ -34,46 +34,7 @@ export class CheckoutConfirmComponent implements OnInit {
   }
 
   onCheckoutConfirm(){
-    const dialogRef = this.dialog.open(CheckoutConfirmPinComponent, { disableClose: true });
-
-    // this.loadingService.loading$.next(true)
-    // this.authService.user$.next({...this.authService.user$.getValue(), pin: this.pinCode})
-    // this.authService.login().subscribe({
-    //   next: data => {
-    //     console.log(data)
-    //     //todo: api call for payment, also check save tenor of not
-    //     this.loadingService.loading$.next(false)
-    //     if (data['status']) {
-    //       this.checkoutService.checkoutFinish$.next(true)
-    //       this.router.navigate(['/pay-mock/checkout-finish']).then()
-    //     }
-    //     else {
-    //       this.checkoutService.checkoutFinish$.next(false)
-    //       this.messagePinNotExact()
-    //     }
-    //   },
-    //   error: ({error}) => {
-    //     console.log(error)
-    //     this.loadingService.loading$.next(false)
-    //     this.checkoutService.checkoutFinish$.next(false)
-    //     this.messagePinNotExact()
-    //     // this.router.navigate(['/pay-mock/checkout-finish']).then()
-    //   },
-    //   complete: () => {
-    //   }
-    // })
-
-    // if (this.saveTenor) {
-    //   this.authService.updateTenor().subscribe({
-    //     next: data => {
-    //       console.log(data)
-    //     },
-    //     error: err => {
-    //       console.log(err)
-    //     }
-    //   })
-    // }
-
+    this.dialog.open(CheckoutConfirmPinComponent, { disableClose: true });
   }
   messagePinNotExact(){
     this.messageService.messageData$.next({

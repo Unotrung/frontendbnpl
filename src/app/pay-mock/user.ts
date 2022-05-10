@@ -2,7 +2,6 @@ export interface User {
     id?: string
     phone?: string,
     citizenId?: string,
-    accessToken?: string,
     isPhoneExist?: boolean,
     pin?: string,
     otp?: string,

@@ -10,6 +10,7 @@ import {TenorService} from "./tenor.service";
 import {Tenor} from "./tenor";
 import {Apollo} from "apollo-angular";
 import {subscriptionGraphql} from "../graphql/subscription.graphql";
+import {RefreshTokenService} from "./refresh-token.service";
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,7 @@ export class AuthBnplService {
       private customerInfoService: CustomerInformationService,
       public itemService: ItemService,
       private tenorService: TenorService,
+      private refreshTokenService: RefreshTokenService,
       private apollo: Apollo
   ) {
     this.isLoggedIn$ = new BehaviorSubject<boolean>(false);
@@ -49,7 +51,9 @@ export class AuthBnplService {
     }).pipe(tap((data) => {
       console.log(data)
       if (data && data['status']) {
-        this.user$.next({...this.user$.getValue(), accessToken: data['token'], id: data['data']['_id']})
+        this.refreshTokenService.setAccessToken(data['token'])
+        this.refreshTokenService.setRefreshToken(data['data']['refreshToken'])
+        this.user$.next({...this.user$.getValue(), id: data['data']['_id']})
         this.isLoggedIn$.next(true);
       }
     }))
@@ -63,26 +67,7 @@ export class AuthBnplService {
         this.isLoggedIn$.next(true)
         this.getInfoFromData(data)
       }
-      // if(data['status']){
-      //   this.itemService.items$.next(data['items'] as Item[])
-      //
-      //   console.log(this.itemService.items$.getValue())
-      // }
-      // this.user$.next({...this.user$.getValue(), name: this.customerInfoService.customerInfo$.getValue().name!})
-      // this.getInfoFromData(data)
     }))
-
-    // const rawData = {
-    //     phone: this.user$.getValue().phone,
-    //     pin: this.user$.getValue().pin
-    //   }
-    //   return this.http.post<any>(encodeURI(uri), rawData).pipe(tap((data) => {
-    //     console.log(data)
-    //     if (data && data['status']) {
-    //       this.user$.next({...this.user$.getValue(), accessToken: data['token'], id: data['data']['_id'] })
-    //       this.isLoggedIn$.next(true);
-    //     }
-    //   }))
   }
 
   checkPossiblePhone(phone: string) {
@@ -104,7 +89,7 @@ export class AuthBnplService {
       creditLimit: 0
     });
     this.isLoggedIn$.next(false);
-    localStorage.removeItem('accessToken');
+    // localStorage.removeItem('accessToken');
   }
 
   sendOTP(): Observable<any> {
@@ -125,7 +110,7 @@ export class AuthBnplService {
     const uri = `${environment.localAPIServer}v1/bnpl/personal/addInfoPersonal`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.user$.getValue().accessToken}`
+      'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`
     })
     return this.http.post<any>(encodeURI(uri), {...this.customerInfoService.customerInfo$.getValue(), pin: this.user$.getValue().pin }, {headers}).pipe(tap((data) =>{
       console.log(data)
@@ -142,7 +127,7 @@ export class AuthBnplService {
     const uri = `${environment.localAPIServer}v1/bnpl/personal/${this.user$.getValue().phone}`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.user$.getValue().accessToken}`
+      'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`
     })
     // @ts-ignore
     return this.http.get<any>(encodeURI(uri), {headers}).pipe(tap((data) => {
@@ -167,7 +152,8 @@ export class AuthBnplService {
       "otp": this.user$.getValue().otp
     }).pipe(tap(data => {
       if (data && data['status']) {
-        this.user$.next({...this.user$.getValue(), accessToken: data['token']})
+        this.refreshTokenService.setAccessToken(data['token'])
+        this.refreshTokenService.setRefreshToken(data['data']['refreshToken'])
       }
     }))
   }
@@ -176,7 +162,7 @@ export class AuthBnplService {
     const uri = `${environment.localAPIServer}v1/bnpl/user/resetPin`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.user$.getValue().accessToken}`
+      'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`
     })
     return this.http.put<any>(encodeURI(uri), {
       "phone": this.user$.getValue().phone,
@@ -195,7 +181,7 @@ export class AuthBnplService {
     const uri = `${environment.localAPIServer}v1/bnpl/personal/updateTenor`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.user$.getValue().accessToken}`
+      'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`
     })
     return this.http.put<any>(encodeURI(uri), {
       "id": this.tenorService.selectedTenor$.getValue()?.tenorId,
