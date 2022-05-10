@@ -18,7 +18,11 @@
     cursor: not-allowed !important;
     background: #999999;
     pointer-events: all !important;
+  &:hover {
+    background: #999999 !important;
+  }
 }
+
 
 .tenor-header {
   font-family: 'Montserrat Alternates';
