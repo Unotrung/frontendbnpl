@@ -1,0 +1,229 @@
+{
+	"button": {
+		"back": "Trở về",
+		"confirm": "Xác nhận",
+		"continue": "Tiếp tục",
+		"more": "Xem thêm",
+		"reEnterNid": "Điền lại số CMND/CCCD",
+		"reRegister": "Vui lòng thử lại",
+		"reshot": "Chụp lại",
+		"retry": "THỬ LẠI",
+		"sendOTP": "Gởi OTP",
+		"signNow": "Ký ngay",
+		"turnBackToCart": "Quay lại giỏ hàng"
+	},
+	"checkout": {
+		"autoBack": "Tự động trở lại trang mua hàng sau 15s",
+		"buySuccess": "Chúc mừng bạn đã mua hàng thành công",
+		"chooseTenor": "Vui lòng chọn Tenor",
+		"error": "Mua hàng không thành công/ Lỗi không xác định",
+		"greeting": "Chúc mừng bạn, với hạn mức tín dụng này bạn đủ điều kiện để hoàn tất đơn hàng",
+		"removeItem": "Bạn vui lòng bỏ sản phẩm ra khỏi giỏ hàng",
+		"saveTenor": "Lưu phương thức thanh toán"
+	},
+	"checkoutHeader": {
+		"creditLimit": "Hạn mức tín dụng của bạn là"
+	},
+	"customer": {
+		"checkProgress": "Đang trong tiến trình xác minh thông tin",
+		"checkTime": "Tiến trình xác minh hồ sơ sẽ mất 5-15 phút",
+		"chooseCity": "Vui lòng chọn thành phố, tỉnh",
+		"chooseDistrict": "Vui lòng chọn quận, huyện",
+		"chooseStreet": "Vui lòng chọn địa chỉ",
+		"chooseWard": "Vui lòng chọn phường, xã",
+		"enterInfo": "Nhập thông tin cá nhân",
+		"info": "Thông tin cá nhân",
+		"infoCheck": "Đối soát thông tin",
+		"name": "Vui lòng điền họ và tên",
+		"needEnterInfo": "Vui lòng nhập thông tin",
+		"personalInfo": "Thông tin cá nhân",
+		"pinInstall": "Cài đặt mã pin của bạn",
+		"pinNotMatch": "Mã pin không trùng khớp",
+		"pinNote1": "Mã pin bao gồm 4 số, dùng để checkout khi thanh toán",
+		"pinNote2": "Mã pin này sẽ được sử dụng cho tất cả các thanh toán tại website voolo.com.vn",
+		"reEnterPin": "Nhập lại mã PIN",
+		"refPhone": "Vui lòng điền đúng số điện thoại",
+		"refText": "Thông tin tham chiếu",
+		"refTittle": "Vui lòng điền danh xưng",
+		"warning": "Thông tin bắt buộc"
+	},
+	"daysNumber": {
+		"none": "",
+		"plural": "{{ days }} ngày",
+		"singular": "{{ days }} ngày"
+	},
+	"error": {
+		"emptySex": "Vui lòng chọn giới tính",
+		"nCard": {
+			"empty": "Vui lòng nhập CMND/CCCD",
+			"nidExist": "Số CMND/ CCCD đã được sử dụng",
+			"wrongFormat": "CMND/ CCCD không hợp lệ",
+			"wrongNidPhone": "CMND/CCCD không khớp với số điện thoại đã đăng ký"
+		},
+		"phone": {
+			"block": "Số điện thoại này đã bị giới hạn/khoá",
+			"duplicate": "Số điện thoại tham chiếu trùng số điện thoại đăng ký",
+			"empty": "Vui lòng nhập số điện thoại",
+			"wrongFormat": "Số điện thoại không hợp lệ",
+			"wrongLength10": "Số điện thoại phải 10 chữ số",
+			"wrongLength11": "hoặc 11 chữ số"
+		}
+	},
+	"esign": {
+		"agree": "Tôi đồng ý với các điều khoản hợp đồng",
+		"confirm": "Xác nhận hợp đồng điện tử",
+		"contract": "Mẫu hợp đồng",
+		"sendOTP": "Vui lòng gởi OTP xác nhận về điện thoại đã đăng ký VOOLO của tôi"
+	},
+	"home": {
+		"chooseLang": "Chọn ngôn ngữ"
+	},
+	"hv": {
+		"face": {
+			"faceCaptureBottomDescription": "Mặt của bạn cần ở trong khung hình",
+			"faceCaptureReviewBottomDescription": "Hãy kiểm tra ảnh của bạn",
+			"faceCaptureReviewTitle": "Ảnh của bạn có rõ không?",
+			"faceCaptureTitle": "Chụp ảnh chân dung",
+			"faceDetectedDescription": "Chụp ảnh",
+			"faceNotDetectedDescription": "Khuôn mặt cần ở trong khung hình",
+			"faceTooBigDescription": "Hãy di chuyển ra xa một chút"
+		},
+		"doc": {
+			"docCaptureBottomDescription": "Hình ảnh cần nằm trong khung hình và không bị chói",
+			"docCaptureReviewTitle": "Hãy kiểm tra lại ảnh",
+			"docCaptureTitleBack": "Chụp hình CMND/ CCCD mặt sau",
+			"docCaptureTitleFront": "Chụp hình CMND/ CCCD mặt trước"
+		}
+	},
+	"items": {
+		"header": "Thông tin đơn hàng"
+	},
+	"label": {
+		"address": "Địa chỉ hiện tại",
+		"amount": "Thành tiền",
+		"birthday": "Ngày sinh",
+		"city": "Thành phố/Tỉnh",
+		"discount": "Thêm mã giảm giá hoặc thẻ quà tặng",
+		"district": "Quận/Huyện",
+		"guide": "Hướng dẫn",
+		"issueDay": "Ngày cấp",
+		"name": "Họ và tên",
+		"nid": "Số CMND/CCCD",
+		"note": "Lưu ý",
+		"perTitle": "Mối quan hệ",
+		"phoneNumber": "Số điện thoại",
+		"pinCode": "Mã PIN",
+		"sex": "Giới tính",
+		"shipFee": "Phí vận chuyển",
+		"street": "Đường",
+		"total": "Tổng cộng",
+		"ward": "Phường/Xã"
+	},
+	"message": {
+		"NCardBackError": "Lỗi chụp hình CMND/CCCD mặt sau, đề nghị chụp lại",
+		"NCardFrontError": "Lỗi chụp hình CMND/CCCD mặt trước, đề nghị chụp lại",
+		"announce": "Thông báo",
+		"manualNidAndNCardFrontNotMatch": "Hồ sơ của bạn không được chấp nhận do số CMND/CCCD không trùng với số bạn điền vào",
+		"selfieAndNCardFrontNotMatch": "Ảnh chân dung và ảnh trên CMND/CCCD không khớp, đề nghị chụp lại",
+		"selfieError": "Hình chụp selfie không rõ, đề nghị chụp lại ",
+		"tokenExpired": "Token hết hạn"
+	},
+	"nCard": {
+		"back": "mặt sau",
+		"front": "mặt trước",
+		"guideText": "Nhấn vào nút màu đỏ để lần lượt chụp hình CMND/CCCD mặt trước và sau",
+		"guideTwo": "Hướng dẫn chụp đầy đủ 2 ảnh",
+		"nCardBack": "CMND mặt sau",
+		"nCardFront": "CMND mặt trước",
+		"name": "CMND/ CCCD",
+		"notShot": "Chưa chụp",
+		"title": "Chụp ảnh CMND/CCCD 2 mặt"
+	},
+	"otp": {
+		"enter": "Nhập OTP",
+		"expired": "Mã OTP hết hạn",
+		"invalid": "Mã OTP không hợp lệ",
+		"networkError": "Quá trình đăng ký bị gián đoạn. Vui lòng trở lại sau 24h",
+		"notReceive": "Không nhận được OTP",
+		"pleaseEnter": "Vui lòng nhập mã OTP",
+		"resend": "Gởi lại OTP",
+		"resetFail": "Quá trình cài đặt lại mã pin không thành công. Vui lòng trở lại sau 24h"
+	},
+	"picture": {
+		"selfie": "Chụp ảnh chân dung",
+		"detected": "Chụp ảnh ngay"
+	},
+	"phone": {
+		"block": "Số điện thoại này đã bị giới hạn/khoá",
+		"empty": "Vui lòng nhập số điện thoại",
+		"wrongFormat": "Số điện thoại không hợp lệ",
+		"wrongLength": "Số điện thoại phải 10 chữ số"
+	},
+	"pin": {
+		"changeFail": "Thay đổi mã pin không thành công, vui lòng thử lại hoặc liên hệ hỗ trợ để được hướng dẫn.",
+		"empty":  "Vui lòng nhập mã pin",
+		"enter": "Nhập mã PIN",
+		"forgot": "Quên mã pin",
+		"invalid": "Mã pin chưa chính xác",
+		"notExact": "Mã pin không chính xác",
+		"notMatch": "Mã pin và mã pin nhập lại phải trùng nhau",
+		"operator": "Tổng đài hỗ trợ",
+		"paymentConfirm": "Vui lòng nhập mã PIN để xác nhận thanh toán",
+		"reEnter": "Nhập lại mã PIN",
+		"reEnterCheck": "Vui lòng nhập mã PIN để xác thực thông tin",
+		"registerInterrupt": "Quá trình bị gián đoạn. Vui lòng trở lại sau 24h",
+		"reinstall": "Cài đặt lại mã pin của bạn",
+		"resetSuccess": "Chúc mừng bạn đã thay đổi mã pin thành công"
+	},
+	"pinForgot": {
+		"enterNid": "Vui lòng nhập số CMND/CCCD"
+	},
+	"register": {
+		"inputLabel": "Vui lòng nhập điện thoại để tiếp tục"
+	},
+	"selfie": {
+		"enterNid": "Vui lòng nhập CMND/CCCD",
+		"portrait": "Chân dung",
+		"shotGuide": "Hướng dẫn chụp ảnh chân dung",
+		"takeShot": "Chụp ảnh chân dung",
+		"textGuide1": "Nhấn vào nút màu đỏ để bắt đầu chụp hình",
+		"textGuide2": "Số CMND/CCCD phải điền chính xác. Vui lòng nhập 9 số (CMND) hoặc 12 số (CCCD)",
+		"textGuide3": "Ảnh chụp chân dung phải đủ sáng, không đội mũ, không đeo kính",
+		"warning": "Chưa chụp ảnh",
+		"wrongFormat": "CMND hoặc CCCD có 9 hoặc 12 chữ số "
+	},
+	"step": {
+		"customerInfo": "Thông tin khách hàng",
+		"eSign": "Ký điện tử",
+		"finish": "Hoàn thành",
+		"infoCheck": "Xác minh thông tin",
+		"pinInstall": "Cài đặt Pin"
+	},
+	"tenor": {
+		"convertFee": "Phí chuyển đổi",
+		"itemPrice": "Giá sản phẩm",
+		"paymentDue": "Thời gian thanh toán",
+		"tenor": "Kì hạn"
+	},
+	"text": {
+		"back": "để trở lại",
+		"completed": "Đã hoàn thành",
+		"hello": "Chào",
+		"here": "đây",
+		"press": "Bấm vào"
+	},
+	"voolo": {
+		"atm": "Thẻ ATM",
+		"bnpl": "Mua trước Trả sau (BNPL)",
+		"buy": "Mua sắm không giới hạn",
+		"choosePaymentMethod": "Chọn phương thức thanh toán",
+		"creditCard": "Thẻ tín dụng/ Ghi nợ",
+		"help": "VOOLO giúp bạn",
+		"grab": "Ví Moca | Grab",
+		"pay": "Thanh toán linh hoạt",
+		"promo": "Ưu đãi hoàn tiền chỉ trong 1 ngày",
+		"slogan": "Có VOOLO - Mua sắm VÔ LO",
+		"sloganDetail": "VOOLO - Mua Trước Trả Sau Không khoản trả trước - Nhẹ nhàng với 0% lãi suất",
+		"welcomeBNPL": "Chào mừng bạn đến với quy trình đăng ký mua trước trả sau"
+	}
+}
