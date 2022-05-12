@@ -1,14 +1,14 @@
-<div fxLayout="column" fxLayoutAlign="top center" class="camera-box">
-    <button class="close" mat-button (click)="closeDialog()" fxFlexAlign="end">X</button>
-    <webcam [height]="300" [width]="300"[trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"
-                [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"
-                [videoOptions]="videoOptions"
-                [imageQuality]="1"
-                (cameraSwitched)="cameraWasSwitched($event)"
-                (initError)="handleInitError($event)"
-                [imageType]="'image/png'"
-        ></webcam>
+<!--<div fxLayout="column" fxLayoutAlign="top center" class="camera-box">-->
+<!--    <button class="close" mat-button (click)="closeDialog()" fxFlexAlign="end">X</button>-->
+<!--    <webcam [height]="300" [width]="300"[trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam"-->
+<!--                [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable"-->
+<!--                [videoOptions]="videoOptions"-->
+<!--                [imageQuality]="1"-->
+<!--                (cameraSwitched)="cameraWasSwitched($event)"-->
+<!--                (initError)="handleInitError($event)"-->
+<!--                [imageType]="'image/png'"-->
+<!--        ></webcam>-->
 
-        <!--            <input type="file" name="file" id="file" (change)="onFileChanged($event)" />-->
-        <button class="payment-button" (click)="triggerSnapshot()">Chụp ảnh</button>
-</div>
+<!--        &lt;!&ndash;            <input type="file" name="file" id="file" (change)="onFileChanged($event)" />&ndash;&gt;-->
+<!--        <button class="payment-button" (click)="triggerSnapshot()">Chụp ảnh</button>-->
+<!--</div>-->

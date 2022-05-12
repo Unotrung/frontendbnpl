@@ -57,7 +57,7 @@ export class HypervergeService implements OnInit{
     // } catch (error) {
     //   console.error(error)
     // }
-    const uri = `${this.serverAPI}v1/bnpl/common/getHVToken`
+    const uri = `${this.serverAPI}v1/bnpl/fec/getHVToken`
     return this.http.get(encodeURI(uri));
   }
 }
