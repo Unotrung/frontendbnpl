@@ -23,31 +23,48 @@
     <!--    <p class="margin-top-16 payment-text" >Intro - FEC Content Team to Update</p>-->
     <div class="middle-box input-box">
         <p class="paragraph-text paragraph-text-bold">{{'register.inputLabel' | translate}}</p>
-        <div [formGroup]="registerForm" fxFlexFill>
+        <form [formGroup]="registerForm" (ngSubmit)="submit()" fxFlexFill>
             <div class="input-wrapper" fxFlexFill fxLayout="row" fxLayoutAlign="center center">
-                <input (keypress)="keyPress($event, InputType.number)" required type="text" class="input-global"
-                       formControlName="phonenumber"
-                       [ngClass]="{ 'input-invalid': f['phonenumber'].invalid && (f['phonenumber'].dirty || f['phonenumber'].touched) }">
-                <span></span>
+                <input (keypress)="keyPress($event, InputType.number)" required type="text"
+                       class="input-global"
+                       formControlName="phoneNumber"
+                       name="phoneNumber"
+                       (focusin)="resetMessage()">
+            </div>
+            <div *ngFor="let err of invalidMessage">
+                <div appMarginTop="8" class="error-text"
+                     *ngIf="f['phoneNumber']?.hasError(err.type)&&(f['phoneNumber']?.touched||f['phoneNumber']?.dirty)">
+                    {{err.message | translate}}
+                </div>
+            </div>
+            <div appMarginTop="8" class="error-text"
+                 *ngIf="errorPhoneBlock!==''">
+                {{errorPhoneBlock | translate}}
             </div>
 
-            <div appMarginTop="8" class="error-text"
-                 *ngIf="(f['phonenumber']?.dirty || f['phonenumber']?.touched) && f['phonenumber'].errors && f['phonenumber'].errors['required']">
-                {{'phone.empty' | translate}}
-            </div>
-<!--            <div appMarginTop="8" class="error-text"-->
-<!--                 *ngIf="f['phonenumber'].errors && (f['phonenumber'].errors!['maxlength']|| f['phonenumber'].errors!['minlength'])">-->
-<!--                {{'phone.wrongLength' | translate}}-->
-<!--            </div>-->
-            <div appMarginTop="8" class="error-text"
-                 *ngIf="f['phonenumber'].errors && f['phonenumber'].errors['pattern']">
-                {{'phone.wrongFormat' | translate}}
-            </div>
-            <div appMarginTop="8" class="error-text" *ngIf="f['phonenumber'].errors && f['phonenumber'].errors['blockPhone']">
-                {{'phone.block' | translate}}
-            </div>
 
-        </div>
+            <!--            <div appMarginTop="8" class="error-text"-->
+            <!--                 *ngIf="(f['phonenumber']?.dirty || f['phonenumber']?.touched) && f['phonenumber'].errors && f['phonenumber'].errors['required']">-->
+            <!--                {{'phone.empty' | translate}}-->
+            <!--            </div>-->
+            <!--&lt;!&ndash;            <div appMarginTop="8" class="error-text"&ndash;&gt;-->
+            <!--&lt;!&ndash;                 *ngIf="f['phonenumber'].errors && (f['phonenumber'].errors!['maxlength']|| f['phonenumber'].errors!['minlength'])">&ndash;&gt;-->
+            <!--&lt;!&ndash;                {{'phone.wrongLength' | translate}}&ndash;&gt;-->
+            <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+            <!--            <div appMarginTop="8" class="error-text"-->
+            <!--                 *ngIf="f['phonenumber'].errors && f['phonenumber'].errors['pattern']">-->
+            <!--                {{'phone.wrongFormat' | translate}}-->
+            <!--            </div>-->
+            <!--            <div appMarginTop="8" class="error-text" *ngIf="f['phonenumber'].errors && f['phonenumber'].errors['blockPhone']">-->
+            <!--                {{'phone.block' | translate}}-->
+            <!--            </div>-->
+            <div fxFlexFill>
+                <button class="payment-button"
+                        appMarginTop="44"
+                        [disabled]="registerForm?.invalid">
+                    <span>{{'button.continue' | translate}}</span></button>
+            </div>
+        </form>
         <!--        <ngx-intl-tel-input-->
         <!--                [cssClass]="'custom'"-->
         <!--                [preferredCountries]="preferredCountries"-->
@@ -67,13 +84,7 @@
         <!--                [formControl]="phone"-->
         <!--        >-->
         <!--        </ngx-intl-tel-input>-->
-        <div fxFlexFill>
-            <button class="payment-button"
-                    appMarginTop="44"
-                    [disabled]="f['phonenumber'].invalid"
-                    (click)="onRegisterContinue()">
-                <span>{{'button.continue' | translate}}</span></button>
-        </div>
+
     </div>
     <app-checkout-items [discount]="true" [items]="itemService.fakeItem"></app-checkout-items>
     <div appMarginBottom="32"></div>

@@ -146,12 +146,20 @@ ul {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  border: 5px solid #FFFFFF;
-  background: transparent;
+  background: #FFFFFF;
   position: absolute;
   //bottom: -20px;
   //left: 30%;
   //transform: translateX(50%);
   bottom: 20px;
   right: 43%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .circle-red-inside {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 3px solid #E5E5E5;
+  }
 }

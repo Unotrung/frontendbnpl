@@ -153,7 +153,7 @@ export class AuthBnplService {
     }).pipe(tap(data => {
       if (data && data['status']) {
         this.refreshTokenService.setAccessToken(data['token'])
-        this.refreshTokenService.setRefreshToken(data['data']['refreshToken'])
+        // this.refreshTokenService.setRefreshToken(data['data']['refreshToken'])
       }
     }))
   }

@@ -18,14 +18,17 @@
     </div>
     <div class="error-text" appMarginTop="8"
          *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.errors && citizenId.errors['required']">
-        {{'error.nCard.empty' | translate}}
+        <img  class="icon-invalid" src="../../../assets/images/validator1.png">
+        <label>{{'error.nCard.empty' | translate}}</label>
     </div>
     <div class="error-text" appMarginTop="8"
          *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.errors && citizenId.errors['pattern']">
+        <img  class="icon-invalid" src="../../../assets/images/validator1.png">
         {{'error.nCard.wrongFormat' | translate}}
     </div>
     <div class="error-text" appMarginTop="8"
          *ngIf="(citizenId.dirty || citizenId.touched) && citizenId.errors && citizenId.errors['nidExist']">
+        <img  class="icon-invalid" src="../../../assets/images/validator1.png">
         {{'error.nCard.nidExist' | translate}}
     </div>
 
@@ -36,12 +39,14 @@
     <div class="background-gray">
         <div *ngIf="!(pictureService.selfieImageComplete$ | async)" class="background-green">
             <div class="circle-red" (click)="startCaptureImage()">
+                <div class="circle-inside"></div>
             </div>
         </div>
         <div *ngIf="pictureService.selfieImageComplete$ | async" class="image-frame">
             <img [src]="pictureService.selfieImage"
                  class="image-blurred-edge">
             <div class="circle-red" (click)="startCaptureImage()">
+                <div class="circle-inside"></div>
             </div>
         </div>
     </div>

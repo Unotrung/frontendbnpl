@@ -64,10 +64,15 @@ export class ForgotPinOtpComponent implements OnInit {
     this.loadingService.loading$.next(true)
     //todo Check if otp code is correct, then
     this.authService.user$.next({...this.authService.user$.getValue(), otp: this.otpCode})
-    console.log(this.authService.user$.getValue())
+    console.log(this.authService.user$.getValue());
+    // this.authService.verifyOTPRequestPin().subscribe(next=>{
+    //   console.log(next)
+    // },error =>{
+    //   console.log(error)
+    // })
     this.authService.verifyOTPRequestPin().subscribe({
       next: data => {
-        console.log(data)
+        console.log("Check True: ",data)
         this.loadingService.loading$.next(false)
         if (data && data['status']) {
           this.router.navigate(['pay-mock/forgot-pin-pin']).then()
@@ -79,7 +84,8 @@ export class ForgotPinOtpComponent implements OnInit {
         }
       },
       error: ({error}) => {
-        this.loadingService.loading$.next(false)
+        console.log("err verify otp:",{error});
+        this.loadingService.loading$.next(false);
         this.otpFails$.next(this.otpFails$.getValue() + 1)
         this.enterNewOTP = false
         // this.codeInput.reset()
