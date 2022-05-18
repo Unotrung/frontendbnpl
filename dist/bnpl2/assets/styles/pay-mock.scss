@@ -177,10 +177,10 @@ button:hover {
 .input-invalid {
   border: 1px solid #c0392b;
 }
-.input-invalid+span:after {
-  content: url("../images/validator1.png");
-  margin-left: -36px;
-}
+//.input-invalid+span:after {
+//  content: url("../images/validator1.png");
+//  margin-left: -36px;
+//}
 
 
 .paragraph-text {
@@ -224,6 +224,14 @@ button:hover {
   line-height: 18px;
   text-align: center;
   color: #CA5656;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .icon-invalid {
+    width: 11.2px;
+    height: 11.2px;
+    margin-right: 6.5px;
+  }
 }
 
 .red-color {

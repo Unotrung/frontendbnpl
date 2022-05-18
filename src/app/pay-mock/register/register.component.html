@@ -23,7 +23,7 @@
     <!--    <p class="margin-top-16 payment-text" >Intro - FEC Content Team to Update</p>-->
     <div class="middle-box input-box">
         <p class="paragraph-text paragraph-text-bold">{{'register.inputLabel' | translate}}</p>
-        <form [formGroup]="registerForm" (ngSubmit)="submit()" fxFlexFill>
+        <form [formGroup]="registerForm" (ngSubmit)="submit()" fxFlexFill autocomplete="off">
             <div class="input-wrapper" fxFlexFill fxLayout="row" fxLayoutAlign="center center">
                 <input (keypress)="keyPress($event, InputType.number)" required type="text"
                        class="input-global"

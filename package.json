@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "extract": "ngx-translate-extract --input ./src --output ./src/assets/i18n/vi.json --clean --sort --format namespaced-json"
+    "extract-en": "ngx-translate-extract --input ./src --output ./src/assets/i18n/en.json --clean --format namespaced-json",
+    "extract-vi": "ngx-translate-extract --input ./src --output ./src/assets/i18n/vi.json --clean --format namespaced-json"
   },
   "private": true,
   "dependencies": {

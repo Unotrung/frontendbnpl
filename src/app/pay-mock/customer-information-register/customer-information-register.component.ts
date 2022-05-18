@@ -11,6 +11,7 @@ import {PictureService} from "../picture.service";
 import {checkInfo} from "../helper/helper";
 import {keyPress} from "../helper/helper";
 import {InputType} from "../user";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-customer-information-register',
@@ -70,7 +71,8 @@ export class CustomerInformationRegisterComponent implements OnInit {
       private customerInformationService: CustomerInformationService,
       private authService: AuthBnplService,
       private router: Router,
-      private pictureService: PictureService
+      private pictureService: PictureService,
+      private translateService: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -103,7 +105,14 @@ export class CustomerInformationRegisterComponent implements OnInit {
 
   initFormInfo() {
 
-    this.personalTitleOptions = ['Ông', 'Bà']
+    this.personalTitleOptions = [this.translateService.instant("customer.father"),
+      this.translateService.instant("customer.mother"),
+      this.translateService.instant("customer.brother"),
+      this.translateService.instant("customer.sister"),
+      this.translateService.instant("customer.son"),
+      this.translateService.instant("customer.daughter"),
+      this.translateService.instant("customer.spouse"),
+      this.translateService.instant("customer.other"),]
     this.sexOptions = ['Nữ', 'Nam']
 
     const citizenFrontData = this.pictureService.citizenFrontData$.getValue()
