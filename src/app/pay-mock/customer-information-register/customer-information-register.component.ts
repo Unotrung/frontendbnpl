@@ -12,6 +12,7 @@ import {checkInfo} from "../helper/helper";
 import {keyPress} from "../helper/helper";
 import {InputType} from "../user";
 import {TranslateService} from "@ngx-translate/core";
+import {LanguageService} from "../language.service";
 
 @Component({
   selector: 'app-customer-information-register',
@@ -31,7 +32,9 @@ export class CustomerInformationRegisterComponent implements OnInit {
   districtOptions : District[] = []
   wardOptions: Ward[] = []
   personalTitleOptions!: string[]
+  personalTitleOptionsEn!: string[]
   sexOptions!: string[]
+  sexOptionsEn!: string[]
 
 
   vietnamLocationData: any;
@@ -61,6 +64,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
   birthday = ''
   issueDay = ''
   citizenId = ''
+  lang =''
 
   checkInfo = checkInfo
   keyPress = keyPress
@@ -72,10 +76,12 @@ export class CustomerInformationRegisterComponent implements OnInit {
       private authService: AuthBnplService,
       private router: Router,
       private pictureService: PictureService,
-      private translateService: TranslateService
+      private translateService: TranslateService,
+      private languageService: LanguageService
   ) { }
 
   ngOnInit(): void {
+    this.languageService.lang$.subscribe(x=>this.lang = x);
     this.initFormInfo();
     // this.registerForm = new FormGroup({
     //   name: new FormControl(''),
@@ -105,15 +111,18 @@ export class CustomerInformationRegisterComponent implements OnInit {
 
   initFormInfo() {
 
-    this.personalTitleOptions = [this.translateService.instant("customer.father"),
-      this.translateService.instant("customer.mother"),
-      this.translateService.instant("customer.brother"),
-      this.translateService.instant("customer.sister"),
-      this.translateService.instant("customer.son"),
-      this.translateService.instant("customer.daughter"),
-      this.translateService.instant("customer.spouse"),
-      this.translateService.instant("customer.other"),]
-    this.sexOptions = ['Nữ', 'Nam']
+    // this.personalTitleOptions = [this.translateService.instant("customer.father"),
+    //   this.translateService.instant("customer.mother"),
+    //   this.translateService.instant("customer.brother"),
+    //   this.translateService.instant("customer.sister"),
+    //   this.translateService.instant("customer.son"),
+    //   this.translateService.instant("customer.daughter"),
+    //   this.translateService.instant("customer.spouse"),
+    //   this.translateService.instant("customer.other"),]
+    this.personalTitleOptions = ["Bố","Mẹ","Anh em trai","Chị em gái","Con trai","Con gái","Vợ chồng","Quan hệ khác"];
+    this.personalTitleOptionsEn = ["Father","Mother","Brother","Sister","Son","Daughter","Spouse","Other family relationship"];
+    this.sexOptions = ['Nữ', 'Nam'];
+    this.sexOptionsEn = ['Male', 'Female'];
 
     const citizenFrontData = this.pictureService.citizenFrontData$.getValue()
     const citizenBackData = this.pictureService.citizenBackData$.getValue()
@@ -434,7 +443,7 @@ export class CustomerInformationRegisterComponent implements OnInit {
     this.customerInformationService.customerInfo$.next({
     // @ts-ignore
       name: this.name,
-      sex: this.f['sex'].value,
+      sex: this.handleValueGender(this.f['sex'].value),
       phone: this.authService.user$.getValue().phone,
       birthday: new Date(this.birthday),
       citizenId: this.f['citizenId'].value,
@@ -445,11 +454,34 @@ export class CustomerInformationRegisterComponent implements OnInit {
       ward: this.initWard.success ? `${this.initWard.prefix} ${this.initWard.ward}` : `${this.selectedWard$.getValue().prefix} ${this.f['ward'].value}`,
       street: this.initStreet.success ? this.initStreet.street : this.f['street'].value,
 
-      personal_title_ref: this.f['personal_title_ref'].value,
+      personal_title_ref: this.handleValueRelationship(this.f['personal_title_ref'].value),
       name_ref: this.f['name_ref'].value,
       phone_ref: this.f['phone_ref'].value
     })
 
     this.router.navigate(['/pay-mock/customer-confirm-info']).then();
+  }
+
+  handleValueGender(gender:string): string{
+    let genderFormat = '';
+    if (gender == 'Male') {
+      genderFormat = 'Nam'
+    } else if (gender == "Female") {
+      genderFormat = "Nữ"
+    } else {
+      genderFormat = gender;
+    }
+    return genderFormat
+  }
+
+  handleValueRelationship(relationship: string): string {
+    let relationshipFormat = relationship;
+    let listRelVi = [...this.personalTitleOptions];
+    this.personalTitleOptionsEn.forEach(function (rel,index) {
+      if (relationship == rel) {
+        relationshipFormat = listRelVi[index]
+      }
+    })
+    return  relationshipFormat;
   }
 }

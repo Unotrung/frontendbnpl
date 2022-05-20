@@ -25,8 +25,8 @@
                        [ngClass]="{ 'input-invalid': f['sex'].invalid && (f['sex'].dirty || f['sex'].touched) }">
                 <span appMarginTop="5"></span>
                 <mat-autocomplete autoActiveFirstOption #autoSex="matAutocomplete">
-                    <mat-option *ngFor="let option of sexOptions" [value]="option">
-                        {{option}}
+                    <mat-option *ngFor="let option of sexOptions, let i = index" [value]="lang=='en'?sexOptionsEn[i]:option">
+                        {{lang=='en'?sexOptionsEn[i]:option}}
                     </mat-option>
                 </mat-autocomplete>
             </div>
@@ -160,8 +160,8 @@
                        [matAutocomplete]="autoPersonalTitle">
                 <span appMarginTop="5"></span>
                 <mat-autocomplete autoActiveFirstOption #autoPersonalTitle="matAutocomplete">
-                    <mat-option *ngFor="let option of personalTitleFilterOptions | async" [value]="option">
-                        {{option | translate}}
+                    <mat-option *ngFor="let option of personalTitleFilterOptions | async, let i = index" [value]="lang == 'en'?personalTitleOptionsEn[i]:option">
+                        {{lang == 'en'?personalTitleOptionsEn[i]:option}}
                     </mat-option>
                 </mat-autocomplete>
             </div>

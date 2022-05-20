@@ -1,230 +1,216 @@
 {
-	"button": {
-		"back": "Back",
-		"confirm": "Confirm",
-		"continue": "Continue",
-		"more": "More",
-		"reEnterNid": "Re-enter ID Card number",
-		"reRegister": "Please try again",
-		"reshot": "Capture again",
-		"retry": "Retry",
-		"sendOTP": "Send OTP",
-		"signNow": "Sign up now",
-		"turnBackToCart": "Back to cart"
-	},
-	"checkout": {
-		"buySuccess": "Congratulations on your successful purchase",
-		"chooseTenor": "Please choose Tenor",
-		"error": "Purchase failed/Unknown error",
-		"greeting": "Congratulations, with this credit you are eligible to complete the order",
-		"removeItem": "Please remove the product from the cart",
-		"saveTenor": "Save payment method"
-	},
-	"checkoutHeader": {
-		"creditLimit": "Your credit limit is"
-	},
-	"customer": {
-		"checkProgress": "In progress of information verification",
-		"checkTime": "The application verification process will take 5-15 minutes",
-		"chooseCity": "Please select city, province",
-		"chooseDistrict": "Please select district",
-		"chooseStreet": "Please select an address",
-		"chooseWard": "Please select a ward or commune",
-		"enterInfo": "Enter personal information",
-		"info": "Personal Information",
-		"infoCheck": "Information check",
-		"name": "Please enter your first and last name",
-		"needEnterInfo": "Please enter information",
-		"personalInfo": "Personal information",
-		"pinInstall": "Set your pin code",
-		"pinNotMatch": "Pin code and re-entered pin code must be the same",
-		"pinNote1": "Pin code includes 4 numbers, used to checkout when paying",
-		"pinNote2": "This pin will be used for all payments at website voolo.com.vn",
-		"reEnterPin": "Re-enter PIN",
-		"refPhone": "Please enter the correct phone number",
-		"refText": "Reference information",
-		"refTittle": "Please enter your name",
-		"warning": "Compulsory information"
-	},
-	"daysNumber": {
-		"none": "",
-		"plural": "{{ days }} days",
-		"singular": "{{ days }} day"
-	},
-	"error": {
-		"emptySex": "Please select your gender",
-		"nCard": {
-			"empty": "Please enter ID Card's number",
-			"nidExist": "Số CMND/ CCCD đã được sử dụng",
-			"wrongFormat": "CMND/ CCCD không hợp lệ",
-			"wrongNidPhone": "ID Card number not match registered phone number"
-
-		},
-		"phone": {
-			"block": "This number is limited/blocked",
-			"duplicate": "Reference phone number is duplicate register phone number",
-			"empty": "Please enter the phone number",
-			"wrongFormat": "Invalid phone number",
-			"wrongLength10": "Phone number must be 10 digits",
-			"wrongLength11": "or 11 digits"
-
-		}
-	},
-	"esign": {
-		"agree": "I agree to the contract terms",
-		"confirm": "Confirmation of electronic contract",
-		"contract": "Contract Form",
-		"sendOTP": "Please send a confirmation OTP to my VOOLO registered phone"
-	},
 	"home": {
 		"chooseLang": "Choose language"
 	},
-	"hv": {
-		"face": {
-			"faceCaptureBottomDescription": "Make sure your face is inside the circle and is fully visible",
-			"faceCaptureReviewBottomDescription": "Please Review if your face is fully visible",
-			"faceCaptureReviewTitle": "Is your face fully visible, and not blurred?",
-			"faceCaptureTitle": "Capture Selfie",
-			"faceDetectedDescription": "Capture Now",
-			"faceNotDetectedDescription": "Please place your face inside the circle",
-			"faceTooBigDescription": "Please move away from the camera"
-		},
-		"doc": {
-			"docCaptureBottomDescription": "Make sure your document is without any glare and is fully inside",
-			"docCaptureReviewTitle": "Review your photo",
-			"docCaptureTitleBack": "Capture back side Id Card",
-			"docCaptureTitleFront": "Capture front side Id Card"
-		}
+	"button": {
+		"confirm": "Confirm",
+		"turnBackToCart": "Back to cart",
+		"continue": "Continue",
+		"more": "More",
+		"signNow": "Sign up now",
+		"turnBack": "",
+		"sendOTP": "Send OTP",
+		"retry": "Retry",
+		"back": "Back",
+		"reshot": "Capture again",
+		"reEnterNid": "Re-enter ID Card number",
+		"reRegister": "Please try again"
+	},
+	"checkout": {
+		"buySuccess": "Congratulations on your successful purchase",
+		"autoBack": "",
+		"error": "Purchase failed/Unknown error",
+		"removeItem": "Please remove the product from the cart",
+		"greeting": "Congratulations, with this credit you are eligible to complete the order",
+		"chooseTenor": "Please choose Tenor"
+	},
+	"text": {
+		"press": "Click",
+		"here": "here",
+		"back": "to comeback",
+		"hello": "Hi",
+		"completed": "Completed"
+	},
+	"checkoutHeader": {
+		"creditLimit": "Your credit limit is"
 	},
 	"items": {
 		"header": "Cart information"
 	},
 	"label": {
-		"address": "Current address",
-		"amount": "Into money",
-		"birthday": "Date of birth",
-		"city": "City/Province",
 		"discount": "Add a discount code or a gift card",
-		"district": "District",
-		"guide": "Guide",
-		"issueDay": "Date of issue",
-		"name": "Full name",
-		"nid": "ID Number",
-		"note": "Note",
-		"perTitle": "Relationship",
-		"phoneNumber": "Phone number",
-		"pinCode": "PIN code",
-		"sex": "Gender",
+		"amount": "Into money",
 		"shipFee": "Ship fee",
-		"street": "Street",
 		"total": "Total",
-		"ward": "Wards"
+		"name": "Full name",
+		"birthday": "Date of birth",
+		"sex": "Gender",
+		"nid": "ID Number",
+		"phoneNumber": "Phone number",
+		"issueDay": "Date of issue",
+		"street": "Street",
+		"perTitle": "Relationship",
+		"note": "Note",
+		"address": "Current address",
+		"city": "City/Province",
+		"district": "District",
+		"ward": "Wards",
+		"pinCode": "PIN code"
 	},
-	"message": {
-		"NCardBackError": "Error taking photo of ID Card on the back, please retake it",
-		"NCardFrontError": "Error taking picture of ID Card on the front, please take a photo again",
-		"announce": "Notification",
-		"manualNidAndNCardFrontNotMatch": "Your application is not accepted because the ID Card number does not match the number you entered",
-		"selfieAndNCardFrontNotMatch": "The portrait photo and the photo on ID Card do not match, please retake",
-		"selfieError": "Selfie picture is not clear, please take again",
-		"tokenExpired": "Token expired"
+	"tenor": {
+		"tenor": "Tenor",
+		"itemPrice": "Product price",
+		"convertFee": "Conversion fee",
+		"paymentDue": "Payment time"
+	},
+	"daysNumber": "",
+	"voolo": {
+		"choosePaymentMethod": "Choose payment method",
+		"slogan": "WORRY-FREE shopping with VOOLO",
+		"help": "VOOLO giúp bạn",
+		"buy": "Buy everything you need",
+		"pay": "Flexible payment plan",
+		"promo": "Get cashback after just 1 day",
+		"sloganDetail": "VOOLO - Buy Now Pay Later. No interests - No payment in advance.",
+		"bnpl": "Buy now pay later (BNPL)",
+		"welcomeBNPL": "Chào mừng bạn đến với quy trình đăng ký mua trước trả sau",
+		"grab": "Moca | Grab wallet",
+		"atm": "ATM Card",
+		"creditCard": "Credit card"
 	},
 	"nCard": {
-		"back": "backside",
-		"front": "frontside",
-		"guideText": "Click the red button to take a photo of the front and back ID Card, respectively",
-		"guideTwo": "Hướng dẫn chụp đầy đủ 2 ảnh",
-		"nCardBack": "ID card backside",
+		"title": "Take a photo of ID Card 2 sides",
 		"nCardFront": "ID Card frontside",
+		"nCardBack": "ID card backside",
+		"guideTwo": "Hướng dẫn chụp đầy đủ 2 ảnh",
+		"guideText": "Click the red button to take a photo of the front and back ID Card, respectively",
 		"name": "ID Card",
-		"notShot": "Not taken yet",
-		"title": "Take a photo of ID Card 2 sides"
+		"front": "frontside",
+		"back": "backside"
+	},
+	"customer": {
+		"infoCheck": "Information check",
+		"personalInfo": "Personal information",
+		"refText": "Reference information",
+		"checkTime": "The application verification process will take 5-15 minutes",
+		"enterInfo": "Enter personal information",
+		"info": "Personal Information",
+		"chooseCity": "Please select city, province",
+		"chooseDistrict": "Please select district",
+		"chooseWard": "Please select a ward or commune",
+		"chooseStreet": "Please select an address",
+		"needEnterInfo": "Please enter information",
+		"warning": "Compulsory information",
+		"pinInstall": "Set your pin code",
+		"reEnterPin": "Re-enter PIN",
+		"pinNotMatch": "Pin code and re-entered pin code must be the same",
+		"father": "Farther",
+		"mother": "Mother",
+		"brother": "Brother",
+		"sister": "Sister",
+		"son": "Son",
+		"daughter": "Daughter",
+		"spouse": "Spouse",
+		"other": "Other family relationship"
+	},
+	"esign": {
+		"confirm": "Confirmation of electronic contract",
+		"contract": "Contract Form",
+		"agree": "I agree to the contract terms",
+		"sendOTP": "Please send a confirmation OTP to my VOOLO registered phone"
+	},
+	"step": {
+		"infoCheck": "Verify Information",
+		"customerInfo": "Customer information",
+		"pinInstall": "Pin install",
+		"eSign": "E-sign",
+		"finish": "Finish"
+	},
+	"error": {
+		"emptySex": "Please select your gender",
+		"phone": {
+			"empty": "Please enter the phone number",
+			"wrongFormat": "Invalid phone number",
+			"wrongLength10": "Phone number must be 10 digits",
+			"wrongLength11": "or 11 digits",
+			"duplicate": "Reference phone number is duplicate register phone number"
+		},
+		"nCard": {
+			"empty": "Please enter ID Card's number",
+			"wrongFormat": "CMND/ CCCD không hợp lệ",
+			"wrongNidPhone": "ID Card number not match registered phone number",
+			"nidExist": "Số CMND/ CCCD đã được sử dụng"
+		}
 	},
 	"otp": {
 		"enter": "Enter OTP",
-		"expired": "Expired OTP",
-		"invalid": "Invalid OTP code",
-		"networkError": "The registration process is interrupted. Please come back in 24 hours",
-		"notReceive": "Didn't receive OTP",
 		"pleaseEnter": "Please enter OTP",
-		"resend": "Resend OTP",
-		"resetFail": "Pin code reset failed. Please come back in 24 hours"
-	},
-	"picture": {
-		"selfie": "Chụp ảnh chân dung",
-		"detected": "Capture now"
-	},
-	"phone": {
-		"block": "This number is limited/blocked",
-		"empty": "Please enter the phone number",
-		"wrongFormat": "Invalid phone number",
-		"wrongLength": "Phone number must be 10 digits"
-	},
-	"pin": {
-		"changeFail": "Pin change failed, please try again or contact support for instructions.",
-		"empty": "Please enter PIN code",
-		"enter": "Enter PIN",
-		"forgot": "Forgot pin code",
-		"invalid": "PIN code does not match",
-		"notExact": "Pin code not exactly",
-		"notMatch": "PIN Code does not match",
-		"operator": "Support call center",
-		"paymentConfirm": "Vui lòng nhập mã PIN để xác nhận thanh toán",
-		"reEnter": "Re-enter PIN",
-		"reEnterCheck": "Please enter PIN to verify information",
-		"registerInterrupt": "Your account is temporarily locked. Please try again within 24h.",
-		"reinstall": "Reset your pin code",
-		"resetSuccess": "Congratulations, you have successfully changed your pin code"
+		"invalid": "Invalid OTP code",
+		"expired": "Expired OTP",
+		"notReceive": "Didn't receive OTP",
+		"resend": "Resend OTP"
 	},
 	"pinForgot": {
 		"enterNid": "Please enter ID Card number"
 	},
-	"register": {
-		"inputLabel": "Please enter phone to continue"
+	"pin": {
+		"changeFail": "Pin change failed, please try again or contact support for instructions.",
+		"operator": "Support call center",
+		"reinstall": "Reset your pin code",
+		"reEnter": "Re-enter PIN",
+		"notMatch": "PIN Code does not match",
+		"resetSuccess": "Congratulations, you have successfully changed your pin code",
+		"enter": "Enter PIN",
+		"paymentConfirm": "Vui lòng nhập mã PIN để xác nhận thanh toán",
+		"invalid": "PIN code does not match",
+		"empty": "Please enter PIN code",
+		"registerInterrupt": "Your account is temporarily locked. Please try again within 24h.",
+		"forgot": "Forgot pin code",
+		"notExact": "Pin code not exactly"
 	},
 	"selfie": {
 		"enterNid": "Please enter your ID Card number",
-		"portrait": "Portrait",
-		"shotGuide": "Guide to taking portraits",
 		"takeShot": "Take a portrait photo",
+		"portrait": "Portrait",
+		"warning": "Haven't taken pictures yet",
+		"shotGuide": "Guide to taking portraits",
 		"textGuide1": "Click the red button to start taking pictures",
 		"textGuide2": "ID Card number must be entered correctly. Please enter 9 numbers or 12 numbers",
-		"textGuide3": "Portrait photos must be bright enough, no hat, no glasses",
-		"warning": "Haven't taken pictures yet",
-		"wrongFormat": "ID Card with 9 or 12 digits"
+		"textGuide3": "Portrait photos must be bright enough, no hat, no glasses"
 	},
-	"step": {
-		"customerInfo": "Customer information",
-		"eSign": "E-sign",
-		"finish": "Finish",
-		"infoCheck": "Verify Information",
-		"pinInstall": "Pin install"
+	"register": {
+		"inputLabel": "Please enter phone to continue"
 	},
-	"tenor": {
-		"convertFee": "Conversion fee",
-		"itemPrice": "Product price",
-		"paymentDue": "Payment time",
-		"tenor": "Tenor"
+	"message": {
+		"announce": "Notification",
+		"selfieAndNCardFrontNotMatch": "The portrait photo and the photo on ID Card do not match, please retake",
+		"manualNidAndNCardFrontNotMatch": "Your application is not accepted because the ID Card number does not match the number you entered",
+		"NCardFrontError": "Error taking picture of ID Card on the front, please take a photo again",
+		"NCardBackError": "Error taking photo of ID Card on the back, please retake it",
+		"selfieError": "Selfie picture is not clear, please take again",
+		"tokenExpired": "Token expired"
 	},
-	"text": {
-		"back": "to comeback",
-		"completed": "Completed",
-		"hello": "Hi",
-		"here": "here",
-		"press": "Click"
+	"hv": {
+		"face": {
+			"faceCaptureTitle": "Capture Selfie",
+			"faceCaptureBottomDescription": "Make sure your face is inside the circle and is fully visible",
+			"faceNotDetectedDescription": "Please place your face inside the circle",
+			"faceTooBigDescription": "Please move away from the camera",
+			"faceDetectedDescription": "Capture Now",
+			"faceCaptureReviewTitle": "Is your face fully visible, and not blurred?",
+			"faceCaptureReviewBottomDescription": "Please Review if your face is fully visible"
+		},
+		"doc": {
+			"docCaptureBottomDescription": "Make sure your document is without any glare and is fully inside",
+			"docCaptureReviewTitle": "Review your photo",
+			"docReviewBottomDescription": "",
+			"docCaptureTitleFront": "Capture front side Id Card",
+			"docCaptureTitleBack": "Capture back side Id Card"
+		}
 	},
-	"voolo": {
-		"atm": "ATM Card",
-		"bnpl": "Buy now pay later (BNPL)",
-		"buy": "Buy everything you need",
-		"choosePaymentMethod": "Choose payment method",
-		"creditCard": "Credit card",
-		"help": "VOOLO giúp bạn",
-		"grab": "Moca | Grab wallet",
-		"pay": "Flexible payment plan",
-		"promo": "Get cashback after just 1 day",
-		"slogan": "WORRY-FREE shopping with VOOLO",
-		"sloganDetail": "VOOLO - Buy Now Pay Later. No interests - No payment in advance.",
-		"welcomeBNPL": "Chào mừng bạn đến với quy trình đăng ký mua trước trả sau"
+	"phone": {
+		"empty": "Please enter the phone number",
+		"wrongFormat": "Invalid phone number",
+		"block": "This number is limited/blocked"
 	}
 }

@@ -5,7 +5,7 @@
     </div>
     <div class="fix">
         <label>{{'home.chooseLang' | translate}} </label>
-        <select [formControl]="langControl">
+        <select [formControl]="langControl" (change)="changeLang(langControl.value)">
             <option *ngFor="let lang of supportLanguages" [value]="lang">{{lang}}</option>
         </select>
     </div>

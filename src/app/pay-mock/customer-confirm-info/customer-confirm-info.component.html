@@ -18,7 +18,7 @@
         </div>
         <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
             <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.sex' | translate}} </div>
-            <div class="paragraph-text">{{customerInformationService.customerInfo$.getValue().sex}}</div>
+            <div class="paragraph-text">{{showGender}}</div>
         </div>
         <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
             <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.nid' | translate}} </div>
@@ -41,7 +41,7 @@
         <div class="paragraph-text paragraph-text-small paragraph-text-bold" > {{'customer.refText' | translate}} </div>
         <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
             <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.perTitle' | translate}} </div>
-            <div class="paragraph-text">{{customerInformationService.customerInfo$.getValue().personal_title_ref}}</div>
+            <div class="paragraph-text">{{showRelationship}}</div>
         </div>
         <div class="info-wrapper" fxLayout="row" fxLayoutAlign="start center">
             <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start">{{'label.name' | translate}} </div>
