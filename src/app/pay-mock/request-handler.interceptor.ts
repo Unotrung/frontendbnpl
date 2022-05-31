@@ -40,7 +40,9 @@ export class RequestHandlerInterceptor implements HttpInterceptor {
                 const {accessToken} = data
                 const newRequest = request.clone({
                     setHeaders: {
-                        Authorization: `Bearer ${accessToken}`
+                        Authorization: `Bearer ${accessToken}`,
+                        appKey:  'WOLFCONSULTING113911',
+                        appId: '998877665544332211'
                     }
                 })
                 return next.handle(newRequest)
