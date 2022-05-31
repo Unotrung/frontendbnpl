@@ -6,16 +6,6 @@ import {BehaviorSubject, Subject} from "rxjs";
   providedIn: 'root'
 })
 export class ItemService {
-  // items: Item[] = [
-  //   {
-  //     id: '1',
-  //     name: 'Begin Yoga Mat 5MM',
-  //     description: 'Steel Grey/One Size',
-  //     price: 5000000,
-  //     image: 'assets/images/begin-yoga-mat-5mm.png',
-  //     shipFee: 30000
-  //   }
-  // ]
   fakeItem: Array<Item> = [{
     id: '1',
     name: 'Begin Yoga Mat 5MM',
@@ -46,33 +36,7 @@ export class ItemService {
     })
   }
 
-  // get sumPriceItem(): number {
-  //   let sum = 0
-  //   // if (this.items$.getValue() !== null){
-  //   //   this.items$.getValue()!.forEach(item => {
-  //   //     sum+= +item.price
-  //   //   })
-  //   // }
-  //   console.log('totalItemPrice', sum)
-  //   return sum
-  // }
-  //
-  // get sumShipFee(): number {
-  //   let sum = 0
-  //   // if (this.items$.getValue() !== null) {
-  //   // this.items$.getValue()!.forEach(item => {
-  //   //   sum += +item.shipFee
-  //   // })}
-  //   console.log('totalShipFee', sum)
-  //   return sum
-  // }
-
-  // get total(): number {
-  //   return this.sumPriceItem + this.sumShipFee
-  // }
-
   updateItemList(items: Item[]) {
-    console.log('items',items)
     this.items$.next(items)
   }
 

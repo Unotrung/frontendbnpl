@@ -1,20 +1,23 @@
-<div fxLayout="column" fxLayoutAlign="center" class="payment-box">
-    <div fxFlex="100">
-        <app-top-bar></app-top-bar>
-<!--        <p>{{'home.title' | translate}}</p>-->
-    </div>
-    <div class="fix">
-        <label>{{'home.chooseLang' | translate}} </label>
-        <select [formControl]="langControl" (change)="changeLang(langControl.value)">
-            <option *ngFor="let lang of supportLanguages" [value]="lang">{{lang}}</option>
-        </select>
-    </div>
-    <div class="bnpl-box" fxFlex="100">
-        <router-outlet></router-outlet>
-    </div>
-    <div class="global-gradient">
+<!--<div fxLayout="column" fxLayoutAlign="center" class="payment-box">-->
+<!--    <div fxFlex="100">-->
+<!--        <app-top-bar></app-top-bar>-->
+<!--&lt;!&ndash;        <p>{{'home.title' | translate}}</p>&ndash;&gt;-->
+<!--    </div>-->
+<!--    <div class="fix">-->
+<!--        <label>{{'home.chooseLang' | translate}} </label>-->
+<!--        <select [formControl]="langControl" (change)="changeLang(langControl.value)">-->
+<!--            <option *ngFor="let lang of supportLanguages" [value]="lang">{{lang}}</option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    <div class="bnpl-box" fxFlex="100">-->
+<!--        <router-outlet></router-outlet>-->
+<!--    </div>-->
+<!--    <div class="global-gradient">-->
 
-    </div>
-    <div class="build">build 18.05.2022 </div>
+<!--    </div>-->
+<!--    <div class="build">build 24.05.2022 </div>-->
+<!--</div>-->
+
+<div class="bnpl-box">
+    <router-outlet></router-outlet>
 </div>
-

@@ -83,7 +83,7 @@
 		"nCardFront": "CMND mặt trước",
 		"nCardBack": "CMND mặt sau",
 		"guideTwo": "Hướng dẫn chụp đầy đủ 2 ảnh",
-		"guideText": "Nhấn vào nút màu đỏ để lần lượt chụp hình CMND/CCCD mặt trước và sau",
+		"guideText": "Nhấn vào nút tròn màu trắng để lần lượt chụp hình CMND/CCCD mặt trước và sau",
 		"name": "CMND/ CCCD",
 		"front": "mặt trước",
 		"back": "mặt sau"
@@ -116,7 +116,7 @@
 	"esign": {
 		"confirm": "Xác nhận hợp đồng điện tử",
 		"contract": "Mẫu hợp đồng",
-		"agree": "Tôi đồng ý với các điều khoản hợp đồng",
+		"agree": "Tôi đồng ý với Điều kiện và Điều khoản hợp đồng",
 		"sendOTP": "Vui lòng gởi OTP xác nhận về điện thoại đã đăng ký VOOLO của tôi"
 	},
 	"step": {

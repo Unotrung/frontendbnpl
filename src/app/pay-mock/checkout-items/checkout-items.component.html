@@ -1,22 +1,12 @@
-<div class="middle-box white-box" appMarginTop="16" >
-    <div class="paragraph-text paragraph-text-bold" fxFlexAlign="start" appMarginTop="10" >
+<div class="middle-box white-box">
+    <div class="paragraph-text paragraph-text-bold frame-title">
         {{'items.header' | translate}}
     </div>
-<!--    <ng-container *ngFor="let item of items">-->
         <app-checkout-item *ngFor="let item of items" [item]="item"></app-checkout-item>
-<!--    </ng-container>-->
-
-<!--    <mat-divider></mat-divider>-->
     <ng-container *ngIf="discount">
-<!--        <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" >-->
-<!--            <div class="item-content" >{{'label.discount' | translate}}</div>-->
-<!--&lt;!&ndash;            <div class="item-content"><input></div>&ndash;&gt;-->
-<!--        </div>-->
-<!--        <mat-divider></mat-divider>-->
         <div class="input-wrapper margin-top-default">
             <input class="input-global input-gift-card" placeholder="{{'label.discount' | translate}}">
         </div>
-
     </ng-container>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlexFill appMarginTop="16" >
         <div class="paragraph-text" >{{'label.amount' | translate}}</div>
