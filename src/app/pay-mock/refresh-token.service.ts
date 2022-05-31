@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, switchMap, tap} from "rxjs";
-import {HttpBackend, HttpClient} from "@angular/common/http";
+import {HttpBackend, HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 
 @Injectable({
@@ -29,11 +29,16 @@ export class RefreshTokenService {
     }
 
     getRefreshToken(): Observable<any> {
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'appKey':  'WOLFCONSULTING113911',
+            'appId': '998877665544332211'
+        })
         const uri = `${environment.localAPIServer}v1/bnpl/user/requestRefreshToken`
         const refreshToken = this.refreshToken$.getValue()
         return this.httpClient.put<any>(encodeURI(uri), {
             refreshToken
-        }).pipe(
+        },{headers:headers}).pipe(
             tap(data => {
                 const {accessToken, refreshToken} = data
                 this.setRefreshToken(refreshToken)
