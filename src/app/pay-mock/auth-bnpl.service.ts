@@ -44,11 +44,16 @@ export class AuthBnplService {
   }
 
   login(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'appKey':  'WOLFCONSULTING113911',
+      'appId': '998877665544332211'
+    })
     const uri = `${environment.localAPIServer}v1/bnpl/user/login`;
     return this.http.post<any>(encodeURI(uri), {
       phone: this.user$.getValue().phone,
       pin: this.user$.getValue().pin
-    }).pipe(tap((data) => {
+    }, {headers: headers}).pipe(tap((data) => {
       console.log(data)
       if (data && data['status']) {
         this.refreshTokenService.setAccessToken(data['token'])
@@ -59,9 +64,14 @@ export class AuthBnplService {
     }))
   }
   register(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'appKey':  'WOLFCONSULTING113911',
+      'appId': '998877665544332211'
+    })
     const uri = `${environment.localAPIServer}v1/bnpl/personal/addInfoPersonal`;
     console.log({...this.customerInfoService.customerInfo$.getValue(), pin: this.user$.getValue().pin })
-    return this.http.post<any>(encodeURI(uri), {...this.customerInfoService.customerInfo$.getValue(), pin: this.user$.getValue().pin }).pipe(tap((data) =>{
+    return this.http.post<any>(encodeURI(uri), {...this.customerInfoService.customerInfo$.getValue(), pin: this.user$.getValue().pin },{headers:headers}).pipe(tap((data) =>{
       console.log(data)
       if (data && data['status']) {
         this.isLoggedIn$.next(true)
@@ -71,16 +81,26 @@ export class AuthBnplService {
   }
 
   checkPossiblePhone(phone: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'appKey':  'WOLFCONSULTING113911',
+      'appId': '998877665544332211'
+    })
     const uri = `${environment.localAPIServer}v1/bnpl/user/checkPhoneExists`
-    return this.http.post<any>(encodeURI(uri), {phone});
+    return this.http.post<any>(encodeURI(uri), {phone}, {headers:headers});
   }
 
   checkNidPhoneMatch(nid: string){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'appKey':  'WOLFCONSULTING113911',
+      'appId': '998877665544332211'
+    })
     const uri = `${environment.localAPIServer}v1/bnpl/user/checkNidPhoneExists`
     return this.http.post<any>(encodeURI(uri), {
       phone: this.user$.getValue().phone,
       nid
-    })
+    },{headers:headers})
   }
 
   logout() {
@@ -93,24 +113,36 @@ export class AuthBnplService {
   }
 
   sendOTP(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'appKey':  'WOLFCONSULTING113911',
+      'appId': '998877665544332211'
+    })
     const uri = `${environment.localAPIServer}v1/bnpl/user/sendOtp`
     return this.http.post<any>(encodeURI(uri), {
       phone: this.user$.getValue().phone
-    })
+    },{headers:headers})
   }
   verifyOTP(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'appKey':  'WOLFCONSULTING113911',
+      'appId': '998877665544332211'
+    })
     const uri = `${environment.localAPIServer}v1/bnpl/user/verifyOtp`
     return this.http.post<any>(encodeURI(uri), {
       phone: this.user$.getValue().phone,
       otp: this.user$.getValue().otp
-    })
+    },{headers:headers})
   }
 
   updateCustomerInfo(): Observable<any>{
     const uri = `${environment.localAPIServer}v1/bnpl/personal/addInfoPersonal`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`
+      'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`,
+      'appKey':  'WOLFCONSULTING113911',
+      'appId': '998877665544332211'
     })
     return this.http.post<any>(encodeURI(uri), {...this.customerInfoService.customerInfo$.getValue(), pin: this.user$.getValue().pin }, {headers}).pipe(tap((data) =>{
       console.log(data)
@@ -127,7 +159,9 @@ export class AuthBnplService {
     const uri = `${environment.localAPIServer}v1/bnpl/personal/${this.user$.getValue().phone}`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`
+      'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`,
+      'appKey':  'WOLFCONSULTING113911',
+      'appId': '998877665544332211'
     })
     // @ts-ignore
     return this.http.get<any>(encodeURI(uri), {headers}).pipe(tap((data) => {
@@ -138,19 +172,29 @@ export class AuthBnplService {
   }
 
   sendOTPRequestResetPin(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'appKey':  'WOLFCONSULTING113911',
+      'appId': '998877665544332211'
+    })
     const uri = `${environment.localAPIServer}v1/bnpl/user/sendOtpPin`
     return this.http.post<any>(encodeURI(uri), {
       "phone": this.user$.getValue().phone,
       "nid": this.user$.getValue().citizenId
-    })
+    },{headers:headers})
   }
   verifyOTPRequestPin(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'appKey':  'WOLFCONSULTING113911',
+      'appId': '998877665544332211'
+    })
     const uri = `${environment.localAPIServer}v1/bnpl/user/verifyOtpPin`
     return this.http.post<any>(encodeURI(uri), {
       "phone": this.user$.getValue().phone,
       "nid": this.user$.getValue().citizenId,
       "otp": this.user$.getValue().otp
-    }).pipe(tap(data => {
+    },{headers:headers}).pipe(tap(data => {
       if (data && data['status']) {
         this.refreshTokenService.setAccessToken(data['token'])
         // this.refreshTokenService.setRefreshToken(data['data']['refreshToken'])
@@ -162,7 +206,9 @@ export class AuthBnplService {
     const uri = `${environment.localAPIServer}v1/bnpl/user/resetPin`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`
+      'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`,
+      'appKey':  'WOLFCONSULTING113911',
+      'appId': '998877665544332211'
     })
     return this.http.put<any>(encodeURI(uri), {
       "phone": this.user$.getValue().phone,
@@ -173,15 +219,22 @@ export class AuthBnplService {
   }
 
   checkNidExist(nId: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'appKey':  'WOLFCONSULTING113911',
+      'appId': '998877665544332211'
+    })
     const uri = `${environment.localAPIServer}v1/bnpl/user/checkNidExists`
-    return this.http.post<any>(encodeURI(uri), {"nid": nId})
+    return this.http.post<any>(encodeURI(uri), {"nid": nId},{headers:headers})
   }
 
   updateTenor() {
     const uri = `${environment.localAPIServer}v1/bnpl/personal/updateTenor`
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`
+      'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`,
+      'appKey':  'WOLFCONSULTING113911',
+      'appId': '998877665544332211'
     })
     return this.http.put<any>(encodeURI(uri), {
       "id": this.tenorService.selectedTenor$.getValue()?.tenorId,
