@@ -83,7 +83,7 @@
 		"nCardFront": "ID Card frontside",
 		"nCardBack": "ID card backside",
 		"guideTwo": "Hướng dẫn chụp đầy đủ 2 ảnh",
-		"guideText": "Click the red button to take a photo of the front and back ID Card, respectively",
+		"guideText": "Click the white circle button to take a photo of the front and back ID Card, respectively",
 		"name": "ID Card",
 		"front": "frontside",
 		"back": "backside"
@@ -116,7 +116,7 @@
 	"esign": {
 		"confirm": "Confirmation of electronic contract",
 		"contract": "Contract Form",
-		"agree": "I agree to the contract terms",
+		"agree": "I agree to the Contract Terms and Conditions",
 		"sendOTP": "Please send a confirmation OTP to my VOOLO registered phone"
 	},
 	"step": {
