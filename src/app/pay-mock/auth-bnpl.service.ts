@@ -47,13 +47,13 @@ export class AuthBnplService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'appKey':  'WOLFCONSULTING113911',
-      'appId': '998877665544332211'
+      'appId':  '998877665544332211'
     })
     const uri = `${environment.localAPIServer}v1/bnpl/user/login`;
     return this.http.post<any>(encodeURI(uri), {
       phone: this.user$.getValue().phone,
       pin: this.user$.getValue().pin
-    }, {headers: headers}).pipe(tap((data) => {
+    },{headers:headers}).pipe(tap((data) => {
       console.log(data)
       if (data && data['status']) {
         this.refreshTokenService.setAccessToken(data['token'])
@@ -67,7 +67,7 @@ export class AuthBnplService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'appKey':  'WOLFCONSULTING113911',
-      'appId': '998877665544332211'
+      'appId':  '998877665544332211'
     })
     const uri = `${environment.localAPIServer}v1/bnpl/personal/addInfoPersonal`;
     console.log({...this.customerInfoService.customerInfo$.getValue(), pin: this.user$.getValue().pin })
@@ -84,17 +84,17 @@ export class AuthBnplService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'appKey':  'WOLFCONSULTING113911',
-      'appId': '998877665544332211'
+      'appId':  '998877665544332211'
     })
     const uri = `${environment.localAPIServer}v1/bnpl/user/checkPhoneExists`
-    return this.http.post<any>(encodeURI(uri), {phone}, {headers:headers});
+    return this.http.post<any>(encodeURI(uri), {phone},{headers:headers});
   }
 
   checkNidPhoneMatch(nid: string){
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'appKey':  'WOLFCONSULTING113911',
-      'appId': '998877665544332211'
+      'appId':  '998877665544332211'
     })
     const uri = `${environment.localAPIServer}v1/bnpl/user/checkNidPhoneExists`
     return this.http.post<any>(encodeURI(uri), {
@@ -116,7 +116,7 @@ export class AuthBnplService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'appKey':  'WOLFCONSULTING113911',
-      'appId': '998877665544332211'
+      'appId':  '998877665544332211'
     })
     const uri = `${environment.localAPIServer}v1/bnpl/user/sendOtp`
     return this.http.post<any>(encodeURI(uri), {
@@ -127,7 +127,7 @@ export class AuthBnplService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'appKey':  'WOLFCONSULTING113911',
-      'appId': '998877665544332211'
+      'appId':  '998877665544332211'
     })
     const uri = `${environment.localAPIServer}v1/bnpl/user/verifyOtp`
     return this.http.post<any>(encodeURI(uri), {
@@ -142,7 +142,7 @@ export class AuthBnplService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`,
       'appKey':  'WOLFCONSULTING113911',
-      'appId': '998877665544332211'
+      'appId':  '998877665544332211'
     })
     return this.http.post<any>(encodeURI(uri), {...this.customerInfoService.customerInfo$.getValue(), pin: this.user$.getValue().pin }, {headers}).pipe(tap((data) =>{
       console.log(data)
@@ -161,7 +161,7 @@ export class AuthBnplService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`,
       'appKey':  'WOLFCONSULTING113911',
-      'appId': '998877665544332211'
+      'appId':  '998877665544332211'
     })
     // @ts-ignore
     return this.http.get<any>(encodeURI(uri), {headers}).pipe(tap((data) => {
@@ -175,7 +175,7 @@ export class AuthBnplService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'appKey':  'WOLFCONSULTING113911',
-      'appId': '998877665544332211'
+      'appId':  '998877665544332211'
     })
     const uri = `${environment.localAPIServer}v1/bnpl/user/sendOtpPin`
     return this.http.post<any>(encodeURI(uri), {
@@ -187,14 +187,14 @@ export class AuthBnplService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'appKey':  'WOLFCONSULTING113911',
-      'appId': '998877665544332211'
+      'appId':  '998877665544332211'
     })
     const uri = `${environment.localAPIServer}v1/bnpl/user/verifyOtpPin`
     return this.http.post<any>(encodeURI(uri), {
       "phone": this.user$.getValue().phone,
       "nid": this.user$.getValue().citizenId,
       "otp": this.user$.getValue().otp
-    },{headers:headers}).pipe(tap(data => {
+    }, {headers:headers}).pipe(tap(data => {
       if (data && data['status']) {
         this.refreshTokenService.setAccessToken(data['token'])
         // this.refreshTokenService.setRefreshToken(data['data']['refreshToken'])
@@ -208,7 +208,7 @@ export class AuthBnplService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`,
       'appKey':  'WOLFCONSULTING113911',
-      'appId': '998877665544332211'
+      'appId':  '998877665544332211'
     })
     return this.http.put<any>(encodeURI(uri), {
       "phone": this.user$.getValue().phone,
@@ -222,7 +222,7 @@ export class AuthBnplService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'appKey':  'WOLFCONSULTING113911',
-      'appId': '998877665544332211'
+      'appId':  '998877665544332211'
     })
     const uri = `${environment.localAPIServer}v1/bnpl/user/checkNidExists`
     return this.http.post<any>(encodeURI(uri), {"nid": nId},{headers:headers})
@@ -234,7 +234,7 @@ export class AuthBnplService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.refreshTokenService.accessToken$.getValue()}`,
       'appKey':  'WOLFCONSULTING113911',
-      'appId': '998877665544332211'
+      'appId':  '998877665544332211'
     })
     return this.http.put<any>(encodeURI(uri), {
       "id": this.tenorService.selectedTenor$.getValue()?.tenorId,

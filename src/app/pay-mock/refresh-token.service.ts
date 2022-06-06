@@ -32,7 +32,7 @@ export class RefreshTokenService {
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'appKey':  'WOLFCONSULTING113911',
-            'appId': '998877665544332211'
+            'appId':  '998877665544332211'
         })
         const uri = `${environment.localAPIServer}v1/bnpl/user/requestRefreshToken`
         const refreshToken = this.refreshToken$.getValue()
